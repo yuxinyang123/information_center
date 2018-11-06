@@ -5,6 +5,10 @@ public class CenterPo {
 
     private Long userKey;
 
+    private Long degreeKey;
+
+    private Integer weatherCode;
+
     public Long getCenterId() {
         return centerId;
     }
@@ -19,5 +23,21 @@ public class CenterPo {
 
     public void setUserKey(Long userKey) {
         this.userKey = userKey;
+    }
+
+    public Long getDegreeKey() {
+        return degreeKey;
+    }
+
+    public void setDegreeKey(Long degreeKey) {
+        this.degreeKey = degreeKey;
+    }
+
+    public Integer getWeatherCode() {
+        return weatherCode;
+    }
+
+    public void setWeatherCode(Integer weatherCode) {
+        this.weatherCode = weatherCode;
     }
 }

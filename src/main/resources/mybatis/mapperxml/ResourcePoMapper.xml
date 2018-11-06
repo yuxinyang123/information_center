@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnu.softwarecollege.infocenter.mapper.ResourcePoMapper">
+  <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
+    <id column="RES_ID" jdbcType="BIGINT" property="resId" />
+    <result column="TYPE_KEY" jdbcType="BIGINT" property="typeKey" />
+    <result column="RES_TITLE" jdbcType="VARCHAR" property="resTitle" />
+    <result column="RES_AUTHOR" jdbcType="VARCHAR" property="resAuthor" />
+    <result column="RES_SOURCE" jdbcType="VARCHAR" property="resSource" />
+    <result column="RES_DATE" jdbcType="TIMESTAMP" property="resDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
+    <result column="RES_CONTEXT" jdbcType="LONGVARCHAR" property="resContext" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RES_ID, TYPE_KEY, RES_TITLE, RES_AUTHOR, RES_SOURCE, RES_DATE
+  </sql>
+  <sql id="Blob_Column_List">
+    RES_CONTEXT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_resource
+    where RES_ID = #{resId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tbl_resource
+    where RES_ID = #{resId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
+    insert into tbl_resource (RES_ID, TYPE_KEY, RES_TITLE, 
+      RES_AUTHOR, RES_SOURCE, RES_DATE, 
+      RES_CONTEXT)
+    values (#{resId,jdbcType=BIGINT}, #{typeKey,jdbcType=BIGINT}, #{resTitle,jdbcType=VARCHAR}, 
+      #{resAuthor,jdbcType=VARCHAR}, #{resSource,jdbcType=VARCHAR}, #{resDate,jdbcType=TIMESTAMP}, 
+      #{resContext,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
+    insert into tbl_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resId != null">
+        RES_ID,
+      </if>
+      <if test="typeKey != null">
+        TYPE_KEY,
+      </if>
+      <if test="resTitle != null">
+        RES_TITLE,
+      </if>
+      <if test="resAuthor != null">
+        RES_AUTHOR,
+      </if>
+      <if test="resSource != null">
+        RES_SOURCE,
+      </if>
+      <if test="resDate != null">
+        RES_DATE,
+      </if>
+      <if test="resContext != null">
+        RES_CONTEXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resId != null">
+        #{resId,jdbcType=BIGINT},
+      </if>
+      <if test="typeKey != null">
+        #{typeKey,jdbcType=BIGINT},
+      </if>
+      <if test="resTitle != null">
+        #{resTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="resAuthor != null">
+        #{resAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="resSource != null">
+        #{resSource,jdbcType=VARCHAR},
+      </if>
+      <if test="resDate != null">
+        #{resDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resContext != null">
+        #{resContext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
+    update tbl_resource
+    <set>
+      <if test="typeKey != null">
+        TYPE_KEY = #{typeKey,jdbcType=BIGINT},
+      </if>
+      <if test="resTitle != null">
+        RES_TITLE = #{resTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="resAuthor != null">
+        RES_AUTHOR = #{resAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="resSource != null">
+        RES_SOURCE = #{resSource,jdbcType=VARCHAR},
+      </if>
+      <if test="resDate != null">
+        RES_DATE = #{resDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resContext != null">
+        RES_CONTEXT = #{resContext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where RES_ID = #{resId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
+    update tbl_resource
+    set TYPE_KEY = #{typeKey,jdbcType=BIGINT},
+      RES_TITLE = #{resTitle,jdbcType=VARCHAR},
+      RES_AUTHOR = #{resAuthor,jdbcType=VARCHAR},
+      RES_SOURCE = #{resSource,jdbcType=VARCHAR},
+      RES_DATE = #{resDate,jdbcType=TIMESTAMP},
+      RES_CONTEXT = #{resContext,jdbcType=LONGVARCHAR}
+    where RES_ID = #{resId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
+    update tbl_resource
+    set TYPE_KEY = #{typeKey,jdbcType=BIGINT},
+      RES_TITLE = #{resTitle,jdbcType=VARCHAR},
+      RES_AUTHOR = #{resAuthor,jdbcType=VARCHAR},
+      RES_SOURCE = #{resSource,jdbcType=VARCHAR},
+      RES_DATE = #{resDate,jdbcType=TIMESTAMP}
+    where RES_ID = #{resId,jdbcType=BIGINT}
+  </update>
+</mapper>
