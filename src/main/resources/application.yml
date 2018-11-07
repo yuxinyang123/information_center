@@ -1,0 +1,33 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/information_center?characterEncoding=UTF-8
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+server:
+  port: 8080
+  auth: false
+  salt: thisisasalt
+  servlet:
+    context-path: /api
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapperxml/*.xml
+
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+logging:
+  level:
+    root: info
+    com.hnu.softwarecollege.infocenter: debug
+
