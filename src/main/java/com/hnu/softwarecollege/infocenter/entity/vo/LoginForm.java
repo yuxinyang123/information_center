@@ -1,5 +1,8 @@
 package com.hnu.softwarecollege.infocenter.entity.vo;
 
+import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 /** 
@@ -11,12 +14,19 @@ import javax.validation.constraints.NotNull;
 **/
 public class LoginForm {
     @NotEmpty
+    @Email
     private String email;
     @NotEmpty
     private String password;
     @NotEmpty
     private String verifyCode;
 
+    public UserPo toUserPo(){
+        UserPo userPo = new UserPo();
+        userPo.setUserEmail(getEmail());
+        userPo.setUserPass(getPassword());
+        return userPo;
+    }
 
     public String getEmail() {
         return email;

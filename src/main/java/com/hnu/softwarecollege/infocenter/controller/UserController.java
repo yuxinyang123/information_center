@@ -1,7 +1,6 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
-import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import org.springframework.validation.Errors;
@@ -41,7 +40,5 @@ public class UserController {
         }
     }
 
-    public BaseResponseVo login(@RequestBody @Valid LoginForm loginForm){
-        return BaseResponseVo.success();
-    }
+
 }

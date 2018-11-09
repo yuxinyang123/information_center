@@ -2,6 +2,7 @@ package com.hnu.softwarecollege.infocenter.entity.vo;
 
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +18,7 @@ public class RegistForm {
     @NotEmpty
     private String userPass;
     @NotEmpty
+    @Email
     private String userEmail;
     @NotEmpty
     private String userPhone;
