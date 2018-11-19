@@ -3,6 +3,8 @@ package com.hnu.softwarecollege.infocenter.entity.po;
 public class WeatherPo {
     private Integer weatherCode;
 
+    private String weatherCityName;
+
     private String weatherDate;
 
     private String weatherSunrise;
@@ -29,6 +31,14 @@ public class WeatherPo {
 
     public void setWeatherCode(Integer weatherCode) {
         this.weatherCode = weatherCode;
+    }
+
+    public String getWeatherCityName() {
+        return weatherCityName;
+    }
+
+    public void setWeatherCityName(String weatherCityName) {
+        this.weatherCityName = weatherCityName == null ? null : weatherCityName.trim();
     }
 
     public String getWeatherDate() {
