@@ -1,6 +1,11 @@
 package com.hnu.softwarecollege.infocenter.entity.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherPo {
+    @JsonProperty
     private Integer weatherCode;
 
     private String weatherCityName;

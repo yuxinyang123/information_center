@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: de.codecentric:spring-boot-admin-starter-server:2.1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://D:/my_maven_local_repository/de/codecentric/spring-boot-admin-starter-server/2.1.0-SNAPSHOT/spring-boot-admin-starter-server-2.1.0-20181105.064028-84.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/my_maven_local_repository/de/codecentric/spring-boot-admin-starter-server/2.1.0-SNAPSHOT/spring-boot-admin-starter-server-2.1.0-20181105.064028-84-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/my_maven_local_repository/de/codecentric/spring-boot-admin-starter-server/2.1.0-SNAPSHOT/spring-boot-admin-starter-server-2.1.0-20181105.064028-84-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnu.softwarecollege.infocenter.mapper.UserRolePoMapper">
+  <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.UserRolePo">
+    <id column="UR_ID" jdbcType="BIGINT" property="urId" />
+    <result column="USER_KEY" jdbcType="BIGINT" property="userKey" />
+    <result column="ROLE_KEY" jdbcType="BIGINT" property="roleKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UR_ID, USER_KEY, ROLE_KEY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_user_role
+    where UR_ID = #{urId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tbl_user_role
+    where UR_ID = #{urId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.UserRolePo">
+    insert into tbl_user_role (UR_ID, USER_KEY, ROLE_KEY
+      )
+    values (#{urId,jdbcType=BIGINT}, #{userKey,jdbcType=BIGINT}, #{roleKey,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.UserRolePo">
+    insert into tbl_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urId != null">
+        UR_ID,
+      </if>
+      <if test="userKey != null">
+        USER_KEY,
+      </if>
+      <if test="roleKey != null">
+        ROLE_KEY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urId != null">
+        #{urId,jdbcType=BIGINT},
+      </if>
+      <if test="userKey != null">
+        #{userKey,jdbcType=BIGINT},
+      </if>
+      <if test="roleKey != null">
+        #{roleKey,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.UserRolePo">
+    update tbl_user_role
+    <set>
+      <if test="userKey != null">
+        USER_KEY = #{userKey,jdbcType=BIGINT},
+      </if>
+      <if test="roleKey != null">
+        ROLE_KEY = #{roleKey,jdbcType=BIGINT},
+      </if>
+    </set>
+    where UR_ID = #{urId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.UserRolePo">
+    update tbl_user_role
+    set USER_KEY = #{userKey,jdbcType=BIGINT},
+      ROLE_KEY = #{roleKey,jdbcType=BIGINT}
+    where UR_ID = #{urId,jdbcType=BIGINT}
+  </update>
+</mapper>

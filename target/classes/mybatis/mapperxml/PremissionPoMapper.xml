@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnu.softwarecollege.infocenter.mapper.PremissionPoMapper">
+  <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.PremissionPo">
+    <id column="PRMS_ID" jdbcType="BIGINT" property="prmsId" />
+    <result column="ROLE_KEY" jdbcType="BIGINT" property="roleKey" />
+    <result column="PRMS_PREMISSION" jdbcType="VARCHAR" property="prmsPremission" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PRMS_ID, ROLE_KEY, PRMS_PREMISSION
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_premission
+    where PRMS_ID = #{prmsId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tbl_premission
+    where PRMS_ID = #{prmsId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.PremissionPo">
+    insert into tbl_premission (PRMS_ID, ROLE_KEY, PRMS_PREMISSION
+      )
+    values (#{prmsId,jdbcType=BIGINT}, #{roleKey,jdbcType=BIGINT}, #{prmsPremission,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.PremissionPo">
+    insert into tbl_premission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="prmsId != null">
+        PRMS_ID,
+      </if>
+      <if test="roleKey != null">
+        ROLE_KEY,
+      </if>
+      <if test="prmsPremission != null">
+        PRMS_PREMISSION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="prmsId != null">
+        #{prmsId,jdbcType=BIGINT},
+      </if>
+      <if test="roleKey != null">
+        #{roleKey,jdbcType=BIGINT},
+      </if>
+      <if test="prmsPremission != null">
+        #{prmsPremission,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.PremissionPo">
+    update tbl_premission
+    <set>
+      <if test="roleKey != null">
+        ROLE_KEY = #{roleKey,jdbcType=BIGINT},
+      </if>
+      <if test="prmsPremission != null">
+        PRMS_PREMISSION = #{prmsPremission,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PRMS_ID = #{prmsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.PremissionPo">
+    update tbl_premission
+    set ROLE_KEY = #{roleKey,jdbcType=BIGINT},
+      PRMS_PREMISSION = #{prmsPremission,jdbcType=VARCHAR}
+    where PRMS_ID = #{prmsId,jdbcType=BIGINT}
+  </update>
+</mapper>
