@@ -22,14 +22,10 @@ public class WeatherServiceImpl implements WeatherService {
     private CityMapContext cityMapContext;
     @Override
     public String findcitycode(String cityname){
-        String citycode="";
+
         Map<String, CityPo> map = this.cityMapContext.getMap();
-        for(CityPo cityPo:map.values()){
-            if(cityPo.getCity_name().equals(cityname)){
-                citycode+=cityPo.getCity_code();
-            }
-        }
-        return citycode;
+        CityPo cp =map.get(cityname);
+        return cp.getCity_code();
     }
 
     @Resource

@@ -56,7 +56,7 @@ public class CityMapContext implements InitializingBean {
         List<CityPo> listcity = mapper.readValue(jsonCity, new TypeReference<List<CityPo>>() {
         });
         for (int i = 0; i < listcity.size(); i++) {
-            cityMap.put(listcity.get(i).getCity_code(), listcity.get(i));
+            cityMap.put(listcity.get(i).getCity_name(), listcity.get(i));
             //System.out.println(cityMap);
         }
         this.setMap(cityMap);
