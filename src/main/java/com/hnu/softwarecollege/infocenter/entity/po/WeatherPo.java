@@ -5,29 +5,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherPo {
-    @JsonProperty
+    @JsonProperty("cityId")
     private Integer weatherCode;
-
+    @JsonProperty("city")
     private String weatherCityName;
-
+    @JsonProperty("date")
     private String weatherDate;
-
+    @JsonProperty("sunrise")
     private String weatherSunrise;
-
+    @JsonProperty("high")
     private String weatherHigh;
-
+    @JsonProperty("low")
     private String weatherLow;
-
+    @JsonProperty("sunset")
     private String weatherSunset;
-
+    @JsonProperty("aqi")
     private Float weatherAqi;
-
+    @JsonProperty("notice")
     private String weatherNotice;
-
+    @JsonProperty("type")
     private String weatherType;
-
+    @JsonProperty("fl")
     private String weatherFl;
-
+    @JsonProperty("fx")
     private String weatherFx;
 
     public Integer getWeatherCode() {

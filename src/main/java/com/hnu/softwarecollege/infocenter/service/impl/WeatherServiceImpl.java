@@ -9,7 +9,6 @@ import com.hnu.softwarecollege.infocenter.service.WeatherService;
 import com.hnu.softwarecollege.infocenter.util.HttpRequestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -31,21 +30,23 @@ public class WeatherServiceImpl implements WeatherService {
     @Resource
     private WeatherPoMapper weatherPoMapper;
     @Override
-    public WeatherPo Weather(Integer citycode){
-        WeatherPo wp = weatherPoMapper.selectByPrimaryKey(citycode);
-        if(StringUtils.isEmpty(wp)){
-            String str = HttpRequestUtil.getJsonContent(citycode.toString());
-            ObjectMapper mapper = new ObjectMapper();
+    public WeatherPo Weather(String citycode){
+        int code = Integer.parseInt(citycode);
+        WeatherPo wp = weatherPoMapper.selectByPrimaryKey(code);
+        if(wp==null){
+            String str = HttpRequestUtil.getJsonContent(citycode);
+            //log.info(str);
             try {
+                ObjectMapper mapper = new ObjectMapper();
                 WeatherPo weatherPo = mapper.readValue(str,WeatherPo.class);
                 insertWeather(weatherPo);
                 return weatherPo;
             } catch (IOException e) {
+                e.printStackTrace();
                 log.error("json 转换为实体类错误");
             }
         }
         return wp;
-
     }
     @Override
     public void insertWeather(WeatherPo weatherPo) {
