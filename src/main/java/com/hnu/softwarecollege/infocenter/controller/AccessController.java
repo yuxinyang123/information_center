@@ -41,7 +41,7 @@ public class AccessController {
     * @Author: yu 
     * @Date: 2018/11/7 
     **/
-    @PostMapping("login")
+    @PostMapping("user")
     @ResponseBody
     public BaseResponseVo login(
             @RequestBody @Valid LoginForm loginForm,
@@ -55,5 +55,30 @@ public class AccessController {
         }else {
             return BaseResponseVo.fail("login fail");
         }
+    }
+
+    /**
+     * @Author yuxinyang
+     * @Description //TODO 获取二维码
+     * @Date 14:55 2018/11/21
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @GetMapping("/verifycode")
+    public BaseResponseVo getVerifycode(){
+
+        return null;
+    }
+
+    /**
+     * @Author yuxinyang
+     * @Description //TODO 管理员登录
+     * @Date 14:56 2018/11/21
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @PostMapping("/admin")
+    public BaseResponseVo adminLogin(){
+        return null;
     }
 }
