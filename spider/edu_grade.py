@@ -10,10 +10,12 @@ t = time.time()
 t = floor(t)
 st = str(t)
 
-option = webdriver.FirefoxOptions()
-option.add_argument('headless')
+options = webdriver.FirefoxOptions()
+options.set_headless()
+options.add_argument('--disable-gpu')
 
-driver = webdriver.Firefox(firefox_options=option)
+
+driver = webdriver.Firefox(firefox_options=options)
 
 
 def login(username,password):
