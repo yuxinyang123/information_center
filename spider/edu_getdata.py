@@ -147,8 +147,9 @@ def getSchedule(user):
         for td in tr.find_all('td'):
             ui.append(td.get_text())
            
-            list2=['time1','time2','time3','time4','time5','time6','time7','time8','time9']
-            list3=['week','class2','class3','class4','class5','class6','class7','class8','class9']
+            list2=['time1','time2','time3','time4','time5','time6','time7','time8','time9','time10','time11']
+            list3=['week','class1','class2','class3','class4','class5','class6','class7','class8','class9','class10','class11',
+            'class12','class13','class14','class15','class16','class17','class18','class19','class20']
             d={}
             for i in range(len(ui)):               
                 if re.match(r'\d',ui[i]):                 
