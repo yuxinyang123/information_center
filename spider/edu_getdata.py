@@ -40,7 +40,7 @@ def login(username,password):
     time.sleep(0.5)
 
 def getgrade(username,password):
-    fileObject = open('grade.json', 'a')
+    fileObject = open('grade.json', 'a',encoding='utf-8')
     fileObject.write('[\n')
 
     url2 = "http://202.206.100.217/cjcx/cjcx_cxDgXscj.html?gnmkdm=N305005&layout=default&su="+username
@@ -147,7 +147,8 @@ def getSchedule(user):
         for td in tr.find_all('td'):
             ui.append(td.get_text())
            
-            list2=['time1','time2','time3','time4','time5','time6','time7','time8','time9','time10','time11']
+            list2=['time1','time2','time3','time4','time5','time6','time7','time8','time9','time10','time11','time12','time13','time14',
+            'time15','time16','time17','time18','time19','time20','time21','time22','time23','time24']
             list3=['week','class1','class2','class3','class4','class5','class6','class7','class8','class9','class10','class11',
             'class12','class13','class14','class15','class16','class17','class18','class19','class20']
             d={}
@@ -172,7 +173,7 @@ def getSchedule(user):
 
 
     #将json文件命名输出,可以修改文件名字和文件位置
-    fileObject = open('Schedule.json', 'a')
+    fileObject = open('Schedule.json', 'a',encoding='utf-8')
     fileObject.write(data_json)
     fileObject.close()
 
