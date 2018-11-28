@@ -53,8 +53,7 @@ public class CityMapContext implements InitializingBean {
 
         String jsonCity = FileUtils.readFileToString(ResourceUtils.getFile("classpath:city.json"), Charset.forName("UTF-8"));
         ObjectMapper mapper = new ObjectMapper();
-        List<CityPo> listcity = mapper.readValue(jsonCity, new TypeReference<List<CityPo>>() {
-        });
+        List<CityPo> listcity = mapper.readValue(jsonCity, new TypeReference<List<CityPo>>() {});
         for (int i = 0; i < listcity.size(); i++) {
             cityMap.put(listcity.get(i).getCity_name(), listcity.get(i));
             //System.out.println(cityMap);

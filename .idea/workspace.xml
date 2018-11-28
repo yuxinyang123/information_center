@@ -2,20 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1222dff8-7d49-4649-be2a-c1f4770aa9c4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/WeatherPoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/WeatherPoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterDegreePoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterDegreePoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterPoMapper.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/context/CityMapContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/context/CityMapContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/WeatherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/WeatherController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/WeatherService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/WeatherService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/context/TestContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/AccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/AccessController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/CenterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/CenterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/WeatherController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapperxml/CenterDegreePoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapperxml/CenterDegreePoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapperxml/CenterPoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapperxml/WeatherPoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapperxml/WeatherPoMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,45 +44,50 @@
     <session id="1905796949">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="20" />
+          <entry key="project.closed" value="31" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.21" value="2" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.25" value="1" />
-          <entry key="project.open.time.27" value="2" />
-          <entry key="project.open.time.28" value="3" />
-          <entry key="project.open.time.29" value="3" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.open.time.27" value="3" />
+          <entry key="project.open.time.28" value="7" />
+          <entry key="project.open.time.29" value="5" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.38" value="1" />
+          <entry key="project.opened" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="11" />
+          <entry key="class" value="12" />
           <entry key="cmd" value="1" />
           <entry key="gitignore" value="3" />
-          <entry key="java" value="220" />
-          <entry key="json" value="6" />
+          <entry key="java" value="337" />
+          <entry key="json" value="33" />
+          <entry key="log" value="2" />
           <entry key="mvnw" value="1" />
-          <entry key="sql" value="2" />
-          <entry key="xml" value="32" />
+          <entry key="sql" value="6" />
+          <entry key="xml" value="43" />
           <entry key="yml" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="11" />
+          <entry key="CLASS" value="12" />
           <entry key="Git file" value="3" />
-          <entry key="JAVA" value="220" />
-          <entry key="JSON" value="6" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="SQL" value="2" />
-          <entry key="XML" value="32" />
+          <entry key="JAVA" value="337" />
+          <entry key="JSON" value="33" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="SQL" value="6" />
+          <entry key="XML" value="43" />
           <entry key="YAML" value="9" />
         </counts>
       </usages-collector>
@@ -77,17 +95,19 @@
         <counts>
           <entry key="dummy" value="24" />
           <entry key="ft" value="125" />
-          <entry key="java" value="8461" />
-          <entry key="xml" value="329" />
+          <entry key="java" value="11978" />
+          <entry key="json" value="23" />
+          <entry key="xml" value="672" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8461" />
+          <entry key="JAVA" value="11978" />
+          <entry key="JSON" value="23" />
           <entry key="PLAIN_TEXT" value="24" />
-          <entry key="SQL" value="4" />
+          <entry key="SQL" value="12" />
           <entry key="VTL" value="125" />
-          <entry key="XML" value="325" />
+          <entry key="XML" value="660" />
         </counts>
       </usages-collector>
     </session>
@@ -97,59 +117,99 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="18" column="59" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/WeatherPoMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2185">
-              <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/schedule/WeatherTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-779">
-              <caret line="13" column="48" lean-forward="true" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+            <state relative-caret-position="161">
+              <caret line="65" column="63" lean-forward="true" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/ScoreTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+              <folding>
+                <element signature="e#1700#1701#0" expanded="true" />
+                <element signature="e#1727#1728#0" expanded="true" />
+                <element signature="e#1780#1781#0" expanded="true" />
+                <element signature="e#1807#1808#0" expanded="true" />
+                <element signature="e#1889#1890#0" expanded="true" />
+                <element signature="e#1916#1917#0" expanded="true" />
+                <element signature="e#1963#1964#0" expanded="true" />
+                <element signature="e#1990#1991#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grade.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -183,18 +243,29 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CityPo.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CityMapImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/TestContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/WeatherPoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/schedule/WeatherTask.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/TestContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterPoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/ScoreTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java" />
+        <option value="$PROJECT_DIR$/grade.json" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -243,9 +314,24 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="962" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="904" />
+    <option name="y" value="4" />
+    <option name="width" value="784" />
+    <option name="height" value="832" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -255,6 +341,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,15 +383,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infocenter" type="462c0819:PsiDirectoryNode" />
-              <item name="context" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
-              <item name="information_center" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="infocenter" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -322,7 +401,27 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infocenter" type="462c0819:PsiDirectoryNode" />
-              <item name="schedule" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="po" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="information_center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infocenter" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="information_center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infocenter" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
@@ -338,15 +437,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
-              <item name="information_center" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-              <item name="mapperxml" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
@@ -382,8 +472,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -393,14 +481,14 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542856804100" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543387230196" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -423,7 +511,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.InfocenterApplication">
+  <component name="RunManager" selected="Application.GradeTest">
     <configuration name="CityTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.service.impl.CityTest" />
       <module name="information_center" />
@@ -437,12 +525,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GradeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.jsontest.GradeTest" />
+      <module name="information_center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hnu.softwarecollege.infocenter.jsontest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HttpRequestUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.util.HttpRequestUtil" />
       <module name="information_center" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.hnu.softwarecollege.infocenter.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScoreTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.jsontest.ScoreTest" />
+      <module name="information_center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hnu.softwarecollege.infocenter.jsontest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -475,9 +589,13 @@
       <item itemvalue="Application.HttpRequestUtil" />
       <item itemvalue="Application.CityTest" />
       <item itemvalue="Application.TestContext" />
+      <item itemvalue="Application.GradeTest" />
+      <item itemvalue="Application.ScoreTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GradeTest" />
+        <item itemvalue="Application.ScoreTest" />
         <item itemvalue="Application.TestContext" />
         <item itemvalue="Application.CityTest" />
         <item itemvalue="Application.HttpRequestUtil" />
@@ -485,7 +603,7 @@
     </recent_temporary>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\14832\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -514,12 +632,23 @@
       <workItem from="1542772860773" duration="2729000" />
       <workItem from="1542779983427" duration="14800000" />
       <workItem from="1542807689648" duration="10936000" />
-      <workItem from="1542844463432" duration="12295000" />
+      <workItem from="1542844463432" duration="12828000" />
+      <workItem from="1543065864022" duration="1034000" />
+      <workItem from="1543147566998" duration="2047000" />
+      <workItem from="1543190715675" duration="11279000" />
+      <workItem from="1543212059241" duration="9177000" />
+      <workItem from="1543244440652" duration="2770000" />
+      <workItem from="1543297839541" duration="6051000" />
+      <workItem from="1543329111550" duration="3514000" />
+      <workItem from="1543333131456" duration="203000" />
+      <workItem from="1543363195705" duration="5273000" />
+      <workItem from="1543377955405" duration="1146000" />
+      <workItem from="1543384555214" duration="2574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102370000" />
+    <option name="totallyTimeSpent" value="147971000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -531,7 +660,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -539,28 +668,28 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="Web" order="4" sideWeight="0.50070924" side_tool="true" weight="0.22453083" />
       <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49682876" visible="true" weight="0.2935657" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49682876" visible="true" weight="0.22014925" />
       <window_info id="Structure" order="7" sideWeight="0.50317127" side_tool="true" weight="0.24329759" />
-      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5013405" side_tool="true" weight="0.39007092" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.50053304" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" sideWeight="0.49865952" weight="0.32765958" />
       <window_info anchor="bottom" id="Spring" order="3" sideWeight="0.49932975" weight="0.32907802" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.5716312" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4989339" weight="0.39196527" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.49932975" weight="0.32907802" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49865952" weight="0.32907802" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.49932975" visible="true" weight="0.42269504" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49865952" weight="0.32899022" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49946696" weight="0.32899022" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.49932975" visible="true" weight="0.42019543" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="right" id="Maven Projects" order="1" weight="0.3297587" />
+      <window_info anchor="right" id="Maven Projects" order="1" weight="0.32942432" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Bean Validation" order="5" />
+      <window_info anchor="right" id="Bean Validation" order="5" weight="0.3297587" />
       <window_info anchor="right" id="Palette" order="6" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
@@ -600,144 +729,17 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar!/com/fasterxml/jackson/core/JsonFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar!/com/fasterxml/jackson/core/async/ByteArrayFeeder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar!/com/fasterxml/jackson/core/json/JsonReadContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="31" lean-forward="true" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/ResourcePo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/HotpotPo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/PremissionPo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/RegistForm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CityPo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/TokenUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="77" column="7" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/VerifyCodeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="276" column="48" lean-forward="true" selection-start-line="276" selection-start-column="48" selection-end-line="276" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterPo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CityTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CityMapImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CityMap.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/Liu.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/INFORMATION_CENTER V0.3.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/LoginForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar!/com/fasterxml/jackson/databind/ObjectMapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="1148" column="40" selection-start-line="1148" selection-start-column="40" selection-end-line="1148" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/UserPo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/UserRolePoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="76">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -748,73 +750,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/UserRolePo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/BaseResponseVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="28">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
+        <state relative-caret-position="541">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/WeatherPoMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/ThreadContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-751">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/AccessController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-67">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.2.RELEASE/spring-web-5.1.2.RELEASE.jar!/org/springframework/web/bind/annotation/RequestParam.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="106" column="36" lean-forward="true" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar!/org/springframework/boot/autoconfigure/orm/jpa/JpaBaseConfiguration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="100" column="50" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
+        <state relative-caret-position="437">
+          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -825,131 +779,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CityPo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="43" />
-          <folding>
-            <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#403#404#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#563#564#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/InfocenterApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#342#343#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/city.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="945" column="4" lean-forward="true" selection-start-line="945" selection-start-column="4" selection-end-line="945" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-            <element signature="e#910#911#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
-            <element signature="e#1011#1012#0" expanded="true" />
-            <element signature="e#1053#1054#0" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1319#1320#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-            <element signature="e#1722#1723#0" expanded="true" />
-            <element signature="e#1756#1757#0" expanded="true" />
-            <element signature="e#1929#1930#0" expanded="true" />
-            <element signature="e#1962#1963#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
-            <element signature="e#2093#2094#0" expanded="true" />
-            <element signature="e#2133#2134#0" expanded="true" />
-            <element signature="e#2169#2170#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
-            <element signature="e#2384#2385#0" expanded="true" />
-            <element signature="e#2435#2436#0" expanded="true" />
-            <element signature="e#2479#2480#0" expanded="true" />
-            <element signature="e#2519#2520#0" expanded="true" />
-            <element signature="e#2555#2556#0" expanded="true" />
-            <element signature="e#2739#2740#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
-            <element signature="e#2945#2946#0" expanded="true" />
-            <element signature="e#2977#2978#0" expanded="true" />
-            <element signature="e#3027#3028#0" expanded="true" />
-            <element signature="e#3103#3104#0" expanded="true" />
-            <element signature="e#3139#3140#0" expanded="true" />
-            <element signature="e#3171#3172#0" expanded="true" />
-            <element signature="e#3221#3222#0" expanded="true" />
-            <element signature="e#3297#3298#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-200">
-          <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="18" column="59" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/WeatherPoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2185">
-          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/schedule/WeatherTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="318">
           <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -957,37 +789,292 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/TestContext.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        <state relative-caret-position="152">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/AccessController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/VerifyCodeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/InfocenterApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/INFORMATION_CENTER V0.3.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/UserRolePoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="41" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="15" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/UserPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/TestContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/ThreadContext.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/jre/lib/rt.jar!/jdk/internal/org/objectweb/asm/TypeReference.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="197">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="55" column="96" selection-start-line="55" selection-start-column="96" selection-end-line="55" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/city.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="249" column="13" lean-forward="true" selection-start-line="249" selection-start-column="13" selection-end-line="249" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterPoMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-779">
-          <caret line="13" column="48" lean-forward="true" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+        <state relative-caret-position="876">
+          <caret line="58" column="23" lean-forward="true" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-554">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/ResourceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-991">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/UserPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/UserInformationPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/SyllabusPoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterDegreePoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2796" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="191" column="45" lean-forward="true" selection-start-line="191" selection-start-column="45" selection-end-line="191" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/UserRolePoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Schedule.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="64" lean-forward="true" selection-start-column="64" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geckodriver.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2662" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/ScoreTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+          <folding>
+            <element signature="e#1700#1701#0" expanded="true" />
+            <element signature="e#1727#1728#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1807#1808#0" expanded="true" />
+            <element signature="e#1889#1890#0" expanded="true" />
+            <element signature="e#1916#1917#0" expanded="true" />
+            <element signature="e#1963#1964#0" expanded="true" />
+            <element signature="e#1990#1991#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grade.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/INFORMATION_CENTER V0.4.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="65" column="63" lean-forward="true" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

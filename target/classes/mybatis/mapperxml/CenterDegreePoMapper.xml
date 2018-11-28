@@ -3,6 +3,166 @@
 <mapper namespace="com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper">
   <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
     <id column="DEGREE_ID" jdbcType="BIGINT" property="degreeId" />
+    <result column="DEGREE_USERKEY" jdbcType="BIGINT" property="degreeUserkey" />
+    <result column="DEGREE_TERM" jdbcType="VARCHAR" property="degreeTerm" />
+    <result column="DEGREE_CLASSNAME" jdbcType="VARCHAR" property="degreeClassname" />
+    <result column="DEGREE_CLASSNATURE" jdbcType="VARCHAR" property="degreeClassnature" />
+    <result column="DEGREE_CREDIT" jdbcType="INTEGER" property="degreeCredit" />
+    <result column="DEGREE_GRADE" jdbcType="INTEGER" property="degreeGrade" />
+    <result column="DEGREE_PERFORMANCEPOINT" jdbcType="INTEGER" property="degreePerformancepoint" />
+    <result column="DEGREE_TESTNATURE" jdbcType="VARCHAR" property="degreeTestnature" />
+    <result column="DEGREE_STUDENTID" jdbcType="INTEGER" property="degreeStudentid" />
+    <result column="DEGREE_STUDENTNAME" jdbcType="VARCHAR" property="degreeStudentname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DEGREE_ID, DEGREE_USERKEY, DEGREE_TERM, DEGREE_CLASSNAME, DEGREE_CLASSNATURE, DEGREE_CREDIT, 
+    DEGREE_GRADE, DEGREE_PERFORMANCEPOINT, DEGREE_TESTNATURE, DEGREE_STUDENTID, DEGREE_STUDENTNAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_center_degree
+    where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tbl_center_degree
+    where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
+    insert into tbl_center_degree (DEGREE_ID, DEGREE_USERKEY, DEGREE_TERM, 
+      DEGREE_CLASSNAME, DEGREE_CLASSNATURE, DEGREE_CREDIT, 
+      DEGREE_GRADE, DEGREE_PERFORMANCEPOINT, DEGREE_TESTNATURE, 
+      DEGREE_STUDENTID, DEGREE_STUDENTNAME)
+    values (#{degreeId,jdbcType=BIGINT}, #{degreeUserkey,jdbcType=BIGINT}, #{degreeTerm,jdbcType=VARCHAR}, 
+      #{degreeClassname,jdbcType=VARCHAR}, #{degreeClassnature,jdbcType=VARCHAR}, #{degreeCredit,jdbcType=INTEGER}, 
+      #{degreeGrade,jdbcType=INTEGER}, #{degreePerformancepoint,jdbcType=INTEGER}, #{degreeTestnature,jdbcType=VARCHAR}, 
+      #{degreeStudentid,jdbcType=INTEGER}, #{degreeStudentname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
+    insert into tbl_center_degree
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="degreeId != null">
+        DEGREE_ID,
+      </if>
+      <if test="degreeUserkey != null">
+        DEGREE_USERKEY,
+      </if>
+      <if test="degreeTerm != null">
+        DEGREE_TERM,
+      </if>
+      <if test="degreeClassname != null">
+        DEGREE_CLASSNAME,
+      </if>
+      <if test="degreeClassnature != null">
+        DEGREE_CLASSNATURE,
+      </if>
+      <if test="degreeCredit != null">
+        DEGREE_CREDIT,
+      </if>
+      <if test="degreeGrade != null">
+        DEGREE_GRADE,
+      </if>
+      <if test="degreePerformancepoint != null">
+        DEGREE_PERFORMANCEPOINT,
+      </if>
+      <if test="degreeTestnature != null">
+        DEGREE_TESTNATURE,
+      </if>
+      <if test="degreeStudentid != null">
+        DEGREE_STUDENTID,
+      </if>
+      <if test="degreeStudentname != null">
+        DEGREE_STUDENTNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="degreeId != null">
+        #{degreeId,jdbcType=BIGINT},
+      </if>
+      <if test="degreeUserkey != null">
+        #{degreeUserkey,jdbcType=BIGINT},
+      </if>
+      <if test="degreeTerm != null">
+        #{degreeTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeClassname != null">
+        #{degreeClassname,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeClassnature != null">
+        #{degreeClassnature,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeCredit != null">
+        #{degreeCredit,jdbcType=INTEGER},
+      </if>
+      <if test="degreeGrade != null">
+        #{degreeGrade,jdbcType=INTEGER},
+      </if>
+      <if test="degreePerformancepoint != null">
+        #{degreePerformancepoint,jdbcType=INTEGER},
+      </if>
+      <if test="degreeTestnature != null">
+        #{degreeTestnature,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeStudentid != null">
+        #{degreeStudentid,jdbcType=INTEGER},
+      </if>
+      <if test="degreeStudentname != null">
+        #{degreeStudentname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
+    update tbl_center_degree
+    <set>
+      <if test="degreeUserkey != null">
+        DEGREE_USERKEY = #{degreeUserkey,jdbcType=BIGINT},
+      </if>
+      <if test="degreeTerm != null">
+        DEGREE_TERM = #{degreeTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeClassname != null">
+        DEGREE_CLASSNAME = #{degreeClassname,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeClassnature != null">
+        DEGREE_CLASSNATURE = #{degreeClassnature,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeCredit != null">
+        DEGREE_CREDIT = #{degreeCredit,jdbcType=INTEGER},
+      </if>
+      <if test="degreeGrade != null">
+        DEGREE_GRADE = #{degreeGrade,jdbcType=INTEGER},
+      </if>
+      <if test="degreePerformancepoint != null">
+        DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=INTEGER},
+      </if>
+      <if test="degreeTestnature != null">
+        DEGREE_TESTNATURE = #{degreeTestnature,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeStudentid != null">
+        DEGREE_STUDENTID = #{degreeStudentid,jdbcType=INTEGER},
+      </if>
+      <if test="degreeStudentname != null">
+        DEGREE_STUDENTNAME = #{degreeStudentname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
+    update tbl_center_degree
+    set DEGREE_USERKEY = #{degreeUserkey,jdbcType=BIGINT},
+      DEGREE_TERM = #{degreeTerm,jdbcType=VARCHAR},
+      DEGREE_CLASSNAME = #{degreeClassname,jdbcType=VARCHAR},
+      DEGREE_CLASSNATURE = #{degreeClassnature,jdbcType=VARCHAR},
+      DEGREE_CREDIT = #{degreeCredit,jdbcType=INTEGER},
+      DEGREE_GRADE = #{degreeGrade,jdbcType=INTEGER},
+      DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=INTEGER},
+      DEGREE_TESTNATURE = #{degreeTestnature,jdbcType=VARCHAR},
+      DEGREE_STUDENTID = #{degreeStudentid,jdbcType=INTEGER},
+      DEGREE_STUDENTNAME = #{degreeStudentname,jdbcType=VARCHAR}
+    where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
+    <id column="DEGREE_ID" jdbcType="BIGINT" property="degreeId" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tbl_center_degree
