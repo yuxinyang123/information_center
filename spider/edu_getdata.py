@@ -10,7 +10,7 @@ import re
 t = time.time()
 t = floor(t)
 st = str(t)
-
+ 
 options = webdriver.FirefoxOptions()
 options.set_headless()
 options.add_argument('--disable-gpu')
@@ -40,9 +40,7 @@ def login(username,password):
     time.sleep(0.5)
 
 def getgrade(username,password):
-    fileObject = open('grade.json', 'a',encoding='utf-8')
-    fileObject.write('[\n')
-
+    
     url2 = "http://202.206.100.217/cjcx/cjcx_cxDgXscj.html?gnmkdm=N305005&layout=default&su="+username
     driver.get(url2)
 
@@ -74,8 +72,6 @@ def getgrade(username,password):
     soup = BeautifulSoup(html,'lxml')
     table = soup.find('table',id="tabGrid")
     
-   
-
     for tr in table.find_all('tr'):
         ui=[]
         for td in tr.find_all('td'):
@@ -109,23 +105,16 @@ def getgrade(username,password):
         data['major'] = ui[17]
         data['year'] = ui[18]
         data['studentGrade'] = ui[19]
-        data_json = json.dumps(data,ensure_ascii=False)
         
-        ulist.append(data_json)
+        ulist.append(data)
         
-    
-
     del ulist[0]
-
-    for i in range(len(ulist)):
-        fileObject.writelines(ulist[i])
-        if i!=len(ulist)-1:
-            fileObject.write(','+'\n')
-  
-
-    fileObject.write('\n]')
-    fileObject.close()
-
+    dataJsonGrade = json.dumps(ulist,ensure_ascii=False)
+    
+    print('{"GRADE":')
+    print(dataJsonGrade)
+    print(',')
+   
 def getSchedule(user):
     url = "http://202.206.100.217/kbcx/xskbcx_cxXskbcxIndex.html?gnmkdm=N2151&layout=default&su="+user
     driver.get(url)
@@ -169,14 +158,11 @@ def getSchedule(user):
     data["Friday"]=ulist[4]
     data["Saturday"]=ulist[5]
     data["Sunday"]=ulist[6]
-    data_json = json.dumps(data,ensure_ascii=False)    
+    dataJsonSchedule = json.dumps(data,ensure_ascii=False)    
 
-
-    #将json文件命名输出,可以修改文件名字和文件位置
-    fileObject = open('Schedule.json', 'a',encoding='utf-8')
-    fileObject.write(data_json)
-    fileObject.close()
-
+    print('"CLASS":')
+    print(dataJsonSchedule)
+    print('}')
 
 def webclose2():
     driver.close()
