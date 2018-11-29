@@ -1,26 +1,30 @@
 package com.hnu.softwarecollege.infocenter.entity.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CenterDegreePo {
     private Long degreeId;
 
     private Long degreeUserkey;
-
+    @JsonProperty("term")
     private String degreeTerm;
-
+    @JsonProperty("className")
     private String degreeClassname;
-
+    @JsonProperty("classNature")
     private String degreeClassnature;
-
-    private Integer degreeCredit;
-
-    private Integer degreeGrade;
-
-    private Integer degreePerformancepoint;
-
+    @JsonProperty("credit")
+    private Double degreeCredit;
+    @JsonProperty("grade")
+    private String degreeGrade;
+    @JsonProperty("PerformancePoint")
+    private Double degreePerformancepoint;
+    @JsonProperty("testNature")
     private String degreeTestnature;
-
+    @JsonProperty("studentId")
     private Integer degreeStudentid;
-
+    @JsonProperty("stuName")
     private String degreeStudentname;
 
     public Long getDegreeId() {
@@ -63,27 +67,27 @@ public class CenterDegreePo {
         this.degreeClassnature = degreeClassnature == null ? null : degreeClassnature.trim();
     }
 
-    public Integer getDegreeCredit() {
+    public Double getDegreeCredit() {
         return degreeCredit;
     }
 
-    public void setDegreeCredit(Integer degreeCredit) {
+    public void setDegreeCredit(Double degreeCredit) {
         this.degreeCredit = degreeCredit;
     }
 
-    public Integer getDegreeGrade() {
+    public String getDegreeGrade() {
         return degreeGrade;
     }
 
-    public void setDegreeGrade(Integer degreeGrade) {
-        this.degreeGrade = degreeGrade;
+    public void setDegreeGrade(String degreeGrade) {
+        this.degreeGrade = degreeGrade == null ? null : degreeGrade.trim();
     }
 
-    public Integer getDegreePerformancepoint() {
+    public Double getDegreePerformancepoint() {
         return degreePerformancepoint;
     }
 
-    public void setDegreePerformancepoint(Integer degreePerformancepoint) {
+    public void setDegreePerformancepoint(Double degreePerformancepoint) {
         this.degreePerformancepoint = degreePerformancepoint;
     }
 

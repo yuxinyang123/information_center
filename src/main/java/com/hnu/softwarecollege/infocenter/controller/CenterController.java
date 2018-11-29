@@ -1,6 +1,7 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @program: infocenter
@@ -31,6 +33,8 @@ public class CenterController {
     WeatherService weatherService;
     @Resource
     CenterPoMapper centerPoMapper;
+    @Resource
+    CenterService centerService;
     /**
      * @Author yuxinyang
      * @Description //TODO 获取天气信息
@@ -68,8 +72,6 @@ public class CenterController {
         return BaseResponseVo.success();
     }
 
-    @Resource
-    CenterService centerService;
     /**
      * @Author yuxinyang
      * @Description //TODO 获取成绩信息
@@ -80,7 +82,8 @@ public class CenterController {
     @GetMapping("/grade")
     public BaseResponseVo getGrade(@RequestParam String Id,@RequestParam String password){
         String resulte = centerService.getGrade(Id,password);
-        return BaseResponseVo.success();
+        List<CenterDegreePo> list = centerService.transform(resulte);
+        return BaseResponseVo.success(list);
     }
 
     /**

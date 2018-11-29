@@ -2,10 +2,6 @@ package com.hnu.softwarecollege.infocenter.jsontest;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
-import org.springframework.util.ResourceUtils;
-
-import java.nio.charset.Charset;
 
 /**
  * @ClassName ScoreTest
@@ -17,7 +13,7 @@ import java.nio.charset.Charset;
 public class ScoreTest {
     public static void main(String args[]){
         try {
-            String jsonScore = FileUtils.readFileToString(ResourceUtils.getFile("grade.json"), Charset.forName("UTF-8"));
+            String jsonScore ="";
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(jsonScore);
             int len = jsonNode.size();

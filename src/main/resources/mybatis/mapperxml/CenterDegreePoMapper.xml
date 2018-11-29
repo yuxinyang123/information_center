@@ -7,9 +7,9 @@
     <result column="DEGREE_TERM" jdbcType="VARCHAR" property="degreeTerm" />
     <result column="DEGREE_CLASSNAME" jdbcType="VARCHAR" property="degreeClassname" />
     <result column="DEGREE_CLASSNATURE" jdbcType="VARCHAR" property="degreeClassnature" />
-    <result column="DEGREE_CREDIT" jdbcType="INTEGER" property="degreeCredit" />
-    <result column="DEGREE_GRADE" jdbcType="INTEGER" property="degreeGrade" />
-    <result column="DEGREE_PERFORMANCEPOINT" jdbcType="INTEGER" property="degreePerformancepoint" />
+    <result column="DEGREE_CREDIT" jdbcType="DOUBLE" property="degreeCredit" />
+    <result column="DEGREE_GRADE" jdbcType="VARCHAR" property="degreeGrade" />
+    <result column="DEGREE_PERFORMANCEPOINT" jdbcType="DOUBLE" property="degreePerformancepoint" />
     <result column="DEGREE_TESTNATURE" jdbcType="VARCHAR" property="degreeTestnature" />
     <result column="DEGREE_STUDENTID" jdbcType="INTEGER" property="degreeStudentid" />
     <result column="DEGREE_STUDENTNAME" jdbcType="VARCHAR" property="degreeStudentname" />
@@ -34,8 +34,8 @@
       DEGREE_GRADE, DEGREE_PERFORMANCEPOINT, DEGREE_TESTNATURE, 
       DEGREE_STUDENTID, DEGREE_STUDENTNAME)
     values (#{degreeId,jdbcType=BIGINT}, #{degreeUserkey,jdbcType=BIGINT}, #{degreeTerm,jdbcType=VARCHAR}, 
-      #{degreeClassname,jdbcType=VARCHAR}, #{degreeClassnature,jdbcType=VARCHAR}, #{degreeCredit,jdbcType=INTEGER}, 
-      #{degreeGrade,jdbcType=INTEGER}, #{degreePerformancepoint,jdbcType=INTEGER}, #{degreeTestnature,jdbcType=VARCHAR}, 
+      #{degreeClassname,jdbcType=VARCHAR}, #{degreeClassnature,jdbcType=VARCHAR}, #{degreeCredit,jdbcType=DOUBLE}, 
+      #{degreeGrade,jdbcType=VARCHAR}, #{degreePerformancepoint,jdbcType=DOUBLE}, #{degreeTestnature,jdbcType=VARCHAR}, 
       #{degreeStudentid,jdbcType=INTEGER}, #{degreeStudentname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
@@ -92,13 +92,13 @@
         #{degreeClassnature,jdbcType=VARCHAR},
       </if>
       <if test="degreeCredit != null">
-        #{degreeCredit,jdbcType=INTEGER},
+        #{degreeCredit,jdbcType=DOUBLE},
       </if>
       <if test="degreeGrade != null">
-        #{degreeGrade,jdbcType=INTEGER},
+        #{degreeGrade,jdbcType=VARCHAR},
       </if>
       <if test="degreePerformancepoint != null">
-        #{degreePerformancepoint,jdbcType=INTEGER},
+        #{degreePerformancepoint,jdbcType=DOUBLE},
       </if>
       <if test="degreeTestnature != null">
         #{degreeTestnature,jdbcType=VARCHAR},
@@ -127,13 +127,13 @@
         DEGREE_CLASSNATURE = #{degreeClassnature,jdbcType=VARCHAR},
       </if>
       <if test="degreeCredit != null">
-        DEGREE_CREDIT = #{degreeCredit,jdbcType=INTEGER},
+        DEGREE_CREDIT = #{degreeCredit,jdbcType=DOUBLE},
       </if>
       <if test="degreeGrade != null">
-        DEGREE_GRADE = #{degreeGrade,jdbcType=INTEGER},
+        DEGREE_GRADE = #{degreeGrade,jdbcType=VARCHAR},
       </if>
       <if test="degreePerformancepoint != null">
-        DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=INTEGER},
+        DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=DOUBLE},
       </if>
       <if test="degreeTestnature != null">
         DEGREE_TESTNATURE = #{degreeTestnature,jdbcType=VARCHAR},
@@ -153,36 +153,12 @@
       DEGREE_TERM = #{degreeTerm,jdbcType=VARCHAR},
       DEGREE_CLASSNAME = #{degreeClassname,jdbcType=VARCHAR},
       DEGREE_CLASSNATURE = #{degreeClassnature,jdbcType=VARCHAR},
-      DEGREE_CREDIT = #{degreeCredit,jdbcType=INTEGER},
-      DEGREE_GRADE = #{degreeGrade,jdbcType=INTEGER},
-      DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=INTEGER},
+      DEGREE_CREDIT = #{degreeCredit,jdbcType=DOUBLE},
+      DEGREE_GRADE = #{degreeGrade,jdbcType=VARCHAR},
+      DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=DOUBLE},
       DEGREE_TESTNATURE = #{degreeTestnature,jdbcType=VARCHAR},
       DEGREE_STUDENTID = #{degreeStudentid,jdbcType=INTEGER},
       DEGREE_STUDENTNAME = #{degreeStudentname,jdbcType=VARCHAR}
     where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
   </update>
-  <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
-    <id column="DEGREE_ID" jdbcType="BIGINT" property="degreeId" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from tbl_center_degree
-    where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
-    insert into tbl_center_degree (DEGREE_ID)
-    values (#{degreeId,jdbcType=BIGINT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
-    insert into tbl_center_degree
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="degreeId != null">
-        DEGREE_ID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="degreeId != null">
-        #{degreeId,jdbcType=BIGINT},
-      </if>
-    </trim>
-  </insert>
 </mapper>

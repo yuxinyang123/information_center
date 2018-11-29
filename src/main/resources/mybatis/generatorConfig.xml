@@ -251,7 +251,7 @@
                 enableSelectByExample="false"
                 selectByExampleQueryId="false"
         />-->
-        <table
+        <!--<table
                 tableName="tbl_syllabus"
                 domainObjectName="SyllabusPo"
                 enableCountByExample="false"
@@ -259,7 +259,7 @@
                 enableDeleteByExample="false"
                 enableSelectByExample="false"
                 selectByExampleQueryId="false"
-        />
+        />-->
         <!--<table
                 tableName="tbl_user"
                 domainObjectName="UserPo"
