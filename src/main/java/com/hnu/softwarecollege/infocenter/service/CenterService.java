@@ -7,8 +7,7 @@ import java.util.List;
 public interface CenterService {
     public String getGrade(String number,String password);
     public List<CenterDegreePo> transform(String jsonStr);
-
-    public String getGradeForeast();
+    public String getGradeForeast(String studentId,String courseType,String testType,String gainCredit);
     public String getCourseTable(String number,String password);
     public String getHotPot();
 }

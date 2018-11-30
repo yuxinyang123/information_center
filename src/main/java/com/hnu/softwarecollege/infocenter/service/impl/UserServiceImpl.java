@@ -20,7 +20,7 @@ import javax.persistence.Transient;
  **/
 @Service
 @Slf4j
-public class UserServiceImpl implements UserService {
+public class  UserServiceImpl implements UserService {
 //    Logger logger = LoggerFactory.getLogger(this.getClass()) ;
 
     @Resource

@@ -35,6 +35,7 @@ public class CenterServiceImpl implements CenterService {
      **/
     @Override
     public String getGrade(String Id, String password) {
+
         String[] arg = new String[]{"python", "C:\\Users\\14832\\Desktop\\information_center-feature-spider\\spider\\main.py",Id,password};
         Process process =null;
         String result="";
@@ -85,10 +86,35 @@ public class CenterServiceImpl implements CenterService {
         }
         return l;
     }
-
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 执行 python 脚本 进行成绩分析
+     * @Date 2018/11/30 17:12
+     * @Param []
+     * @return java.lang.String
+     **/
     @Override
-    public String getGradeForeast() {
-        return null;
+    public String getGradeForeast(String studentId,String courseType,String testType,String gainCerdit) {
+        String[] arg = new String[]{"python","C:\\Users\\14832\\Desktop\\test1\\Predict_Application_local.py",studentId,courseType,testType,gainCerdit};
+        Process process =null;
+        String result="";
+        try {
+            process = Runtime.getRuntime().exec(arg);
+            InputStreamReader ir = new InputStreamReader(process.getInputStream(),"GBK");
+            BufferedReader bufferedReader = new BufferedReader(ir);
+            String line;
+            while((line=bufferedReader.readLine())!=null){
+                result+=line;
+            }
+            ir.close();
+            int re = process.waitFor();
+        }catch(IOException e){
+            log.error("不能执行");
+            e.printStackTrace();
+        }catch (InterruptedException e){
+            log.error("中断");
+        }
+        return result;
     }
 
     @Override
