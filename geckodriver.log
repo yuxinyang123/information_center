@@ -325,4 +325,302 @@ console.error: BroadcastService:
 [Child 44584, Chrome_ChildThread] WARNING: pipe error: 1[Child 38448, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
 [C[Parent 34040, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
 [Child 31528, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-[Child 31528, Chrome_ChildThread] WARNING: pipe
+[Child 31528, Chrome_ChildThread] WARNING: pipe1543574427057	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.tm5QjP08fFlB"
+*** You are running in headless mode.
+1543574431205	Marionette	INFO	Listening on port 38404
+1543574431490	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543574450828	Marionette	INFO	Stopped listening on port 38404
+[Parent 10076, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1172, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1172, Chrome_[Parent 10076, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8468, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Ch1543576491498	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.BO8OHMCbxtfU"
+*** You are running in headless mode.
+1543576494887	Marionette	INFO	Listening on port 49143
+1543576494925	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543576514756	Marionette	INFO	Stopped listening on port 49143
+[Child 15624, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15624, Chrome_ChildThread] WAR[Parent 2852, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 2852, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9172, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9172, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1543576606415	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.GcxV5zPQWPeZ"
+*** You are running in headless mode.
+1543576609435	Marionette	INFO	Listening on port 49607
+1543576609749	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1543576645515	Marionette	INFO	Stopped listening on port 49607
+[Parent 13472, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15428, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15428, [Child 2096, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 2096, Chrome[Parent 13472, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6488, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C1543577329221	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.64eTOSW0EjIr"
+*** You are running in headless mode.
+1543577331984	Marionette	INFO	Listening on port 52913
+1543577332054	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543577361130	Marionette	INFO	Stopped listening on port 52913
+[Child 8464, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8464, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/b[Child 13244, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13244, Chrome_ChildThread] WARNING: p[Parent 8468, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1543577735447	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.7fY5OTcnnPtT"
+*** You are running in headless mode.
+1543577738293	Marionette	INFO	Listening on port 54859
+1543577738683	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543577757605	Marionette	INFO	Stopped listening on port 54859
+[Parent 16536, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 16536, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 10408, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 104081543633273357	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.GadGKBIkw5sw"
+*** You are running in headless mode.
+1543633277269	Marionette	INFO	Listening on port 14568
+1543633277773	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1543633310574	Marionette	INFO	Stopped listening on port 14568
+[Parent 8844, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6336, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6336, Chrome_ChildThread] WARNIN[Parent 8844, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6904, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6904, Chro[Parent 8844, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 3488, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chi1543796712642	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.CtD3SlRc6h2Y"
+*** You are running in headless mode.
+1543796717800	Marionette	INFO	Listening on port 65032
+1543796718122	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543796736691	Marionette	INFO	Stopped listening on port 65032
+[[Child 1Child 28216, Chrome_Child1656, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346T
+[Child 11656, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/shread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1543797567474	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.y7ISVYdmg25d"
+*** You are running in headless mode.
+1543797570383	Marionette	INFO	Listening on port 65331
+1543797570805	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543797590902	Marionette	INFO	Stopped listening on port 65331
+[Parent 24188, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13760, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13760, Ch[Parent 24188, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 30868, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Ch1543797988632	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.Bs54temnGCY8"
+*** You are running in headless mode.
+1543797990543	Marionette	INFO	Listening on port 1107
+1543797990773	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1543798012244	Marionette	INFO	Stopped listening on port 1107
+[Child 728, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 72[Parent 33640, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 29916, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 21543798072391	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.uO2dk3cndAXM"
+*** You are running in headless mode.
+1543798074404	Marionette	INFO	Listening on port 1164
+1543798074516	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543798093806	Marionette	INFO	Stopped listening on port 1164
+[Child 26220, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chil[Parent 15852, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 28104, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child [Parent 15852, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 29752, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C1543798439627	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.XLRP4M8Xvc95"
+*** You are running in headless mode.
+1543798441762	Marionette	INFO	Listening on port 1303
+1543798441845	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543798460945	Marionette	INFO	Stopped listening on port 1303
+[Child 31092, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 31092,[Parent 20236, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[[Parent 20236, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 25232, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C1543798490632	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.vy0BZ86bDoug"
+*** You are running in headless mode.
+1543798492567	Marionette	INFO	Listening on port 1353
+1543798492770	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543798513061	Marionette	INFO	Stopped listening on port 1353
+[Parent 5892, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1152, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1152, Chrome_ChildThread] WAR[Parent 5892, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 5892, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 10764, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 10764, Chrome_Chi1543798670912	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.No2aMAkhFw1p"
+*** You are running in headless mode.
+1543798672868	Marionette	INFO	Listening on port 1448
+1543798673050	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543798692681	Marionette	INFO	Stopped listening on port 1448
+[Parent 23340, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 14868, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chi[Parent 23340, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 33532, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[ChJavaScript error: jar:file:///D:/%E7%81%AB%E7%8B%90/browser/omni.ja!/components/nsBrowserGlue.js, line 1363: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIAppShellService.hiddenDOMWindow]
+JavaScript error: resource://gre/modules/JSONFile.jsm, line 159: Error: Data is not ready.
+1543798729499	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.el9gYpkalqH1"
+*** You are running in headless mode.
+1543798731619	Marionette	INFO	Listening on port 1511
+1543798731718	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543798761317	Marionette	INFO	Stopped listening on port 1511
+[Child 8276, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8276, Chrome_ChildThread] [Parent 27936, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 31608, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chi[Parent 27936, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 26788, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 26788, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1543798932847	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.6rre8WLBdnMv"
+*** You are running in headless mode.
+1543798934919	Marionette	INFO	Listening on port 1611
+1543798934974	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543798955313	Marionette	INFO	Stopped listening on port 1611
+[Child 24544, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 24544, Chrome_C[Parent 24960, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8864, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C[Parent 24960, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 27760, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Ch1543799018830	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.QDpaGyf7A1tk"
+*** You are running in headless mode.
+1543799020851	Marionette	INFO	Listening on port 1669
+1543799020963	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1543799047075	Marionette	INFO	Stopped listening on port 1669
+[Child 30064, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 30064, Chrome_ChildThread] WA[Parent 32976, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9076, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C1543800419742	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.jqqOke2JR4lH"
+*** You are running in headless mode.
+1543800421794	Marionette	INFO	Listening on port 2109
+1543800421897	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543800440846	Marionette	INFO	Stopped listening on port 2109
+[Child 27596, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C[Parent 27212, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 896, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Ch[Parent 27212, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 28476, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C1543803273360	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.mZyytdkGybbV"
+*** You are running in headless mode.
+1543803277143	Marionette	INFO	Listening on port 7046
+1543803277229	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543803296553	Marionette	INFO	Stopped listening on port 7046
+[Parent 29680, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 24188, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 24188, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/bui[Parent 29680, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 33516, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 33516, Chrome_ChildT[Parent 29680, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 29824, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 29824, Chrome_ChildThre1543804246816	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.1fKZiO7XvRNo"
+*** You are running in headless mode.
+1543804248823	Marionette	INFO	Listening on port 28245
+1543804248954	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x190091,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x190084,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+1543804301684	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.uNk2UDJeadhd"
+*** You are running in headless mode.
+1543804304056	Marionette	INFO	Listening on port 29579
+1543804304410	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543804322845	Marionette	INFO	Stopped listening on port 29579
+[Parent 25920, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 3312, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child [Parent 25920, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 16392, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 16392, Chrome_1543816724894	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.WxrvjPic4xwz"
+*** You are running in headless mode.
+1543816728456	Marionette	INFO	Listening on port 32439
+1543816728760	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543816760520	Marionette	INFO	Stopped listening on port 32439
+[Child 12840, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 12840, Ch[Parent 33472, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 7916, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C[Parent 33472, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 27980, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chi1543819494322	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.NTK5BFIgUqdw"
+*** You are running in headless mode.
+1543819496330	Marionette	INFO	Listening on port 32909
+1543819496545	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543819519648	Marionette	INFO	Stopped listening on port 32909
+[Parent 16700, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1543820065219	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.Nw6XJlnT5hAC"
+*** You are running in headless mode.
+1543820067298	Marionette	INFO	Listening on port 33009
+1543820067368	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543820085449	Marionette	INFO	Stopped listening on port 33009
+[Parent 17516, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 23504, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 23504, Chrome_[Child 21512, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C[Parent 17516, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 32984, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C1543820248652	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.6eB1xK0JyKzS"
+*** You are running in headless mode.
+1543820250651	Marionette	INFO	Listening on port 33062
+1543820250868	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1543820354045	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.ryutzRhckDYY"
+*** You are running in headless mode.
+1543820356389	Marionette	INFO	Listening on port 33130
+1543820356773	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543820376914	Marionette	INFO	Stopped listening on port 33130
+[Parent 20716, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 28124, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Ch1543823258958	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.nNiuwezhJXtX"
+*** You are running in headless mode.
+1543823261136	Marionette	INFO	Listening on port 33492
+1543823261187	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543823280074	Marionette	INFO	Stopped listening on port 33492
+[Child 2200, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 2200, Chrome_ChildThre[Parent 24584, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 24584, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 31160, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[C1543823466817	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.mccJ6q4oc18Q"
+*** You are running in headless mode.
+1543823468791	Marionette	INFO	Listening on port 33550
+1543823468946	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543823488965	Marionette	INFO	Stopped listening on port 33550
+[Parent 33160, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 27760, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chil[Parent 33160, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 22588, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 22588, Chrome_ChildThr1543823845837	mozrunner::runner	INFO	Running command: "D:\\火狐\\firefox.exe" "-marionette" "-headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\14832\\AppData\\Local\\Temp\\rust_mozprofile.KyRG8vfiw9U6"
+*** You are running in headless mode.
+1543823847870	Marionette	INFO	Listening on port 33634
+1543823847970	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543823867614	Marionette	INFO	Stopped listening on port 33634
+[Parent 24780, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 24000, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 24000, Ch[Parent 24780, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 17656, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Ch[Parent 24780, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 728, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[CJavaScript error: jar:file:///D:/%E7%81%AB%E7%8B%90/browser/omni.ja!/components/nsBrowserGlue.js, line 1363: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIAppShellService.hiddenDOMWindow]
+[Parent 24780, Gecko_IOThread] WARNING: file z:/build/build/src/ipc/chromium/src/base/process_util_win.cc, line 188
+JavaScript error: resource://gre/modules/JSONFile.jsm, line 159: Error: Data is not ready.

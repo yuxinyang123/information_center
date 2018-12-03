@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper">
+  <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo">
+    <id column="HOTSPOT_ID" jdbcType="INTEGER" property="hotspotId" />
+    <result column="HOTSPOT_TITLE" jdbcType="VARCHAR" property="hotspotTitle" />
+    <result column="HOTSPOT_HOTNUM" jdbcType="VARCHAR" property="hotspotHotnum" />
+    <result column="HOTSPOT_HOTURL" jdbcType="VARCHAR" property="hotspotHoturl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    HOTSPOT_ID, HOTSPOT_TITLE, HOTSPOT_HOTNUM, HOTSPOT_HOTURL
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_hotspot
+    where HOTSPOT_ID = #{hotspotId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_hotspot
+    where HOTSPOT_ID = #{hotspotId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo">
+    insert into tbl_hotspot (HOTSPOT_ID, HOTSPOT_TITLE, HOTSPOT_HOTNUM, 
+      HOTSPOT_HOTURL)
+    values (#{hotspotId,jdbcType=INTEGER}, #{hotspotTitle,jdbcType=VARCHAR}, #{hotspotHotnum,jdbcType=VARCHAR}, 
+      #{hotspotHoturl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo">
+    insert into tbl_hotspot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotspotId != null">
+        HOTSPOT_ID,
+      </if>
+      <if test="hotspotTitle != null">
+        HOTSPOT_TITLE,
+      </if>
+      <if test="hotspotHotnum != null">
+        HOTSPOT_HOTNUM,
+      </if>
+      <if test="hotspotHoturl != null">
+        HOTSPOT_HOTURL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotspotId != null">
+        #{hotspotId,jdbcType=INTEGER},
+      </if>
+      <if test="hotspotTitle != null">
+        #{hotspotTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="hotspotHotnum != null">
+        #{hotspotHotnum,jdbcType=VARCHAR},
+      </if>
+      <if test="hotspotHoturl != null">
+        #{hotspotHoturl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo">
+    update tbl_hotspot
+    <set>
+      <if test="hotspotTitle != null">
+        HOTSPOT_TITLE = #{hotspotTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="hotspotHotnum != null">
+        HOTSPOT_HOTNUM = #{hotspotHotnum,jdbcType=VARCHAR},
+      </if>
+      <if test="hotspotHoturl != null">
+        HOTSPOT_HOTURL = #{hotspotHoturl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where HOTSPOT_ID = #{hotspotId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo">
+    update tbl_hotspot
+    set HOTSPOT_TITLE = #{hotspotTitle,jdbcType=VARCHAR},
+      HOTSPOT_HOTNUM = #{hotspotHotnum,jdbcType=VARCHAR},
+      HOTSPOT_HOTURL = #{hotspotHoturl,jdbcType=VARCHAR}
+    where HOTSPOT_ID = #{hotspotId,jdbcType=INTEGER}
+  </update>
+</mapper>
