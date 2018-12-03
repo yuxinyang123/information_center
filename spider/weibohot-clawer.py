@@ -2,6 +2,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
+import json
 
 
 
@@ -25,11 +26,23 @@ def clawer():
             titles.append(ua.get_text())
             hoturl.append('http://s.weibo.com'+ua.attrs['href'])
 
-    # for (i,j,k) in zip(titles,hotnums,hoturl):
-    #     print(titles[i],hotnums[j],hoturl[k])
-
+    
+    ulists = []
     for i in range(len(hotnums)):
-        print(str(i)+"|"+titles[i]+"|"+hotnums[i]+"|"+hoturl[i])
+        lists = []
+        lists.append(i)
+        lists.append(titles[i])
+        lists.append(hotnums[i])
+        lists.append(hoturl[i])
+        data = {}
+        data['id'] = lists[0]
+        data['title'] = lists[1]
+        data['hotnum'] = lists[2]
+        data['hoturl'] = lists[3]
+        ulists.append(data)
+    
+    hotjson = json.dumps(ulists,ensure_ascii=False)
+    print(hotjson)
 
 
 if __name__ == "__main__":
