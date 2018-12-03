@@ -30,7 +30,7 @@ def clawer():
     ulists = []
     for i in range(len(hotnums)):
         lists = []
-        lists.append(i)
+        lists.append(i+1)
         lists.append(titles[i])
         lists.append(hotnums[i])
         lists.append(hoturl[i])
