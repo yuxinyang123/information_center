@@ -10,4 +10,10 @@ public interface CenterDegreePoMapper {
     int insert(CenterDegreePo record);
 
     int insertSelective(CenterDegreePo record);
+
+    CenterDegreePo selectByPrimaryKey(Long degreeId);
+
+    int updateByPrimaryKeySelective(CenterDegreePo record);
+
+    int updateByPrimaryKey(CenterDegreePo record);
 }

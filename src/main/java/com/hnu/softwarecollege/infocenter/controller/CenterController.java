@@ -1,11 +1,22 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
+import com.hnu.softwarecollege.infocenter.entity.po.CenterPo;
+import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
+import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.GradeForecastForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.WeatherForm;
+import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
+import com.hnu.softwarecollege.infocenter.service.CenterService;
+import com.hnu.softwarecollege.infocenter.service.WeatherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @program: infocenter
@@ -18,7 +29,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/center")
 public class CenterController {
 
-
+    @Resource
+    WeatherService weatherService;
+    @Resource
+    CenterPoMapper centerPoMapper;
+    @Resource
+    CenterService centerService;
     /**
      * @Author yuxinyang
      * @Description //TODO 获取天气信息
@@ -28,7 +44,14 @@ public class CenterController {
      **/
     @GetMapping("/weather")
     public BaseResponseVo getWeatherInfo(){
-        return null;
+        //String citycode = weatherService.findcitycode(city);
+        UserPo userPo = ThreadContext.getUserContext();
+        Long centerId = centerPoMapper.selectByUserKey(userPo.getUserId());
+        CenterPo centerPo = centerPoMapper.selectByPrimaryKey(centerId);
+        int code = centerPo.getWeatherCode();
+        String citycode = code+"";
+        WeatherPo weatherPo = weatherService.Weather(citycode);
+        return BaseResponseVo.success(weatherPo);
     }
 
     /**
@@ -40,8 +63,13 @@ public class CenterController {
      **/
     @PutMapping("/weather")
     public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm){
-
-        return null;
+        String code = weatherService.findcitycode(weatherForm.getCityname());
+        int citycode = Integer.parseInt(code);
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userid= userPo.getUserId();
+        Long centerId = centerPoMapper.selectByUserKey(userid);
+        centerPoMapper.updateWeatherCodeByPrimaryKey(citycode,centerId);
+        return BaseResponseVo.success();
     }
 
     /**
@@ -52,8 +80,10 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/grade")
-    public BaseResponseVo getGrade(){
-        return null;
+    public BaseResponseVo getGrade(@RequestParam String Id,@RequestParam String password){
+        String resulte = centerService.getGrade(Id,password);
+        List<CenterDegreePo> list = centerService.transform(resulte);
+        return BaseResponseVo.success(list);
     }
 
     /**
@@ -65,7 +95,8 @@ public class CenterController {
      **/
     @PostMapping("/grade")
     public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
-        return null;
+        String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
+        return BaseResponseVo.success(result);
     }
 
     /**
