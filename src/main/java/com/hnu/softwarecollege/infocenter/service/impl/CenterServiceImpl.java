@@ -122,6 +122,13 @@ public class CenterServiceImpl implements CenterService {
         return null;
     }
 
+    /*
+     * @Author 王子璇
+     * @Description //TODO 执行 python 脚本 爬取微博热搜
+     * @Date 2018/12/3 15:53
+     * @Param []
+     * @return java.lang.String
+     **/
     @Override
     public String getHotPot() {
         return null;

@@ -18,7 +18,8 @@ public class schedudemo {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                System.out.print("hello!");
+
+
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
