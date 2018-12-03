@@ -85,68 +85,37 @@ public class CenterServiceImpl implements CenterService {
                 //centerDegreePo.setDegreeUserkey(userPo.getUserId());
             }
 
+
             //获取课表信息  解析后存取数据库
             String coursetable = jsonNode.get("CLASS").toString();
             JsonNode courseJsonNode = mapper.readTree(coursetable);
             //周一
+            String week;
+            List<String> timelist = new ArrayList<>();
+            List<String> classeslist = new ArrayList<>();
             String monday = courseJsonNode.get("Monday").toString();
             JsonNode mondayJsonNode = mapper.readTree(monday);
             int mondaylen = mondayJsonNode.size();
             for(int timenum=1;timenum<mondaylen;timenum++){
                 if(timenum==1){
-                    String weel = JsonUtil.weekutil(mondayJsonNode.get("week").toString());
-                }else if(mondayJsonNode.get("time"+timenum).toString()!=null){
+                    week = JsonUtil.weekutil(mondayJsonNode.get("week").toString());
+                }else if(mondayJsonNode.get("time"+timenum)!=null){
                     String time = JsonUtil.timeutil(mondayJsonNode.get("time"+timenum).toString());
-                }else if(mondayJsonNode.get("class"+timenum).toString()!=null){
+                    timelist.add(time);
+                }else if(mondayJsonNode.get("class"+timenum)!=null){
                     String classes = JsonUtil.classutil(mondayJsonNode.get("class"+timenum).toString());
+                    classeslist.add(classes);
                 }
             }
-            /*String monday_week = mondayJsonNode.get("week").toString();
-            String monday_time2 = mondayJsonNode.get("time2").toString();
-            String monday_time2_start = monday_time2.substring(1,2);
-            String monday_time2_end = monday_time2.substring(3,monday_time2.length()-1);
-            int monday_time2_s = Integer.parseInt(monday_time2_start);
-            int monday_time2_e = Integer.parseInt(monday_time2_end);
-            //class2
-            String monday_class2 = mondayJsonNode.get("class2").toString();
-            String[] monday_arr = monday_class2.split("// ");
-            String monday_course_name = monday_arr[0].substring(1,monday_arr[0].length());
-            String monday_course_weeks = monday_arr[1].substring(3,monday_arr[1].length()-1);
-            String monday_course_weeks_start = monday_course_weeks.substring(0,1);
-            String monday_course_weeks_end = monday_course_weeks.substring(2,monday_course_weeks.length());
-            //上课地点
-            String monday_course_dresss = monday_arr[3].substring(5,monday_arr[3].length());
-            //教师
-            String monday_course_teacher = monday_arr[4].substring(3,monday_arr[4].length());
 
-            //class3
-            String monday_class3 = mondayJsonNode.get("claas3").toString();
-            String[] monday_class3_arr = monday_class3.split("// ");
-            String monday_class3_name = monday_class3_arr[0].substring(1,monday_class3_arr[0].length());
-            String monday_class3_weeks = monday_class3_arr[1].substring(3,monday_class3_arr[1].length()-1);
-            String monday_class3_weeks_start = monday_class3_weeks.substring(0,2);
-            String monday_class3_weeks_end = monday_class3_weeks.substring(3,monday_class3_weeks.length());
-            String monday_class3_dress = monday_class3_arr[3].substring(5,monday_class3_arr[3].length());
-            String monday_class3_teacher = monday_class3_arr[4].substring(3,monday_class3_arr[4].length());
 
-            //time5
-            String monday_time5 =mondayJsonNode.get("time5").toString();
-            String monday_time5_start = monday_time5.substring(1,2);
-            String monday_time5_end = monday_time5.substring(3,monday_time5.length()-1);
 
-            //class5
-            String monday_class5 = mondayJsonNode.get("class5").toString();
-            String[] monday_class5_arr = monday_class5.split("// ");
-            String monday_class5_name = monday_class5_arr[0].substring(1,monday_class5_arr[0].length()-1);
-            String monday_class5_weeks = monday_class5_arr[1].substring(3,monday_class5_arr[1].length()-1);
-            String monday_class5_weeks_start = monday_class5_weeks.substring(0,1);
-            String monday_class5_weeks_end = monday_class5_weeks.substring(2,monday_class5_weeks.length());
-            String monday_class5_dress =monday_class5_arr[3].substring(5,monday_class5_arr[3].length());
-            String monday_class5_teacher = monday_class5_arr[4].substring(3,monday_class5_arr[4].length());
-*/
+
 
         }catch (IOException e){
             e.printStackTrace();
+        }catch(NullPointerException e){
+
         }
         return l;
     }
