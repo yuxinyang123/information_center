@@ -3,8 +3,31 @@
   <component name="ChangeListManager">
     <list default="true" id="1222dff8-7d49-4649-be2a-c1f4770aa9c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/schedutask/schedudemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/schedutask/schedudemo.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/SyllabusPoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/SyllabusPoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterPoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterPoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/CenterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/controller/CenterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/SyllabusPoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/mapper/SyllabusPoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/CenterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/CenterService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/WeatherService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/WeatherService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapperxml/CenterPoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapperxml/CenterPoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.class" afterDir="false" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +46,12 @@
     <session id="1905796949">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+<<<<<<< HEAD
           <entry key="project.closed" value="20" />
+=======
+          <entry key="project.closed" value="38" />
+          <entry key="project.open.time.10" value="1" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="2" />
@@ -34,14 +62,28 @@
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.25" value="1" />
+<<<<<<< HEAD
           <entry key="project.open.time.27" value="2" />
           <entry key="project.open.time.28" value="3" />
           <entry key="project.open.time.29" value="3" />
           <entry key="project.opened" value="21" />
+=======
+          <entry key="project.open.time.27" value="3" />
+          <entry key="project.open.time.28" value="8" />
+          <entry key="project.open.time.29" value="5" />
+          <entry key="project.open.time.30" value="2" />
+          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.38" value="2" />
+          <entry key="project.opened" value="39" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+<<<<<<< HEAD
           <entry key="class" value="11" />
           <entry key="cmd" value="1" />
           <entry key="gitignore" value="3" />
@@ -50,11 +92,24 @@
           <entry key="mvnw" value="1" />
           <entry key="sql" value="2" />
           <entry key="xml" value="32" />
+=======
+          <entry key="class" value="13" />
+          <entry key="cmd" value="1" />
+          <entry key="csv" value="4" />
+          <entry key="gitignore" value="3" />
+          <entry key="java" value="448" />
+          <entry key="json" value="33" />
+          <entry key="log" value="2" />
+          <entry key="mvnw" value="1" />
+          <entry key="sql" value="8" />
+          <entry key="xml" value="60" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
           <entry key="yml" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< HEAD
           <entry key="CLASS" value="11" />
           <entry key="Git file" value="3" />
           <entry key="JAVA" value="220" />
@@ -62,19 +117,35 @@
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SQL" value="2" />
           <entry key="XML" value="32" />
+=======
+          <entry key="CLASS" value="13" />
+          <entry key="Git file" value="3" />
+          <entry key="JAVA" value="448" />
+          <entry key="JSON" value="33" />
+          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="SQL" value="8" />
+          <entry key="XML" value="60" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
           <entry key="YAML" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="24" />
+          <entry key="dummy" value="32" />
           <entry key="ft" value="125" />
+<<<<<<< HEAD
           <entry key="java" value="8461" />
           <entry key="xml" value="329" />
+=======
+          <entry key="java" value="21621" />
+          <entry key="json" value="23" />
+          <entry key="xml" value="972" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="JAVA" value="8461" />
           <entry key="PLAIN_TEXT" value="24" />
           <entry key="SQL" value="4" />
@@ -128,6 +199,14 @@
           <entry key="JAVA" value="221" />
           <entry key="VTL" value="51" />
           <entry key="XML" value="1" />
+=======
+          <entry key="JAVA" value="21621" />
+          <entry key="JSON" value="23" />
+          <entry key="PLAIN_TEXT" value="32" />
+          <entry key="SQL" value="16" />
+          <entry key="VTL" value="125" />
+          <entry key="XML" value="956" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
         </counts>
       </usages-collector>
     </session>
@@ -139,9 +218,77 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java">
+<<<<<<< HEAD
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
               <caret line="96" column="64" lean-forward="true" selection-start-line="96" selection-start-column="64" selection-end-line="96" selection-end-column="64" />
+=======
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1653">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3885#3886#0" expanded="true" />
+                <element signature="e#3912#3913#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="89" column="67" lean-forward="true" selection-start-line="89" selection-start-column="67" selection-end-line="89" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="48" lean-forward="true" selection-start-column="48" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1822">
+              <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="496">
+              <caret line="300" column="39" selection-start-line="300" selection-start-column="39" selection-end-line="300" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/JsonUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
             </state>
           </provider>
         </entry>
@@ -149,6 +296,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="80">
               <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
             </state>
@@ -160,6 +308,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="787">
               <caret line="133" column="20" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="20" />
+=======
+            <state relative-caret-position="152">
+              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
               <folding>
                 <element signature="e#4533#4534#0" expanded="true" />
                 <element signature="e#4559#4560#0" expanded="true" />
@@ -169,6 +321,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/schedule/WeatherTask.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -182,11 +335,22 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="367">
               <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/SyllabusPoMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="11" column="28" selection-start-line="10" selection-end-line="11" selection-end-column="28" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/SyllabusPoMapper.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -217,21 +381,52 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CityPo.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CityMapImpl.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java" />
+=======
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/TestContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/WeatherPoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/schedule/WeatherTask.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/TestContext.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/schedutask/schedudemo.java" />
+=======
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/context/CityMapContext.java" />
+        <option value="$PROJECT_DIR$/grade.json" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/ScoreTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/GradeForecastForm.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GetGradeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/SyllabusPoMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/WeatherTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/WeatherTest1.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/TestContext.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterPoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/JsonUtil.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       </list>
     </option>
   </component>
@@ -264,11 +459,19 @@
       <select />
     </treeState>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="x" value="102" />
     <option name="y" value="136" />
     <option name="width" value="1732" />
     <option name="height" value="996" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1408" />
+    <option name="height" value="833" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -316,8 +519,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="PackagesPane" />
       <pane id="Scope" />
+=======
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="information_center" type="58d84e3e:PackageViewProjectNode" />
+              <item name="information_center" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -328,6 +545,11 @@
             <path>
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
               <item name="information_center" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="information_center" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -350,15 +572,9 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infocenter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
-              <item name="information_center" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="infocenter" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+=======
             </path>
             <path>
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
@@ -367,26 +583,49 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infocenter" type="462c0819:PsiDirectoryNode" />
-              <item name="schedule" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
             </path>
             <path>
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
               <item name="information_center" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infocenter" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="schedule" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
+            </path>
+            <path>
+              <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="information_center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infocenter" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
             </path>
             <path>
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
               <item name="information_center" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infocenter" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
             </path>
             <path>
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
@@ -409,7 +648,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infocenter" type="462c0819:PsiDirectoryNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
             <path>
+<<<<<<< HEAD
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
               <item name="information_center" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
@@ -422,6 +669,73 @@
               <item name="information_center" type="b2602c69:ProjectViewProjectNode" />
               <item name="information_center" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hnu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hnu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="softwarecollege" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="hnu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="softwarecollege" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="infocenter" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="information_center" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="information_center" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
             </path>
           </expand>
           <select />
@@ -436,7 +750,11 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543802665050" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543824985039" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
     <property name="ignore_missing_gitignore" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -451,6 +769,7 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\information_center\src\main\resources\mybatis" />
+      <recent name="E:\information_center" />
       <recent name="E:\information_center\src\main\resources" />
     </key>
   </component>
@@ -466,13 +785,19 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Application.schedudemo">
     <configuration name="CityTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.service.impl.CityTest" />
+=======
+  <component name="RunManager" selected="Application.GradeTest">
+    <configuration name="GetGradeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.jsontest.GetGradeTest" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       <module name="information_center" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hnu.softwarecollege.infocenter.service.impl.*" />
+          <option name="PATTERN" value="com.hnu.softwarecollege.infocenter.jsontest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -480,8 +805,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="HttpRequestUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.util.HttpRequestUtil" />
+=======
+    <configuration name="GradeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.jsontest.GradeTest" />
+      <module name="information_center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hnu.softwarecollege.infocenter.jsontest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScoreTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.jsontest.ScoreTest" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       <module name="information_center" />
       <extension name="coverage">
         <pattern>
@@ -506,8 +849,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="schedudemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.schedutask.schedudemo" />
+=======
+    <configuration name="WeatherTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hnu.softwarecollege.infocenter.jsontest.WeatherTest" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       <module name="information_center" />
       <extension name="coverage">
         <pattern>
@@ -528,6 +876,7 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.InfocenterApplication" />
+<<<<<<< HEAD
       <item itemvalue="Application.HttpRequestUtil" />
       <item itemvalue="Application.CityTest" />
       <item itemvalue="Application.TestContext" />
@@ -539,6 +888,21 @@
         <item itemvalue="Application.TestContext" />
         <item itemvalue="Application.CityTest" />
         <item itemvalue="Application.HttpRequestUtil" />
+=======
+      <item itemvalue="Application.TestContext" />
+      <item itemvalue="Application.GradeTest" />
+      <item itemvalue="Application.ScoreTest" />
+      <item itemvalue="Application.GetGradeTest" />
+      <item itemvalue="Application.WeatherTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GradeTest" />
+        <item itemvalue="Application.GetGradeTest" />
+        <item itemvalue="Application.WeatherTest" />
+        <item itemvalue="Application.ScoreTest" />
+        <item itemvalue="Application.TestContext" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       </list>
     </recent_temporary>
   </component>
@@ -572,6 +936,7 @@
       <workItem from="1542772860773" duration="2729000" />
       <workItem from="1542779983427" duration="14800000" />
       <workItem from="1542807689648" duration="10936000" />
+<<<<<<< HEAD
       <workItem from="1542844463432" duration="12295000" />
       <workItem from="1543300936839" duration="807000" />
       <workItem from="1543301784948" duration="6856000" />
@@ -586,11 +951,36 @@
       <workItem from="1543799746853" duration="279000" />
       <workItem from="1543800305198" duration="1911000" />
       <workItem from="1543817471762" duration="2746000" />
+=======
+      <workItem from="1542844463432" duration="12828000" />
+      <workItem from="1543065864022" duration="1034000" />
+      <workItem from="1543147566998" duration="2047000" />
+      <workItem from="1543190715675" duration="11279000" />
+      <workItem from="1543212059241" duration="9177000" />
+      <workItem from="1543244440652" duration="2770000" />
+      <workItem from="1543297839541" duration="6051000" />
+      <workItem from="1543329111550" duration="3514000" />
+      <workItem from="1543333131456" duration="203000" />
+      <workItem from="1543363195705" duration="5273000" />
+      <workItem from="1543377955405" duration="1146000" />
+      <workItem from="1543384555214" duration="2574000" />
+      <workItem from="1543449237654" duration="10006000" />
+      <workItem from="1543567635975" duration="10974000" />
+      <workItem from="1543632987773" duration="134000" />
+      <workItem from="1543633175848" duration="8700000" />
+      <workItem from="1543795371813" duration="13784000" />
+      <workItem from="1543811126230" duration="163000" />
+      <workItem from="1543816671966" duration="7609000" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="133954000" />
+=======
+    <option name="totallyTimeSpent" value="200018000" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -611,13 +1001,20 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="Web" order="4" sideWeight="0.50070924" side_tool="true" weight="0.22453083" />
       <window_info id="Designer" order="5" />
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49682876" visible="true" weight="0.2200957" />
       <window_info id="Structure" order="7" sideWeight="0.50317127" side_tool="true" weight="0.24329759" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5021322" side_tool="true" weight="0.4054054" />
+=======
+      <window_info id="Structure" order="6" sideWeight="0.50317127" side_tool="true" weight="0.24329759" />
+      <window_info active="true" content_ui="combo" x="747" y="59" width="425" height="921" id="Project" order="7" sideWeight="0.49682876" visible="true" weight="0.23400854" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.50053304" side_tool="true" weight="0.32899022" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" sideWeight="0.49865952" weight="0.32765958" />
       <window_info anchor="bottom" id="Spring" order="3" sideWeight="0.49932975" weight="0.32907802" />
       <window_info anchor="bottom" id="Message" order="4" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4978678" weight="0.22853829" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
@@ -627,6 +1024,17 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49865952" weight="0.3286334" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32907802" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.4978678" visible="true" weight="0.16473317" />
+=======
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32894737" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.4989339" weight="0.27687296" />
+      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.49932975" weight="0.32907802" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49865952" weight="0.32899022" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49946696" weight="0.32894737" />
+      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49932975" weight="0.2334419" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Maven Projects" order="1" sideWeight="0.4993895" weight="0.25758645" />
       <window_info anchor="right" id="Database" order="2" />
@@ -672,7 +1080,12 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/RegistForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -801,6 +1214,158 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/UserInformationPoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1748">
+          <caret line="13" column="63" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/PremissionPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/ScoreTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/WeatherPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/UserPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/CenterDegreePo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/id.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/AccessController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterDegreePoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterDegreePoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/WeatherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/WeatherTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/WeatherTest1.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/TestContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="686">
+          <caret line="43" column="35" lean-forward="true" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/CenterPoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="89" column="49" lean-forward="true" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.1.2.RELEASE/spring-context-5.1.2.RELEASE.jar!/org/springframework/validation/Errors.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-513">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/WeatherServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/WeatherService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/CenterPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2052" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
         </state>
       </provider>
     </entry>
@@ -812,6 +1377,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/city.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -830,11 +1396,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-200">
           <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="11" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/UserPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grade.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GetGradeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/TestContext.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="266">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
@@ -858,11 +1441,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+=======
+        <state relative-caret-position="95">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/WeatherPoMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/BaseResponseVo.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/CommentForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/LoginForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/RegistForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="76">
           <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
         </state>
@@ -973,6 +1582,138 @@
         </state>
       </provider>
     </entry>
+=======
+        <state relative-caret-position="54">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/GradeForecastForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="757">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/WeatherForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/vo/ResForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1767" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/controller/CenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1653">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3885#3886#0" expanded="true" />
+            <element signature="e#3912#3913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/entity/po/SyllabusPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/CenterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/mapper/SyllabusPoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="11" column="28" selection-start-line="10" selection-end-line="11" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapperxml/SyllabusPoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/TokenUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/WeekUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/HttpRequestUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="48" lean-forward="true" selection-start-column="48" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/util/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hnu/softwarecollege/infocenter/service/impl/CenterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="89" column="67" lean-forward="true" selection-start-line="89" selection-start-column="67" selection-end-line="89" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/INFORMATION_CENTER V0.5.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3503" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hnu/softwarecollege/infocenter/jsontest/GradeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1822">
+          <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="300" column="39" selection-start-line="300" selection-start-column="39" selection-end-line="300" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 8f85f3f3d402f6a282004124aaa4aa0eaeeb347e
   </component>
   <component name="masterDetails">
     <states>

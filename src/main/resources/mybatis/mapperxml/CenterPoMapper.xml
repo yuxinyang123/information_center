@@ -79,4 +79,14 @@
       WEATHER_CODE = #{weatherCode,jdbcType=INTEGER}
     where CENTER_ID = #{centerId,jdbcType=BIGINT}
   </update>
+  <select id="selectByUserKey" parameterType="java.lang.Long" resultType="java.lang.Long">
+    select CENTER_ID
+    from tbl_center
+    where USER_KEY = #{userKey,jdbcType=BIGINT}
+  </select>
+  <update id="updateWeatherCodeByPrimaryKey">
+    update tbl_center
+    set WEATHER_CODE = #{weatherCode,jdbcType=INTEGER}
+    where CENTER_ID = #{centerID,jdbcType=BIGINT}
+  </update>
 </mapper>

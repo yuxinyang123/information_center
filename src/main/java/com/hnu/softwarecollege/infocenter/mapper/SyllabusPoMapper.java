@@ -1,7 +1,9 @@
 package com.hnu.softwarecollege.infocenter.mapper;
 
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface SyllabusPoMapper {
     int deleteByPrimaryKey(Long syllabusId);
 

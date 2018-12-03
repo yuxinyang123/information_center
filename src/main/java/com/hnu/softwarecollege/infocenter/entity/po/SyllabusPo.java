@@ -26,6 +26,7 @@ public class SyllabusPo {
 
     private Long userkey;
 
+
     public Long getSyllabusId() {
         return syllabusId;
     }

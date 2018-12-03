@@ -1,9 +1,6 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
-import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
-import com.hnu.softwarecollege.infocenter.entity.po.CenterPo;
-import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
@@ -44,13 +41,15 @@ public class CenterController {
      **/
     @GetMapping("/weather")
     public BaseResponseVo getWeatherInfo(){
-        //String citycode = weatherService.findcitycode(city);
-        UserPo userPo = ThreadContext.getUserContext();
-        Long centerId = centerPoMapper.selectByUserKey(userPo.getUserId());
-        CenterPo centerPo = centerPoMapper.selectByPrimaryKey(centerId);
-        int code = centerPo.getWeatherCode();
+        int code = weatherService.getcitycode();
+        if(code==0){
+            return BaseResponseVo.error("没有查询到citycode");
+        }
         String citycode = code+"";
         WeatherPo weatherPo = weatherService.Weather(citycode);
+        if(weatherPo==null){
+            return BaseResponseVo.error("没有找到对应城市的天气信息");
+        }
         return BaseResponseVo.success(weatherPo);
     }
 
@@ -62,16 +61,20 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/weather")
-    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm){
+    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm) {
+        int num = 0;
         String code = weatherService.findcitycode(weatherForm.getCityname());
-        int citycode = Integer.parseInt(code);
-        UserPo userPo = ThreadContext.getUserContext();
-        Long userid= userPo.getUserId();
-        Long centerId = centerPoMapper.selectByUserKey(userid);
-        centerPoMapper.updateWeatherCodeByPrimaryKey(citycode,centerId);
-        return BaseResponseVo.success();
+        if (code.equals(null)) {
+            return BaseResponseVo.error("没有找到该城市对应的ID");
+        } else {
+            num = weatherService.updateWeatherInfo(code);
+        }
+        if (num != 0) {
+            return BaseResponseVo.error("修改失败");
+        }else{
+            return BaseResponseVo.success("修改成功");
+        }
     }
-
     /**
      * @Author yuxinyang
      * @Description //TODO 获取成绩信息
