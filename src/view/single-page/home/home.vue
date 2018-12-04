@@ -11,7 +11,7 @@
     <Row :gutter="20" style="margin-top: 10px;">
       <i-col :md="24" :lg="8" style="margin-bottom: 20px;">
         <Card shadow>
-          <chart-pie style="height: 300px;" :date="date" :wendu="wendu" :city="city" :forecast="forecast" :ganmao="ganmao"  text="天气"></chart-pie>
+          <chart-pie style="height: 300px;" :type="type" :aqi="aqi" :high="high" :date="date" :low="low" :wendu="wendu" :city="city" :forecast="forecast" :ganmao="ganmao"  text="天气"></chart-pie>
         </Card>
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
@@ -48,6 +48,10 @@ export default {
       forecast:[],
       wendu:'',
       date:'',
+      low:'',
+      high:'',
+      aqi:'',
+      type:'',
       inforCardData: [
         { title: '加权平均分', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
         { title: '平均学分绩点', icon: 'md-locate', count: 232, color: '#19be6b' },
@@ -65,6 +69,10 @@ export default {
       this.ganmao=res.ganmao
       this.wendu=res.wendu
       this.date=res.forecast[0].date
+      this.low=res.forecast[0].low
+      this.high=res.forecast[0].high
+      this.aqi=res.aqi
+      this.type=res.forecast[0].type
       console.log(res)
       }).catch(err => {
         console.log(err)

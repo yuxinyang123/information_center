@@ -5,32 +5,22 @@
       天气
     </p>
     <Row> 
-        <i-col span="12" class='tupian' >col-12</i-col>
+        <i-col span="12" class='tupian' align='center' ><img :src="img" ></i-col>
         <i-col span="12" class="wendu" align='center'>{{wendu}}°</i-col>
     </Row>
-    <div class="a" align="center"  id='a'>
-      <br>
-      <br>
-      <Icon type="ios-flag"></Icon>
-      {{city}}<br>
-      <br>
-      {{date}}
-      <br>
-      <br>
-      
-    </div>
-    <!-- <div class='b'>
-      {{forecast[0].type}}
-    </div> -->
-   
+    <br>
+    <Row> 
+        <i-col span="12"  align='center' ><Icon type="ios-flag"></Icon>
+      {{city}}</i-col>
+        <i-col span="12"  align='center'>空气污染指数:{{aqi}}</i-col>
+    </Row>
+    <br>
+     <Row> 
+        <i-col span="12"  align='center' >{{date}} </i-col>
+        <i-col span="12"  align='center'>最{{low }} /最{{high}}</i-col>
+    </Row>
+    <br>
     <h5>{{ganmao}}</h5>
-    <!-- <ul>
-        <li v-for="item of forecast"
-        :key="item.date">
-        {{item.date}}
-           
-        </li>
-    </ul> -->
   </Card>
 </template>
 
@@ -44,33 +34,28 @@ props:{
   ganmao:String,
   wendu:String,
   date:String,
-
+  low:String,
+  high:String,
+  aqi:String,
+  type:String,
 },
   data () {
     return {
-
+        img:String
     }
   },
   methods: {
-    //   aggimage:function(){
-    //   var d=forecast[0].type;
-    //   path1="../../assets/images/01.png";//请修改为本地图片的路径
-    //   switch(d)
-    //     {
-    //       case "'晴'":document.getElementById('a').innerHTML='<img src="'+path1+'" />' ;
-    //       break;
-    //     }
-    // }
+      aggimage:function(type){
+          this.img = require("../../assets/images/"+type+".png")
+      }
   },
   mounted:function(){
-    
-      // this.aggimage()
-      // this.changeLimit();
+  },
+  beforeUpdate:function(){
+    this.aggimage(this.type)
   },
   
 }
-
- 
 
 </script>
 <style lang="less">
@@ -85,8 +70,8 @@ img { width: 55%; height: 50%;}
       float: right;
     }
     .wendu{
-      // height: px;
-      font-size: 50px
+      font-size: 50px;
+      margin-top:10px;
     }
     
   @import './style.less';
