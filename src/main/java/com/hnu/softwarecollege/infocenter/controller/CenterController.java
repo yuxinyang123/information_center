@@ -1,6 +1,7 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
+import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
@@ -112,8 +113,8 @@ public class CenterController {
      **/
     @GetMapping("/curriculum")
     public BaseResponseVo getCurriculum(){
-
-        return null;
+        List<SyllabusPo> list = centerService.getCourseTable();
+        return BaseResponseVo.success(list);
     }
 
     /**

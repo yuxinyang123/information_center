@@ -2,6 +2,7 @@ package com.hnu.softwarecollege.infocenter.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
@@ -191,14 +192,16 @@ public class CenterServiceImpl implements CenterService {
     }
     /*
      * @Author 刘亚双
-     * @Description //TODO 获取课表信息 解析后存入数据库
+     * @Description //TODO 从数据库中查询课表信息
      * @Date 2018/12/3 9:18
      * @Param [jsonstr]
      * @return java.lang.String
      **/
     @Override
-    public String getCourseTable() {
-        return null;
+    public List<SyllabusPo> getCourseTable() {
+        Long Userkey = ThreadContext.getUserContext().getUserId();
+        List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(Userkey);
+        return list;
     }
 
     @Override

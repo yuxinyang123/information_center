@@ -24,6 +24,14 @@
     from tbl_center_degree
     where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
   </select>
+
+  <!-- 自定义根据userkey查询所有的成绩信息-->
+  <select id="findAllByUserKey" parameterType="java.lang.String" resultType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
+    select *
+    from tbl_center_degree
+    where DEGREE_USERKEY = #{userkey,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tbl_center_degree
     where DEGREE_ID = #{degreeId,jdbcType=BIGINT}
