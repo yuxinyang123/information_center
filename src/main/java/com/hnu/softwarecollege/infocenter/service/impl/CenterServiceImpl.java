@@ -3,7 +3,9 @@ package com.hnu.softwarecollege.infocenter.service.impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
+import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
+import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -59,6 +61,8 @@ public class CenterServiceImpl implements CenterService {
     }
     @Resource
     CenterDegreePoMapper centerDegreePoMapper;
+    @Resource
+    SyllabusPoMapper syllabusPoMapper;
     /*
      * @Author 刘亚双
      * @Description //TODO  解析json 格式的数据,获取“GRADE”数组的信息，转化为CenterDegreePo 实体类存入数据库 同时获取对应的课表信息 存入数据库
@@ -69,49 +73,74 @@ public class CenterServiceImpl implements CenterService {
     @Override
     public List<CenterDegreePo> transform(String jsonStr) {
         List<CenterDegreePo> l = new ArrayList<CenterDegreePo>();
-        String studentid ="";
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(jsonStr);
             String grade = jsonNode.get("GRADE").toString();
             JsonNode gradeJsonNode = mapper.readTree(grade);
             //UserPo userPo = ThreadContext.getUserContext();
-            studentid = gradeJsonNode.get(1).get("studentId").toString();
             for(int i =0;i<gradeJsonNode.size();i++){
-                String s = gradeJsonNode.get(i).toString();
-                CenterDegreePo centerDegreePo = mapper.readValue(s,CenterDegreePo.class);
-                centerDegreePoMapper.insertSelective(centerDegreePo);
+
+               String s = gradeJsonNode.get(i).toString();
+               System.out.println(s);
+               CenterDegreePo centerDegreePo = mapper.readValue(s,CenterDegreePo.class);
+               centerDegreePoMapper.insertSelective(centerDegreePo);
                 l.add(i,centerDegreePo);
                 //centerDegreePo.setDegreeUserkey(userPo.getUserId());
             }
-
 
             //获取课表信息  解析后存取数据库
             String coursetable = jsonNode.get("CLASS").toString();
             JsonNode courseJsonNode = mapper.readTree(coursetable);
             //周一
-            String week;
-            List<String> timelist = new ArrayList<>();
-            List<String> classeslist = new ArrayList<>();
             String monday = courseJsonNode.get("Monday").toString();
             JsonNode mondayJsonNode = mapper.readTree(monday);
-            int mondaylen = mondayJsonNode.size();
-            for(int timenum=1;timenum<mondaylen;timenum++){
-                if(timenum==1){
-                    week = JsonUtil.weekutil(mondayJsonNode.get("week").toString());
-                }else if(mondayJsonNode.get("time"+timenum)!=null){
-                    String time = JsonUtil.timeutil(mondayJsonNode.get("time"+timenum).toString());
-                    timelist.add(time);
-                }else if(mondayJsonNode.get("class"+timenum)!=null){
-                    String classes = JsonUtil.classutil(mondayJsonNode.get("class"+timenum).toString());
-                    classeslist.add(classes);
-                }
+            List<String> mondaylist = JsonUtil.Listutil(mondayJsonNode);
+            if(mondaylist!=null) {
+                method(mondaylist);
             }
-
-
-
-
-
+            //周二
+            String tuesday = courseJsonNode.get("Tuesday").toString();
+            JsonNode tuesdayJsonNode = mapper.readTree(tuesday);
+            List<String> tuesdaylist = JsonUtil.Listutil(tuesdayJsonNode);
+            if(tuesdaylist!=null) {
+                method(tuesdaylist);
+            }
+            //周三
+            String wednesday = courseJsonNode.get("Wednesday").toString();
+            JsonNode wednesdayJsonNode = mapper.readTree(wednesday);
+            List<String> wednesdaylist = JsonUtil.Listutil(wednesdayJsonNode);
+            if(wednesdaylist!=null) {
+                method(wednesdaylist);
+            }
+            //周四
+            String thursday = courseJsonNode.get("Thursday").toString();
+            JsonNode thursdayJsonNode = mapper.readTree(thursday);
+            List<String> thursdaylist = JsonUtil.Listutil(thursdayJsonNode);
+            if(thursday!=null) {
+                method(thursdaylist);
+            }
+            //周五
+            String friday = courseJsonNode.get("Friday").toString();
+            JsonNode fridayJsonNode = mapper.readTree(friday);
+            List<String> fridaylist = JsonUtil.Listutil(fridayJsonNode);
+            if(fridaylist!=null) {
+                method(fridaylist);
+            }
+            //周六
+            String saturday = courseJsonNode.get("Saturday").toString();
+            JsonNode saturJsonNode = mapper.readTree(saturday);
+            List<String> saturdaylist = JsonUtil.Listutil(saturJsonNode);
+            if(saturdaylist!=null) {
+                method(saturdaylist);
+            }
+            //周日
+            String sunday = courseJsonNode.get("Sunday").toString();
+            JsonNode sundayJsonNode = mapper.readTree(sunday);
+            List<String> sundaylist = JsonUtil.Listutil(sundayJsonNode);
+            if(sundaylist!=null) {
+                method(sundaylist);
+            }
         }catch (IOException e){
             e.printStackTrace();
         }catch(NullPointerException e){
@@ -119,6 +148,17 @@ public class CenterServiceImpl implements CenterService {
         }
         return l;
     }
+
+    private void method(List<String> tuesdaylist) {
+        for(int i =0;i<tuesdaylist.size();i++){
+            Long key = 2L;
+            String[] s = tuesdaylist.get(i).split("\\|");
+            SyllabusPo syllabusPo = new SyllabusPo(s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),Integer.parseInt(s[1]),Integer.parseInt(s[2]),s[0],s[6],s[7],key);
+            System.out.println(syllabusPo);
+            syllabusPoMapper.insertSelective(syllabusPo);
+        }
+    }
+
     /*
      * @Author 刘亚双
      * @Description //TODO 执行 python 脚本 进行成绩分析

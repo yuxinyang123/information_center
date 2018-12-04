@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CenterDegreePo {
+
     private Long degreeId;
 
     private Long degreeUserkey;
@@ -113,5 +114,22 @@ public class CenterDegreePo {
 
     public void setDegreeStudentname(String degreeStudentname) {
         this.degreeStudentname = degreeStudentname == null ? null : degreeStudentname.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "CenterDegreePo{" +
+                "degreeId=" + degreeId +
+                ", degreeUserkey=" + degreeUserkey +
+                ", degreeTerm='" + degreeTerm + '\'' +
+                ", degreeClassname='" + degreeClassname + '\'' +
+                ", degreeClassnature='" + degreeClassnature + '\'' +
+                ", degreeCredit=" + degreeCredit +
+                ", degreeGrade='" + degreeGrade + '\'' +
+                ", degreePerformancepoint=" + degreePerformancepoint +
+                ", degreeTestnature='" + degreeTestnature + '\'' +
+                ", degreeStudentid=" + degreeStudentid +
+                ", degreeStudentname='" + degreeStudentname + '\'' +
+                '}';
     }
 }

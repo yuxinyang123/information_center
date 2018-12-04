@@ -1,5 +1,10 @@
 package com.hnu.softwarecollege.infocenter.util;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @ClassName JsonUtil
  * @Description TODO 对Json 对象的处理
@@ -8,11 +13,25 @@ package com.hnu.softwarecollege.infocenter.util;
  * @Version 1.0
  **/
 public class JsonUtil {
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 对json数据 星期的处理
+     * @Date 2018/12/4 16:20
+     * @Param [weeks]
+     * @return java.lang.String
+     **/
     public static String weekutil(String weeks){
         int len = weeks.length();
         String week = weeks.substring(1,len-1);
         return week;
     }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 对json数据 上课时间的处理
+     * @Date 2018/12/4 16:20
+     * @Param [time]
+     * @return java.lang.String
+     **/
     public static String timeutil(String time){
         int len = time.length();
         String start;
@@ -27,6 +46,13 @@ public class JsonUtil {
         }
         return start+"|"+end;
     }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 对json数据，课程信息的处理
+     * @Date 2018/12/4 16:21
+     * @Param [classs]
+     * @return java.lang.String
+     **/
     public static String classutil(String classs){
         String[] cl = classs.split("\\ ");
         String weeksstart;
@@ -43,5 +69,28 @@ public class JsonUtil {
         String address = cl[3].substring(5,cl[3].length());
         String teacher = cl[4].substring(3,cl[4].length());
         return name+"|"+weeksstart+"|"+weeksend+"|"+address+"|"+teacher;
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 将json数据存入整合方便存入
+     * @Date 2018/12/4 16:21
+     * @Param [jsonNode]
+     * @return java.util.List<java.lang.String>
+     **/
+    public static List<String> Listutil(JsonNode jsonNode){
+        String week ="";
+        String times ="";
+        List<String> list = new ArrayList<String>();
+        for(int timenum=1;timenum<=jsonNode.size();timenum++){
+            if(timenum==1){
+                week = weekutil(jsonNode.get("week").toString());
+            }else if(jsonNode.get("time"+timenum)!=null){
+                times = timeutil(jsonNode.get("time"+timenum).toString());
+            }else if(jsonNode.get("class"+(timenum-1))!=null){
+                String classes = week+"|"+times+"|"+classutil(jsonNode.get("class"+(timenum-1)).toString());
+                list.add(classes);
+            }
+        }
+        return list;
     }
 }

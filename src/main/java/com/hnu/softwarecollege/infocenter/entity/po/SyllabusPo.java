@@ -26,6 +26,17 @@ public class SyllabusPo {
 
     private Long userkey;
 
+    public SyllabusPo(String syllabusClassname, Integer syllabusStartweek, Integer syllabusEndweek, Integer syllabusStartpart, Integer syllabusEndpart, String syllabusWeek, String syllabusClassroom, String syllabusTeacher, Long userkey) {
+        this.syllabusClassname = syllabusClassname;
+        this.syllabusStartweek = syllabusStartweek;
+        this.syllabusEndweek = syllabusEndweek;
+        this.syllabusStartpart = syllabusStartpart;
+        this.syllabusEndpart = syllabusEndpart;
+        this.syllabusWeek = syllabusWeek;
+        this.syllabusClassroom = syllabusClassroom;
+        this.syllabusTeacher = syllabusTeacher;
+        this.userkey = userkey;
+    }
 
     public Long getSyllabusId() {
         return syllabusId;
@@ -105,5 +116,21 @@ public class SyllabusPo {
 
     public void setUserkey(Long userkey) {
         this.userkey = userkey;
+    }
+
+    @Override
+    public String toString() {
+        return "SyllabusPo{" +
+                "syllabusId=" + syllabusId +
+                ", syllabusClassname='" + syllabusClassname + '\'' +
+                ", syllabusStartweek=" + syllabusStartweek +
+                ", syllabusEndweek=" + syllabusEndweek +
+                ", syllabusStartpart=" + syllabusStartpart +
+                ", syllabusEndpart=" + syllabusEndpart +
+                ", syllabusWeek='" + syllabusWeek + '\'' +
+                ", syllabusClassroom='" + syllabusClassroom + '\'' +
+                ", syllabusTeacher='" + syllabusTeacher + '\'' +
+                ", userkey=" + userkey +
+                '}';
     }
 }
