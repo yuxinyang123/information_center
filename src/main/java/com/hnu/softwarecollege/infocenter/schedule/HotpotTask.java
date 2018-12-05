@@ -1,13 +1,10 @@
-package com.hnu.softwarecollege.infocenter.schedutask;
+package com.hnu.softwarecollege.infocenter.schedule;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
@@ -16,27 +13,20 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 /**
- * @ClassName schedudemo
+ * @ClassName HotpotTask
  * @Description TODO
  * @Author wang
- * @Date 2018/12/3 9:51
+ * @Date 2018/12/3 16:35
  * @Version 1.0
  **/
-
 @Slf4j
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class schedudemo {
+
+public class HotpotTask {
 
     @Resource
     public ObjectMapper mapper;
 
-    @Test
-    public void tests(){
-
-        runWeiBoClawer();
-    }
-
+    @Scheduled(cron ="0 */30 * * * ?")
     public List<HotsPotPo> runWeiBoClawer(){
         //python脚本路径
         String[] arg = new String[]{"python","D:\\project\\information_center\\spider\\weibohot-clawer.py"};
@@ -56,9 +46,9 @@ public class schedudemo {
 //            for(HotsPotPo po:hotsPotPoList){
 //                log.info("{}",po);
 //            }
-            for(HotsPotPo po:hotsPotPoList){
-                log.info(po.getHotspotTitle());
-            }
+//            for(HotsPotPo po:hotsPotPoList){
+//                log.info(po.getHotspotTitle());
+//            }
             bufferedReader.close();
             inputStreamReader.close();
         } catch (IOException e) {
@@ -68,3 +58,5 @@ public class schedudemo {
         return hotsPotPoList;
     }
 }
+
+

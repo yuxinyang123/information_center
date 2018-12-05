@@ -217,9 +217,9 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_hotspot`;
 CREATE TABLE `tbl_hotspot`(
-  `HOTSPOT_ID` int(8) NOT NULL COMMENT '热点ID',
-  `HOTSPOT_TITLE` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMECT '热点标题',
-  `HOTSPOT_HOTNUM` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMECT '热点数',
-  `HOTSPOT_HOTURL` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMECT 'url',
+  `HOTSPOT_ID` int(8) NOT NULL AUTO_INCREMENT,
+  `HOTSPOT_TITLE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '热点标题',
+  `HOTSPOT_HOTNUM` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '热点数',
+  `HOTSPOT_HOTURL` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT 'url',
   PRIMARY KEY (`HOTSPOT_ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '热点信息' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '热点信息' ROW_FORMAT = Compact;
