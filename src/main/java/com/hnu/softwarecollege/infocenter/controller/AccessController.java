@@ -5,12 +5,17 @@ import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import com.hnu.softwarecollege.infocenter.util.TokenUtil;
+import com.hnu.softwarecollege.infocenter.util.VerifyCodeUtil;
+import io.netty.handler.codec.http.HttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("access")
@@ -65,9 +70,33 @@ public class AccessController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/verifycode")
-    public BaseResponseVo getVerifycode(){
+    public BaseResponseVo getVerifycode(HttpServletResponse response, HttpSession session){
+        String verifyCode = VerifyCodeUtil.generateVerifyCode(4);
+        session.setAttribute("verifycode",verifyCode);
+        try {
+            VerifyCodeUtil.outputVerifyImage(response.getOutputStream(),4);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return BaseResponseVo.success(verifyCode);
+    }
 
-        return null;
+    /**
+     * @Author yuxinyang
+     * @Description //TODO 验证验证码
+     * @Date 10:13 2018/11/22
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @PostMapping("/verifycode")
+    public BaseResponseVo createVerifycode(@NotBlank @RequestParam("verifycode") String verifycode, HttpSession session){
+        String serverVerifycode = (String) session.getAttribute("verigycode");
+        if(verifycode.equals(serverVerifycode)){
+            return BaseResponseVo.success("verify success");
+        }else{
+            return BaseResponseVo.fail("verify fail");
+        }
+
     }
 
     /**

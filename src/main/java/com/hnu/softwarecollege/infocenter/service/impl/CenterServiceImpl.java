@@ -8,6 +8,11 @@ import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
+import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
+import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
+import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -63,6 +68,8 @@ public class CenterServiceImpl implements CenterService {
     }
     @Resource
     CenterDegreePoMapper centerDegreePoMapper;
+    @Resource
+    SyllabusPoMapper syllabusPoMapper;
     /*
      * @Author 刘亚双
      * @Description //TODO  解析json 格式的数据,获取“GRADE”数组的信息，转化为CenterDegreePo 实体类存入数据库 同时获取对应的课表信息 存入数据库
@@ -73,87 +80,91 @@ public class CenterServiceImpl implements CenterService {
     @Override
     public List<CenterDegreePo> transform(String jsonStr) {
         List<CenterDegreePo> l = new ArrayList<CenterDegreePo>();
-        String studentid ="";
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(jsonStr);
             String grade = jsonNode.get("GRADE").toString();
             JsonNode gradeJsonNode = mapper.readTree(grade);
             //UserPo userPo = ThreadContext.getUserContext();
-            studentid = gradeJsonNode.get(1).get("studentId").toString();
             for(int i =0;i<gradeJsonNode.size();i++){
-                String s = gradeJsonNode.get(i).toString();
-                CenterDegreePo centerDegreePo = mapper.readValue(s,CenterDegreePo.class);
-                centerDegreePoMapper.insertSelective(centerDegreePo);
+
+               String s = gradeJsonNode.get(i).toString();
+               System.out.println(s);
+               CenterDegreePo centerDegreePo = mapper.readValue(s,CenterDegreePo.class);
+               centerDegreePoMapper.insertSelective(centerDegreePo);
                 l.add(i,centerDegreePo);
                 //centerDegreePo.setDegreeUserkey(userPo.getUserId());
             }
-
             //获取课表信息  解析后存取数据库
             String coursetable = jsonNode.get("CLASS").toString();
             JsonNode courseJsonNode = mapper.readTree(coursetable);
             //周一
             String monday = courseJsonNode.get("Monday").toString();
             JsonNode mondayJsonNode = mapper.readTree(monday);
-            int mondaylen = mondayJsonNode.size();
-            for(int timenum=1;timenum<mondaylen;timenum++){
-                if(timenum==1){
-                    String weel = JsonUtil.weekutil(mondayJsonNode.get("week").toString());
-                }else if(mondayJsonNode.get("time"+timenum).toString()!=null){
-                    String time = JsonUtil.timeutil(mondayJsonNode.get("time"+timenum).toString());
-                }else if(mondayJsonNode.get("class"+timenum).toString()!=null){
-                    String classes = JsonUtil.classutil(mondayJsonNode.get("class"+timenum).toString());
-                }
+            List<String> mondaylist = JsonUtil.Listutil(mondayJsonNode);
+            if(mondaylist!=null) {
+                method(mondaylist);
             }
-            /*String monday_week = mondayJsonNode.get("week").toString();
-            String monday_time2 = mondayJsonNode.get("time2").toString();
-            String monday_time2_start = monday_time2.substring(1,2);
-            String monday_time2_end = monday_time2.substring(3,monday_time2.length()-1);
-            int monday_time2_s = Integer.parseInt(monday_time2_start);
-            int monday_time2_e = Integer.parseInt(monday_time2_end);
-            //class2
-            String monday_class2 = mondayJsonNode.get("class2").toString();
-            String[] monday_arr = monday_class2.split("// ");
-            String monday_course_name = monday_arr[0].substring(1,monday_arr[0].length());
-            String monday_course_weeks = monday_arr[1].substring(3,monday_arr[1].length()-1);
-            String monday_course_weeks_start = monday_course_weeks.substring(0,1);
-            String monday_course_weeks_end = monday_course_weeks.substring(2,monday_course_weeks.length());
-            //上课地点
-            String monday_course_dresss = monday_arr[3].substring(5,monday_arr[3].length());
-            //教师
-            String monday_course_teacher = monday_arr[4].substring(3,monday_arr[4].length());
-
-            //class3
-            String monday_class3 = mondayJsonNode.get("claas3").toString();
-            String[] monday_class3_arr = monday_class3.split("// ");
-            String monday_class3_name = monday_class3_arr[0].substring(1,monday_class3_arr[0].length());
-            String monday_class3_weeks = monday_class3_arr[1].substring(3,monday_class3_arr[1].length()-1);
-            String monday_class3_weeks_start = monday_class3_weeks.substring(0,2);
-            String monday_class3_weeks_end = monday_class3_weeks.substring(3,monday_class3_weeks.length());
-            String monday_class3_dress = monday_class3_arr[3].substring(5,monday_class3_arr[3].length());
-            String monday_class3_teacher = monday_class3_arr[4].substring(3,monday_class3_arr[4].length());
-
-            //time5
-            String monday_time5 =mondayJsonNode.get("time5").toString();
-            String monday_time5_start = monday_time5.substring(1,2);
-            String monday_time5_end = monday_time5.substring(3,monday_time5.length()-1);
-
-            //class5
-            String monday_class5 = mondayJsonNode.get("class5").toString();
-            String[] monday_class5_arr = monday_class5.split("// ");
-            String monday_class5_name = monday_class5_arr[0].substring(1,monday_class5_arr[0].length()-1);
-            String monday_class5_weeks = monday_class5_arr[1].substring(3,monday_class5_arr[1].length()-1);
-            String monday_class5_weeks_start = monday_class5_weeks.substring(0,1);
-            String monday_class5_weeks_end = monday_class5_weeks.substring(2,monday_class5_weeks.length());
-            String monday_class5_dress =monday_class5_arr[3].substring(5,monday_class5_arr[3].length());
-            String monday_class5_teacher = monday_class5_arr[4].substring(3,monday_class5_arr[4].length());
-*/
-
+            //周二
+            String tuesday = courseJsonNode.get("Tuesday").toString();
+            JsonNode tuesdayJsonNode = mapper.readTree(tuesday);
+            List<String> tuesdaylist = JsonUtil.Listutil(tuesdayJsonNode);
+            if(tuesdaylist!=null) {
+                method(tuesdaylist);
+            }
+            //周三
+            String wednesday = courseJsonNode.get("Wednesday").toString();
+            JsonNode wednesdayJsonNode = mapper.readTree(wednesday);
+            List<String> wednesdaylist = JsonUtil.Listutil(wednesdayJsonNode);
+            if(wednesdaylist!=null) {
+                method(wednesdaylist);
+            }
+            //周四
+            String thursday = courseJsonNode.get("Thursday").toString();
+            JsonNode thursdayJsonNode = mapper.readTree(thursday);
+            List<String> thursdaylist = JsonUtil.Listutil(thursdayJsonNode);
+            if(thursday!=null) {
+                method(thursdaylist);
+            }
+            //周五
+            String friday = courseJsonNode.get("Friday").toString();
+            JsonNode fridayJsonNode = mapper.readTree(friday);
+            List<String> fridaylist = JsonUtil.Listutil(fridayJsonNode);
+            if(fridaylist!=null) {
+                method(fridaylist);
+            }
+            //周六
+            String saturday = courseJsonNode.get("Saturday").toString();
+            JsonNode saturJsonNode = mapper.readTree(saturday);
+            List<String> saturdaylist = JsonUtil.Listutil(saturJsonNode);
+            if(saturdaylist!=null) {
+                method(saturdaylist);
+            }
+            //周日
+            String sunday = courseJsonNode.get("Sunday").toString();
+            JsonNode sundayJsonNode = mapper.readTree(sunday);
+            List<String> sundaylist = JsonUtil.Listutil(sundayJsonNode);
+            if(sundaylist!=null) {
+                method(sundaylist);
+            }
         }catch (IOException e){
             e.printStackTrace();
+        }catch(NullPointerException e){
+
         }
         return l;
     }
+
+    private void method(List<String> list) {
+        for(int i =0;i<list.size();i++){
+            Long key = 2L;
+            String[] s = list.get(i).split("\\|");
+            SyllabusPo syllabusPo = new SyllabusPo(null,s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),Integer.parseInt(s[1]),Integer.parseInt(s[2]),s[0],s[6],s[7],key);
+            System.out.println(syllabusPo);
+            syllabusPoMapper.insertSelective(syllabusPo);
+        }
+    }
+
     /*
      * @Author 刘亚双
      * @Description //TODO 执行 python 脚本 进行成绩分析
@@ -186,14 +197,30 @@ public class CenterServiceImpl implements CenterService {
     }
     /*
      * @Author 刘亚双
-     * @Description //TODO 获取课表信息 解析后存入数据库
+     * @Description //TODO 从数据库中查询课表信息
      * @Date 2018/12/3 9:18
      * @Param [jsonstr]
      * @return java.lang.String
      **/
     @Override
-    public String getCourseTable() {
-        return null;
+    public List<SyllabusPo> getCourseTable(Long Userkey) {
+        //Long Userkey = ThreadContext.getUserContext().getUserId();
+        List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(Userkey);
+        return list;
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 自定义课表,插入到数据库中
+     * @Date 2018/12/5 9:51
+     * @Param [curriculumForm]
+     * @return void
+     **/
+    @Override
+    public void putCurriculum(CurriculumForm curriculumForm) {
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userkey  = userPo.getUserId();
+        SyllabusPo syllabusPo = new SyllabusPo(null,curriculumForm.getClassName(),curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),curriculumForm.getTeacher(),userkey);
+        syllabusPoMapper.insertSelective(syllabusPo);
     }
 
     /*

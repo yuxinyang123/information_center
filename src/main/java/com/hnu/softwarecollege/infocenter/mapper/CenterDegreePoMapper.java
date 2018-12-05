@@ -3,6 +3,8 @@ package com.hnu.softwarecollege.infocenter.mapper;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface CenterDegreePoMapper {
     int deleteByPrimaryKey(Long degreeId);
@@ -16,4 +18,6 @@ public interface CenterDegreePoMapper {
     int updateByPrimaryKeySelective(CenterDegreePo record);
 
     int updateByPrimaryKey(CenterDegreePo record);
+
+    List<CenterDegreePo> findAllByUserKey(Long userkey);
 }

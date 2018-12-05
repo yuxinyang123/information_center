@@ -17,6 +17,8 @@ public class WeatherPo {
     private String weatherHigh;
     @JsonProperty("low")
     private String weatherLow;
+    @JsonProperty("wendu")
+    private String weatherTemperature;
     @JsonProperty("sunset")
     private String weatherSunset;
     @JsonProperty("aqi")
@@ -76,6 +78,14 @@ public class WeatherPo {
 
     public void setWeatherLow(String weatherLow) {
         this.weatherLow = weatherLow == null ? null : weatherLow.trim();
+    }
+
+    public String getWeatherTemperature() {
+        return weatherTemperature;
+    }
+
+    public void setWeatherTemperature(String weatherTemperature) {
+        this.weatherTemperature = weatherTemperature;
     }
 
     public String getWeatherSunset() {

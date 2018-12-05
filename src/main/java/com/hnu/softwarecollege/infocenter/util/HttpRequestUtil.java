@@ -54,7 +54,7 @@ public class HttpRequestUtil {
     }
     /*
      * @Author 刘亚双
-     * @Description //将两个json 格式的字符串拼接成一个
+     * @Description //将json 格式的字符串拼接
      * @Date 2018/11/22 0:27
      * @Param [jsonStr]
      * @return java.lang.String
@@ -68,10 +68,12 @@ public class HttpRequestUtil {
         int cityInfolen = cityInfo.length();
 
         String partcityInfo = cityInfo.substring(1,cityInfolen-1);
-        //System.out.println("222222"+partcityInfo);
 
         String datajson = jsonNode.get("data").toString();
         JsonNode nodedata = mapper.readTree(datajson);
+        String temperature = nodedata.get("wendu").toString();
+        String wendu = ","+"\"wendu\""+":"+temperature;
+        partcityInfo+=wendu;
         String today = nodedata.get("forecast").get(0).toString();
         int todaylen = today.length();
         String head = today.substring(0,1);

@@ -23,6 +23,7 @@
     from tbl_syllabus
     where SYLLABUS_ID = #{syllabusId,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tbl_syllabus
     where SYLLABUS_ID = #{syllabusId,jdbcType=BIGINT}
