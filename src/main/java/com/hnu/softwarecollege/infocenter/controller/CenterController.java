@@ -1,6 +1,7 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
+import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
@@ -32,6 +33,7 @@ public class CenterController {
     CenterPoMapper centerPoMapper;
     @Resource
     CenterService centerService;
+
     /**
      * @Author yuxinyang
      * @Description //TODO 获取天气信息
@@ -134,8 +136,18 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/hotpot")
-    public BaseResponseVo getHotpot(){
-        return null;
+    public BaseResponseVo getHotpot(@RequestParam int pageNum,@RequestParam int pageSize){
+        List<HotsPotPo> hotsPotPoList;
+
+        hotsPotPoList = centerService.getHotPot(pageNum,pageSize);
+
+//        if(hotsPotPoList != null){
+//            log.info("ok");
+//        }
+//        for(HotsPotPo po : hotsPotPoList){
+//            System.out.print(po.getHotspotTitle());
+//        }
+        return BaseResponseVo.success(hotsPotPoList);
     }
 
 }

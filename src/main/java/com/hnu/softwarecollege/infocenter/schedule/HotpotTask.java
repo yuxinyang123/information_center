@@ -3,6 +3,7 @@ package com.hnu.softwarecollege.infocenter.schedule;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
+import com.hnu.softwarecollege.infocenter.service.CenterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -20,14 +21,16 @@ import java.util.List;
  * @Version 1.0
  **/
 @Slf4j
-
 public class HotpotTask {
 
     @Resource
     public ObjectMapper mapper;
 
+    @Resource
+    public CenterService centerService;
+
     @Scheduled(cron ="0 */30 * * * ?")
-    public List<HotsPotPo> runWeiBoClawer(){
+    public int runWeiBoClawer(){
         //python脚本路径
         String[] arg = new String[]{"python","D:\\project\\information_center\\spider\\weibohot-clawer.py"};
         List<HotsPotPo> hotsPotPoList = null;
@@ -55,7 +58,10 @@ public class HotpotTask {
             log.error("调用Python脚本错误");
             e.printStackTrace();
         }
-        return hotsPotPoList;
+
+        centerService.updateHotspot(hotsPotPoList);
+
+        return 1;
     }
 }
 
