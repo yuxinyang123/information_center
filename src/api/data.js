@@ -37,7 +37,10 @@ export const uploadImg = formData => {
 }
 export const getWhetherData = () => {
   return axios.request({
-    url: 'http://wthrcdn.etouch.cn/weather_mini?city=石家庄市',
+    url: '/api/center/weather',
+    params: {
+      city: '石家庄市'
+    },
     method: 'get'
   })
 }

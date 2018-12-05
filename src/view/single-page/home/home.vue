@@ -50,7 +50,7 @@ export default {
       date:'',
       low:'',
       high:'',
-      aqi:'',
+      aqi: '',
       type:'',
       inforCardData: [
         { title: '加权平均分', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
@@ -63,17 +63,16 @@ export default {
 
   mounted(){
     getWhetherData().then(res => {
+      console.log(res.data.data)
       res=res.data.data
-      this.city=res.city
-      this.forecast=res.forecast
-      this.ganmao=res.ganmao
+      this.city=res.cityname
+      this.ganmao=res.notice
       this.wendu=res.wendu
-      this.date=res.forecast[0].date
-      this.low=res.forecast[0].low
-      this.high=res.forecast[0].high
-      this.aqi=res.aqi
-      this.type=res.forecast[0].type
-      console.log(res)
+      this.date=res.nowdate
+      this.low=res.low
+      this.high=res.high
+      this.aqi=String(res.AQI)
+      this.type=res.type
       }).catch(err => {
         console.log(err)
     })
