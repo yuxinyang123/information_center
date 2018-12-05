@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +45,7 @@ public class schedudemo {
     public int runWeiBoClawer(){
         //python脚本路径
         String[] arg = new String[]{"python","D:\\project\\information_center\\spider\\weibohot-clawer.py"};
-        List<HotsPotPo> hotsPotPoList = null;
+        List<HotsPotPo> hotsPotPoList = new ArrayList<HotsPotPo>();
         Process process = null;
         try {
             //执行脚本文件
