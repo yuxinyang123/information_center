@@ -31,13 +31,19 @@ public class TestContext {
 
         String datejson = jsonNode.get("data").toString();
         JsonNode nodedate = mapper.readTree(datejson);
+        String tempu = nodedate.get("wendu").toString();
+        //String s1 = "\"wendu\"";
+        String wendu = ","+"\"wendu\""+":"+tempu;
+        System.out.println(wendu);
+        cityInfo1+=wendu;
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++===");
         System.out.println("-------"+nodedate.get("forecast").get(0));
         System.out.println("-----------------------------------------------------------");
         String today = nodedate.get("forecast").get(0).toString();
         int todaylen = today.length();
         System.out.println(today.length());
         String head = today.substring(0,1);
-        String foot = today.substring(1,todaylen-1);
+        String foot = today.substring(1,todaylen);
 
         System.out.println("-----------------------------------------------------------");
         String result = head+cityInfo1+","+foot;

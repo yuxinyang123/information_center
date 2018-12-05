@@ -91,7 +91,6 @@ public class CenterServiceImpl implements CenterService {
                 l.add(i,centerDegreePo);
                 //centerDegreePo.setDegreeUserkey(userPo.getUserId());
             }
-
             //获取课表信息  解析后存取数据库
             String coursetable = jsonNode.get("CLASS").toString();
             JsonNode courseJsonNode = mapper.readTree(coursetable);
@@ -218,7 +217,6 @@ public class CenterServiceImpl implements CenterService {
         Long userkey  = userPo.getUserId();
         SyllabusPo syllabusPo = new SyllabusPo(null,curriculumForm.getClassName(),curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),curriculumForm.getTeacher(),userkey);
         syllabusPoMapper.insertSelective(syllabusPo);
-
     }
 
     @Override

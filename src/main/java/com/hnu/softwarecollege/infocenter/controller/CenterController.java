@@ -86,7 +86,6 @@ public class CenterController {
     @GetMapping("/grade")
     public BaseResponseVo getGrade(@RequestParam String Id,@RequestParam String password){
         String resulte = centerService.getGrade(Id,password);
-        System.out.println(resulte);
         List<CenterDegreePo> list = centerService.transform(resulte);
         return BaseResponseVo.success(list);
     }
