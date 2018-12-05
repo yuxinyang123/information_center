@@ -2,8 +2,10 @@ package com.hnu.softwarecollege.infocenter.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
+import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
@@ -205,13 +207,17 @@ public class CenterServiceImpl implements CenterService {
     }
     /*
      * @Author 刘亚双
-     * @Description //TODO 自定义课表
+     * @Description //TODO 自定义课表,插入到数据库中
      * @Date 2018/12/5 9:51
      * @Param [curriculumForm]
      * @return void
      **/
     @Override
     public void putCurriculum(CurriculumForm curriculumForm) {
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userkey  = userPo.getUserId();
+        SyllabusPo syllabusPo = new SyllabusPo(null,curriculumForm.getClassName(),curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),curriculumForm.getTeacher(),userkey);
+        syllabusPoMapper.insertSelective(syllabusPo);
 
     }
 

@@ -15,7 +15,6 @@ public class CurriculumForm {
     private String week;
     private String classroom;
     private String teacher;
-    private Long userKey;
 
     public String getClassName() {
         return className;
@@ -79,13 +78,5 @@ public class CurriculumForm {
 
     public void setTeacher(String teacher) {
         this.teacher = teacher;
-    }
-
-    public Long getUserKey() {
-        return userKey;
-    }
-
-    public void setUserKey(Long userKey) {
-        this.userKey = userKey;
     }
 }
