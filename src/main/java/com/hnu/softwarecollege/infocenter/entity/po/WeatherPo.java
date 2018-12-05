@@ -1,28 +1,35 @@
 package com.hnu.softwarecollege.infocenter.entity.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherPo {
+    @JsonProperty("cityId")
     private Integer weatherCode;
-
+    @JsonProperty("city")
     private String weatherCityName;
-
+    @JsonProperty("date")
     private String weatherDate;
-
+    @JsonProperty("sunrise")
     private String weatherSunrise;
-
+    @JsonProperty("high")
     private String weatherHigh;
-
+    @JsonProperty("low")
     private String weatherLow;
-
+    @JsonProperty("wendu")
+    private String weatherTemperature;
+    @JsonProperty("sunset")
     private String weatherSunset;
-
+    @JsonProperty("aqi")
     private Float weatherAqi;
-
+    @JsonProperty("notice")
     private String weatherNotice;
-
+    @JsonProperty("type")
     private String weatherType;
-
+    @JsonProperty("fl")
     private String weatherFl;
-
+    @JsonProperty("fx")
     private String weatherFx;
 
     public Integer getWeatherCode() {
@@ -71,6 +78,14 @@ public class WeatherPo {
 
     public void setWeatherLow(String weatherLow) {
         this.weatherLow = weatherLow == null ? null : weatherLow.trim();
+    }
+
+    public String getWeatherTemperature() {
+        return weatherTemperature;
+    }
+
+    public void setWeatherTemperature(String weatherTemperature) {
+        this.weatherTemperature = weatherTemperature;
     }
 
     public String getWeatherSunset() {

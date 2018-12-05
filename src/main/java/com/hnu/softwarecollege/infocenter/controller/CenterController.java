@@ -1,11 +1,20 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
+import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
+import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.GradeForecastForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.WeatherForm;
+import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
+import com.hnu.softwarecollege.infocenter.service.CenterService;
+import com.hnu.softwarecollege.infocenter.service.WeatherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @program: infocenter
@@ -18,7 +27,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/center")
 public class CenterController {
 
-
+    @Resource
+    WeatherService weatherService;
+    @Resource
+    CenterPoMapper centerPoMapper;
+    @Resource
+    CenterService centerService;
     /**
      * @Author yuxinyang
      * @Description //TODO 获取天气信息
@@ -28,7 +42,16 @@ public class CenterController {
      **/
     @GetMapping("/weather")
     public BaseResponseVo getWeatherInfo(){
-        return null;
+        int code = weatherService.getcitycode();
+        if(code==0){
+            return BaseResponseVo.error("没有查询到citycode");
+        }
+        String citycode = code+"";
+        WeatherPo weatherPo = weatherService.Weather(citycode);
+        if(weatherPo==null){
+            return BaseResponseVo.error("没有找到对应城市的天气信息");
+        }
+        return BaseResponseVo.success(weatherPo);
     }
 
     /**
@@ -39,11 +62,20 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/weather")
-    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm){
-
-        return null;
+    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm) {
+        int num = 0;
+        String code = weatherService.findcitycode(weatherForm.getCityname());
+        if (code.equals(null)) {
+            return BaseResponseVo.error("没有找到该城市对应的ID");
+        } else {
+            num = weatherService.updateWeatherInfo(code);
+        }
+        if (num != 0) {
+            return BaseResponseVo.error("修改失败");
+        }else{
+            return BaseResponseVo.success("修改成功");
+        }
     }
-
     /**
      * @Author yuxinyang
      * @Description //TODO 获取成绩信息
@@ -52,8 +84,10 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/grade")
-    public BaseResponseVo getGrade(){
-        return null;
+    public BaseResponseVo getGrade(@RequestParam String Id,@RequestParam String password){
+        String resulte = centerService.getGrade(Id,password);
+        List<CenterDegreePo> list = centerService.transform(resulte);
+        return BaseResponseVo.success(list);
     }
 
     /**
@@ -65,7 +99,8 @@ public class CenterController {
      **/
     @PostMapping("/grade")
     public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
-        return null;
+        String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
+        return BaseResponseVo.success(result);
     }
 
     /**
@@ -76,8 +111,9 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/curriculum")
-    public BaseResponseVo getCurriculum(){
-        return null;
+    public BaseResponseVo getCurriculum(Long userkey){
+        List<SyllabusPo> list = centerService.getCourseTable(userkey);
+        return BaseResponseVo.success(list);
     }
 
     /**
@@ -89,6 +125,8 @@ public class CenterController {
      **/
     @PutMapping("/curriculum")
     public BaseResponseVo putCurriculum(@RequestBody CurriculumForm curriculumForm){
+        centerService.putCurriculum(curriculumForm);
+
         return null;
     }
 
