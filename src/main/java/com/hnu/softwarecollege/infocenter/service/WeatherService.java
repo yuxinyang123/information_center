@@ -8,5 +8,5 @@ public interface WeatherService {
     public int updateWeatherInfo(String code);
     public WeatherPo Weather(String citycode);
     public void insertWeather(WeatherPo weatherPo);
-
+    public void updateAllWeatherInfo();
 }

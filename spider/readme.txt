@@ -1,0 +1,5 @@
+需要自行添加
+selenium
+BeautifulSoup
+requests
+另需下载geckodriver,我给出win64的文件，该文件解压缩后需添加path路径

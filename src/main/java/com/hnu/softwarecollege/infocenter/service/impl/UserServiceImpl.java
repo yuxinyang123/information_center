@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.persistence.Transient;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @program: infocenter
@@ -67,6 +68,7 @@ public class  UserServiceImpl implements UserService {
             log.info("the user:{} doesn't exist",loginForm.getEmail());
             return false;
         }
+        // todo setContext
         ThreadContext.setUserContext(userPo);
         log.info("the user:{} verify success",userPo.getUserEmail());
         return true;

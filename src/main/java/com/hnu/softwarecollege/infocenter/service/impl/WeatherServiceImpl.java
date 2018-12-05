@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -108,5 +109,28 @@ public class WeatherServiceImpl implements WeatherService {
     @Override
     public void insertWeather(WeatherPo weatherPo) {
         weatherPoMapper.insert(weatherPo);
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 修改数据库中已有城市的天气信息
+     * @Date 2018/12/5 14:13
+     * @Param []
+     * @return void
+     **/
+    @Override
+    public void updateAllWeatherInfo() {
+        List<WeatherPo> list = weatherPoMapper.findAll();
+        for(WeatherPo weatherPo:list){
+            int code = weatherPo.getWeatherCode();
+            String city_code=code+"";
+            String weatherinfo = HttpRequestUtil.getJsonContent(city_code);
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                WeatherPo weather = mapper.readValue(weatherinfo, WeatherPo.class);
+                weatherPoMapper.updateByPrimaryKey(weather);
+            }catch (IOException e){
+                log.error("实体类转换错误");
+            }
+        }
     }
 }
