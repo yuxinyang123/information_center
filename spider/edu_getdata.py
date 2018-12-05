@@ -31,40 +31,40 @@ def login(username,password):
 
     name_input.clear()
     name_input.send_keys(username)
-    time.sleep(1)
+    time.sleep(0.2)
     pass_input.clear
     pass_input.send_keys(password)
-    time.sleep(0.5)
+    time.sleep(0.2)
     login_button.click()
 
-    time.sleep(0.5)
+    time.sleep(0.2)
 
 def getgrade(username,password):
     
     url2 = "http://202.206.100.217/cjcx/cjcx_cxDgXscj.html?gnmkdm=N305005&layout=default&su="+username
     driver.get(url2)
 
-    time.sleep(2)
+    time.sleep(0.2)
     years_one = driver.find_element_by_xpath("//div[@id='xnm_chosen']")
     years_one.click()
     years_two = driver.find_element_by_xpath("//div[@id='xnm_chosen']/div/ul/li[@data-option-array-index='0']")
     years_two.click()
 
-    time.sleep(1)
+    time.sleep(0.2)
     semester_one = driver.find_element_by_xpath("//div[@id='xqm_chosen']")
     semester_one.click()
     semester_two = driver.find_element_by_xpath("//div[@id='xqm_chosen']/div/ul/li[@data-option-array-index='0']")
     semester_two.click()
 
-    time.sleep(0.5)
+    time.sleep(0.2)
     pagebox = driver.find_element_by_xpath("//select[@class='ui-pg-selbox']/option[@value='300']")
     pagebox.click()
 
-    time.sleep(1)
+    time.sleep(0.2)
     search = driver.find_element_by_id("search_go")
     search.click()
 
-    time.sleep(2)
+    time.sleep(1)
     html = driver.page_source
     
     ulist=[]
@@ -119,11 +119,11 @@ def getSchedule(user):
     url = "http://202.206.100.217/kbcx/xskbcx_cxXskbcxIndex.html?gnmkdm=N2151&layout=default&su="+user
     driver.get(url)
     
-    time.sleep(0.5)
+    time.sleep(0.2)
     table_button = driver.find_element_by_xpath("//div[@id='tb']/button[@href='#table2']")
     table_button.click()
 
-    time.sleep(0.5)
+    time.sleep(0.2)
     html = driver.page_source
 
     soup = BeautifulSoup(html,"lxml")
