@@ -1,4 +1,6 @@
 /target/
+/.idea/
+/geckodriver.log
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -11,7 +13,6 @@
 .sts4-cache
 
 ### IntelliJ IDEA ###
-/.idea
 *.iws
 *.iml
 *.ipr
