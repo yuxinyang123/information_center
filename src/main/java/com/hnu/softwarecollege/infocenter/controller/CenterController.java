@@ -112,8 +112,8 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/curriculum")
-    public BaseResponseVo getCurriculum(){
-        List<SyllabusPo> list = centerService.getCourseTable();
+    public BaseResponseVo getCurriculum(Long userkey){
+        List<SyllabusPo> list = centerService.getCourseTable(userkey);
         return BaseResponseVo.success(list);
     }
 
@@ -126,6 +126,8 @@ public class CenterController {
      **/
     @PutMapping("/curriculum")
     public BaseResponseVo putCurriculum(@RequestBody CurriculumForm curriculumForm){
+        centerService.putCurriculum(curriculumForm);
+
         return null;
     }
 

@@ -2,9 +2,9 @@ package com.hnu.softwarecollege.infocenter.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
+import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
@@ -150,11 +150,11 @@ public class CenterServiceImpl implements CenterService {
         return l;
     }
 
-    private void method(List<String> tuesdaylist) {
-        for(int i =0;i<tuesdaylist.size();i++){
+    private void method(List<String> list) {
+        for(int i =0;i<list.size();i++){
             Long key = 2L;
-            String[] s = tuesdaylist.get(i).split("\\|");
-            SyllabusPo syllabusPo = new SyllabusPo(s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),Integer.parseInt(s[1]),Integer.parseInt(s[2]),s[0],s[6],s[7],key);
+            String[] s = list.get(i).split("\\|");
+            SyllabusPo syllabusPo = new SyllabusPo(null,s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),Integer.parseInt(s[1]),Integer.parseInt(s[2]),s[0],s[6],s[7],key);
             System.out.println(syllabusPo);
             syllabusPoMapper.insertSelective(syllabusPo);
         }
@@ -198,10 +198,21 @@ public class CenterServiceImpl implements CenterService {
      * @return java.lang.String
      **/
     @Override
-    public List<SyllabusPo> getCourseTable() {
-        Long Userkey = ThreadContext.getUserContext().getUserId();
+    public List<SyllabusPo> getCourseTable(Long Userkey) {
+        //Long Userkey = ThreadContext.getUserContext().getUserId();
         List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(Userkey);
         return list;
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 自定义课表
+     * @Date 2018/12/5 9:51
+     * @Param [curriculumForm]
+     * @return void
+     **/
+    @Override
+    public void putCurriculum(CurriculumForm curriculumForm) {
+
     }
 
     @Override

@@ -22,7 +22,10 @@ public class SyllabusPo {
 
     private Long userkey;
 
-    public SyllabusPo(String syllabusClassname, Integer syllabusStartweek, Integer syllabusEndweek, Integer syllabusStartpart, Integer syllabusEndpart, String syllabusWeek, String syllabusClassroom, String syllabusTeacher, Long userkey) {
+
+
+    public SyllabusPo(Long syllabusId,String syllabusClassname, Integer syllabusStartweek, Integer syllabusEndweek, Integer syllabusStartpart, Integer syllabusEndpart, String syllabusWeek, String syllabusClassroom, String syllabusTeacher, Long userkey) {
+        this.syllabusId = syllabusId;
         this.syllabusClassname = syllabusClassname;
         this.syllabusStartweek = syllabusStartweek;
         this.syllabusEndweek = syllabusEndweek;

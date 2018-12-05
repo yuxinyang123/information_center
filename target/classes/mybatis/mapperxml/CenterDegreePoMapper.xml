@@ -26,10 +26,10 @@
   </select>
 
   <!-- 自定义根据userkey查询所有的成绩信息-->
-  <select id="findAllByUserKey" parameterType="java.lang.String" resultType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
+  <select id="findAllByUserKey" parameterType="java.lang.Long" resultType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
     select *
     from tbl_center_degree
-    where DEGREE_USERKEY = #{userkey,jdbcType=VARCHAR}
+    where DEGREE_USERKEY = #{userkey,jdbcType=BIGINT}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

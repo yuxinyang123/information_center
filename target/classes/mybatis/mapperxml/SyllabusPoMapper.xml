@@ -26,7 +26,8 @@
 
   <!--自定义根据userkey 查询课表信息 -->
   <select id="findAllByUserKey" parameterType="java.lang.Long" resultType="com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo">
-    select *
+    select
+    <include refid="Base_Column_List" />
     from tbl_syllabus
     where USERKEY = #{userkey,jdbcType=BIGINT}
   </select>
