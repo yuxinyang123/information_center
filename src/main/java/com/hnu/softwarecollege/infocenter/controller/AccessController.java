@@ -6,7 +6,6 @@ import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import com.hnu.softwarecollege.infocenter.util.TokenUtil;
 import com.hnu.softwarecollege.infocenter.util.VerifyCodeUtil;
-import io.netty.handler.codec.http.HttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

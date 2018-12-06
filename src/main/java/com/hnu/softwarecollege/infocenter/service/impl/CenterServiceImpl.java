@@ -4,18 +4,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
-import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
-import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
-import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
+import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
+import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -35,7 +38,11 @@ import java.util.List;
 @Service
 @Slf4j
 
-public class CenterServiceImpl implements CenterService {
+public class CenterServiceImpl implements CenterService{
+    public static String resultjson;
+
+
+
     /*
      * @Author 刘亚双
      * @Description //TODO 根据学号 在数据库中进行查询，存在的话 返回数据 。不存在则 执行 python 脚本 获取输入流，将 json 字符串返回
@@ -64,15 +71,18 @@ public class CenterServiceImpl implements CenterService {
         }catch (InterruptedException e){
             e.printStackTrace();
         }
+        resultjson=result;
+        System.out.println("resultjson:"+resultjson);
         return result;
     }
     @Resource
     CenterDegreePoMapper centerDegreePoMapper;
     @Resource
     SyllabusPoMapper syllabusPoMapper;
+
     /*
      * @Author 刘亚双
-     * @Description //TODO  解析json 格式的数据,获取“GRADE”数组的信息，转化为CenterDegreePo 实体类存入数据库 同时获取对应的课表信息 存入数据库
+     * @Description //TODO  解析json 格式的数据,获取“GRADE”数组的信息，存入List中 先返回给前端；
      * @Date 2018/11/28 14:24
      * @Param []
      * @return com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo
@@ -85,73 +95,18 @@ public class CenterServiceImpl implements CenterService {
             JsonNode jsonNode = mapper.readTree(jsonStr);
             String grade = jsonNode.get("GRADE").toString();
             JsonNode gradeJsonNode = mapper.readTree(grade);
-            //UserPo userPo = ThreadContext.getUserContext();
             for(int i =0;i<gradeJsonNode.size();i++){
-
-               String s = gradeJsonNode.get(i).toString();
-               System.out.println(s);
-               CenterDegreePo centerDegreePo = mapper.readValue(s,CenterDegreePo.class);
-               centerDegreePoMapper.insertSelective(centerDegreePo);
+                String s = gradeJsonNode.get(i).toString();
+                CenterDegreePo centerDegreePo = mapper.readValue(s,CenterDegreePo.class);
                 l.add(i,centerDegreePo);
-                //centerDegreePo.setDegreeUserkey(userPo.getUserId());
-            }
-            //获取课表信息  解析后存取数据库
-            String coursetable = jsonNode.get("CLASS").toString();
-            JsonNode courseJsonNode = mapper.readTree(coursetable);
-            //周一
-            String monday = courseJsonNode.get("Monday").toString();
-            JsonNode mondayJsonNode = mapper.readTree(monday);
-            List<String> mondaylist = JsonUtil.Listutil(mondayJsonNode);
-            if(mondaylist!=null) {
-                method(mondaylist);
-            }
-            //周二
-            String tuesday = courseJsonNode.get("Tuesday").toString();
-            JsonNode tuesdayJsonNode = mapper.readTree(tuesday);
-            List<String> tuesdaylist = JsonUtil.Listutil(tuesdayJsonNode);
-            if(tuesdaylist!=null) {
-                method(tuesdaylist);
-            }
-            //周三
-            String wednesday = courseJsonNode.get("Wednesday").toString();
-            JsonNode wednesdayJsonNode = mapper.readTree(wednesday);
-            List<String> wednesdaylist = JsonUtil.Listutil(wednesdayJsonNode);
-            if(wednesdaylist!=null) {
-                method(wednesdaylist);
-            }
-            //周四
-            String thursday = courseJsonNode.get("Thursday").toString();
-            JsonNode thursdayJsonNode = mapper.readTree(thursday);
-            List<String> thursdaylist = JsonUtil.Listutil(thursdayJsonNode);
-            if(thursday!=null) {
-                method(thursdaylist);
-            }
-            //周五
-            String friday = courseJsonNode.get("Friday").toString();
-            JsonNode fridayJsonNode = mapper.readTree(friday);
-            List<String> fridaylist = JsonUtil.Listutil(fridayJsonNode);
-            if(fridaylist!=null) {
-                method(fridaylist);
-            }
-            //周六
-            String saturday = courseJsonNode.get("Saturday").toString();
-            JsonNode saturJsonNode = mapper.readTree(saturday);
-            List<String> saturdaylist = JsonUtil.Listutil(saturJsonNode);
-            if(saturdaylist!=null) {
-                method(saturdaylist);
-            }
-            //周日
-            String sunday = courseJsonNode.get("Sunday").toString();
-            JsonNode sundayJsonNode = mapper.readTree(sunday);
-            List<String> sundaylist = JsonUtil.Listutil(sundayJsonNode);
-            if(sundaylist!=null) {
-                method(sundaylist);
             }
         }catch (IOException e){
             e.printStackTrace();
         }catch(NullPointerException e){
 
         }
+        CenterServiceImpl centerServiceimpl = new CenterServiceImpl();
+        centerServiceimpl.new MyThread().run();
         return l;
     }
 
@@ -164,6 +119,7 @@ public class CenterServiceImpl implements CenterService {
             syllabusPoMapper.insertSelective(syllabusPo);
         }
     }
+
 
     /*
      * @Author 刘亚双
@@ -257,7 +213,6 @@ public class CenterServiceImpl implements CenterService {
     @Resource
     HotsPotPoMapper hotsPotPoMapper;
     public void updateHotspot(List<HotsPotPo> hotsPotPos){
-
         if(hotsPotPoMapper.selectByPrimaryKey(1) != null){
             for(HotsPotPo po : hotsPotPos){
                 hotsPotPoMapper.updateByPrimaryKeySelective(po);
@@ -265,6 +220,94 @@ public class CenterServiceImpl implements CenterService {
         }else {
             for (HotsPotPo po : hotsPotPos){
                 hotsPotPoMapper.insertSelective(po);
+            }
+        }
+    }
+
+    @Component
+    private class MyThread implements Runnable{
+//        @Resource
+//        CenterDegreePoMapper centerDegreePoMapper;
+    @Autowired
+    private ApplicationContext applicationContext;
+
+
+        public MyThread() {
+
+        }
+
+        @Override
+        public void run() {
+            try {
+                CenterDegreePoMapper centerDegreePoMapper = applicationContext.getBean(CenterDegreePoMapper.class);
+                System.out.println("++" + resultjson);
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode jsonNode = mapper.readTree(resultjson);
+                String grade = jsonNode.get("GRADE").toString();
+                JsonNode gradeJsonNode = mapper.readTree(grade);
+                //UserPo userPo = ThreadContext.getUserContext();
+                for (int i = 0; i < gradeJsonNode.size(); i++) {
+                    String s = gradeJsonNode.get(i).toString();
+                    System.out.println("S:" + s);
+                    CenterDegreePo centerDegreePo = mapper.readValue(s, CenterDegreePo.class);
+                    System.out.println(centerDegreePo);
+                    centerDegreePoMapper.insertSelective(centerDegreePo);
+                    //centerDegreePo.setDegreeUserkey(userPo.getUserId());
+                }
+                //获取课表信息  解析后存取数据库
+                String coursetable = jsonNode.get("CLASS").toString();
+                JsonNode courseJsonNode = mapper.readTree(coursetable);
+                //周一
+                String monday = courseJsonNode.get("Monday").toString();
+                JsonNode mondayJsonNode = mapper.readTree(monday);
+                List<String> mondaylist = JsonUtil.Listutil(mondayJsonNode);
+                if (mondaylist != null) {
+                    method(mondaylist);
+                }
+                //周二
+                String tuesday = courseJsonNode.get("Tuesday").toString();
+                JsonNode tuesdayJsonNode = mapper.readTree(tuesday);
+                List<String> tuesdaylist = JsonUtil.Listutil(tuesdayJsonNode);
+                if (tuesdaylist != null) {
+                    method(tuesdaylist);
+                }
+                //周三
+                String wednesday = courseJsonNode.get("Wednesday").toString();
+                JsonNode wednesdayJsonNode = mapper.readTree(wednesday);
+                List<String> wednesdaylist = JsonUtil.Listutil(wednesdayJsonNode);
+                if (wednesdaylist != null) {
+                    method(wednesdaylist);
+                }
+                //周四
+                String thursday = courseJsonNode.get("Thursday").toString();
+                JsonNode thursdayJsonNode = mapper.readTree(thursday);
+                List<String> thursdaylist = JsonUtil.Listutil(thursdayJsonNode);
+                if (thursday != null) {
+                    method(thursdaylist);
+                }
+                //周五
+                String friday = courseJsonNode.get("Friday").toString();
+                JsonNode fridayJsonNode = mapper.readTree(friday);
+                List<String> fridaylist = JsonUtil.Listutil(fridayJsonNode);
+                if (fridaylist != null) {
+                    method(fridaylist);
+                }
+                //周六
+                String saturday = courseJsonNode.get("Saturday").toString();
+                JsonNode saturJsonNode = mapper.readTree(saturday);
+                List<String> saturdaylist = JsonUtil.Listutil(saturJsonNode);
+                if (saturdaylist != null) {
+                    method(saturdaylist);
+                }
+                //周日
+                String sunday = courseJsonNode.get("Sunday").toString();
+                JsonNode sundayJsonNode = mapper.readTree(sunday);
+                List<String> sundaylist = JsonUtil.Listutil(sundayJsonNode);
+                if (sundaylist != null) {
+                    method(sundaylist);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
