@@ -1,12 +1,17 @@
 package com.hnu.softwarecollege.infocenter.entity.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HotsPotPo {
+    @JsonProperty("id")
     private Integer hotspotId;
-
+    @JsonProperty("title")
     private String hotspotTitle;
-
+    @JsonProperty("hotnum")
     private String hotspotHotnum;
-
+    @JsonProperty("hoturl")
     private String hotspotHoturl;
 
     public Integer getHotspotId() {

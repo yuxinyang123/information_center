@@ -1,0 +1,3 @@
+先用test.py对成绩单2016.xls生成csv文件grade.csv和id.csv
+再使用Predict_applicat_local.py根据grade.csv和id.csv
+输入学号 学科编号 学科学分预测出下次的成绩数据

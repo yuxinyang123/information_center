@@ -2,12 +2,16 @@ package com.hnu.softwarecollege.infocenter.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
+import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
+import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
+import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
-import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
@@ -219,8 +223,49 @@ public class CenterServiceImpl implements CenterService {
         syllabusPoMapper.insertSelective(syllabusPo);
     }
 
+    /*
+     * @Author 王子璇
+     * @Description //TODO 执行 分页获取 微博热搜信息 20条 一组
+     * @Date 2018/12/3 15:53
+     * @Param []
+     * @return java.lang.String
+     **/
     @Override
-    public String getHotPot() {
-        return null;
+    public List<HotsPotPo> getHotPot(int pageNum,int pageSize) {
+//        if(hotsPotPoMapper.selectByPrimaryKey())
+        Page<HotsPotPo> page = PageHelper.startPage(pageNum,pageSize);
+        hotsPotPoMapper.selectAll();
+
+        page.getTotal();
+        page.size();
+
+        List<HotsPotPo> hotsPotPoList = new ArrayList<HotsPotPo>();
+        for (int i = 0;i<pageSize;i++){
+            hotsPotPoList.add(page.get(i));
+        }
+
+        return hotsPotPoList;
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 将爬取的微博热搜插入（更新）到数据库
+     * @Date 14:26 2018/12/5
+     * @Param
+     * @return
+    **/
+    @Resource
+    HotsPotPoMapper hotsPotPoMapper;
+    public void updateHotspot(List<HotsPotPo> hotsPotPos){
+
+        if(hotsPotPoMapper.selectByPrimaryKey(1) != null){
+            for(HotsPotPo po : hotsPotPos){
+                hotsPotPoMapper.updateByPrimaryKeySelective(po);
+            }
+        }else {
+            for (HotsPotPo po : hotsPotPos){
+                hotsPotPoMapper.insertSelective(po);
+            }
+        }
     }
 }
