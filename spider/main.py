@@ -10,8 +10,18 @@ import getopt
 
 
 if __name__ == "__main__":
-    user = sys.argv[1]
-    pw = sys.argv[2]
+    try:
+        user = sys.argv[1]
+    except Exception as e:
+        webclose()
+        sys.exit(0)
+    
+    try:
+        pw = sys.argv[2]
+    except Exception as e:
+        webclose()
+        sys.exit(0)
+
     login(user,pw)
     getgrade(user,pw)
     getSchedule(user)
