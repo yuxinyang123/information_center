@@ -23,7 +23,7 @@ public class GradeTest {
         //String a ="2016011372 liu1996.";
         String id = "2016011372";
         String password = "liu1996.";
-        String[] arg = new String[]{"python", "C:\\Users\\14832\\Desktop\\information_center-feature-spider\\spider\\main.py", id, password};
+        String[] arg = new String[]{"python", "E:\\information_center\\src\\main\\resources\\spider\\main.py", id, password};
         Process process = null;
         String result="";
         try {
