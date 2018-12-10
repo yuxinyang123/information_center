@@ -6,6 +6,9 @@ node_modules
 /bin
 /target
 .project
+*.cmd
+/mvnw/
+
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
