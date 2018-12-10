@@ -5,6 +5,7 @@ node_modules
 /src/test
 /bin
 /target
+.project
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
