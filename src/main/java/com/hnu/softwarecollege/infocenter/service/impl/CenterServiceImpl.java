@@ -16,11 +16,7 @@ import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -293,7 +289,6 @@ public class CenterServiceImpl implements CenterService {
      **/
     @Resource
     HotsPotPoMapper hotsPotPoMapper;
-
     public void updateHotspot(List<HotsPotPo> hotsPotPos) {
         if (hotsPotPoMapper.selectByPrimaryKey(1) != null) {
             for (HotsPotPo po : hotsPotPos) {
@@ -305,6 +300,4 @@ public class CenterServiceImpl implements CenterService {
             }
         }
     }
-
-
 }
