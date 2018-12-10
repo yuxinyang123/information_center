@@ -11,7 +11,7 @@
     <Row :gutter="20" style="margin-top: 10px;">
       <i-col :md="24" :lg="8" style="margin-bottom: 20px;">
         <Card shadow>
-          <chart-pie style="height: 300px;" :type="type" :aqi="aqi" :high="high" :date="date" :low="low" :wendu="wendu" :city="city" :forecast="forecast" :ganmao="ganmao"  text="天气"></chart-pie>
+          <chart-pie style="height: 300px;" :cityname='cityname' :type="type" :aqi="aqi" :high="high" :date="date" :low="low" :wendu="wendu" :city="city" :forecast="forecast" :ganmao="ganmao"  text="天气"></chart-pie>
         </Card>
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
@@ -21,13 +21,14 @@
       </i-col>
     </Row>
     <Row>
-        <example style="height: 310px;"/>  
+        <example style="height: 300px;"/>  
     </Row>
   </div>
 </template>
 
 <script>
 import {getWhetherData} from '@/api/data'
+import {updateWeatherInfo} from '@/api/data'
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
 import { ChartPie, ChartBar } from '_c/charts'
@@ -52,6 +53,7 @@ export default {
       high:'',
       aqi: '',
       type:'',
+      cityname:'',
       inforCardData: [
         { title: '加权平均分', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
         { title: '平均学分绩点', icon: 'md-locate', count: 232, color: '#19be6b' },
@@ -76,6 +78,10 @@ export default {
       }).catch(err => {
         console.log(err)
     })
+      updateWeatherInfo().then(res =>{
+        res=res.data
+        this
+      })
   }
 }
 </script>

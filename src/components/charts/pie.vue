@@ -1,10 +1,10 @@
 <template>
-  <Card :bordered="false"dis-hover>
+  <Card :bordered="false"dis-hover >
     <p slot="title">
       <Icon type="ios-cloud-outline"></Icon>
       天气
     </p>
-    <Row> 
+    <Row > 
         <i-col span="12"  align='center' ><img :src="img" ></i-col>
         <i-col span="12" class="wendu" align='center'>{{wendu}}°</i-col>
     </Row>
@@ -14,7 +14,7 @@
            <a   @click='modal1=true'>{{city}}</a>
            <Modal v-model="modal1"  scrollable title="城市选择" >
                <div>
-                   <weather-model :cityList="cityList"></weather-model>
+                   <weather-model :data="data"  ></weather-model>
                </div>
            </Modal>
         </i-col>
@@ -52,16 +52,15 @@ props:{
 },
   data () {
     return {
-        cityList:[],
+        data:[],
         modal1: false,
-        model8:'',
         img:String,
         
     }
   },
   methods: {
-      ok(){
-        
+       ok:function(e){
+        console.log(e.target.innerText)
       },
       aggimage:function(type){
           this.img = require("../../assets/images/"+type+".png")
@@ -81,8 +80,8 @@ img { width: 55%; height: 50%;}
 
   .wendu{
       font-size: 50px;
-      margin-top:10px;
-    }
+      margin-top:10px;}
+
     
   @import './style.less';
 </style>

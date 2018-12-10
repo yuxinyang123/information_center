@@ -1,31 +1,39 @@
 <template>
  <!--  <div ref="dom" class="charts chart-bar"></div> -->
- <Card :bordered="false"dis-hover>
+ <Card :bordered="false" dis-hover>
+       
         <p slot="title">
             <Icon type="ios-flame" />
             热点新闻
         </p>
-        <ul>
-            <li v-for="item in randomMovieList">
+        <Row > 
+             <i-col span="8"  align='left'>
+                <ol>
+                    <li v-for='n in m ' :key='n' style="height:35px"></li>
+                </ol>
+             </i-col>
+             <i-col span="8"  align='center'></i-col>
+             <i-col span="8"  align='center'></i-col>
+        </Row>
+        <!-- <ul>
+            <li  v-for="item in randomMovieList" :key="item">
                 <a :href="item.url" target="_blank">{{ item.name }}</a>
                 <span>
                     <Icon type="ios-star" v-for="n in 4" :key="n"></Icon><Icon type="ios-star" v-if="item.rate >= 9.5"></Icon><Icon type="ios-star-half" v-else></Icon>
                     {{ item.rate }}
                 </span>
             </li>
-        </ul>
+        </ul> -->
     </Card>
 </template>
 
 <script>
-// import echarts from 'echarts'
-// import tdTheme from './theme.json'
-// import { on, off } from '@/libs/tools'
-// echarts.registerTheme('tdTheme', tdTheme)
+
 export default {
   name: 'ChartBar',
   data () {
             return {
+                m:[1,2,3,4,5,6,7],
                 movieList: [
                     {
                         name: 'The Shawshank Redemption',
@@ -106,52 +114,7 @@ export default {
         mounted () {
             this.changeLimit();
         }
+
     }
-//   props: {
-//     value: Object,
-//     text: String,
-//     subtext: String
-//   },
-//   data () {
-//     return {
-//       dom: null
-//     }
-//   },
-//   methods: {
-//     resize () {
-//       this.dom.resize()
-//     }
-//   },
-//   mounted () {
-//     this.$nextTick(() => {
-//       let xAxisData = Object.keys(this.value)
-//       let seriesData = Object.values(this.value)
-//       let option = {
-//         title: {
-//           text: this.text,
-//           subtext: this.subtext,
-//           x: 'center'
-//         },
-//         xAxis: {
-//           type: 'category',
-//           data: xAxisData
-//         },
-//         yAxis: {
-//           type: 'value'
-//         },
-//         series: [{
-//           data: seriesData,
-//           type: 'bar'
-//         }]
-//       }
-//       this.dom = echarts.init(this.$refs.dom, 'tdTheme')
-//       this.dom.setOption(option)
-//       on(window, 'resize', this.resize)
-//     })
-//   },
-//   beforeDestroy () {
-//     off(window, 'resize', this.resize)
-//   }
- 
 
 </script>
