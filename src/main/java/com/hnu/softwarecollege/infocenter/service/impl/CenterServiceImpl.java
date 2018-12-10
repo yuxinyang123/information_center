@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -36,8 +37,14 @@ import java.util.List;
 @Service
 @Slf4j
 
-public class CenterServiceImpl implements CenterService{
+public class CenterServiceImpl implements CenterService {
     public static String resultjson;
+
+    private File educational = new File("spider/main.py");
+    private String spiderPath = educational.getAbsolutePath();
+
+    private File predict = new File("spider/Predict_Application_local.py");
+    private String predictPath = predict.getAbsolutePath();
 
     /*
      * @Author 刘亚双
@@ -49,28 +56,32 @@ public class CenterServiceImpl implements CenterService{
     @Override
     public String getGrade(String Id, String password) {
 
-        String[] arg = new String[]{"python", "C:\\Users\\14832\\Desktop\\information_center-feature-spider\\spider\\main.py",Id,password};
-        Process process =null;
-        String result="";
+        String[] arg = new String[]{"python",spiderPath, Id, password};
+        Process process = null;
+        String result = "";
         try {
-            process = Runtime.getRuntime().exec(arg);
-            InputStreamReader ir = new InputStreamReader(process.getInputStream(),"GBK");
+            process = Runtime.getRuntime().exec( arg);
+            InputStreamReader ir = new InputStreamReader(process.getInputStream(), "GBK");
             BufferedReader bufferedReader = new BufferedReader(ir);
             String line;
-            while((line=bufferedReader.readLine())!=null){
-               result+=line;
+            while ((line = bufferedReader.readLine()) != null) {
+                log.info("{}",line);
+                result += line;
             }
-            ir.close();
-            process.waitFor();
-        }catch(IOException e ){
-            e.printStackTrace();
-        }catch (InterruptedException e){
+            bufferedReader.close();
+//            process.waitFor();
+            process.destroyForcibly();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        resultjson=result;
-        System.out.println("resultjson:"+resultjson);
+//        catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        resultjson = result;
+        System.out.println("resultjson:" + resultjson);
         return result;
     }
+
     @Resource
     CenterDegreePoMapper centerDegreePoMapper;
     @Resource
@@ -85,29 +96,29 @@ public class CenterServiceImpl implements CenterService{
      **/
     @Override
     public List<CenterDegreePo> transform(String jsonStr) {
-        List<CenterDegreePo> l = new ArrayList<CenterDegreePo>();
+        List<CenterDegreePo> l = new ArrayList<>();
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(jsonStr);
             String grade = jsonNode.get("GRADE").toString();
             JsonNode gradeJsonNode = mapper.readTree(grade);
-            for(int i =0;i<gradeJsonNode.size();i++){
+            for (int i = 0; i < gradeJsonNode.size(); i++) {
                 String s = gradeJsonNode.get(i).toString();
-                CenterDegreePo centerDegreePo = mapper.readValue(s,CenterDegreePo.class);
-                l.add(i,centerDegreePo);
+                CenterDegreePo centerDegreePo = mapper.readValue(s, CenterDegreePo.class);
+                l.add(i, centerDegreePo);
             }
-        }catch (IOException e){
+            threadMethod();
+        } catch (IOException e) {
             e.printStackTrace();
-        }catch(NullPointerException e){
-
         }
         return l;
     }
 
-    private void method(List<String> list) {
-        for(int i =0;i<list.size();i++){
+    protected void method(List<String> list) {
+        for (int i = 0; i < list.size(); i++) {
             Long key = 2L;
             String[] s = list.get(i).split("\\|");
+
             SyllabusPo syllabusPo = new SyllabusPo(null,s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),
                     Integer.parseInt(s[1]),Integer.parseInt(s[2]),s[0],s[6],s[7],key);
             System.out.println(syllabusPo);
@@ -115,116 +126,9 @@ public class CenterServiceImpl implements CenterService{
         }
     }
 
-    /*
-     * @Author 刘亚双
-     * @Description //TODO 执行 python 脚本 进行成绩分析
-     * @Date 2018/11/30 17:12
-     * @Param []
-     * @return java.lang.String
-     **/
-    @Override
-    public String getGradeForeast(String studentId,String courseType,String testType,String gainCerdit) {
-        String[] arg = new String[]{"python","C:\\Users\\14832\\Desktop\\test1\\Predict_Application_local.py",
-                studentId,courseType,testType,gainCerdit};
-        Process process =null;
-        String result="";
-        try {
-            process = Runtime.getRuntime().exec(arg);
-            InputStreamReader ir = new InputStreamReader(process.getInputStream(),"GBK");
-            BufferedReader bufferedReader = new BufferedReader(ir);
-            String line;
-            while((line=bufferedReader.readLine())!=null){
-                result+=line;
-            }
-            ir.close();
-            int re = process.waitFor();
-        }catch(IOException e){
-            log.error("参数输入错误！");
-            e.printStackTrace();
-        }catch (InterruptedException e){
-            log.error("中断");
-        }
-        return result;
-    }
-    /*
-     * @Author 刘亚双
-     * @Description //TODO 从数据库中查询课表信息
-     * @Date 2018/12/3 9:18
-     * @Param [jsonstr]
-     * @return java.lang.String
-     **/
-    @Override
-    public List<SyllabusPo> getCourseTable(Long Userkey) {
-        //Long Userkey = ThreadContext.getUserContext().getUserId();
-        List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(Userkey);
-        return list;
-    }
-    /*
-     * @Author 刘亚双
-     * @Description //TODO 自定义课表,插入到数据库中
-     * @Date 2018/12/5 9:51
-     * @Param [curriculumForm]
-     * @return void
-     **/
-    @Override
-    public void putCurriculum(CurriculumForm curriculumForm) {
-        UserPo userPo = ThreadContext.getUserContext();
-        Long userkey  = userPo.getUserId();
-        SyllabusPo syllabusPo = new SyllabusPo(null,curriculumForm.getClassName(),
-                curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),
-                curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),
-                curriculumForm.getTeacher(),userkey);
-        syllabusPoMapper.insertSelective(syllabusPo);
-    }
-
-    /*
-     * @Author 王子璇
-     * @Description //TODO 执行 分页获取 微博热搜信息 20条 一组
-     * @Date 2018/12/3 15:53
-     * @Param []
-     * @return java.lang.String
-     **/
-    @Override
-    public List<HotsPotPo> getHotPot(int pageNum,int pageSize) {
-//        if(hotsPotPoMapper.selectByPrimaryKey())
-        Page<HotsPotPo> page = PageHelper.startPage(pageNum,pageSize);
-        hotsPotPoMapper.selectAll();
-
-        page.getTotal();
-        page.size();
-
-        List<HotsPotPo> hotsPotPoList = new ArrayList<HotsPotPo>();
-        for (int i = 0;i<pageSize;i++){
-            hotsPotPoList.add(page.get(i));
-        }
-
-        return hotsPotPoList;
-    }
-
-    /*
-     * @Autor wang
-     * @Description //TODO 将爬取的微博热搜插入（更新）到数据库
-     * @Date 14:26 2018/12/5
-     * @Param
-     * @return
-    **/
-    @Resource
-    HotsPotPoMapper hotsPotPoMapper;
-    public void updateHotspot(List<HotsPotPo> hotsPotPos){
-        if(hotsPotPoMapper.selectByPrimaryKey(1) != null){
-            for(HotsPotPo po : hotsPotPos){
-                hotsPotPoMapper.updateByPrimaryKeySelective(po);
-            }
-        }else {
-            for (HotsPotPo po : hotsPotPos){
-                hotsPotPoMapper.insertSelective(po);
-            }
-        }
-    }
 
     @Async
-    protected void mythread() throws IOException{
-        //CenterDegreePoMapper centerDegreePoMapper = applicationContext.getBean(CenterDegreePoMapper.class);
+    protected void threadMethod() throws IOException {
         System.out.println("++" + resultjson);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(resultjson);
@@ -233,9 +137,11 @@ public class CenterServiceImpl implements CenterService{
         //UserPo userPo = ThreadContext.getUserContext();
         for (int i = 0; i < gradeJsonNode.size(); i++) {
             String s = gradeJsonNode.get(i).toString();
-            System.out.println("S:" + s);
+//            System.out.println("S:" + s);
+
             CenterDegreePo centerDegreePo = mapper.readValue(s, CenterDegreePo.class);
-            System.out.println(centerDegreePo);
+            centerDegreePo.setDegreeUserkey(ThreadContext.getUserContext().getUserId());
+//            System.out.println(centerDegreePo);
             centerDegreePoMapper.insertSelective(centerDegreePo);
             //centerDegreePo.setDegreeUserkey(userPo.getUserId());
         }
@@ -292,4 +198,113 @@ public class CenterServiceImpl implements CenterService{
             method(sundaylist);
         }
     }
+
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 执行 python 脚本 进行成绩分析
+     * @Date 2018/11/30 17:12
+     * @Param []
+     * @return java.lang.String
+     **/
+    @Override
+    public String getGradeForeast(String studentId, String courseType, String testType, String gainCerdit) {
+        String[] arg = new String[]{ "python",predictPath, studentId, courseType, testType, gainCerdit};
+        Process process = null;
+        String result = "";
+        try {
+            process = Runtime.getRuntime().exec(arg);
+            InputStreamReader ir = new InputStreamReader(process.getInputStream(), "GBK");
+            BufferedReader bufferedReader = new BufferedReader(ir);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line;
+            }
+            bufferedReader.close();
+            process.destroyForcibly();
+        } catch (IOException e) {
+            log.error("参数输入错误！");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 从数据库中查询课表信息
+     * @Date 2018/12/3 9:18
+     * @Param [jsonstr]
+     * @return java.lang.String
+     **/
+    @Override
+    public List<SyllabusPo> getCourseTable(Long Userkey) {
+        //Long Userkey = ThreadContext.getUserContext().getUserId();
+        List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(Userkey);
+        return list;
+    }
+
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 自定义课表,插入到数据库中
+     * @Date 2018/12/5 9:51
+     * @Param [curriculumForm]
+     * @return void
+     **/
+    @Override
+    public void putCurriculum(CurriculumForm curriculumForm) {
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userkey  = userPo.getUserId();
+        SyllabusPo syllabusPo = new SyllabusPo(null,curriculumForm.getClassName(),
+                curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),
+                curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),
+                curriculumForm.getTeacher(),userkey);
+
+        syllabusPoMapper.insertSelective(syllabusPo);
+    }
+
+    /*
+     * @Author 王子璇
+     * @Description //TODO 执行 分页获取 微博热搜信息 20条 一组
+     * @Date 2018/12/3 15:53
+     * @Param []
+     * @return java.lang.String
+     **/
+    @Override
+    public List<HotsPotPo> getHotPot(int pageNum, int pageSize) {
+//        if(hotsPotPoMapper.selectByPrimaryKey())
+        Page<HotsPotPo> page = PageHelper.startPage(pageNum, pageSize);
+        hotsPotPoMapper.selectAll();
+
+        page.getTotal();
+        page.size();
+
+        List<HotsPotPo> hotsPotPoList = new ArrayList<HotsPotPo>();
+        for (int i = 0; i < pageSize; i++) {
+            hotsPotPoList.add(page.get(i));
+        }
+
+        return hotsPotPoList;
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 将爬取的微博热搜插入（更新）到数据库
+     * @Date 14:26 2018/12/5
+     * @Param
+     * @return
+     **/
+    @Resource
+    HotsPotPoMapper hotsPotPoMapper;
+
+    public void updateHotspot(List<HotsPotPo> hotsPotPos) {
+        if (hotsPotPoMapper.selectByPrimaryKey(1) != null) {
+            for (HotsPotPo po : hotsPotPos) {
+                hotsPotPoMapper.updateByPrimaryKeySelective(po);
+            }
+        } else {
+            for (HotsPotPo po : hotsPotPos) {
+                hotsPotPoMapper.insertSelective(po);
+            }
+        }
+    }
+
 }

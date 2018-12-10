@@ -101,7 +101,8 @@ public class CenterController {
      **/
     @PostMapping("/grade")
     public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
-        String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
+        String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),
+                gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
         return BaseResponseVo.success(result);
     }
 
