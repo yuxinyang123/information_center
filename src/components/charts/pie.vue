@@ -13,8 +13,8 @@
         <i-col span="12"  align='center' ><Icon type="ios-flag"></Icon>
            <a   @click='modal1=true'>{{city}}</a>
            <Modal v-model="modal1"  scrollable title="城市选择" >
-               <div>
-                   <weather-model :data="data"  ></weather-model>
+               <div>{{cityname}}
+                   <weather-model :data="data"  @sendChildData='getChildData'></weather-model>
                </div>
            </Modal>
         </i-col>
@@ -53,14 +53,16 @@ props:{
   data () {
     return {
         data:[],
+        gatdata:'',
         modal1: false,
         img:String,
+        cityname:''
         
     }
   },
   methods: {
-       ok:function(e){
-        console.log(e.target.innerText)
+      getChildData(data){
+        this.cityname = data
       },
       aggimage:function(type){
           this.img = require("../../assets/images/"+type+".png")

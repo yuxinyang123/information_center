@@ -41,18 +41,19 @@
       </i-col>
     </Row>
     <Row>
-      <example style="height: 300px;"/>
+        <student-course :classname='classname' :n='n' style="height: 300px;"/>  
     </Row>
   </div>
 </template>
 
 <script>
-import { getWhetherData } from "@/api/data";
-import { updateWeatherInfo } from "@/api/data";
-import InforCard from "_c/info-card";
-import CountTo from "_c/count-to";
-import { ChartPie, ChartBar } from "_c/charts";
-import Example from "./example.vue";
+import {getWhetherData} from '@/api/data'
+import {updateWeatherInfo} from '@/api/data'
+import InforCard from '_c/info-card'
+import CountTo from '_c/count-to'
+import {getStudentCourse} from '@/api/data'
+import { ChartPie, ChartBar } from '_c/charts'
+import StudentCourse from './StudentCourse.vue'
 export default {
   name: "home",
   components: {
@@ -60,20 +61,22 @@ export default {
     CountTo,
     ChartPie,
     ChartBar,
-    Example
+    StudentCourse
   },
   data() {
     return {
-      ganmao: "",
-      city: "",
-      forecast: [],
-      wendu: "",
-      date: "",
-      low: "",
-      high: "",
-      aqi: "",
-      type: "",
-      cityname: "",
+      ganmao:'',
+      city:'',
+      forecast:[],
+      wendu:'',
+      date:'',
+      low:'',
+      high:'',
+      aqi: '',
+      type:'',
+      cityname:'',
+      classname:{},
+      n:13,
       inforCardData: [
         {
           title: "加权平均分",
@@ -98,27 +101,35 @@ export default {
     };
   },
 
-  mounted() {
-    getWhetherData()
-      .then(res => {
-        console.log(res.data.data);
-        res = res.data.data;
-        this.city = res.cityname;
-        this.ganmao = res.notice;
-        this.wendu = res.wendu;
-        this.date = res.nowdate;
-        this.low = res.low;
-        this.high = res.high;
-        this.aqi = String(res.AQI);
-        this.type = res.type;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    updateWeatherInfo().then(res => {
-      res = res.data;
-      this;
-    });
+  mounted(){
+    getWhetherData().then(res => {
+      console.log(res.data.data)
+      
+      res=res.data.data
+      this.city=res.cityname
+      this.ganmao=res.notice
+      this.wendu=res.wendu
+      this.date=res.nowdate
+      this.low=res.low
+      this.high=res.high
+      this.aqi=String(res.AQI)
+      this.type=res.type
+      }).catch(err => {
+        console.log(err)
+    })
+      // updateWeatherInfo().then(res =>{
+      //   res=res.data
+      //   this
+      // })
+    getStudentCourse('1').then(res=>{
+     
+      res=res.data.data
+      
+      this.classname=res
+      console.log(res)
+    }).catch(err =>{
+      console.log(err)
+    })
   }
 };
 </script>

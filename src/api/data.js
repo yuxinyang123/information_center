@@ -44,12 +44,23 @@ export const getWhetherData = () => {
     method: 'get'
   })
 }
-export const updateWeatherInfo = (city) => {
+// export const updateWeatherInfo = (city) => {
+//   return axios.request({
+//     url: 'api/center/weather',
+//     data: {
+//       cityname: city
+//     },
+//     method: 'put'
+//   })
+// }
+export const getStudentCourse = (userKey) => {
+  let params = {
+    userkey: userKey
+  }
+  // console.log(userKey)
   return axios.request({
-    url: 'api/center/weather',
-    data: {
-      cityname: city
-    },
-    method: 'put'
+    url: '/api/center/curriculum',
+    params,
+    method: 'get'
   })
 }
