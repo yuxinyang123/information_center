@@ -16,4 +16,6 @@ public interface UserInformationPoMapper {
     int updateByPrimaryKeySelective(UserInformationPo record);
 
     int updateByPrimaryKey(UserInformationPo record);
+
+    UserInformationPo selectByUserKey(Long userkey);
 }

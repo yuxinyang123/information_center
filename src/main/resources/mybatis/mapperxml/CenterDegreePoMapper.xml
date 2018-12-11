@@ -26,8 +26,9 @@
   </select>
 
   <!-- 自定义根据userkey查询所有的成绩信息-->
-  <select id="findAllByUserKey" parameterType="java.lang.Long" resultType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
-    select *
+  <select id="findAllByUserKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
     from tbl_center_degree
     where DEGREE_USERKEY = #{userkey,jdbcType=BIGINT}
   </select>
