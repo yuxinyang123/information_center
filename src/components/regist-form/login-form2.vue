@@ -15,62 +15,58 @@
       </Input>
     </FormItem>
     <FormItem>
-      <Button @click="handleSubmit" type="primary" long>登录</Button>
-        <a href="http://www.baidu.com">
-          <Button type="primary" long>注册</Button>
-        </a>
-       <a href="http://www.baidu.com">注册页面</a>
+      <a href="http://www.baidu.com">
+        <Button type="primary" long>注册</Button>
+      </a>
+      <a href="http://www.baidu.com">注册页面</a>
     </FormItem>
   </Form>
 </template>
+
 <script>
 export default {
-  name: 'LoginFom2',
+  name: "RegistForm",
   props: {
     userNameRules: {
       type: Array,
       default: () => {
-        return [
-          { required: true, message: '账号不能为空', trigger: 'blur' }
-        ]
+        return [{ required: true, message: "账号不能为空", trigger: "blur" }];
       }
     },
     passwordRules: {
       type: Array,
       default: () => {
-        return [
-          { required: true, message: '密码不能为空', trigger: 'blur' }
-        ]
+        return [{ required: true, message: "密码不能为空", trigger: "blur" }];
       }
     }
   },
-  data () {
+  data() {
     return {
       form: {
-        userName: 'super_admin',
-        password: ''
+        userName: "super_admin",
+        password: ""
       }
-    }
+    };
   },
   computed: {
-    rules () {
+    rules() {
       return {
         userName: this.userNameRules,
         password: this.passwordRules
-      }
+      };
     }
   },
   methods: {
-    handleSubmit () {
-      this.$refs.loginForm.validate((valid) => {
+    handleSubmit() {
+      this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.$emit('on-success-valid', {
+          this.$emit("on-success-valid", {
             userName: this.form.userName,
             password: this.form.password
-          })
+          });
         }
-      })
+      });
     }
   }
-}
+};
 </script>

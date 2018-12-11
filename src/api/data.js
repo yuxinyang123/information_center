@@ -37,7 +37,7 @@ export const uploadImg = formData => {
 }
 export const getWhetherData = () => {
   return axios.request({
-    url: '/api/center/weather',
+    url: 'api/center/weather',
     // params: {
     //   city: '石家庄市'
     // },

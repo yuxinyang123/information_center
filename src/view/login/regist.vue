@@ -7,7 +7,7 @@
     <div class="login-con">
       <Card icon="log-in" title="注册" :bordered="false">
         <div class="form-con">
-          <login-form @on-success-valid="handleSubmit"></login-form>
+          <regist-form @on-success-valid="handleSubmit"></regist-form>
         </div>
       </Card>
     </div>
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import LoginForm2 from '_c/login-form/login-form2'
+import RegistForm from '_c/regist-form'
 import { mapActions } from 'vuex'
 export default {
    components: {
-    LoginForm2
+    RegistForm
   },
 }
 </script>

@@ -28,13 +28,13 @@ export default [
     component: () => import('@/view/login/login.vue')
   },
   {
-    path: '/login2',
-    name: 'login2',
+    path: '/regist',
+    name: 'regist',
     meta: {
-      title: 'Login - 注册',
+      title: 'Regist - 注册',
       hideInMenu: true
     },
-    component: () => import('@/view/login/login2.vue')
+    component: () => import('@/view/login/regist.vue')
   },
   {
     path: '/',
