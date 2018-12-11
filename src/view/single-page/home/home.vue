@@ -21,7 +21,7 @@
       </i-col>
     </Row>
     <Row>
-        <example style="height: 300px;"/>  
+        <student-course :classname='classname' :n='n' style="height: 300px;"/>  
     </Row>
   </div>
 </template>
@@ -31,8 +31,9 @@ import {getWhetherData} from '@/api/data'
 import {updateWeatherInfo} from '@/api/data'
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
+import {getStudentCourse} from '@/api/data'
 import { ChartPie, ChartBar } from '_c/charts'
-import Example from './example.vue'
+import StudentCourse from './StudentCourse.vue'
 export default {
   name: 'home',
   components: {
@@ -40,7 +41,7 @@ export default {
     CountTo,
     ChartPie,
     ChartBar,
-    Example
+    StudentCourse
   },
   data () {
     return {
@@ -54,6 +55,8 @@ export default {
       aqi: '',
       type:'',
       cityname:'',
+      classname:{},
+      n:13,
       inforCardData: [
         { title: '加权平均分', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
         { title: '平均学分绩点', icon: 'md-locate', count: 232, color: '#19be6b' },
@@ -66,6 +69,7 @@ export default {
   mounted(){
     getWhetherData().then(res => {
       console.log(res.data.data)
+      
       res=res.data.data
       this.city=res.cityname
       this.ganmao=res.notice
@@ -78,10 +82,19 @@ export default {
       }).catch(err => {
         console.log(err)
     })
-      updateWeatherInfo().then(res =>{
-        res=res.data
-        this
-      })
+      // updateWeatherInfo().then(res =>{
+      //   res=res.data
+      //   this
+      // })
+    getStudentCourse('1').then(res=>{
+     
+      res=res.data.data
+      
+      this.classname=res
+      console.log(res)
+    }).catch(err =>{
+      console.log(err)
+    })
   }
 }
 </script>

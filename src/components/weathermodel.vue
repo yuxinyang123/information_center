@@ -1,5 +1,7 @@
 <template>
-  <Cascader v-model="weathercity" :data="data" change-on-select   @click='ok(weathercity.lenth-1)'></Cascader>
+                    <Cascader v-model="weathercity" :data='data' change-on-select   @click='sendChildData'></Cascader>
+  
+</Modal>
 </template>
 
 <script>
@@ -10,6 +12,7 @@
     },
     data() {
       return {
+        model1:false,
         weathercity:[],
         data: [{
             "value": 1,
@@ -12969,11 +12972,14 @@
             ]
           }
         ],
-        weathercity: []
+
       }
     },
     methods: {
-     
+      sendChildData(){
+          this.$emit('sendChildData',this.data.weathercity)
+       }
+    
     },
 
   }
