@@ -12,6 +12,7 @@ import installPlugin from '@/plugin'
 import './index.less'
 import '@/assets/icons/iconfont.css'
 import TreeTable from 'tree-table-vue'
+import jquery from 'jquery'
 // 实际打包时应该不引入mock
 /* eslint-disable */
 if (process.env.NODE_ENV !== 'production') require('@/mock')
@@ -43,5 +44,7 @@ new Vue({
   router,
   i18n,
   store,
+  jquery,
   render: h => h(App)
 })
+window.$ = jquery

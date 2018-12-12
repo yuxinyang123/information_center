@@ -34,5 +34,6 @@ export default {
     }
   },
 
-  localTestUrl: "http://127.0.0.1:8088/"
+  localTestUrl: 'http://10.7.84.194:8088/',
+  auth: false
 }

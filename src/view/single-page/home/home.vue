@@ -28,7 +28,7 @@
       </i-col>
     </Row>
     <Row>
-        <student-course :course='course' :day1='day1' :day2='day2' :day3='day3' :day4='day4':day5='day5' style="height: 300px;"/>  
+        <student-course :course='course' style="height: 300px;"/>  
     </Row>
   </div>
 </template>
@@ -63,11 +63,11 @@ export default {
       type:'',
       cityname:'',
       course:{},
-      day1:{},
-      day2:{},
-      day3:{},
-      day4:{},
-      day5:{},
+      // day1:{},
+      // day2:{},
+      // day3:{},
+      // day4:{},
+      // day5:{},
       inforCardData: [
         {
           title: "加权平均分",
@@ -117,11 +117,11 @@ export default {
       res=res.data.data
       
       this.course=res
-      this.day1=res.星期一[0]
-      this.day2=res.星期二[0]
-      this.day3=res.星期三[0]
-      this.day4=res.星期四[0]
-      this.day5=res.星期五[0]
+      // this.day1=res.星期一[0]
+      // this.day2=res.星期二[0]
+      // this.day3=res.星期三[0]
+      // this.day4=res.星期四[0]
+      // this.day5=res.星期五[0]
       // console.log(this.day1)
       // console.log(res)
     }).catch(err =>{
