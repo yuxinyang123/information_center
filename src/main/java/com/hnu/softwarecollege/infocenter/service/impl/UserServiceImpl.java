@@ -5,6 +5,7 @@ import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
 import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
@@ -93,5 +94,18 @@ public class  UserServiceImpl implements UserService {
 //        System.out.println(userAndUserinfoPo);
 //        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
         return userAndUserinfoPo;
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 更新数据库中的用户信息
+     * @Date 16:18 2018/12/12
+     * @Param
+     * @return
+    **/
+    public int updateUserInfo(UserInfoForm userInfoForm){
+
+        int i = userInformationPoMapper.updateByuserKeySelective(userInfoForm);
+        return i;
     }
 }

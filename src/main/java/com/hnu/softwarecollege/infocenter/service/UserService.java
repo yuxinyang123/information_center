@@ -3,6 +3,7 @@ package com.hnu.softwarecollege.infocenter.service;
 import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
 
 public interface UserService {
 
@@ -11,4 +12,6 @@ public interface UserService {
     public boolean verifyUser(LoginForm loginForm);
 
     public UserAndUserinfoPo findUserAndUserinfo();
+
+    public int updateUserInfo(UserInfoForm userInfoForm);
 }

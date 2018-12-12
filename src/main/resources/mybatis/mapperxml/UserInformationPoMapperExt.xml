@@ -31,4 +31,37 @@
     left join `tbl_user` u on i.USER_KEY = u.USER_ID
     where USER_KEY = #{userkey,jdbcType=BIGINT}
 </select>
+    <update id="updateByuserKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm">
+        update tbl_user_information
+        <set>
+            <if test="infNum != null">
+                INF_NUM = #{infNum,jdbcType=INTEGER},
+            </if>
+            <if test="infPass != null">
+                INF_PASS = #{infPass,jdbcType=VARCHAR},
+            </if>
+            <if test="infSignature != null">
+                INF_SIGNATURE = #{infSignature,jdbcType=VARCHAR},
+            </if>
+            <if test="infAcademy != null">
+                INF_ACADEMY = #{infAcademy,jdbcType=VARCHAR},
+            </if>
+            <if test="infMajor != null">
+                INF_MAJOR = #{infMajor,jdbcType=VARCHAR},
+            </if>
+            <if test="infClass != null">
+                INF_CLASS = #{infClass,jdbcType=VARCHAR},
+            </if>
+            <if test="infSex != null">
+                INF_SEX = #{infSex,jdbcType=VARCHAR},
+            </if>
+            <if test="infLocaltion != null">
+                INF_LOCALTION = #{infLocaltion,jdbcType=VARCHAR},
+            </if>
+            <if test="infAge != null">
+                INF_AGE = #{infAge,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where USER_KEY = #{userkey,jdbcType=BIGINT}
+    </update>
 </mapper>
