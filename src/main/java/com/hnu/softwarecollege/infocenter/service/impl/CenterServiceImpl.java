@@ -248,7 +248,6 @@ public class CenterServiceImpl implements CenterService {
                 curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),
                 curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),
                 curriculumForm.getTeacher(),userkey);
-
         syllabusPoMapper.insertSelective(syllabusPo);
     }
 
