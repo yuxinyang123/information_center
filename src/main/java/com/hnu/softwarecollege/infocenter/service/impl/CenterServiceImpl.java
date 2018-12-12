@@ -10,6 +10,7 @@ import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.FourTag;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
@@ -25,7 +26,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.add;
+import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.divide;
+import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.mul;
 
 /**
  * @ClassName CenterServiceImpl
@@ -285,7 +292,7 @@ public class CenterServiceImpl implements CenterService {
      * @Description //TODO 将爬取的微博热搜插入（更新）到数据库
      * @Date 14:26 2018/12/5
      * @Param
-     * @return
+     * @return void
      **/
     @Resource
     HotsPotPoMapper hotsPotPoMapper;
@@ -300,4 +307,113 @@ public class CenterServiceImpl implements CenterService {
             }
         }
     }
+    
+    /*
+     * @Autor wang
+     * @Description //TODO 获取用户成绩绩点,学分信息，并求平均数
+     * @Date 14:47 2018/12/11
+     * @Param 
+     * @return 
+    **/
+
+    public FourTag selectForFouttag(){
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userKey = userPo.getUserId();
+//        Long userKey = 1l;
+        List<CenterDegreePo> centerDegreePos = new ArrayList<CenterDegreePo>();
+
+        //成绩的和
+        Double grade = 0d;
+        //非通识选修的学分和
+        Double credit = 0d;
+        //绩点和
+        Double performancepoint = 0d;
+        //已通过的通识选修的学分和
+        Double choosecredit = 0d;
+        //已获得的非通识选修的学分和
+        Double havecredit = 0d;
+
+        Double zero = 0d;
+
+        centerDegreePos = centerDegreePoMapper.findAllByUserKey(userKey);
+        Map<String,Double> grademap = new HashMap<String, Double>();
+        Map<String,Double> pointmap = new HashMap<String, Double>();
+        if(centerDegreePos != null){
+            for(CenterDegreePo po :centerDegreePos){
+                //绩点求和
+//                performancepoint = add(performancepoint,po.getDegreePerformancepoint());
+
+                //学分求和
+                if(po.getDegreeTestnature().equals("正常考试")){
+                    if(po.getDegreeClassnature().equals("通识选修") && po.getDegreePerformancepoint() != zero){
+                        choosecredit = add(choosecredit,po.getDegreeCredit());
+                    }else {
+                        credit = add(credit,po.getDegreeCredit());
+                    }
+                    if (po.getDegreePerformancepoint() != zero){
+                        havecredit = add(havecredit,po.getDegreeCredit());
+                    }
+                }
+
+                //判断成绩
+                if(po.getDegreeTestnature().equals("正常考试")){
+                    grademap.put(po.getDegreeClassname(),po.getDegreeGrade());
+                    pointmap.put(po.getDegreeClassname(),po.getDegreePerformancepoint());
+                }else {
+                    List<CenterDegreePo> centerDegreePos1 = centerDegreePoMapper.selectByClassname(po.getDegreeClassname());
+                    Double g = 0d;Double p = 0d;
+                    for (CenterDegreePo po1 : centerDegreePos1){
+                        if (g < po1.getDegreeGrade()){
+                            g = po1.getDegreeGrade();
+                            p = po1.getDegreePerformancepoint();
+                        }
+                    }
+                    grademap.put(po.getDegreeClassname(),g);
+                    pointmap.put(po.getDegreeClassname(),p);
+                }
+            }
+        }else {
+            return null;
+        }
+        Double gi = 0d;
+        for (Double d : grademap.values()){
+            grade = add(grade,d);
+            gi = add(gi,1d);
+        }
+        for (Double d : pointmap.values()){
+            performancepoint = add(performancepoint,d);
+        }
+
+        Double sumcredit = add(credit,choosecredit);
+
+
+        // 加权平均分
+        Double avggrade = divide(grade,gi,2);
+        avggrade = mul(avggrade,havecredit);
+        avggrade = divide(avggrade,sumcredit);
+
+        //已获得学分
+//      havecredit
+
+        //绩点
+        performancepoint = divide(performancepoint,gi);
+
+        //通识选修学分
+//      choosecredit
+
+//        List<Double> returnList = new ArrayList<Double>();
+//        returnList.add(0,avggrade);
+//        returnList.add(1,havecredit);
+//        returnList.add(2,performancepoint);
+//        returnList.add(3,choosecredit);
+
+        FourTag fourTag = new FourTag();
+        fourTag.setAvggrade(avggrade);
+        fourTag.setHavacredit(havecredit);
+        fourTag.setPerformancepoint(performancepoint);
+        fourTag.setChoosecredit(choosecredit);
+
+        return fourTag;
+    }
+
 }

@@ -20,4 +20,8 @@ public interface CenterDegreePoMapper {
     int updateByPrimaryKey(CenterDegreePo record);
 
     List<CenterDegreePo> findAllByUserKey(Long userkey);
+
+    List<CenterDegreePo> findAllofUserKey(Long userkey);
+
+    List<CenterDegreePo> selectByClassname(String classname);
 }

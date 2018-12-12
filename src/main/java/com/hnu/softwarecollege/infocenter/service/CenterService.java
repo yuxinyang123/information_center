@@ -5,6 +5,7 @@ import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.FourTag;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface CenterService {
     public void updateHotspot(List<HotsPotPo> hotsPotPos);
     public List<SyllabusPo> getCourseTable(Long userkey);
     public void putCurriculum(CurriculumForm curriculumForm);
+    public FourTag selectForFouttag();
 }
