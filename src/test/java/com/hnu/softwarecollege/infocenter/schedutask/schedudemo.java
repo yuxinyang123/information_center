@@ -2,7 +2,9 @@ package com.hnu.softwarecollege.infocenter.schedutask;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
+import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.service.impl.CenterServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -72,5 +74,13 @@ public class schedudemo {
         centerService.updateHotspot(hotsPotPoList);
 
         return 1;
+    }
+    @Resource
+    CenterDegreePoMapper centerDegreePoMapper;
+    @Test
+    public void selectDB(){
+        Long userkey = 1l;
+        List<CenterDegreePo> poList = centerDegreePoMapper.findAllByUserKey(userkey);
+        System.out.println(poList);
     }
 }

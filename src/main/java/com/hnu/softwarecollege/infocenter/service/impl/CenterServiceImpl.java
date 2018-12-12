@@ -199,6 +199,7 @@ public class CenterServiceImpl implements CenterService {
     @Override
     public String getGradeForeast(String studentId, String courseType, String testType, String gainCerdit) {
         String[] arg = new String[]{ "python",predictPath, studentId, courseType, testType, gainCerdit};
+        System.out.println("arg:"+arg);
         Process process = null;
         String result = "";
         try {

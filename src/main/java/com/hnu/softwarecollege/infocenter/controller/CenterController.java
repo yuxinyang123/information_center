@@ -117,6 +117,7 @@ public class CenterController {
     public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
         String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),
                 gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
+        System.out.println(result);
         return BaseResponseVo.success(result);
     }
 
