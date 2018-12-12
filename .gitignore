@@ -8,6 +8,8 @@ node_modules
 .project
 *.cmd
 /mvnw/
+/.mvn/
+/logs/
 
 
 /tests/e2e/videos/
