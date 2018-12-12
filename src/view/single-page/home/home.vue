@@ -18,20 +18,7 @@
     <Row :gutter="20" style="margin-top: 10px;">
       <i-col :md="24" :lg="8" style="margin-bottom: 20px;">
         <Card shadow>
-          <chart-pie
-            style="height: 300px;"
-            :cityname="cityname"
-            :type="type"
-            :aqi="aqi"
-            :high="high"
-            :date="date"
-            :low="low"
-            :wendu="wendu"
-            :city="city"
-            :forecast="forecast"
-            :ganmao="ganmao"
-            text="天气"
-          ></chart-pie>
+          <chart-pie style="height: 300px;" :cityname='cityname'  :type="type" :aqi="aqi" :high="high" :date="date" :low="low" :wendu="wendu" :city="city" :forecast="forecast" :ganmao="ganmao"  text="天气"></chart-pie>
         </Card>
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
@@ -41,7 +28,7 @@
       </i-col>
     </Row>
     <Row>
-        <student-course :classname='classname' :n='n' style="height: 300px;"/>  
+        <student-course :course='course' style="height: 300px;"/>  
     </Row>
   </div>
 </template>
@@ -75,8 +62,12 @@ export default {
       aqi: '',
       type:'',
       cityname:'',
-      classname:{},
-      n:13,
+      course:{},
+      // day1:{},
+      // day2:{},
+      // day3:{},
+      // day4:{},
+      // day5:{},
       inforCardData: [
         {
           title: "加权平均分",
@@ -103,7 +94,7 @@ export default {
 
   mounted(){
     getWhetherData().then(res => {
-      console.log(res.data.data)
+     
       
       res=res.data.data
       this.city=res.cityname
@@ -125,8 +116,14 @@ export default {
      
       res=res.data.data
       
-      this.classname=res
-      console.log(res)
+      this.course=res
+      // this.day1=res.星期一[0]
+      // this.day2=res.星期二[0]
+      // this.day3=res.星期三[0]
+      // this.day4=res.星期四[0]
+      // this.day5=res.星期五[0]
+      // console.log(this.day1)
+      // console.log(res)
     }).catch(err =>{
       console.log(err)
     })

@@ -1,13 +1,13 @@
 <template>
   <div class="user-avator-dropdown">
     <Dropdown @on-click="handleClick">
-      <Badge :dot="!!messageUnreadCount">
+      <!-- <Badge :dot="!!messageUnreadCount">
         <Avatar :src="userAvator"/>
-      </Badge>
+      </Badge> -->
       <Icon :size="18" type="md-arrow-dropdown"></Icon>
       <DropdownMenu slot="list">
         <DropdownItem name="message">
-          消息中心<Badge style="margin-left: 10px" :count="messageUnreadCount"></Badge>
+          <!-- 消息中心<Badge style="margin-left: 10px" :count="messageUnreadCount"></Badge> -->
         </DropdownItem>
         <DropdownItem name="logout">退出登录</DropdownItem>
       </DropdownMenu>
@@ -25,10 +25,10 @@ export default {
       type: String,
       default: ''
     },
-    messageUnreadCount: {
-      type: Number,
-      default: 0
-    }
+    // messageUnreadCount: {
+    //   type: Number,
+    //   default: 0
+    // }
   },
   methods: {
     ...mapActions([
