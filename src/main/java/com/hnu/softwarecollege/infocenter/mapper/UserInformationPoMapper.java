@@ -1,5 +1,6 @@
 package com.hnu.softwarecollege.infocenter.mapper;
 
+import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserInformationPo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,4 +17,6 @@ public interface UserInformationPoMapper {
     int updateByPrimaryKeySelective(UserInformationPo record);
 
     int updateByPrimaryKey(UserInformationPo record);
+
+    UserAndUserinfoPo infoselectByUserkey(Long userkey);
 }

@@ -1,5 +1,6 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
@@ -54,7 +55,7 @@ public class UserController {
     }
 
     /**
-     * @Author yuxinyang
+     * @Author wangzixuan
      * @Description //TODO 查找用户信息
      * @Date 15:00 2018/11/21
      * @Param []
@@ -62,7 +63,9 @@ public class UserController {
      **/
     @GetMapping("/info")
     public BaseResponseVo getUserInfo(){
-        return null;
+        UserAndUserinfoPo userAndUserinfoPo;
+        userAndUserinfoPo = userService.findUserAndUserinfo();
+        return BaseResponseVo.success(userAndUserinfoPo);
     }
 
     /**
