@@ -1,6 +1,7 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
+import com.hnu.softwarecollege.infocenter.entity.vo.ProvingForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
 import com.hnu.softwarecollege.infocenter.service.UserService;
@@ -63,6 +64,41 @@ public class UserController {
     @GetMapping("/info")
     public BaseResponseVo getUserInfo(){
         return null;
+    }
+
+
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 修改密码前，验证密码
+     * @Date 2018/12/12 15:35
+     * @Param [pass, email]
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @PostMapping("/pass")
+    public BaseResponseVo provingPassword(@RequestBody ProvingForm provingForm){
+        boolean flag = userService.provingPass(provingForm.getPass(),provingForm.getEmail());
+        if(flag == true){
+            return BaseResponseVo.success("身份验证成功");
+        }else{
+            return BaseResponseVo.error("验证身份错误");
+        }
+    }
+
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 验证了身份后修改密码
+     * @Date 2018/12/12 15:45
+     * @Param [newpass]
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @PutMapping("/pass")
+    public BaseResponseVo changePassword(@PathVariable("newpass") String newpass){
+        boolean bool = userService.changePassword(newpass);
+        if(bool == true){
+            return BaseResponseVo.success("修改成功");
+        }else{
+            return BaseResponseVo.error("修改失败");
+        }
     }
 
     /**

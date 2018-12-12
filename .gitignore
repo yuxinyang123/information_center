@@ -6,7 +6,6 @@ spider/geckodriver.log
 src/main/resources/spider/geckodriver.log
 src/main/resources/spider/__pycache__/
 !.mvn/wrapper/maven-wrapper.jar
-
 ### STS ###
 .apt_generated
 .classpath

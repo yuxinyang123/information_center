@@ -1,6 +1,5 @@
 package com.hnu.softwarecollege.infocenter.mapper;
 
-import com.hnu.softwarecollege.infocenter.entity.po.RolePo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -38,4 +37,12 @@ public interface UserPoMapper {
     * @Date: 2018/11/8 11:16
     **/
     UserPo selectByUserSelective(UserPo record);
+    /**
+     * @Author 刘亚双
+     * @Description //通过userkey修改用户密码
+     * @Date 2018/12/12 16:23
+     * @Param [newpass]
+     * @return int
+     **/
+    int updatePasswordByPrimaryKeySelective(Long userkey,String newpass);
 }

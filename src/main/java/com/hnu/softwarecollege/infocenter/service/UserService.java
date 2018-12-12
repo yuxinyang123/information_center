@@ -8,4 +8,8 @@ public interface UserService {
 
     public boolean verifyUser(LoginForm loginForm);
 
+    public boolean provingPass(String password,String email);
+
+    public boolean changePassword(String newpass);
+
 }

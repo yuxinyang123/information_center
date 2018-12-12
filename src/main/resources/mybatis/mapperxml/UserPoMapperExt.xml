@@ -29,4 +29,13 @@
         FROM TBL_USER
         WHERE USER_EMAIL = #{email,jdbcType=VARCHAR}
     </select>
+    <update id="updatePasswordByPrimaryKeySelective" parameterType="java.lang.Long,java.lang.String">
+        update tbl_user
+        <set>
+            <if test="userPass != null">
+                USER_PASS = #{newpass,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where USER_ID = #{userkey,jdbcType=BIGINT}
+    </update>
 </mapper>
