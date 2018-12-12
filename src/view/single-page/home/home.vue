@@ -1,7 +1,14 @@
 <template>
   <div>
     <Row :gutter="20">
-      <i-col :xs="12" :md="100" :lg="6" v-for="(infor, i) in inforCardData" :key="`infor-${i}`" style="height: 120px;padding-bottom: 10px;">
+      <i-col
+        :xs="12"
+        :md="100"
+        :lg="6"
+        v-for="(infor, i) in inforCardData"
+        :key="`infor-${i}`"
+        style="height: 120px;padding-bottom: 10px;"
+      >
         <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
           <count-to :end="infor.count" count-class="count-style"/>
           <p>{{ infor.title }}</p>
@@ -15,8 +22,8 @@
         </Card>
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
-        <Card shadow>        
-          <chart-bar style="height: 300px;"  text="热点新闻"/>
+        <Card shadow>
+          <chart-bar style="height: 300px;" text="热点新闻"/>
         </Card>
       </i-col>
     </Row>
@@ -35,7 +42,7 @@ import {getStudentCourse} from '@/api/data'
 import { ChartPie, ChartBar } from '_c/charts'
 import StudentCourse from './StudentCourse.vue'
 export default {
-  name: 'home',
+  name: "home",
   components: {
     InforCard,
     CountTo,
@@ -43,7 +50,7 @@ export default {
     ChartBar,
     StudentCourse
   },
-  data () {
+  data() {
     return {
       ganmao:'',
       city:'',
@@ -62,13 +69,28 @@ export default {
       day4:{},
       day5:{},
       inforCardData: [
-        { title: '加权平均分', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
-        { title: '平均学分绩点', icon: 'md-locate', count: 232, color: '#19be6b' },
-        { title: '第二课堂', icon: 'md-help-circle', count: 142, color: '#ff9900' },
-        { title: '选修', icon: 'md-share', count: 657, color: '#ed3f14' }
-      ],
-     }
-   },
+        {
+          title: "加权平均分",
+          icon: "md-person-add",
+          count: 803,
+          color: "#2d8cf0"
+        },
+        {
+          title: "平均学分绩点",
+          icon: "md-locate",
+          count: 232,
+          color: "#19be6b"
+        },
+        {
+          title: "第二课堂",
+          icon: "md-help-circle",
+          count: 142,
+          color: "#ff9900"
+        },
+        { title: "选修", icon: "md-share", count: 657, color: "#ed3f14" }
+      ]
+    };
+  },
 
   mounted(){
     getWhetherData().then(res => {
@@ -106,11 +128,11 @@ export default {
       console.log(err)
     })
   }
-}
+};
 </script>
 
 <style lang="less">
-.count-style{
+.count-style {
   font-size: 50px;
 }
 </style>

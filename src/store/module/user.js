@@ -74,12 +74,13 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, {userName, password}) {
+    handleLogin ({ commit }, {userName, password,code}) {
       userName = userName.trim()
       return new Promise((resolve, reject) => {
         login({
           userName,
-          password
+          password,
+          code
         }).then(res => {
           const data = res.data
           commit('setToken', data.token)
@@ -92,17 +93,17 @@ export default {
     // 退出登录
     handleLogOut ({ state, commit }) {
       return new Promise((resolve, reject) => {
-        logout(state.token).then(() => {
-          commit('setToken', '')
-          commit('setAccess', [])
-          resolve()
-        }).catch(err => {
-          reject(err)
-        })
+        // logout(state.token).then(() => {
+        //   commit('setToken', '')
+        //   commit('setAccess', [])
+        //   resolve()
+        // }).catch(err => {
+        //   reject(err)
+        // })
         // 如果你的退出登录无需请求接口，则可以直接使用下面三行代码而无需使用logout调用接口
-        // commit('setToken', '')
-        // commit('setAccess', [])
-        // resolve()
+        commit('setToken', '')
+        commit('setAccess', [])
+        resolve()
       })
     },
     // 获取用户相关信息
@@ -111,10 +112,10 @@ export default {
         try {
           getUserInfo(state.token).then(res => {
             const data = res.data
-            commit('setAvator', data.avator)
-            commit('setUserName', data.name)
-            commit('setUserId', data.user_id)
-            commit('setAccess', data.access)
+            commit('setAvator', "https://avatars0.githubusercontent.com/u/20942571?s=460&v=4")
+            commit('setUserName', data.userName)
+            commit('setUserId', data.userId)
+            commit('setAccess', ['admin'])
             commit('setHasGetInfo', true)
             resolve(data)
           }).catch(err => {
