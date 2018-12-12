@@ -139,7 +139,7 @@
         DEGREE_CREDIT = #{degreeCredit,jdbcType=DOUBLE},
       </if>
       <if test="degreeGrade != null">
-        DEGREE_GRADE = #{degreeGrade,jdbcType=VARCHAR},
+        DEGREE_GRADE = #{degreeGrade,jdbcType=DOUBLE},
       </if>
       <if test="degreePerformancepoint != null">
         DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=DOUBLE},

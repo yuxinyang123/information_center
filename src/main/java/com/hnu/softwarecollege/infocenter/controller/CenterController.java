@@ -4,10 +4,7 @@ import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
-import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
-import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
-import com.hnu.softwarecollege.infocenter.entity.vo.GradeForecastForm;
-import com.hnu.softwarecollege.infocenter.entity.vo.WeatherForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.*;
 import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.service.WeatherService;
@@ -149,7 +146,7 @@ public class CenterController {
     }
 
     /**
-     * @Author yuxinyang
+     * @Author wangzixuan
      * @Description //TODO 得到热点信息
      * @Date 11:16 2018/11/21
      * @Param []
@@ -168,6 +165,21 @@ public class CenterController {
 //            System.out.print(po.getHotspotTitle());
 //        }
         return BaseResponseVo.success(hotsPotPoList);
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 向前端返回加权平均分，已获得学分,绩点，通识选修学分
+     * @Date 14:42 2018/12/11
+     * @Param
+     * @return
+    **/
+
+    @GetMapping("/fourtag")
+    public BaseResponseVo getFourTag(){
+        FourTag fourTag = new FourTag();
+        fourTag = centerService.selectForFouttag();
+        return BaseResponseVo.success(fourTag);
     }
 
 }

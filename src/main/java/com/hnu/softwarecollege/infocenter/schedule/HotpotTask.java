@@ -24,11 +24,14 @@ import java.util.List;
  * @Version 1.0
  **/
 @Slf4j
-@Configuration
 @EnableScheduling
+@Configuration
 public class HotpotTask {
-    private File educational = new File("spider/weibohot-clawer.py");
-    private String clawerPath = educational.getAbsolutePath();
+
+    private File weiboClawer = new File("spider/weibohot-clawer.py");
+    private String weiboClawerpath = weiboClawer.getAbsolutePath();
+
+
     @Resource
     public ObjectMapper mapper;
 
@@ -38,7 +41,8 @@ public class HotpotTask {
     @Scheduled(cron ="0 */30 * * * ?")
     public int runWeiBoClawer(){
         //python脚本路径
-        String[] arg = new String[]{"python",clawerPath};
+
+        String[] arg = new String[]{"python",weiboClawerpath};
         List<HotsPotPo> hotsPotPoList = null;
         Process process = null;
         try {
