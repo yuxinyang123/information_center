@@ -77,18 +77,32 @@ public class CenterController {
     }
     /**
      * @Author yuxinyang
-     * @Description //TODO 获取成绩信息
+     * @Description //TODO 根据UserKey 获取教务系统的账号密码，执行python脚本，将爬虫数据插入到数据库中
      * @Date 11:07 2018/11/21
      * @Param []
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
-    @GetMapping("/grade")
-    public BaseResponseVo getGrade(@RequestParam String Id,@RequestParam String password){
-        String resulte = centerService.getGrade(Id,password);
-        List<CenterDegreePo> list = centerService.transform(resulte);
-        return BaseResponseVo.success(list);
+    @GetMapping("/spider")
+    public BaseResponseVo runSpider(){
+        centerService.getGrade();
+        return BaseResponseVo.success("查询，插入数据库成功");
     }
-
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 通过UserKey 从数据库中查询数据
+     * @Date 2018/12/11 15:53
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @GetMapping("/grade")
+    public BaseResponseVo grade(){
+        List<CenterDegreePo> poList = centerService.gradeDB();
+        if(poList.size()==0){
+            return BaseResponseVo.error("没有查询的数据");
+        }else {
+            return BaseResponseVo.success(poList);
+        }
+    }
     /**
      * @Author yuxinyang
      * @Description //TODO 获取成绩预测信息
@@ -100,6 +114,7 @@ public class CenterController {
     public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
         String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),
                 gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
+        System.out.println(result);
         return BaseResponseVo.success(result);
     }
 

@@ -18,11 +18,10 @@ import javax.annotation.Resource;
 
 @Configuration
 @EnableScheduling
-
 public class WeatherTask {
     @Resource
     WeatherService weatherService;
-    @Scheduled(cron="0 0 7,15,23 * * ?")
+    @Scheduled(cron="0 0 0/8 * * ?")
     public void MyTask(){
         weatherService.updateAllWeatherInfo();
     }

@@ -7,14 +7,14 @@ package com.hnu.softwarecollege.infocenter.entity.vo;
  * @create: 2018-11-21 11:15
  **/
 public class CurriculumForm {
-    private String className;
-    private int startWeek;
-    private int endWeek;
-    private int startPart;
-    private int endPart;
-    private String week;
-    private String classroom;
-    private String teacher;
+    private String className;//课程名
+    private int startWeek;//起始周
+    private int endWeek;//终止周
+    private int startPart;//起始节
+    private int endPart;//终止节
+    private String week;//星期几
+    private String classroom;//教室地点
+    private String teacher;//教师
 
     public String getClassName() {
         return className;

@@ -5,15 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
-import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
-import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
-import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
-import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
+import com.hnu.softwarecollege.infocenter.entity.po.*;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.FourTag;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
+import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -55,14 +53,19 @@ public class CenterServiceImpl implements CenterService {
 
     /*
      * @Author 刘亚双
-     * @Description //TODO 根据学号 在数据库中进行查询，存在的话 返回数据 。不存在则 执行 python 脚本 获取输入流，将 json 字符串返回
+     * @Description //TODO 获取UserKey 找到对应教务系统的账号和密码，执行爬虫，
      * @Date 2018/11/28 14:19
      * @Param [Id, password]
      * @return java.lang.String
      **/
+    @Resource
+    UserInformationPoMapper userInformationPoMapper;
     @Override
-    public String getGrade(String Id, String password) {
-
+    public void getGrade() {
+        Long userkey = ThreadContext.getUserContext().getUserId();
+        UserInformationPo userInformationPo = userInformationPoMapper.selectByUserKey(userkey);
+        String Id = userInformationPo.getInfNum().toString();
+        String password =userInformationPo.getInfPass();
         String[] arg = new String[]{"python",spiderPath, Id, password};
         Process process = null;
         String result = "";
@@ -78,6 +81,7 @@ public class CenterServiceImpl implements CenterService {
             bufferedReader.close();
 //            process.waitFor();
             process.destroyForcibly();
+            threadMethod();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,8 +89,7 @@ public class CenterServiceImpl implements CenterService {
 //            e.printStackTrace();
 //        }
         resultjson = result;
-        System.out.println("resultjson:" + resultjson);
-        return result;
+        //System.out.println("resultjson:" + resultjson);
     }
 
     @Resource
@@ -96,46 +99,34 @@ public class CenterServiceImpl implements CenterService {
 
     /*
      * @Author 刘亚双
-     * @Description //TODO  解析json 格式的数据,获取“GRADE”数组的信息，存入List中 先返回给前端；
+     * @Description //TODO 根据Userkey 从数据中查询成绩信息，返回
      * @Date 2018/11/28 14:24
      * @Param []
      * @return com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo
      **/
     @Override
-    public List<CenterDegreePo> transform(String jsonStr) {
-        List<CenterDegreePo> l = new ArrayList<>();
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode jsonNode = mapper.readTree(jsonStr);
-            String grade = jsonNode.get("GRADE").toString();
-            JsonNode gradeJsonNode = mapper.readTree(grade);
-            for (int i = 0; i < gradeJsonNode.size(); i++) {
-                String s = gradeJsonNode.get(i).toString();
-                CenterDegreePo centerDegreePo = mapper.readValue(s, CenterDegreePo.class);
-                l.add(i, centerDegreePo);
-            }
-            threadMethod();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return l;
+    public List<CenterDegreePo> gradeDB() {
+        Long userkey = ThreadContext.getUserContext().getUserId();
+        List<CenterDegreePo> poList = centerDegreePoMapper.findAllByUserKey(userkey);
+        return poList;
     }
 
     protected void method(List<String> list) {
         for (int i = 0; i < list.size(); i++) {
             Long key = 2L;
             String[] s = list.get(i).split("\\|");
-            SyllabusPo syllabusPo = new SyllabusPo(null, s[3], Integer.parseInt(s[4]), Integer.parseInt(s[5]),
-                    Integer.parseInt(s[1]), Integer.parseInt(s[2]), s[0], s[6], s[7], key);
+
+            SyllabusPo syllabusPo = new SyllabusPo(null,s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),
+                    Integer.parseInt(s[1]),Integer.parseInt(s[2]),s[0],s[6],s[7],key);
             System.out.println(syllabusPo);
             syllabusPoMapper.insertSelective(syllabusPo);
         }
     }
 
+
     @Async
     protected void threadMethod() throws IOException {
-        System.out.println("++" + resultjson);
+        //System.out.println("++" + resultjson);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(resultjson);
         String grade = jsonNode.get("GRADE").toString();
@@ -215,6 +206,7 @@ public class CenterServiceImpl implements CenterService {
     @Override
     public String getGradeForeast(String studentId, String courseType, String testType, String gainCerdit) {
         String[] arg = new String[]{ "python",predictPath, studentId, courseType, testType, gainCerdit};
+        System.out.println("arg:"+arg);
         Process process = null;
         String result = "";
         try {
@@ -258,8 +250,11 @@ public class CenterServiceImpl implements CenterService {
     @Override
     public void putCurriculum(CurriculumForm curriculumForm) {
         UserPo userPo = ThreadContext.getUserContext();
-        Long userkey = userPo.getUserId();
-        SyllabusPo syllabusPo = new SyllabusPo(null, curriculumForm.getClassName(), curriculumForm.getStartWeek(), curriculumForm.getEndWeek(), curriculumForm.getStartPart(), curriculumForm.getEndPart(), curriculumForm.getWeek(), curriculumForm.getClassroom(), curriculumForm.getTeacher(), userkey);
+        Long userkey  = userPo.getUserId();
+        SyllabusPo syllabusPo = new SyllabusPo(null,curriculumForm.getClassName(),
+                curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),
+                curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),
+                curriculumForm.getTeacher(),userkey);
         syllabusPoMapper.insertSelective(syllabusPo);
     }
 
@@ -321,6 +316,7 @@ public class CenterServiceImpl implements CenterService {
         Long userKey = userPo.getUserId();
 //        Long userKey = 1l;
         List<CenterDegreePo> centerDegreePos = new ArrayList<CenterDegreePo>();
+
 
         //成绩的和
         Double grade = 0d;
