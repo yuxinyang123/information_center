@@ -12,11 +12,11 @@
     <Row> 
         <i-col span="12"  align='center' ><Icon type="ios-flag"></Icon>
            <a   @click='modal1=true'>{{city}}</a>
-           <Modal v-model="modal1"  scrollable title="城市选择" >
+           <!-- <Modal v-model="modal1"  scrollable title="城市选择" >
                <div>
                    <weather-model :data="data"  ></weather-model>
                </div>
-           </Modal>
+           </Modal> -->
         </i-col>
         <i-col span="12"  align='center'>空气污染指数:{{aqi}}</i-col>
     </Row>
@@ -32,12 +32,9 @@
 
 <script>
 
-import WeatherModel from '_c/weathermodel'
 export default {
 name: 'ChartPie',
- components: {
-   WeatherModel
-  },
+ 
 props:{
   
   city:String,

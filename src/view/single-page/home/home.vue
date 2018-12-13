@@ -16,7 +16,7 @@
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
         <Card shadow>        
-          <chart-bar style="height: 300px;"  text="热点新闻"/>
+          <chart-bar style="height: 300px;"  :hottitle="hottitle" @change="ChangePageNum" text="热点新闻"/>
         </Card>
       </i-col>
     </Row>
@@ -28,6 +28,7 @@
 
 <script>
 import {getWhetherData} from '@/api/data'
+import {getNews} from '@/api/data'
 import {updateWeatherInfo} from '@/api/data'
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
@@ -54,6 +55,9 @@ export default {
       aqi: '',
       type:'',
       cityname:'',
+      hottitle:[],
+      pageNum:1,
+      pageSize:10,
       inforCardData: [
         { title: '加权平均分', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
         { title: '平均学分绩点', icon: 'md-locate', count: 232, color: '#19be6b' },
@@ -62,7 +66,16 @@ export default {
       ],
      }
    },
+  methods:{
+    ChangePageNum:function(){
+      if(this.pageNum*this.pageSize<=50){
+        this.pageNum++;
+      }else{
+        this.pageNum=0;
+      }
 
+    }
+  },
   mounted(){
     getWhetherData().then(res => {
       console.log(res.data.data)
@@ -78,11 +91,15 @@ export default {
       }).catch(err => {
         console.log(err)
     })
-      updateWeatherInfo().then(res =>{
-        res=res.data
-        this
-      })
+    getNews(this.pageNum,this.pageSize).then(res => {
+     console.log(res.data.data)
+     res=res.data.data
+     this.hottitle=res.list
+    }).catch(err => {
+      console.log(err)
+    })
   }
+
 }
 </script>
 

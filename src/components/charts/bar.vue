@@ -1,120 +1,61 @@
 <template>
- <!--  <div ref="dom" class="charts chart-bar"></div> -->
- <Card :bordered="false" dis-hover>
-       
+    <Card :bordered="false"dis-hover>
         <p slot="title">
-            <Icon type="ios-flame" />
-            热点新闻
+           <Icon type="ios-flame" />
+           热点新闻
         </p>
-        <Row > 
-             <i-col span="8"  align='left'>
-                <ol>
-                    <li v-for='n in m ' :key='n' style="height:35px"></li>
-                </ol>
-             </i-col>
-             <i-col span="8"  align='center'></i-col>
-             <i-col span="8"  align='center'></i-col>
+        <a href="#" slot="extra" @click="changePageNum">
+            刷新
+        </a>
+        <Row>
+        <i-col span="12">
+            <ul>
+                <li v-for="(item,index) in hottitle"
+                    v-if="index<10">
+                     <Row>
+                        <i-col span="2">{{item.id}}</i-col>
+                        <i-col span="20"> 
+                            <a :href="item.hoturl" target="_blank">{{ item.title }}</a>
+                            {{item.hotnum}}
+                        </i-col>
+                    </Row>                  
+                </li>
+            </ul>
+        </i-col>
+        <i-col span="12">
+            <ul>
+                <li v-for="(item,index) in hottitle"
+                    v-if="index>9&&index<20">
+                    <Row>
+                        <i-col span="2">{{item.id}}</i-col>
+                        <i-col span="20"> 
+                            <a :href="item.hoturl" target="_blank">{{ item.title }}</a>
+                            {{item.hotnum}}
+                        </i-col>
+                    </Row>          
+                </li>
+            </ul>
+        </i-col>
         </Row>
-        <!-- <ul>
-            <li  v-for="item in randomMovieList" :key="item">
-                <a :href="item.url" target="_blank">{{ item.name }}</a>
-                <span>
-                    <Icon type="ios-star" v-for="n in 4" :key="n"></Icon><Icon type="ios-star" v-if="item.rate >= 9.5"></Icon><Icon type="ios-star-half" v-else></Icon>
-                    {{ item.rate }}
-                </span>
-            </li>
-        </ul> -->
+        
     </Card>
 </template>
-
 <script>
-
-export default {
-  name: 'ChartBar',
-  data () {
-            return {
-                m:[1,2,3,4,5,6,7],
-                movieList: [
-                    {
-                        name: 'The Shawshank Redemption',
-                        url: 'https://movie.douban.com/subject/1292052/',
-                        rate: 9.6
-                    },
-                    {
-                        name: 'Leon:The Professional',
-                        url: 'https://movie.douban.com/subject/1295644/',
-                        rate: 9.4
-                    },
-                    {
-                        name: 'Farewell to My Concubine',
-                        url: 'https://movie.douban.com/subject/1291546/',
-                        rate: 9.5
-                    },
-                    {
-                        name: 'Forrest Gump',
-                        url: 'https://movie.douban.com/subject/1292720/',
-                        rate: 9.4
-                    },
-                    {
-                        name: 'Life Is Beautiful',
-                        url: 'https://movie.douban.com/subject/1292063/',
-                        rate: 9.5
-                    },
-                    {
-                        name: 'Spirited Away',
-                        url: 'https://movie.douban.com/subject/1291561/',
-                        rate: 9.2
-                    },
-                    {
-                        name: 'Schindlers List',
-                        url: 'https://movie.douban.com/subject/1295124/',
-                        rate: 9.4
-                    },
-                    {
-                        name: 'The Legend of 1900',
-                        url: 'https://movie.douban.com/subject/1292001/',
-                        rate: 9.2
-                    },
-                    {
-                        name: 'WALL·E',
-                        url: 'https://movie.douban.com/subject/2131459/',
-                        rate: 9.3
-                    },
-                    {
-                        name: 'Inception',
-                        url: 'https://movie.douban.com/subject/3541415/',
-                        rate: 9.2
-                    }
-                ],
-                randomMovieList: []
-            }
-        },
+    export default {
+         name: 'ChartBar',
+         props:{  
+              hottitle:Array
+            },
         methods: {
-            changeLimit () {
-                function getArrayItems(arr, num) {
-                    const temp_array = [];
-                    for (let index in arr) {
-                        temp_array.push(arr[index]);
-                    }
-                    const return_array = [];
-                    for (let i = 0; i<num; i++) {
-                        if (temp_array.length>0) {
-                            const arrIndex = Math.floor(Math.random()*temp_array.length);
-                            return_array[i] = temp_array[arrIndex];
-                            temp_array.splice(arrIndex, 1);
-                        } else {
-                            break;
-                        }
-                    }
-                    return return_array;
-                }
-                this.randomMovieList = getArrayItems(this.movieList, 5);
+            changePageNum:function(){
+                this.$emit('change');
             }
+           
         },
-        mounted () {
-            this.changeLimit();
+        mounted(){
         }
-
     }
-
 </script>
+<style>
+    li{list-style-type:none;}
+</style>

@@ -38,18 +38,17 @@ export const uploadImg = formData => {
 export const getWhetherData = () => {
   return axios.request({
     url: '/api/center/weather',
-    // params: {
-    //   city: '石家庄市'
-    // },
+    
     method: 'get'
   })
 }
-export const updateWeatherInfo = (city) => {
+export const getNews = (pageNum,pageSize) => {
   return axios.request({
-    url: 'api/center/weather',
-    data: {
-      cityname: city
+    url: '/api/center/hotpot',
+    params:{
+      pageNum:pageNum,
+      pageSize:pageSize
     },
-    method: 'put'
+    method: 'get'
   })
 }
