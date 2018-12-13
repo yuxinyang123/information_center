@@ -62,7 +62,12 @@ public class ResourceController {
      **/
     @DeleteMapping("/{id}")
     public BaseResponseVo delResource(@PathVariable("id") String id){
-        return null;
+        Integer i = resourceService.deleteResourceById(id);
+        if (i != null){
+            return BaseResponseVo.success();
+        }else {
+            return BaseResponseVo.fail("错误，无法删除");
+        }
     }
 
     /**
@@ -93,7 +98,7 @@ public class ResourceController {
 
 
     /**
-     * @Author yuxinyang
+     * @Author wangzixuan
      * @Description //TODO 添加评论
      * @Date 17:40 2018/11/21
      * @Param [comment]
