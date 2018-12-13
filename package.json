@@ -31,7 +31,8 @@
     "vuedraggable": "^2.16.0",
     "vuex": "^3.0.1",
     "wangeditor": "^3.1.1",
-    "xlsx": "^0.13.3"
+    "xlsx": "^0.13.3",
+    "jquery":"^2.2.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
