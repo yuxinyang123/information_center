@@ -28,6 +28,21 @@ public class CenterDegreePo {
     @JsonProperty("stuName")
     private String degreeStudentname;
 
+    public CenterDegreePo(Long degreeUserkey, String degreeTerm, String degreeClassname, String degreeClassnature,
+                          Double degreeCredit, Double degreeGrade, Double degreePerformancepoint,
+                          String degreeTestnature, Integer degreeStudentid, String degreeStudentname) {
+        this.degreeUserkey = degreeUserkey;
+        this.degreeTerm = degreeTerm;
+        this.degreeClassname = degreeClassname;
+        this.degreeClassnature = degreeClassnature;
+        this.degreeCredit = degreeCredit;
+        this.degreeGrade = degreeGrade;
+        this.degreePerformancepoint = degreePerformancepoint;
+        this.degreeTestnature = degreeTestnature;
+        this.degreeStudentid = degreeStudentid;
+        this.degreeStudentname = degreeStudentname;
+    }
+
     public Long getDegreeId() {
         return degreeId;
     }
