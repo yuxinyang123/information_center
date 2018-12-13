@@ -44,5 +44,5 @@ public interface UserPoMapper {
      * @Param [newpass]
      * @return int
      **/
-    int updatePasswordByPrimaryKeySelective(Long userkey,String newpass);
+    int updatePasswordByPrimaryKeySelective(@Param("userkey")Long userkey,@Param("newpass")String newpass);
 }
