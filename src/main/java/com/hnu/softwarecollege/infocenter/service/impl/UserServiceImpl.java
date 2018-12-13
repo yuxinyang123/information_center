@@ -1,9 +1,12 @@
 package com.hnu.softwarecollege.infocenter.service.impl;
 
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
+import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.persistence.Transient;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @program: infocenter
@@ -72,5 +74,38 @@ public class  UserServiceImpl implements UserService {
         ThreadContext.setUserContext(userPo);
         log.info("the user:{} verify success",userPo.getUserEmail());
         return true;
+    }
+
+    /*
+     * @Autor wangzixuan
+     * @Description //TODO 获取用户信息
+     * @Date 15:20 2018/12/12
+     * @Param
+     * @return
+    **/
+    @Resource
+    UserInformationPoMapper userInformationPoMapper;
+    public UserAndUserinfoPo findUserAndUserinfo(){
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userkey = userPo.getUserId();
+//        Long userkey = 1l;
+        UserAndUserinfoPo userAndUserinfoPo;
+        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
+//        System.out.println(userAndUserinfoPo);
+//        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
+        return userAndUserinfoPo;
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 更新数据库中的用户信息
+     * @Date 16:18 2018/12/12
+     * @Param
+     * @return
+    **/
+    public int updateUserInfo(UserInfoForm userInfoForm){
+
+        int i = userInformationPoMapper.updateByuserKeySelective(userInfoForm);
+        return i;
     }
 }

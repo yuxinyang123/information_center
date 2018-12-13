@@ -47,7 +47,6 @@ public class CenterServiceImpl implements CenterService {
 
     private File educational = new File("spider/main.py");
     private String spiderPath = educational.getAbsolutePath();
-
     private File predict = new File("spider/Predict_Application_local.py");
     private String predictPath = predict.getAbsolutePath();
 
