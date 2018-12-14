@@ -1,51 +1,35 @@
-package com.hnu.softwarecollege.infocenter.entity.vo;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.hnu.softwarecollege.infocenter.entity.po;
 
 /**
- * @program: infocenter
- * @description:
- * @author: wangzixuan
- * @create: 2018-11-21 15:01
+ * @ClassName UserAndUserinfoPo
+ * @Description TODO
+ * @Author wang
+ * @Date 2018/12/12 15:01
+ * @Version 1.0
  **/
-public class UserInfoForm {
+public class UserAndUserinfoPo {
 
-    private Long userkey;
-
-    @JsonProperty("num")
     private Integer infNum;
 
-    @JsonProperty("password")
-    private String infPass;
-
-    @JsonProperty("signature")
     private String infSignature;
 
-    @JsonProperty("academy")
     private String infAcademy;
 
-    @JsonProperty("major")
     private String infMajor;
 
-    @JsonProperty("class")
     private String infClass;
 
-    @JsonProperty("sex")
     private String infSex;
 
-    @JsonProperty("location")
     private String infLocaltion;
 
-    @JsonProperty("age")
     private String infAge;
 
-    public Long getUserkey() {
-        return userkey;
-    }
+    private String userName;
 
-    public void setUserkey(Long userkey) {
-        this.userkey = userkey;
-    }
+    private String userEmail;
+
+    private String userPhone;
 
     public Integer getInfNum() {
         return infNum;
@@ -53,14 +37,6 @@ public class UserInfoForm {
 
     public void setInfNum(Integer infNum) {
         this.infNum = infNum;
-    }
-
-    public String getInfPass() {
-        return infPass;
-    }
-
-    public void setInfPass(String infPass) {
-        this.infPass = infPass;
     }
 
     public String getInfSignature() {
@@ -117,5 +93,29 @@ public class UserInfoForm {
 
     public void setInfAge(String infAge) {
         this.infAge = infAge;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

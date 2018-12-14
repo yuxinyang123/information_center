@@ -1,5 +1,8 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
+import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.ProvingForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
@@ -43,19 +46,30 @@ public class UserController {
     }
 
     /**
-     * @Author yuxinyang
+     * @Author wangzixuan
      * @Description //TODO 修改用户信息
-     * @Date 14:59 2018/11/21
+     * @Date 14:59 2018/12/12
      * @Param [userInfoForm]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/info")
     public BaseResponseVo updateUserInfo(@RequestBody UserInfoForm userInfoForm){
-        return null;
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userkey = userPo.getUserId();
+//        Long userkey = 1l;
+        userInfoForm.setUserkey(userkey);
+        Integer i = userService.updateUserInfo(userInfoForm);
+        if (i != null){
+            i = 200;
+            return BaseResponseVo.success();
+        }else {
+            i = 500;
+            return BaseResponseVo.fail("500");
+        }
     }
 
     /**
-     * @Author yuxinyang
+     * @Author wangzixuan
      * @Description //TODO 查找用户信息
      * @Date 15:00 2018/11/21
      * @Param []
@@ -63,7 +77,9 @@ public class UserController {
      **/
     @GetMapping("/info")
     public BaseResponseVo getUserInfo(){
-        return null;
+        UserAndUserinfoPo userAndUserinfoPo;
+        userAndUserinfoPo = userService.findUserAndUserinfo();
+        return BaseResponseVo.success(userAndUserinfoPo);
     }
 
 
