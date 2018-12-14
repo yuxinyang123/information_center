@@ -44,15 +44,15 @@ export const getWhetherData = () => {
     method: 'get'
   })
 }
-// export const updateWeatherInfo = (city) => {
-//   return axios.request({
-//     url: 'api/center/weather',
-//     data: {
-//       cityname: city
-//     },
-//     method: 'put'
-//   })
-// }
+export const updateWeatherInfo = (cityname) => {
+  return axios.request({
+    url: 'api/center/weather',
+    data: {
+      cityname
+    },
+    method: 'put'
+  })
+}
 export const getStudentCourse = (userKey) => {
   let params = {
     userkey: userKey
@@ -61,6 +61,13 @@ export const getStudentCourse = (userKey) => {
   return axios.request({
     url: '/api/center/curriculum',
     params,
+    method: 'get'
+  })
+}
+
+export const get4Tag = () => {
+  return axios.request({
+    url: '/api/center/fourtag',
     method: 'get'
   })
 }
