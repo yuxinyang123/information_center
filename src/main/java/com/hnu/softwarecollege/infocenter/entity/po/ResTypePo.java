@@ -9,6 +9,11 @@ public class ResTypePo {
 
     private List<ResourcePo> resourcePos;
 
+    public ResTypePo(Long typeId, String typeName) {
+        this.typeId = typeId;
+        this.typeName = typeName;
+    }
+
     public Long getTypeId() {
         return typeId;
     }

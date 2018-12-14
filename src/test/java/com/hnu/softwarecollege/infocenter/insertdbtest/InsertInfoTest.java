@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.beans.Transient;
+import java.util.Date;
 
 /**
  * @ClassName InsertInfoTest
@@ -126,4 +127,117 @@ public class InsertInfoTest {
             log.info("HotsPot insert fail");
         }
     }
+
+    @Resource
+    ResTypePoMapper resTypePoMapper;
+    @Test
+    @Transient
+    @Rollback(false)
+    public void insertResType(){
+        ResTypePo resTypePo = new ResTypePo(1l,"招聘信息");
+        ResTypePo resTypePo1 = new ResTypePo(2l,"兼职信息");
+        ResTypePo resTypePo2 = new ResTypePo(3l,"新闻信息");
+        int num = resTypePoMapper.insertSelective(resTypePo);
+        int num1 = resTypePoMapper.insertSelective(resTypePo1);
+        int num2 = resTypePoMapper.insertSelective(resTypePo2);
+        if((num+num1+num2)==3){
+            log.info("ResType insert success");
+        }else{
+            log.info("ResType insert fail");
+        }
+    }
+
+
+    @Resource
+    ResourcePoMapper resourcePoMapper;
+    @Test
+    @Transient
+    @Rollback(false)
+    public void insertResource(){
+        ResourcePo resourcePo = new ResourcePo(1l,"招聘启示","admin","招聘平台",new Date(2018-12-10),"招聘管理人员");
+        ResourcePo resourcePo1 = new ResourcePo(2l,"兼职信息启示","admin","个人",new Date(2018-12-10),"发传单兼职");
+        ResourcePo resourcePo2 = new ResourcePo(3l,"陈羽凡吸毒被抓","admin","网络",new Date(2018-12-05),"吸毒被抓");
+        ResourcePo resourcePo3 = new ResourcePo(3l,"蒋劲夫","admin","网络",new Date(2018-12-11),"蒋劲夫被抓");
+        int num = resourcePoMapper.insertSelective(resourcePo);
+        int num1 = resourcePoMapper.insertSelective(resourcePo1);
+        int num2 = resourcePoMapper.insertSelective(resourcePo2);
+        int num3 = resourcePoMapper.insertSelective(resourcePo3);
+        if((num+num1+num2+num3)>=4){
+            log.info("Resource insert success");
+        }else{
+            log.info("Resource insert fail");
+        }
+    }
+
+    @Resource
+    SyllabusPoMapper syllabusPoMapper;
+    @Test
+    @Transient
+    @Rollback(false)
+    public void insertSyllabus(){
+        SyllabusPo syllabusPo = new SyllabusPo(1l,"分布式系统原理★",1,
+                10,1,4,"星期一","软件C-302","王伟",1l);
+        SyllabusPo syllabusPo1 = new SyllabusPo(2l,"Java与大数据分析开发实训一★",
+                11,16,1,4,"星期一",
+                "软件C-302","王鹏帆",1l);
+        SyllabusPo syllabusPo2 = new SyllabusPo(3l,"分布式系统原理★",1,
+                10,6,9,"星期一","软件C-302","王伟",1l);
+
+        SyllabusPo syllabusPo3 = new SyllabusPo(4l,"软件工程★",1,
+                10,1,4,"星期二","软件C-302","王伟",1l);
+        SyllabusPo syllabusPo4 = new SyllabusPo(5l,"Java企业级应用开发★",1,
+                10,6,9,"星期二","软件C-302","王伟",1l);
+
+        SyllabusPo syllabusPo5 = new SyllabusPo(6l,"Java企业级应用开发★",1,
+                10,1,4,"星期三","软件C-302","王伟",1l);
+        SyllabusPo syllabusPo6 = new SyllabusPo(7l,"Java与大数据分析开发实训一★",10,
+                16,1,4,"星期三","软件C-302","王伟",1l);
+        SyllabusPo syllabusPo7 = new SyllabusPo(8l,"JavaEE★",1,10,
+                6,9,"星期三","软件C-302","王伟",1l);
+
+        SyllabusPo syllabusPo8 = new SyllabusPo(9l,"JavaEE★",1,
+                10,1,4,"星期四","软件C-302","王伟",1l);
+
+        int num = syllabusPoMapper.insertSelective(syllabusPo);
+        int num1 = syllabusPoMapper.insertSelective(syllabusPo1);
+        int num2 = syllabusPoMapper.insertSelective(syllabusPo2);
+        int num3 = syllabusPoMapper.insertSelective(syllabusPo3);
+        int num4 = syllabusPoMapper.insertSelective(syllabusPo4);
+        int num5 = syllabusPoMapper.insertSelective(syllabusPo5);
+        int num6 = syllabusPoMapper.insertSelective(syllabusPo6);
+        int num7 = syllabusPoMapper.insertSelective(syllabusPo7);
+        int num8 = syllabusPoMapper.insertSelective(syllabusPo8);
+        int sum = num+num1+num2+num3+num4+num5+num6+num7+num8;
+        if(sum==9){
+            log.info("Syllabus insert success");
+        }else{
+            log.info("Syllabus insert fail");
+        }
+    }
+
+    @Resource
+    WeatherPoMapper weatherPoMapper;
+    @Test
+    @Transient
+    @Rollback(false)
+    public void insertWeather(){
+        WeatherPo weatherPo = new WeatherPo(101090101,"石家庄","26日星期一",
+                "07:13","高温 15.0℃","低温 2.0℃","15",
+                "17:04",240f,"阴晴之间，谨防紫外线侵扰","多云","<3级","西风");
+        WeatherPo weatherPo1 = new WeatherPo(101090301,"张家口","26日星期一",
+                "07:18","高温 9.0℃","低温 -7.0℃","5","16:56",60f,
+                "愿你拥有比阳光明媚的心情","晴","3-4级","西北风");
+        WeatherPo weatherPo2 = new WeatherPo(101090701,"沧州市","22日星期四",
+                "07:00","高温 10.0℃","低温 -2.0℃","6",
+                "16:56",94f,"愿你拥有比阳光明媚的心情","晴","<3级","东南风");
+        int num = weatherPoMapper.insertSelective(weatherPo);
+        int num1 = weatherPoMapper.insertSelective(weatherPo1);
+        int num2 = weatherPoMapper.insertSelective(weatherPo2);
+        if((num+num1+num2)>=3){
+            log.info("Weather insert success");
+        }else{
+            log.info("Weather insert fail");
+        }
+    }
+
 }

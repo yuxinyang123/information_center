@@ -17,6 +17,15 @@ public class ResourcePo {
 
     private String resContext;
 
+    public ResourcePo(Long typeKey, String resTitle, String resAuthor, String resSource, Date resDate, String resContext) {
+        this.typeKey = typeKey;
+        this.resTitle = resTitle;
+        this.resAuthor = resAuthor;
+        this.resSource = resSource;
+        this.resDate = resDate;
+        this.resContext = resContext;
+    }
+
     public Long getResId() {
         return resId;
     }
