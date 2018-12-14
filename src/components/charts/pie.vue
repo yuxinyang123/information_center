@@ -38,6 +38,7 @@
 </template>
 
 <script>
+
 import WeatherModel from "_c/weathermodel";
 export default {
   name: "ChartPie",

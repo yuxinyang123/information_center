@@ -37,7 +37,12 @@
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
         <Card shadow>
-          <chart-bar style="height: 300px;" text="热点新闻"/>
+          <chart-bar
+            style="height: 300px;"
+            :hottitle="hottitle"
+            @change="ChangePageNum"
+            text="热点新闻"
+          />
         </Card>
       </i-col>
     </Row>
@@ -52,12 +57,14 @@ import {
   getWhetherData,
   updateWeatherInfo,
   getStudentCourse,
-  get4Tag
+  get4Tag,
+  getNews
 } from "@/api/data";
 import InforCard from "_c/info-card";
 import CountTo from "_c/count-to";
 import { ChartPie, ChartBar } from "_c/charts";
 import StudentCourse from "./StudentCourse.vue";
+
 export default {
   name: "home",
   components: {
@@ -80,6 +87,10 @@ export default {
       type: "",
       cityname: "",
       course: {},
+
+      hottitle: [],
+      pageNum: 1,
+      pageSize: 10,
       inforCardData: [
         {
           title: "加权平均分",
@@ -109,6 +120,14 @@ export default {
     };
   },
   methods: {
+    ChangePageNum: function() {
+      if (this.pageNum * this.pageSize <= 50) {
+        this.pageNum++;
+      } else {
+        this.pageNum = 0;
+      }
+    },
+
     handleGetWeather() {
       getWhetherData()
         .then(res => {
@@ -154,19 +173,19 @@ export default {
         });
     },
     handleUpdateWeather(cityname) {
-      console.log("handleUpdateWeather:"+cityname)
+      console.log("handleUpdateWeather:" + cityname);
       updateWeatherInfo(cityname)
         .then(res => {
           res = res.data;
-          console.log(res)
+          console.log(res);
           if (res.code == 200) {
-            this.$Message.success("修改成功！")
-          }else{
-            this.$Message.error("修改失败！")
+            this.$Message.success("修改成功！");
+          } else {
+            this.$Message.error("修改失败！");
           }
         })
-        .catch(err=>{
-          console.log(err)
+        .catch(err => {
+          console.log(err);
         });
     }
   },
@@ -174,6 +193,30 @@ export default {
     this.handleGetWeather();
     this.handleGetCourse();
     this.handleGet4Tag();
+    getWhetherData()
+      .then(res => {
+        res = res.data.data;
+        this.city = res.cityname;
+        this.ganmao = res.notice;
+        this.wendu = res.wendu;
+        this.date = res.nowdate;
+        this.low = res.low;
+        this.high = res.high;
+        this.aqi = String(res.AQI);
+        this.type = res.type;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    getNews(this.pageNum, this.pageSize)
+      .then(res => {
+        console.log(res.data.data);
+        res = res.data.data;
+        this.hottitle = res.list;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
