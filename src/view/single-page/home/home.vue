@@ -10,7 +10,7 @@
         style="height: 120px;padding-bottom: 10px;"
       >
         <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
-          <count-to :end="infor.count" count-class="count-style"/>
+          <count-to :end="infor.count" :decimals="2" count-class="count-style"/>
           <p>{{ infor.title }}</p>
         </infor-card>
       </i-col>
@@ -18,29 +18,53 @@
     <Row :gutter="20" style="margin-top: 10px;">
       <i-col :md="24" :lg="8" style="margin-bottom: 20px;">
         <Card shadow>
-          <chart-pie style="height: 300px;" :cityname='cityname'  :type="type" :aqi="aqi" :high="high" :date="date" :low="low" :wendu="wendu" :city="city" :forecast="forecast" :ganmao="ganmao"  text="天气"></chart-pie>
+          <chart-pie
+            style="height: 300px;"
+            :cityname="cityname"
+            :type="type"
+            :aqi="aqi"
+            :high="high"
+            :date="date"
+            :low="low"
+            :wendu="wendu"
+            :city="city"
+            :forecast="forecast"
+            :ganmao="ganmao"
+            @updateLocal="handleUpdateWeather"
+            text="天气"
+          ></chart-pie>
         </Card>
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
         <Card shadow>
-          <chart-bar style="height: 300px;" text="热点新闻"/>
+          <chart-bar
+            style="height: 300px;"
+            :hottitle="hottitle"
+            @change="ChangePageNum"
+            text="热点新闻"
+          />
         </Card>
       </i-col>
     </Row>
     <Row>
-        <student-course :course='course' style="height: 300px;"/>  
+      <student-course :course="course" style="height: 300px;"/>
     </Row>
   </div>
 </template>
 
 <script>
-import {getWhetherData} from '@/api/data'
-import {updateWeatherInfo} from '@/api/data'
-import InforCard from '_c/info-card'
-import CountTo from '_c/count-to'
-import {getStudentCourse} from '@/api/data'
-import { ChartPie, ChartBar } from '_c/charts'
-import StudentCourse from './StudentCourse.vue'
+import {
+  getWhetherData,
+  updateWeatherInfo,
+  getStudentCourse,
+  get4Tag,
+  getNews
+} from "@/api/data";
+import InforCard from "_c/info-card";
+import CountTo from "_c/count-to";
+import { ChartPie, ChartBar } from "_c/charts";
+import StudentCourse from "./StudentCourse.vue";
+
 export default {
   name: "home",
   components: {
@@ -52,81 +76,147 @@ export default {
   },
   data() {
     return {
-      ganmao:'',
-      city:'',
-      forecast:[],
-      wendu:'',
-      date:'',
-      low:'',
-      high:'',
-      aqi: '',
-      type:'',
-      cityname:'',
-      course:{},
-      // day1:{},
-      // day2:{},
-      // day3:{},
-      // day4:{},
-      // day5:{},
+      ganmao: "",
+      city: "",
+      forecast: [],
+      wendu: "",
+      date: "",
+      low: "",
+      high: "",
+      aqi: "",
+      type: "",
+      cityname: "",
+      course: {},
+
+      hottitle: [],
+      pageNum: 1,
+      pageSize: 10,
       inforCardData: [
         {
           title: "加权平均分",
           icon: "md-person-add",
-          count: 803,
+          count: 0,
           color: "#2d8cf0"
         },
         {
-          title: "平均学分绩点",
+          title: "已获得学分",
           icon: "md-locate",
-          count: 232,
+          count: 0,
           color: "#19be6b"
         },
         {
-          title: "第二课堂",
+          title: "绩点",
           icon: "md-help-circle",
-          count: 142,
+          count: 0,
           color: "#ff9900"
         },
-        { title: "选修", icon: "md-share", count: 657, color: "#ed3f14" }
+        {
+          title: "选修学分",
+          icon: "md-share",
+          count: 0,
+          color: "#ed3f14"
+        }
       ]
     };
   },
+  methods: {
+    ChangePageNum: function() {
+      if (this.pageNum * this.pageSize <= 50) {
+        this.pageNum++;
+      } else {
+        this.pageNum = 0;
+      }
+    },
 
-  mounted(){
-    getWhetherData().then(res => {
-     
-      
-      res=res.data.data
-      this.city=res.cityname
-      this.ganmao=res.notice
-      this.wendu=res.wendu
-      this.date=res.nowdate
-      this.low=res.low
-      this.high=res.high
-      this.aqi=String(res.AQI)
-      this.type=res.type
-      }).catch(err => {
-        console.log(err)
-    })
-      // updateWeatherInfo().then(res =>{
-      //   res=res.data
-      //   this
-      // })
-    getStudentCourse('1').then(res=>{
-     
-      res=res.data.data
-      
-      this.course=res
-      // this.day1=res.星期一[0]
-      // this.day2=res.星期二[0]
-      // this.day3=res.星期三[0]
-      // this.day4=res.星期四[0]
-      // this.day5=res.星期五[0]
-      // console.log(this.day1)
-      // console.log(res)
-    }).catch(err =>{
-      console.log(err)
-    })
+    handleGetWeather() {
+      getWhetherData()
+        .then(res => {
+          res = res.data.data;
+          this.city = res.cityname;
+          this.ganmao = res.notice;
+          this.wendu = res.wendu;
+          this.date = res.nowdate;
+          this.low = res.low;
+          this.high = res.high;
+          this.aqi = String(res.AQI);
+          this.type = res.type;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleGetCourse() {
+      getStudentCourse("1")
+        .then(res => {
+          res = res.data.data;
+          this.course = res;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleGet4Tag() {
+      get4Tag()
+        .then(res => {
+          res = res.data;
+          let a = res.data.avggrade;
+          // console.log(a);
+          if (res.code == 200) {
+            this.inforCardData[0].count = res.data.avggrade;
+            this.inforCardData[1].count = res.data.havacredit;
+            this.inforCardData[2].count = res.data.performancepoint;
+            this.inforCardData[3].count = res.data.choosecredit;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleUpdateWeather(cityname) {
+      console.log("handleUpdateWeather:" + cityname);
+      updateWeatherInfo(cityname)
+        .then(res => {
+          res = res.data;
+          console.log(res);
+          if (res.code == 200) {
+            this.$Message.success("修改成功！");
+          } else {
+            this.$Message.error("修改失败！");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  mounted() {
+    this.handleGetWeather();
+    this.handleGetCourse();
+    this.handleGet4Tag();
+    getWhetherData()
+      .then(res => {
+        res = res.data.data;
+        this.city = res.cityname;
+        this.ganmao = res.notice;
+        this.wendu = res.wendu;
+        this.date = res.nowdate;
+        this.low = res.low;
+        this.high = res.high;
+        this.aqi = String(res.AQI);
+        this.type = res.type;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    getNews(this.pageNum, this.pageSize)
+      .then(res => {
+        console.log(res.data.data);
+        res = res.data.data;
+        this.hottitle = res.list;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
