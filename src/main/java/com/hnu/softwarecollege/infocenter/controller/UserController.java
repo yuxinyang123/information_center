@@ -1,5 +1,6 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
@@ -8,6 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
@@ -61,7 +64,17 @@ public class UserController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/info")
-    public BaseResponseVo getUserInfo(){
+    public BaseResponseVo getUserInfo(@RequestParam("token") String token, HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        for(Cookie cookie:cookies){
+            if(cookie.getName().equals("token")){
+                if(cookie.getValue().equals(token))
+                    return BaseResponseVo.success(ThreadContext.getUserContext());
+                else
+                    return BaseResponseVo.fail("please login in");
+            }
+        }
+
         return null;
     }
 

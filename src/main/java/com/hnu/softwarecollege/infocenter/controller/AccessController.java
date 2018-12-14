@@ -6,18 +6,22 @@ import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import com.hnu.softwarecollege.infocenter.util.TokenUtil;
 import com.hnu.softwarecollege.infocenter.util.VerifyCodeUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.io.IOException;
+import java.util.Map;
 
 @RestController
 @RequestMapping("access")
+@Slf4j
 public class AccessController {
 
     @Resource
@@ -39,6 +43,20 @@ public class AccessController {
     }
 
     /**
+     * @param
+     * @return
+     * @author ying
+     * @description //TODO cookieLog工具
+     * @date 15:55 2018/12/11
+     **/
+    private void logAllCookie(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            log.info("name:{} and value:{}", cookie.getName(), cookie.getValue());
+        }
+    }
+
+    /**
      * @Description: 用户登录 登录生成token，放于cookie中返回，生成上下文用户对象，filter使用该上下文验证用户
      * @Param: [loginForm]
      * @return: com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
@@ -55,7 +73,7 @@ public class AccessController {
         if (isTrue) {
             String token = TokenUtil.createToken();
             response.addCookie(getCookie("token", token));
-            return BaseResponseVo.success("login success");
+            return BaseResponseVo.success(token);
         } else {
             return BaseResponseVo.fail("login fail");
         }
@@ -68,10 +86,9 @@ public class AccessController {
      * @Date 14:55 2018/11/21
      * @Param []
      **/
-    @GetMapping(value="/verifycode")
-    public BaseResponseVo getVerifycode(@RequestParam(value = "random",required = false) Double random, HttpServletResponse response
+    @GetMapping(value = "/verifycode")
+    public BaseResponseVo getVerifycode(@RequestParam(value = "random", required = false) Double random, HttpServletResponse response
             , HttpSession session) {
-//        response.setHeader("Content-type", "application/x-jpg");
         String verifyCode = null;
         try {
             verifyCode = VerifyCodeUtil.outputVerifyImage(response.getOutputStream(), 4);
@@ -90,14 +107,18 @@ public class AccessController {
      * @Param []
      **/
     @PostMapping("/verifycode")
-    public BaseResponseVo createVerifycode(@NotBlank @RequestParam("verifycode") String verifycode, HttpSession session) {
-        String serverVerifycode = (String) session.getAttribute("verigycode");
-        if (verifycode.equals(serverVerifycode)) {
+    public BaseResponseVo createVerifycode(@NotBlank @RequestBody Map<String, Object> map, HttpSession session,
+                                           HttpServletRequest request) {
+        String verifycode = (String) map.get("verifycode");
+
+        String serverVerifycode = (String) session.getAttribute("verifycode");
+
+//        log.info("client:{} and server:{}", verifycode, serverVerifycode);
+        if (verifycode.equalsIgnoreCase(serverVerifycode)) {
             return BaseResponseVo.success("verify success");
         } else {
             return BaseResponseVo.fail("verify fail");
         }
-
     }
 
     /**
