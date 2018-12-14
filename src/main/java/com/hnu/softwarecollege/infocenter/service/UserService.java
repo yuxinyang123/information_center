@@ -14,4 +14,10 @@ public interface UserService {
     public UserAndUserinfoPo findUserAndUserinfo();
 
     public int updateUserInfo(UserInfoForm userInfoForm);
+
+    public boolean provingPass(String password,String email);
+
+    public boolean changePassword(String newpass);
+
+
 }
