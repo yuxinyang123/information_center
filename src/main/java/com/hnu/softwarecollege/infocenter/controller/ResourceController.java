@@ -1,9 +1,16 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
+import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CommentForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
+import com.hnu.softwarecollege.infocenter.service.ResourceService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @program: infocenter
@@ -13,18 +20,25 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/res")
+@Slf4j
 public class ResourceController {
-
+    @Resource
+    ResourceService resourceService;
     /**
      * @Author yuxinyang
-     * @Description //TODO 根据类型，获取资源列表
+     * @Description //TODO 根据类型，获取资源列表、（返回标题）
      * @Date 16:50 2018/11/21
      * @Param [type]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/lists")
     public BaseResponseVo getAllResLists(@RequestParam String type){
-        return null;
+        List<ResTypePo> resTypePoList = resourceService.getListByTypeName(type);
+        if(resTypePoList.size()==0){
+            return BaseResponseVo.error("没有查找到！！！！");
+        }else {
+            return BaseResponseVo.success(resTypePoList);
+        }
     }
 
     /**
@@ -48,7 +62,12 @@ public class ResourceController {
      **/
     @DeleteMapping("/{id}")
     public BaseResponseVo delResource(@PathVariable("id") String id){
-        return null;
+        Integer i = resourceService.deleteResourceById(id);
+        if (i != null){
+            return BaseResponseVo.success();
+        }else {
+            return BaseResponseVo.fail("错误，无法删除");
+        }
     }
 
     /**
@@ -63,6 +82,7 @@ public class ResourceController {
         return null;
     }
 
+
     /**
      * @Author yuxinyang
      * @Description //TODO 获取资源
@@ -72,11 +92,13 @@ public class ResourceController {
      **/
     @GetMapping("/{id}")
     public BaseResponseVo getResource(@PathVariable("id") String id){
-        return null;
+        ResourcePo resourcePo = resourceService.getResourcePoById(id);
+        return BaseResponseVo.success(resourcePo);
     }
 
+
     /**
-     * @Author yuxinyang
+     * @Author wangzixuan
      * @Description //TODO 添加评论
      * @Date 17:40 2018/11/21
      * @Param [comment]

@@ -2,7 +2,9 @@ package com.hnu.softwarecollege.infocenter.schedutask;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
+import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.service.impl.CenterServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -12,8 +14,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +33,9 @@ import java.util.List;
 @SpringBootTest
 public class schedudemo {
 
+    private File weiboClawer = new File("spider/weibohot-clawer.py");
+    private String weiboClawerpath = weiboClawer.getAbsolutePath();
+
     @Resource
     public ObjectMapper mapper;
 
@@ -43,8 +50,8 @@ public class schedudemo {
 
     public int runWeiBoClawer(){
         //python脚本路径
-        String[] arg = new String[]{"python","D:\\project\\information_center\\spider\\weibohot-clawer.py"};
-        List<HotsPotPo> hotsPotPoList = null;
+        String[] arg = new String[]{"python",weiboClawerpath};
+        List<HotsPotPo> hotsPotPoList = new ArrayList<HotsPotPo>();
         Process process = null;
         try {
             //执行脚本文件
@@ -72,5 +79,13 @@ public class schedudemo {
         centerService.updateHotspot(hotsPotPoList);
 
         return 1;
+    }
+    @Resource
+    CenterDegreePoMapper centerDegreePoMapper;
+    @Test
+    public void selectDB(){
+        Long userkey = 1l;
+        List<CenterDegreePo> poList = centerDegreePoMapper.findAllByUserKey(userkey);
+        System.out.println(poList);
     }
 }

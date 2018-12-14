@@ -7,4 +7,5 @@ package com.hnu.softwarecollege.infocenter.entity.vo;
  * @create: 2018-11-21 17:40
  **/
 public class CommentForm {
+
 }

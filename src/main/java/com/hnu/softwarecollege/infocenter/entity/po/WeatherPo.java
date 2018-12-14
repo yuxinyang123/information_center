@@ -32,6 +32,24 @@ public class WeatherPo {
     @JsonProperty("fx")
     private String weatherFx;
 
+    public WeatherPo(Integer weatherCode, String weatherCityName, String weatherDate, String weatherSunrise,
+                     String weatherHigh, String weatherLow, String weatherTemperature, String weatherSunset,
+                     Float weatherAqi, String weatherNotice, String weatherType, String weatherFl, String weatherFx) {
+        this.weatherCode = weatherCode;
+        this.weatherCityName = weatherCityName;
+        this.weatherDate = weatherDate;
+        this.weatherSunrise = weatherSunrise;
+        this.weatherHigh = weatherHigh;
+        this.weatherLow = weatherLow;
+        this.weatherTemperature = weatherTemperature;
+        this.weatherSunset = weatherSunset;
+        this.weatherAqi = weatherAqi;
+        this.weatherNotice = weatherNotice;
+        this.weatherType = weatherType;
+        this.weatherFl = weatherFl;
+        this.weatherFx = weatherFx;
+    }
+
     public Integer getWeatherCode() {
         return weatherCode;
     }

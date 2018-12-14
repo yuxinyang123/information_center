@@ -3,6 +3,8 @@ package com.hnu.softwarecollege.infocenter.mapper;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ResTypePoMapper {
     int deleteByPrimaryKey(Long typeId);
@@ -16,4 +18,6 @@ public interface ResTypePoMapper {
     int updateByPrimaryKeySelective(ResTypePo record);
 
     int updateByPrimaryKey(ResTypePo record);
+
+    List<ResTypePo> queryTypeResource(String typename);
 }

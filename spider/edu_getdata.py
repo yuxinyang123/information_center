@@ -10,18 +10,28 @@ import re
 t = time.time()
 t = floor(t)
 st = str(t)
- 
+
+# 火狐浏览器无界面运行
 options = webdriver.FirefoxOptions()
 options.set_headless()
 options.add_argument('--disable-gpu')
 driver = webdriver.Firefox(firefox_options=options)
 
+# 谷歌浏览器无界面运行
+# chrome_options = Options()
+# chrome_options.add_argument('--headless')
+# chrome_options.add_argument('--disable-gpu')
+# driver = webdriver.Chrome(executable_path="谷歌驱动路径"，chrome_options=chrome_options)
 
 
 def login(username,password):
     url = "http://202.206.100.217/xtgl/dl_loginForward.html?language=&_t="+st
 
-    driver.get(url)
+    try:
+        driver.get(url)
+    except Exception:
+		# print("网络异常",e)
+        webclose()
 
     name_input = driver.find_element_by_id("yhm")
     pass_input = driver.find_element_by_id("mm")
@@ -45,7 +55,11 @@ def getgrade(username,password):
     driver.get(url2)
 
     time.sleep(0.2)
-    years_one = driver.find_element_by_xpath("//div[@id='xnm_chosen']")
+    try:
+        years_one = driver.find_element_by_xpath("//div[@id='xnm_chosen']")
+    except Exception:
+        # print("password false",identifier)
+        webclose()
     years_one.click()
     years_two = driver.find_element_by_xpath("//div[@id='xnm_chosen']/div/ul/li[@data-option-array-index='0']")
     years_two.click()
@@ -120,7 +134,10 @@ def getSchedule(user):
     driver.get(url)
     
     time.sleep(0.2)
-    table_button = driver.find_element_by_xpath("//div[@id='tb']/button[@href='#table2']")
+	try:
+		table_button = driver.find_element_by_xpath("//div[@id='tb']/button[@href='#table2']")
+	except Exception:
+		webclose()
     table_button.click()
 
     time.sleep(0.2)

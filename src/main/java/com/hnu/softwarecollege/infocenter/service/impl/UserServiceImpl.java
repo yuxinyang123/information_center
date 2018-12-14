@@ -1,9 +1,13 @@
 package com.hnu.softwarecollege.infocenter.service.impl;
 
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
+
+import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
+import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.persistence.Transient;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @program: infocenter
@@ -26,7 +29,8 @@ public class  UserServiceImpl implements UserService {
 
     @Resource
     UserPoMapper userPoMapper;
-
+    @Resource
+    UserInformationPoMapper userInformationPoMapper;
 
     /**
      * @Description:  用户注册
@@ -45,7 +49,9 @@ public class  UserServiceImpl implements UserService {
         }else{
             int flag=userPoMapper.insert(registForm.toUserPo());
             log.debug("the create return num is {}",flag);
-            if(flag==1){
+            Long userkey = userPoMapper.selectByUserEmail(registForm.getUserEmail()).getUserId();
+            int num = userInformationPoMapper.insertSelective(registForm.toUserUserInformationPo(userkey));
+            if(flag==1&&num==1){
                 log.debug("create a user name:{}",registForm.getUserName());
                 return true;
             }
@@ -72,5 +78,74 @@ public class  UserServiceImpl implements UserService {
         ThreadContext.setUserContext(userPo);
         log.info("the user:{} verify success",userPo.getUserEmail());
         return true;
+    }
+
+
+    /*
+     * @Autor wangzixuan
+     * @Description //TODO 获取用户信息
+     * @Date 15:20 2018/12/12
+     * @Param
+     * @return
+    **/
+    public UserAndUserinfoPo findUserAndUserinfo(){
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userkey = userPo.getUserId();
+//        Long userkey = 1l;
+        UserAndUserinfoPo userAndUserinfoPo;
+        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
+//        System.out.println(userAndUserinfoPo);
+//        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
+        return userAndUserinfoPo;
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 更新数据库中的用户信息
+     * @Date 16:18 2018/12/12
+     * @Param
+     * @return
+    **/
+    public int updateUserInfo(UserInfoForm userInfoForm) {
+
+        int i = userInformationPoMapper.updateByuserKeySelective(userInfoForm);
+        return i;
+    }
+    /**
+     * @Author 刘亚双
+     * @Description //TODO 修改密码前验证密码
+     * @Date 2018/12/12 15:37
+     * @Param [password, email]
+     * @return boolean
+     **/
+    @Override
+    public boolean provingPass(String password, String email) {
+        UserPo userPo = userPoMapper.selectByUserEmail(email);
+        if(userPo.getUserPass().equals(password)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * @Author 刘亚双
+     * @Description //TODO 验证后修改密码
+     * @Date 2018/12/12 16:00
+     * @Param [newpass]
+     * @return boolean
+     **/
+    @Override
+    public boolean changePassword(String newpass) {
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userkey = userPo.getUserId();
+        int flag = userPoMapper.updatePasswordByPrimaryKeySelective(userkey,newpass);
+        if(flag == 0){
+            return false;
+        }else{
+            return true;
+        }
+
     }
 }
