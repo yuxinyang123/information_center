@@ -1,8 +1,9 @@
 <template>
   <div>
-    {{course}}
-
-    <table class="course" border="10">
+    <div style="display: none">
+   {{course}}
+</div>
+    <table class="course" border="1">
       <thead>
         <tr>
           <th>节次</th>
@@ -29,11 +30,6 @@
     name: 'StudentCourse',
     props: {
       course: Object,
-      // day1: Object,
-      // day2: Object,
-      // day3: Object,
-      // day4: Object,
-      // day5: Object,
     },
     data() {
       return {
