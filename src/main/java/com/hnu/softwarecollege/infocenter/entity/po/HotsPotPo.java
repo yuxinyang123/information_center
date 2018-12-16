@@ -20,7 +20,6 @@ public class HotsPotPo {
         this.hotspotHotnum = hotspotHotnum;
         this.hotspotHoturl = hotspotHoturl;
     }
-    public HotsPotPo(){}
 
     public Integer getHotspotId() {
         return hotspotId;

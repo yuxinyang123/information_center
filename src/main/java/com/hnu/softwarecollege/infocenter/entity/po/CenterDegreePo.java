@@ -48,8 +48,6 @@ public class CenterDegreePo {
         this.degreeStudentname = degreeStudentname;
     }
 
-    public CenterDegreePo(){}
-
     public Long getDegreeId() {
         return degreeId;
     }
