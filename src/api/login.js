@@ -19,17 +19,18 @@ export const verifyCode = (res) => {
   })
 }
 
-export const regist = ({ userEmail, userPass, userName, userPhone, educationalNum, educationalPass }) => {
+export const putregist = (resemail, respass, resname, resphone, resedunum, resedupass) => {
   let data = {
-    userEmail,
-    userPass,
-    userName,
-    userPhone,
-    educationalNum,
-    educationalPass
+    userEmail: resemail,
+    userPass: respass,
+    userName: resname,
+    userPhone: resphone,
+    educationalNum: resedunum,
+    educationalPass: resedupass
+
   }
   return axios.request({
-    url: 'api/user/regist',
+    url: '/api/user/regist',
     data,
     method: 'post'
   })
