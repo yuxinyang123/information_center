@@ -3,7 +3,7 @@ package com.hnu.softwarecollege.infocenter.entity.po;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SyllabusPo {
-
+    @JsonProperty("id")
     private Long syllabusId;
     @JsonProperty("classname")
     private String syllabusClassname;

@@ -1,15 +1,21 @@
 package com.hnu.softwarecollege.infocenter.runtime;
 
+import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
+import com.hnu.softwarecollege.infocenter.entity.vo.SyllabusVo;
+import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @program: infocenter
@@ -42,5 +48,24 @@ public class RuntimeTest {
         log.info("{}", sb.toString());
 
 //        process.destroy();
+    }
+    @Resource
+    SyllabusPoMapper syllabusPoMapper;
+    @Test
+    public void syllabusTest(){
+        Long userkey = 1l;
+        List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(userkey);
+        System.out.println(list);
+        System.out.println("===========================================================");
+        List<SyllabusPo> monlist = new ArrayList<>();
+        for(SyllabusPo syllabusPo:list){
+            if(syllabusPo.getSyllabusWeek().equals("星期一")){
+                monlist.add(syllabusPo);
+            }
+        }
+        System.out.println(monlist);
+        System.out.println("==========================================================================");
+        SyllabusVo syllabusVo = new SyllabusVo();
+        syllabusVo.set星期一(monlist);
     }
 }
