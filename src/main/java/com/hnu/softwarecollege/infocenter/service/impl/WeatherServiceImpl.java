@@ -129,6 +129,7 @@ public class WeatherServiceImpl implements WeatherService {
                 WeatherPo weather = mapper.readValue(weatherinfo, WeatherPo.class);
                 weatherPoMapper.updateByPrimaryKey(weather);
             }catch (IOException e){
+                e.printStackTrace();
                 log.error("实体类转换错误");
             }
         }

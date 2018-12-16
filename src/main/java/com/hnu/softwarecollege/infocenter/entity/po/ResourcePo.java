@@ -11,6 +11,9 @@ public class ResourcePo {
 
     private String resAuthor;
 
+    public ResourcePo() {
+    }
+
     private String resSource;
 
     private Date resDate;

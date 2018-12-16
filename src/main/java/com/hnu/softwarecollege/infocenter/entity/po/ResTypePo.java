@@ -14,6 +14,9 @@ public class ResTypePo {
         this.typeName = typeName;
     }
 
+    public ResTypePo() {
+    }
+
     public Long getTypeId() {
         return typeId;
     }

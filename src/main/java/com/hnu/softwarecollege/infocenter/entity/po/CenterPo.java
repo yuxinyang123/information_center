@@ -9,6 +9,9 @@ public class CenterPo {
 
     private Integer weatherCode;
 
+    public CenterPo() {
+    }
+
     public CenterPo(Long userKey, Long degreeKey, Integer weatherCode) {
         this.userKey = userKey;
         this.degreeKey = degreeKey;

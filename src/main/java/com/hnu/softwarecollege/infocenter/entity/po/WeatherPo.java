@@ -50,6 +50,8 @@ public class WeatherPo {
         this.weatherFx = weatherFx;
     }
 
+    public WeatherPo(){}
+
     public Integer getWeatherCode() {
         return weatherCode;
     }
