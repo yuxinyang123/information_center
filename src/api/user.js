@@ -7,7 +7,7 @@ export const login = ({ userName, password, code }) => {
     verifyCode: code
   }
   return axios.request({
-    url: 'api/access/login',
+    url: 'api/access/user',
     data,
     method: 'post'
   })
@@ -15,9 +15,9 @@ export const login = ({ userName, password, code }) => {
 
 export const getUserInfo = (token) => {
   return axios.request({
-    url: 'get_info',
+    url: 'api/user/info',
     params: {
-      token
+      token: token
     },
     method: 'get'
   })

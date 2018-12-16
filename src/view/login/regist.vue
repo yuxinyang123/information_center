@@ -63,10 +63,10 @@
           ></Input>
         </FormItem>
         <Row type="flex" justify="center">
-        <div>
-          <Button type="primary" @click="handleSubmit('registForm')">Submit</Button>
-          <Button @click="handleReset('registForm')" style="margin-left: 8px">Reset</Button>
-        </div>
+          <div>
+            <Button type="primary" @click="handleSubmit('registForm')">Submit</Button>
+            <Button @click="handleReset('registForm')" style="margin-left: 8px">Reset</Button>
+          </div>
         </Row>
       </Form>
     </div>
@@ -76,6 +76,7 @@
 <script>
 import RegistForm from "_c/regist-form";
 import { mapActions } from "vuex";
+import regist from "@/api/login"
 export default {
   name: "registForm",
   components: {
@@ -104,14 +105,14 @@ export default {
       }
     };
     return {
-      formModel:{
-        mail:'',
-        passwd:'',
-        passwdCheck:'',
-        username:'',
-        phone:'',
-        eduaccount:'',
-        edupasswd:'',
+      formModel: {
+        mail: "",
+        passwd: "",
+        passwdCheck: "",
+        username: "",
+        phone: "",
+        eduaccount: "",
+        edupasswd: ""
       },
       registForm: {
         passwd: "",
@@ -119,48 +120,41 @@ export default {
       },
       ruleRegist: {
         mail: [
-          { required: true, message: '邮箱不能为空', trigger: 'blur' },
-          { type: 'email', message: '邮箱输入有误', trigger: 'blur' }
+          { required: true, message: "邮箱不能为空", trigger: "blur" },
+          { type: "email", message: "邮箱输入有误", trigger: "blur" }
         ],
-        passwd: [
-          
-          {required: true, validator: validatePass, trigger: "blur" }
-        ],
+        passwd: [{ required: true, validator: validatePass, trigger: "blur" }],
         passwdCheck: [
-          
-          { required: true,validator: validatePassCheck, trigger: "blur" }
+          { required: true, validator: validatePassCheck, trigger: "blur" }
         ],
         username: [
-          { required: true, message: '用户名不能为空', trigger: 'blur' },
+          { required: true, message: "用户名不能为空", trigger: "blur" }
         ],
         eduaccount: [
-          { required: true, message: '账号不能为空', trigger: 'blur' },
+          { required: true, message: "账号不能为空", trigger: "blur" }
         ],
-        phone: [
-          { required: true, message: '手机号不能为空', trigger: 'blur' },
-        ],
+        phone: [{ required: true, message: "手机号不能为空", trigger: "blur" }],
         edupasswd: [
-          { required: true, message: '密码不能为空', trigger: 'blur' },
-        ],
+          { required: true, message: "密码不能为空", trigger: "blur" }
+        ]
       }
     };
-    
   },
-    methods: {
-      handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$Message.success('Success!');
-                    } else {
-                        this.$Message.error('Fail!');
-                    }
-                })
-            },
-            handleReset (name) {
-                this.$refs[name].resetFields();
-            }
+  methods: {
+    handleSubmit(name) {
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          regist(this.formModel.mail)
+          this.$Message.success("Success!");
+        } else {
+          this.$Message.error("Fail!");
         }
-        
+      });
+    },
+    handleReset(name) {
+      this.$refs[name].resetFields();
+    }
+  }
 };
 </script>
 

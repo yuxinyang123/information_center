@@ -131,6 +131,7 @@ export default {
     handleGetWeather() {
       getWhetherData()
         .then(res => {
+          console.log(res)
           res = res.data.data;
           this.city = res.cityname;
           this.ganmao = res.notice;

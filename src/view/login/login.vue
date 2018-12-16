@@ -27,7 +27,9 @@ export default {
     ...mapActions(["handleLogin", "getUserInfo"]),
     handleSubmit({ userName, password, code }) {
       this.handleLogin({ userName, password, code }).then(res => {
+        console.log("handlelogin")
         this.getUserInfo().then(res => {
+          console.log("getuserinfo:"+res)
           this.$Message.success("登录成功");
           this.$router.push({
             name: this.$config.homeName
