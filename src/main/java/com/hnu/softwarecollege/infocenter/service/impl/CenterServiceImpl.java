@@ -60,12 +60,17 @@ public class CenterServiceImpl implements CenterService {
     @Resource
     UserInformationPoMapper userInformationPoMapper;
     @Override
-    public void getGrade() {
-        Long userkey = ThreadContext.getUserContext().getUserId();
+    public void getGrade(Long userKey) {
+        Long userkey = userKey;
+        // set context
+        UserPo userPo = new UserPo();
+        userPo.setUserId(userkey);
+        ThreadContext.setUserContext(userPo);
         UserInformationPo userInformationPo = userInformationPoMapper.selectByUserKey(userkey);
         String Id = userInformationPo.getInfNum().toString();
         String password =userInformationPo.getInfPass();
         String[] arg = new String[]{"python",spiderPath, Id, password};
+        log.info("{}",arg[1]);
         Process process = null;
         String result = "";
         try {
@@ -74,9 +79,11 @@ public class CenterServiceImpl implements CenterService {
             BufferedReader bufferedReader = new BufferedReader(ir);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                log.info("{}",line);
+//                log.info("{}",line);
                 result += line;
             }
+            resultjson = result;
+            log.info("{}",resultjson);
             bufferedReader.close();
 //            process.waitFor();
             process.destroyForcibly();
@@ -87,7 +94,7 @@ public class CenterServiceImpl implements CenterService {
 //        catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        resultjson = result;
+
         //System.out.println("resultjson:" + resultjson);
     }
 

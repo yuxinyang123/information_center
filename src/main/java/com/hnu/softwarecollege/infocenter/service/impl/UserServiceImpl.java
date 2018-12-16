@@ -44,14 +44,14 @@ public class UserServiceImpl implements UserService {
      **/
     @Override
     @Transient
-    public boolean createUser(RegistForm registForm) {
+    public Long createUser(RegistForm registForm) {
         UserPo userPo = userPoMapper.selectByUserEmail(registForm.getUserEmail());
 
         if (userPo != null) {
 
             log.info("the email:{} has been registed!", registForm.getUserName());
 
-            return false;
+            return null;
 
         } else {
 
@@ -63,14 +63,16 @@ public class UserServiceImpl implements UserService {
 
             CenterPo centerPo = new CenterPo();
             centerPo.setUserKey(userkey);
+            centerPo.setWeatherCode(101090101);
             int num2 = centerPoMapper.insertSelective(centerPo);
 
             if (flag == 1 && num1 == 1 && num2 == 1) {
+
                 log.debug("create a user name:{}", registForm.getUserName());
-                return true;
+                return userkey;
             }
             log.error("create fail! user name:{}", registForm.getUserName());
-            return false;
+            return null;
         }
     }
 

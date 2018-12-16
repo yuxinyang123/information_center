@@ -10,7 +10,7 @@ import com.hnu.softwarecollege.infocenter.entity.vo.FourTag;
 import java.util.List;
 
 public interface CenterService {
-    public void getGrade();
+    public void getGrade(Long userKey);
     public List<CenterDegreePo> gradeDB();
     public String getGradeForeast(String studentId,String courseType,String testType,String gainCredit);
     public List<HotsPotPo> getHotPot(int pageNum,int pageSize);

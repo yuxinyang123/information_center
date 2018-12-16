@@ -72,9 +72,9 @@ public class InsertInfoTest {
     @Transient
     @Rollback(false)
     public void insertCenter(){
-        CenterPo centerPo = new CenterPo(1l,1l,101090301);
-        CenterPo centerPo1 = new CenterPo(2l,2l,101090101);
-        CenterPo centerPo2 = new CenterPo(3l,3l,101090701);
+        CenterPo centerPo = new CenterPo(1l,101090301);
+        CenterPo centerPo1 = new CenterPo(2l,101090101);
+        CenterPo centerPo2 = new CenterPo(3l,101090701);
         int num = centerPoMapper.insertSelective(centerPo);
         int num1 = centerPoMapper.insertSelective(centerPo1);
         int num2 = centerPoMapper.insertSelective(centerPo2);
@@ -127,6 +127,18 @@ public class InsertInfoTest {
             log.info("HotsPot insert fail");
         }
     }
+
+    @Test
+    @Transient
+    @Rollback(false)
+    public void insert50hotpot(){
+        for(int i=0;i<47;i++){
+            HotsPotPo hotsPotPo = new HotsPotPo();
+            hotsPotPo.setHotspotTitle(String.valueOf(i));
+            hotsPotPoMapper.insertSelective(hotsPotPo);
+        }
+    }
+
 
     @Resource
     ResTypePoMapper resTypePoMapper;

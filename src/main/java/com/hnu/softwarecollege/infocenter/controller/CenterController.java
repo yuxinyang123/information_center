@@ -1,5 +1,6 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
@@ -84,7 +85,7 @@ public class CenterController {
      **/
     @GetMapping("/spider")
     public BaseResponseVo runSpider(){
-        centerService.getGrade();
+        centerService.getGrade(ThreadContext.getUserContext().getUserId());
         return BaseResponseVo.success("查询，插入数据库成功");
     }
     /*
