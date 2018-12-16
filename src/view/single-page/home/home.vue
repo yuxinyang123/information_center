@@ -147,7 +147,8 @@ export default {
         });
     },
     handleGetCourse() {
-      getStudentCourse("1")
+      console.log(this.$store.state.user.userId)
+      getStudentCourse(this.$store.state.user.userId)
         .then(res => {
           res = res.data.data;
           this.course = res;
