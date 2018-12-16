@@ -6,8 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CenterDegreePo {
 
+    @JsonProperty("degreeId")
     private Long degreeId;
-
+    @JsonProperty("degreeUserkey")
     private Long degreeUserkey;
     @JsonProperty("term")
     private String degreeTerm;
@@ -42,6 +43,8 @@ public class CenterDegreePo {
         this.degreeStudentid = degreeStudentid;
         this.degreeStudentname = degreeStudentname;
     }
+
+    public CenterDegreePo(){}
 
     public Long getDegreeId() {
         return degreeId;

@@ -331,6 +331,10 @@ public class CenterServiceImpl implements CenterService {
         Double zero = 0d;
 
         centerDegreePos = centerDegreePoMapper.findAllByUserKey(userKey);
+        if(centerDegreePos == null){
+            log.error("成绩为空");
+            return null;
+        }
         Map<String,Double> grademap = new HashMap<String, Double>();
         Map<String,Double> pointmap = new HashMap<String, Double>();
         if(centerDegreePos != null){

@@ -179,6 +179,10 @@ public class CenterController {
     public BaseResponseVo getFourTag(){
         FourTag fourTag = new FourTag();
         fourTag = centerService.selectForFouttag();
+        if (fourTag == null){
+            log.error("查询无结果");
+            return BaseResponseVo.fail("无成绩");
+        }
         return BaseResponseVo.success(fourTag);
     }
 
