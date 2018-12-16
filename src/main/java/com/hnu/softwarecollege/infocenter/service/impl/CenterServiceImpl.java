@@ -8,6 +8,7 @@ import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.*;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.FourTag;
+import com.hnu.softwarecollege.infocenter.entity.vo.SyllabusVo;
 import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
@@ -28,9 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.add;
-import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.divide;
-import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.mul;
+import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.*;
 
 /**
  * @ClassName CenterServiceImpl
@@ -233,11 +232,45 @@ public class CenterServiceImpl implements CenterService {
      * @return java.lang.String
      **/
     @Override
-    public List<SyllabusPo> getCourseTable(Long Userkey) {
+    public SyllabusVo getCourseTable(Long Userkey) {
         //Long Userkey = ThreadContext.getUserContext().getUserId();
         List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(Userkey);
+        SyllabusVo syllabusVo = transform(list);
         for(SyllabusPo po:list)log.info("{}",po.toString());
-        return list;
+        return syllabusVo;
+    }
+
+    @Override
+    public SyllabusVo transform(List<SyllabusPo> list) {
+        List<SyllabusPo> mondaylist = new ArrayList<>();
+        List<SyllabusPo> tuesdaylist = new ArrayList<>();
+        List<SyllabusPo> wednesdaylist = new ArrayList<>();
+        List<SyllabusPo> thursdaylist = new ArrayList<>();
+        List<SyllabusPo> fridaylist = new ArrayList<>();
+        for(SyllabusPo syllabusPo:list){
+            if(syllabusPo.getSyllabusWeek().equals("星期一")){
+                mondaylist.add(syllabusPo);
+            }
+            if(syllabusPo.getSyllabusWeek().equals("星期二")){
+                tuesdaylist.add(syllabusPo);
+            }
+            if(syllabusPo.getSyllabusWeek().equals("星期三")){
+                wednesdaylist.add(syllabusPo);
+            }
+            if(syllabusPo.getSyllabusWeek().equals("星期四")){
+                thursdaylist.add(syllabusPo);
+            }
+            if(syllabusPo.getSyllabusWeek().equals("星期五")){
+                fridaylist.add(syllabusPo);
+            }
+        }
+        SyllabusVo syllabusVo = new SyllabusVo();
+        syllabusVo.set星期一(mondaylist);
+        syllabusVo.set星期二(tuesdaylist);
+        syllabusVo.set星期三(wednesdaylist);
+        syllabusVo.set星期四(thursdaylist);
+        syllabusVo.set星期五(fridaylist);
+        return syllabusVo;
     }
 
     /*
