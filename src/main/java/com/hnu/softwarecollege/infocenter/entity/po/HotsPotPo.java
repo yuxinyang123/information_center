@@ -14,6 +14,8 @@ public class HotsPotPo {
     @JsonProperty("hoturl")
     private String hotspotHoturl;
 
+    public HotsPotPo(){}
+
     public HotsPotPo(String hotspotTitle, String hotspotHotnum, String hotspotHoturl) {
         this.hotspotTitle = hotspotTitle;
         this.hotspotHotnum = hotspotHotnum;

@@ -1,30 +1,34 @@
 package com.hnu.softwarecollege.infocenter.entity.po;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SyllabusPo {
 
     private Long syllabusId;
-
+    @JsonProperty("classname")
     private String syllabusClassname;
-
+    @JsonProperty("startweek")
     private Integer syllabusStartweek;
-
+    @JsonProperty("endweek")
     private Integer syllabusEndweek;
-
+    @JsonProperty("startpart")
     private Integer syllabusStartpart;
-
+    @JsonProperty("endpart")
     private Integer syllabusEndpart;
-
+    @JsonProperty("week")
     private String syllabusWeek;
-
+    @JsonProperty("classroom")
     private String syllabusClassroom;
-
+    @JsonProperty("teacher")
     private String syllabusTeacher;
-
+    @JsonProperty
     private Long userkey;
 
 
+    public SyllabusPo() {
+    }
 
-    public SyllabusPo(Long syllabusId,String syllabusClassname, Integer syllabusStartweek, Integer syllabusEndweek, Integer syllabusStartpart, Integer syllabusEndpart, String syllabusWeek, String syllabusClassroom, String syllabusTeacher, Long userkey) {
+    public SyllabusPo(Long syllabusId, String syllabusClassname, Integer syllabusStartweek, Integer syllabusEndweek, Integer syllabusStartpart, Integer syllabusEndpart, String syllabusWeek, String syllabusClassroom, String syllabusTeacher, Long userkey) {
         this.syllabusId = syllabusId;
         this.syllabusClassname = syllabusClassname;
         this.syllabusStartweek = syllabusStartweek;

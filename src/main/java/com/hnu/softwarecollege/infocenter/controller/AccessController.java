@@ -1,6 +1,7 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
 
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.service.UserService;
@@ -66,13 +67,14 @@ public class AccessController {
     @PostMapping("user")
     @ResponseBody
     public BaseResponseVo login(
-            @RequestBody @Valid LoginForm loginForm,
+            @RequestBody @Valid LoginForm loginForm,HttpSession session,
             HttpServletResponse response) {
         //will set userContext
         boolean isTrue = userService.verifyUser(loginForm);
         if (isTrue) {
             String token = TokenUtil.createToken();
             response.addCookie(getCookie("token", token));
+            response.addCookie(getCookie("id", String.valueOf(ThreadContext.getUserContext().getUserId())));
             return BaseResponseVo.success(token);
         } else {
             return BaseResponseVo.fail("login fail");

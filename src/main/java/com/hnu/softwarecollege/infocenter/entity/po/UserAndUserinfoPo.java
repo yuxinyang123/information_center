@@ -1,5 +1,7 @@
 package com.hnu.softwarecollege.infocenter.entity.po;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @ClassName UserAndUserinfoPo
  * @Description TODO
@@ -9,27 +11,38 @@ package com.hnu.softwarecollege.infocenter.entity.po;
  **/
 public class UserAndUserinfoPo {
 
+    @JsonProperty
+    private Integer userId;
+    @JsonProperty("num")
     private Integer infNum;
-
+    @JsonProperty("signature")
     private String infSignature;
-
+    @JsonProperty("academy")
     private String infAcademy;
-
+    @JsonProperty("major")
     private String infMajor;
-
+    @JsonProperty("class")
     private String infClass;
-
+    @JsonProperty("sex")
     private String infSex;
-
+    @JsonProperty("location")
     private String infLocaltion;
-
+    @JsonProperty("age")
     private String infAge;
-
+    @JsonProperty
     private String userName;
-
+    @JsonProperty
     private String userEmail;
-
+    @JsonProperty
     private String userPhone;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getInfNum() {
         return infNum;

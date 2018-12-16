@@ -236,6 +236,7 @@ public class CenterServiceImpl implements CenterService {
     public List<SyllabusPo> getCourseTable(Long Userkey) {
         //Long Userkey = ThreadContext.getUserContext().getUserId();
         List<SyllabusPo> list = syllabusPoMapper.findAllByUserKey(Userkey);
+        for(SyllabusPo po:list)log.info("{}",po.toString());
         return list;
     }
 

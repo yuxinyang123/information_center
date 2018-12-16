@@ -1,12 +1,13 @@
 package com.hnu.softwarecollege.infocenter.service.impl;
 
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.CenterPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
-
 import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
+import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
@@ -24,16 +25,18 @@ import javax.persistence.Transient;
  **/
 @Service
 @Slf4j
-public class  UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 //    Logger logger = LoggerFactory.getLogger(this.getClass()) ;
 
     @Resource
     UserPoMapper userPoMapper;
     @Resource
     UserInformationPoMapper userInformationPoMapper;
+    @Resource
+    CenterPoMapper centerPoMapper;
 
     /**
-     * @Description:  用户注册
+     * @Description: 用户注册
      * @Param: [registForm]
      * @return: boolean
      * @Author: yu
@@ -43,19 +46,30 @@ public class  UserServiceImpl implements UserService {
     @Transient
     public boolean createUser(RegistForm registForm) {
         UserPo userPo = userPoMapper.selectByUserEmail(registForm.getUserEmail());
-        if(userPo!=null){
-            log.info("the email:{} has been registed!",registForm.getUserName());
+
+        if (userPo != null) {
+
+            log.info("the email:{} has been registed!", registForm.getUserName());
+
             return false;
-        }else{
-            int flag=userPoMapper.insert(registForm.toUserPo());
-            log.debug("the create return num is {}",flag);
+
+        } else {
+
+            int flag = userPoMapper.insert(registForm.toUserPo());
+
+            log.debug("the create return num is {}", flag);
             Long userkey = userPoMapper.selectByUserEmail(registForm.getUserEmail()).getUserId();
-            int num = userInformationPoMapper.insertSelective(registForm.toUserUserInformationPo(userkey));
-            if(flag==1&&num==1){
-                log.debug("create a user name:{}",registForm.getUserName());
+            int num1 = userInformationPoMapper.insertSelective(registForm.toUserUserInformationPo(userkey));
+
+            CenterPo centerPo = new CenterPo();
+            centerPo.setUserKey(userkey);
+            int num2 = centerPoMapper.insertSelective(centerPo);
+
+            if (flag == 1 && num1 == 1 && num2 == 1) {
+                log.debug("create a user name:{}", registForm.getUserName());
                 return true;
             }
-            log.error("create fail! user name:{}",registForm.getUserName());
+            log.error("create fail! user name:{}", registForm.getUserName());
             return false;
         }
     }
@@ -70,13 +84,13 @@ public class  UserServiceImpl implements UserService {
     @Override
     public boolean verifyUser(LoginForm loginForm) {
         UserPo userPo = userPoMapper.selectByUserSelective(loginForm.toUserPo());
-        if(userPo==null){
-            log.info("the user:{} doesn't exist",loginForm.getEmail());
+        if (userPo == null) {
+            log.info("the user:{} doesn't exist", loginForm.getEmail());
             return false;
         }
         // todo setContext
         ThreadContext.setUserContext(userPo);
-        log.info("the user:{} verify success",userPo.getUserEmail());
+        log.info("the user:{} verify success", userPo.getUserEmail());
         return true;
     }
 
@@ -87,8 +101,8 @@ public class  UserServiceImpl implements UserService {
      * @Date 15:20 2018/12/12
      * @Param
      * @return
-    **/
-    public UserAndUserinfoPo findUserAndUserinfo(){
+     **/
+    public UserAndUserinfoPo findUserAndUserinfo() {
         UserPo userPo = ThreadContext.getUserContext();
         Long userkey = userPo.getUserId();
 //        Long userkey = 1l;
@@ -105,45 +119,45 @@ public class  UserServiceImpl implements UserService {
      * @Date 16:18 2018/12/12
      * @Param
      * @return
-    **/
+     **/
     public int updateUserInfo(UserInfoForm userInfoForm) {
 
         int i = userInformationPoMapper.updateByuserKeySelective(userInfoForm);
         return i;
     }
+
     /**
+     * @return boolean
      * @Author 刘亚双
      * @Description //TODO 修改密码前验证密码
      * @Date 2018/12/12 15:37
      * @Param [password, email]
-     * @return boolean
      **/
     @Override
     public boolean provingPass(String password, String email) {
         UserPo userPo = userPoMapper.selectByUserEmail(email);
-        if(userPo.getUserPass().equals(password)){
+        if (userPo.getUserPass().equals(password)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
     /**
+     * @return boolean
      * @Author 刘亚双
      * @Description //TODO 验证后修改密码
      * @Date 2018/12/12 16:00
      * @Param [newpass]
-     * @return boolean
      **/
     @Override
     public boolean changePassword(String newpass) {
         UserPo userPo = ThreadContext.getUserContext();
         Long userkey = userPo.getUserId();
-        int flag = userPoMapper.updatePasswordByPrimaryKeySelective(userkey,newpass);
-        if(flag == 0){
+        int flag = userPoMapper.updatePasswordByPrimaryKeySelective(userkey, newpass);
+        if (flag == 0) {
             return false;
-        }else{
+        } else {
             return true;
         }
 

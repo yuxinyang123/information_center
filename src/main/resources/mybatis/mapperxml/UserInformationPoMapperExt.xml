@@ -13,6 +13,7 @@
         <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
         <result column="USER_EMAIL" jdbcType="VARCHAR" property="userEmail" />
         <result column="USER_PHONE" jdbcType="VARCHAR" property="userPhone" />
+        <result column="USER_ID" jdbcType="BIGINT" property="userId" />
     </resultMap>
 <select id="infoselectByUserkey" parameterType="java.lang.Long" resultMap="InfoResultMap">
     select
@@ -26,7 +27,8 @@
     i.INF_AGE,
     u.USER_NAME,
     u.USER_EMAIL,
-    u.USER_PHONE
+    u.USER_PHONE,
+    u.USER_ID
     from `tbl_user_information` i
     left join `tbl_user` u on i.USER_KEY = u.USER_ID
     where USER_KEY = #{userkey,jdbcType=BIGINT}
