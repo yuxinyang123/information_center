@@ -37,7 +37,7 @@ export const uploadImg = formData => {
 }
 export const getWhetherData = () => {
   return axios.request({
-<<<<<<< HEAD
+
     url: '/api/center/weather',
     
     method: 'get'
@@ -49,13 +49,7 @@ export const getNews = (pageNum,pageSize) => {
     params:{
       pageNum:pageNum,
       pageSize:pageSize
-    },
-=======
-    url: 'api/center/weather',
-    // params: {
-    //   city: '石家庄市'
-    // },
-    method: 'get'
+    }
   })
 }
 // export const updateWeatherInfo = (city) => {
@@ -71,11 +65,10 @@ export const getStudentCourse = (userKey) => {
   let params = {
     userkey: userKey
   }
-  // console.log(userKey)
   return axios.request({
     url: '/api/center/curriculum',
     params,
->>>>>>> 6cfb6eb34df9dd5c40a556550c8e1d7eb167494d
+
     method: 'get'
   })
 }

@@ -12,7 +12,7 @@
     <Row> 
         <i-col span="12"  align='center' ><Icon type="ios-flag"></Icon>
            <a   @click='modal1=true'>{{city}}</a>
-<<<<<<< HEAD
+
            <!-- <Modal v-model="modal1"  scrollable title="城市选择" >
                <div>
                    <weather-model :data="data"  ></weather-model>

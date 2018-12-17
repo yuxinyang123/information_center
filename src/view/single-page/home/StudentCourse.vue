@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{course}}
+ 
 
     <table class="course" border="10">
       <thead>

@@ -22,13 +22,12 @@
         </Card>
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
-<<<<<<< HEAD
+
         <Card shadow>        
           <chart-bar style="height: 300px;"  :hottitle="hottitle" @change="ChangePageNum" text="热点新闻"/>
-=======
-        <Card shadow>
-          <chart-bar style="height: 300px;" text="热点新闻"/>
->>>>>>> 6cfb6eb34df9dd5c40a556550c8e1d7eb167494d
+
+    
+
         </Card>
       </i-col>
     </Row>
@@ -68,32 +67,10 @@ export default {
       aqi: '',
       type:'',
       cityname:'',
-<<<<<<< HEAD
+      course:{},
       hottitle:[],
       pageNum:1,
       pageSize:10,
-      inforCardData: [
-        { title: '加权平均分', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
-        { title: '平均学分绩点', icon: 'md-locate', count: 232, color: '#19be6b' },
-        { title: '第二课堂', icon: 'md-help-circle', count: 142, color: '#ff9900' },
-        { title: '选修', icon: 'md-share', count: 657, color: '#ed3f14' }
-      ],
-     }
-   },
-  methods:{
-    ChangePageNum:function(){
-      if(this.pageNum*this.pageSize<=50){
-        this.pageNum++;
-      }else{
-        this.pageNum=0;
-      }
-=======
-      course:{},
-      // day1:{},
-      // day2:{},
-      // day3:{},
-      // day4:{},
-      // day5:{},
       inforCardData: [
         {
           title: "加权平均分",
@@ -115,16 +92,19 @@ export default {
         },
         { title: "选修", icon: "md-share", count: 657, color: "#ed3f14" }
       ]
-    };
-  },
->>>>>>> 6cfb6eb34df9dd5c40a556550c8e1d7eb167494d
-
+     }
+   },
+  methods:{
+    ChangePageNum:function(){
+      if(this.pageNum*this.pageSize<=50){
+        this.pageNum++;
+      }else{
+        this.pageNum=0;
+      }
     }
   },
   mounted(){
-    getWhetherData().then(res => {
-     
-      
+    getWhetherData().then(res => {           
       res=res.data.data
       this.city=res.cityname
       this.ganmao=res.notice
@@ -137,7 +117,7 @@ export default {
       }).catch(err => {
         console.log(err)
     })
-<<<<<<< HEAD
+
     getNews(this.pageNum,this.pageSize).then(res => {
      console.log(res.data.data)
      res=res.data.data
@@ -145,32 +125,17 @@ export default {
     }).catch(err => {
       console.log(err)
     })
-  }
-
-}
-=======
-      // updateWeatherInfo().then(res =>{
-      //   res=res.data
-      //   this
-      // })
+  
     getStudentCourse('1').then(res=>{
      
-      res=res.data.data
-      
+      res=res.data.data      
       this.course=res
-      // this.day1=res.星期一[0]
-      // this.day2=res.星期二[0]
-      // this.day3=res.星期三[0]
-      // this.day4=res.星期四[0]
-      // this.day5=res.星期五[0]
-      // console.log(this.day1)
-      // console.log(res)
     }).catch(err =>{
       console.log(err)
     })
-  }
-};
->>>>>>> 6cfb6eb34df9dd5c40a556550c8e1d7eb167494d
+  
+}};
+
 </script>
 
 <style lang="less">

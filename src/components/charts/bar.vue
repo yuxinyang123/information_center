@@ -11,13 +11,14 @@
         <i-col span="12">
             <ul>
                 <li v-for="(item,index) in hottitle"
-                    v-if="index<10">
+                    v-if="index<7">
                      <Row>
                         <i-col span="2">{{item.id}}</i-col>
-                        <i-col span="20"> 
+                        <i-col span="15"> 
                             <a :href="item.hoturl" target="_blank">{{ item.title }}</a>
-                            {{item.hotnum}}
+                            
                         </i-col>
+                        <i-col span="4">{{item.hotnum}}</i-col>
                     </Row>                  
                 </li>
             </ul>
@@ -25,14 +26,15 @@
         <i-col span="12">
             <ul>
                 <li v-for="(item,index) in hottitle"
-                    v-if="index>9&&index<20">
-                    <Row>
+                    v-if="index>6&&index<14">
+                     <Row>
                         <i-col span="2">{{item.id}}</i-col>
-                        <i-col span="20"> 
+                        <i-col span="15"> 
                             <a :href="item.hoturl" target="_blank">{{ item.title }}</a>
-                            {{item.hotnum}}
+                            
                         </i-col>
-                    </Row>          
+                        <i-col span="4">{{item.hotnum}}</i-col>
+                    </Row>                  
                 </li>
             </ul>
         </i-col>
@@ -51,11 +53,11 @@
                 this.$emit('change');
             }
            
-        },
-        mounted(){
         }
     }
 </script>
 <style>
-    li{list-style-type:none;}
+    li{list-style-type:none;
+     font-size: 22px}
+    
 </style>
