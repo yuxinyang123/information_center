@@ -19,7 +19,7 @@ public class CenterDegreePo {
     @JsonProperty("credit")
     private Double degreeCredit;
     @JsonProperty("grade")
-    private Double degreeGrade;
+    private String degreeGrade;
     @JsonProperty("PerformancePoint")
     private Double degreePerformancepoint;
 
@@ -34,7 +34,7 @@ public class CenterDegreePo {
     private String degreeStudentname;
 
     public CenterDegreePo(Long degreeUserkey, String degreeTerm, String degreeClassname, String degreeClassnature,
-                          Double degreeCredit, Double degreeGrade, Double degreePerformancepoint,
+                          Double degreeCredit, String  degreeGrade, Double degreePerformancepoint,
                           String degreeTestnature, Integer degreeStudentid, String degreeStudentname) {
         this.degreeUserkey = degreeUserkey;
         this.degreeTerm = degreeTerm;
@@ -96,11 +96,11 @@ public class CenterDegreePo {
         this.degreeCredit = degreeCredit;
     }
 
-    public Double getDegreeGrade() {
+    public String getDegreeGrade() {
         return degreeGrade;
     }
 
-    public void setDegreeGrade(Double degreeGrade) {
+    public void setDegreeGrade(String degreeGrade) {
         this.degreeGrade = degreeGrade;
     }
 

@@ -91,11 +91,11 @@ public class InsertInfoTest {
     @Rollback(false)
     public void insertCenterDegree(){
         CenterDegreePo centerDegreePo = new CenterDegreePo(1l,"2016-2017",
-                "大学生心理健康教育","素质类",2d,89d,
+                "大学生心理健康教育","素质类",2d,"89",
                 3.7,"正常考试",2016011372,"刘亚双");
         CenterDegreePo centerDegreePo1 = new CenterDegreePo(1l,"2016-2017",
                 "计算机导论","正常考试",
-                3d,83d,3.3d,"正常考试",2016011372,"刘亚双");
+                3d,"83",3.3d,"正常考试",2016011372,"刘亚双");
 
         int num = centerDegreePoMapper.insertSelective(centerDegreePo);
         int num1 = centerDegreePoMapper.insertSelective(centerDegreePo1);

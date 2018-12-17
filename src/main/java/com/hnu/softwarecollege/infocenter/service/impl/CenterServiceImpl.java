@@ -345,9 +345,9 @@ public class CenterServiceImpl implements CenterService {
     **/
 
     public FourTag selectForFouttag(){
-        UserPo userPo = ThreadContext.getUserContext();
-        Long userKey = userPo.getUserId();
-//        Long userKey = 1l;
+//        UserPo userPo = ThreadContext.getUserContext();
+//        Long userKey = userPo.getUserId();
+        Long userKey = 1l;
         List<CenterDegreePo> centerDegreePos = new ArrayList<CenterDegreePo>();
 
 
@@ -388,21 +388,27 @@ public class CenterServiceImpl implements CenterService {
                     }
                 }
 
-                //判断成绩
-                if(po.getDegreeTestnature().equals("正常考试")){
-                    grademap.put(po.getDegreeClassname(),po.getDegreeGrade());
+                //判断成绩和计算绩点
+                if(po.getDegreeTestnature().equals("正常考试") && !po.getDegreeGrade().equals("合格")){
+                    Double sgrade = 0d;
+
+                    sgrade = Double.parseDouble(po.getDegreeGrade());
+                    grademap.put(po.getDegreeClassname(),sgrade);
                     pointmap.put(po.getDegreeClassname(),po.getDegreePerformancepoint());
                 }else {
                     List<CenterDegreePo> centerDegreePos1 = centerDegreePoMapper.selectByClassname(po.getDegreeClassname());
-                    Double g = 0d;Double p = 0d;
-                    for (CenterDegreePo po1 : centerDegreePos1){
-                        if (g < po1.getDegreeGrade()){
-                            g = po1.getDegreeGrade();
-                            p = po1.getDegreePerformancepoint();
+                    if (!po.getDegreeGrade().equals("合格")){
+                        Double g = 0d;Double p = 0d;Double temp = 0d;
+                        for (CenterDegreePo po1 : centerDegreePos1){
+                            temp = Double.parseDouble(po.getDegreeGrade());
+                            if (g < temp){
+                                g = temp;
+                                p = po1.getDegreePerformancepoint();
+                            }
                         }
+                        grademap.put(po.getDegreeClassname(),g);
+                        pointmap.put(po.getDegreeClassname(),p);
                     }
-                    grademap.put(po.getDegreeClassname(),g);
-                    pointmap.put(po.getDegreeClassname(),p);
                 }
             }
         }else {
