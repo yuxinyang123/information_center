@@ -190,11 +190,11 @@ export default {
               console.log(res);
               if (res.data.code == 200) {
                 this.$Message.success(
-                  "注册成功,系统将在3秒后自动跳转到登录界面"
+                  "注册成功,系统将在5秒后自动跳转到登录界面"
                 );
                 setTimeout(function() {
                   window.open("login.vue", "_self");
-                }, 3000);
+                }, 5000);
               } else if (res.data.code == 500) {
                 this.$Message.error("注册失败");
               }

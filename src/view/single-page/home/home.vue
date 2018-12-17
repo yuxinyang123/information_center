@@ -198,13 +198,13 @@ export default {
     getWhetherData()
       .then(res => {
         res = res.data.data;
-        this.city = res.cityname;
+        this.city = res.city;
         this.ganmao = res.notice;
         this.wendu = res.wendu;
-        this.date = res.nowdate;
+        this.date = res.date;
         this.low = res.low;
         this.high = res.high;
-        this.aqi = String(res.AQI);
+        this.aqi = String(res.aqi);
         this.type = res.type;
       })
       .catch(err => {
@@ -214,7 +214,7 @@ export default {
       .then(res => {
         console.log(res.data.data);
         res = res.data.data;
-        this.hottitle = res.list;
+        this.hottitle = res;
       })
       .catch(err => {
         console.log(err);

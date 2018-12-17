@@ -35,3 +35,10 @@ export const putregist = (resemail, respass, resname, resphone, resedunum, resed
     method: 'post'
   })
 }
+
+export const runSpider = () => {
+  return axios.request({
+    url: '/api/center/spider',
+    method: 'get'
+  })
+}
