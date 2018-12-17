@@ -39,7 +39,7 @@
           <chart-bar
             style="height: 300px;"
             :hottitle="hottitle"
-            @change="ChangePageNum"
+            @change="handleGetNews"
             text="热点新闻"
           />
         </Card>
@@ -89,7 +89,7 @@ export default {
 
       hottitle: [],
       pageNum: 1,
-      pageSize: 10,
+      pageSize: 20,
       inforCardData: [
         {
           title: "加权平均分",
@@ -128,7 +128,7 @@ export default {
     },
 
     handleGetWeather() {
-      let date = new Date()
+      let date = new Date();
       getWhetherData()
         .then(res => {
           console.log(res);
@@ -136,7 +136,12 @@ export default {
           this.city = res.city;
           this.ganmao = res.notice;
           this.wendu = res.wendu;
-          this.date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+          this.date =
+            date.getFullYear() +
+            "-" +
+            (date.getMonth() + 1) +
+            "-" +
+            date.getDate();
           this.low = res.low;
           this.high = res.high;
           this.aqi = String(res.aqi);
@@ -147,7 +152,6 @@ export default {
         });
     },
     handleGetCourse() {
-      console.log(this.$store.state.user.userId);
       getStudentCourse(this.$store.state.user.userId)
         .then(res => {
           res = res.data.data;
@@ -190,21 +194,24 @@ export default {
           console.log(err);
         });
       this.handleGetWeather();
+    },
+    handleGetNews(pageNum,pageSize) {
+      getNews(pageNum, pageSize)
+        .then(res => {
+          console.log(res.data.data);
+          res = res.data.data;
+          this.hottitle = res;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
     this.handleGetWeather();
     this.handleGetCourse();
     this.handleGet4Tag();
-    getNews(this.pageNum, this.pageSize)
-      .then(res => {
-        console.log(res.data.data);
-        res = res.data.data;
-        this.hottitle = res;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.handleGetNews(this.pageNum,this.pageSize);
   }
 };
 </script>
