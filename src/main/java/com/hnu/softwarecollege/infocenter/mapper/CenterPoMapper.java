@@ -2,6 +2,7 @@ package com.hnu.softwarecollege.infocenter.mapper;
 
 import com.hnu.softwarecollege.infocenter.entity.po.CenterPo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface CenterPoMapper {
@@ -33,5 +34,5 @@ public interface CenterPoMapper {
      * @Param [centerId]
      * @return int
      **/
-    int updateWeatherCodeByPrimaryKey(Integer weatherCode,Long centerId);
+    int updateWeatherCodeByPrimaryKey(@Param("weatherCode") Integer weatherCode, @Param("centerID") Long centerId);
 }

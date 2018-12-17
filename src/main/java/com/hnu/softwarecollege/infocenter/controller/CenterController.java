@@ -69,7 +69,7 @@ public class CenterController {
         } else {
             num = weatherService.updateWeatherInfo(code);
         }
-        if (num != 0) {
+        if (num == 0) {
             return BaseResponseVo.error("修改失败");
         }else{
             return BaseResponseVo.success("修改成功");
