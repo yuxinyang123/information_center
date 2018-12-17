@@ -118,7 +118,7 @@ public class CenterServiceImpl implements CenterService {
 
     protected void method(List<String> list) {
         for (int i = 0; i < list.size(); i++) {
-            Long key = 2L;
+            Long key = ThreadContext.getUserContext().getUserId();
             String[] s = list.get(i).split("\\|");
 
             SyllabusPo syllabusPo = new SyllabusPo(null,s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),
@@ -315,7 +315,7 @@ public class CenterServiceImpl implements CenterService {
         page.size();
 
         List<HotsPotPo> hotsPotPoList = new ArrayList<HotsPotPo>();
-        for (int i = 0; i < pageSize; i++) {
+        for (int i = 0; i < page.size(); i++) {
             hotsPotPoList.add(page.get(i));
         }
 
@@ -352,9 +352,9 @@ public class CenterServiceImpl implements CenterService {
     **/
 
     public FourTag selectForFouttag(){
-//        UserPo userPo = ThreadContext.getUserContext();
-//        Long userKey = userPo.getUserId();
-        Long userKey = 1l;
+        UserPo userPo = ThreadContext.getUserContext();
+        Long userKey = userPo.getUserId();
+//        Long userKey = 1l;
         List<CenterDegreePo> centerDegreePos = new ArrayList<CenterDegreePo>();
 
 
