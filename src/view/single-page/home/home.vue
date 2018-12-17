@@ -20,7 +20,6 @@
         <Card shadow>
           <chart-pie
             style="height: 300px;"
-            :cityname="cityname"
             :type="type"
             :aqi="aqi"
             :high="high"
@@ -129,17 +128,18 @@ export default {
     },
 
     handleGetWeather() {
+      let date = new Date()
       getWhetherData()
         .then(res => {
-          console.log(res)
+          console.log(res);
           res = res.data.data;
-          this.city = res.cityname;
+          this.city = res.city;
           this.ganmao = res.notice;
           this.wendu = res.wendu;
-          this.date = res.nowdate;
+          this.date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
           this.low = res.low;
           this.high = res.high;
-          this.aqi = String(res.AQI);
+          this.aqi = String(res.aqi);
           this.type = res.type;
         })
         .catch(err => {
@@ -147,7 +147,7 @@ export default {
         });
     },
     handleGetCourse() {
-      console.log(this.$store.state.user.userId)
+      console.log(this.$store.state.user.userId);
       getStudentCourse(this.$store.state.user.userId)
         .then(res => {
           res = res.data.data;
@@ -189,27 +189,13 @@ export default {
         .catch(err => {
           console.log(err);
         });
+      this.handleGetWeather();
     }
   },
   mounted() {
     this.handleGetWeather();
     this.handleGetCourse();
     this.handleGet4Tag();
-    getWhetherData()
-      .then(res => {
-        res = res.data.data;
-        this.city = res.city;
-        this.ganmao = res.notice;
-        this.wendu = res.wendu;
-        this.date = res.date;
-        this.low = res.low;
-        this.high = res.high;
-        this.aqi = String(res.aqi);
-        this.type = res.type;
-      })
-      .catch(err => {
-        console.log(err);
-      });
     getNews(this.pageNum, this.pageSize)
       .then(res => {
         console.log(res.data.data);
