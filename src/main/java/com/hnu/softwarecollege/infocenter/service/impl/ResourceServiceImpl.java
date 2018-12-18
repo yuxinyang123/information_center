@@ -29,7 +29,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     /*
      * @Author 刘亚双
-     * @Description //TODO 通过信息类型的名字进行查询，进行两个表连接查询，
+     * @Description //TODO 通过帖子类型的名字进行查询，进行两个表连接查询，
      * @Date 2018/12/10 14:48
      * @Param [typename]
      * @return java.util.List<com.hnu.softwarecollege.infocenter.entity.po.ResTypePo>
@@ -42,7 +42,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     /*
      * @Autor wangzixuan
-     * @Description //TODO 插入新的信息
+     * @Description //TODO 插入新的帖子
      * @Date 10:57 2018/12/13
      * @Param [resForm]
      * @return int
@@ -54,7 +54,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     /*
      * @Author 刘亚双
-     * @Description //TODO 通过Id 查询对应的信息
+     * @Description //TODO 通过Id 查询对应的帖子
      * @Date 2018/12/10 14:51
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.po.ResourcePo
@@ -68,7 +68,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     /*
      * @Autor wangzixuan
-     * @Description //TODO 通过ID删除相关信息
+     * @Description //TODO 通过ID删除相关帖子
      * @Date 10:39 2018/12/13
      * @Param [id]
      * @return int
