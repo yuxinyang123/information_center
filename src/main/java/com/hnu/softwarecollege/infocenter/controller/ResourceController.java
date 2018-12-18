@@ -155,7 +155,7 @@ public class ResourceController {
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
-    @GetMapping("/{id}/comment")
+    @GetMapping("/{essayId}/comment")
     public BaseResponseVo getAllComments(@RequestParam int pageNum,@RequestParam int pageSize, @PathVariable String essayId){
         PageHelper.startPage(pageNum,pageSize);
         List<CommentPo> poList = resourceService.getAllComment(essayId);

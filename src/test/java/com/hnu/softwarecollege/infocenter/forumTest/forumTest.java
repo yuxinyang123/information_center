@@ -33,7 +33,8 @@ public class forumTest {
     ResourceController resourceController;
     @Before
     public void createUser(){
-        UserPo userPo = new UserPo(1l,"liuyashuang","liuyashuang@sina.com","13017894556","liuyshuang","1");
+        UserPo userPo = new UserPo(1l,"liuyashuang","liuyashuang@sina.com",
+                "13017894556","liuyashuang","1");
         ThreadContext.setUserContext(userPo);
     }
     @Test
@@ -43,5 +44,17 @@ public class forumTest {
         BaseResponseVo baseResponseVo =resourceController.addComment(commentForm,"1");
         System.out.println(baseResponseVo);
 
+    }
+
+    @Test
+    public void deleteComment(){
+        BaseResponseVo baseResponseVo = resourceController.delComment("1");
+        System.out.println(baseResponseVo);
+    }
+
+    @Test
+    public void getAllComment(){
+        BaseResponseVo baseResponseVo = resourceController.getAllComments(1,3,"1");
+        System.out.println(baseResponseVo);
     }
 }
