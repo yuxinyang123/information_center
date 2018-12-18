@@ -19,5 +19,5 @@ public interface UserService {
 
     public boolean changePassword(String newpass);
 
-
+    public boolean recoverPassword(String email);
 }

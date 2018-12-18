@@ -11,6 +11,7 @@ import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
+import com.hnu.softwarecollege.infocenter.util.MailUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -164,4 +165,23 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    @Resource
+    private MailService mailService;
+    @Resource
+    private MailUtil mailUtil;
+    @Override
+    public boolean recoverPassword(String email) {
+        log.info(email);
+        UserPo userPo = userPoMapper.selectByUserEmail(email);
+        if (userPo != null){
+            String text = mailUtil.createLink(userPo);
+            mailService.sendTextMail(email,"找回密码",text);
+            return true;
+        }else {
+            log.error("邮箱错误");
+            return false;
+        }
+    }
+
 }

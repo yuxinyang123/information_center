@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 import java.util.Map;
@@ -133,5 +134,15 @@ public class AccessController {
     @PostMapping("/admin")
     public BaseResponseVo adminLogin() {
         return null;
+    }
+
+    @PostMapping("/pass")
+    public BaseResponseVo recoverPass(@Email @RequestParam String userEmail){
+        Boolean b = userService.recoverPassword(userEmail);
+        if (b){
+            return BaseResponseVo.success("邮件已发送");
+        }else {
+            return BaseResponseVo.fail("邮箱不存在");
+        }
     }
 }
