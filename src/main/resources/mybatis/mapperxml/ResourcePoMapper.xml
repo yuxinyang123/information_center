@@ -8,7 +8,7 @@
     <result column="RES_AUTHOR" jdbcType="VARCHAR" property="resAuthor" />
     <result column="RES_SOURCE" jdbcType="VARCHAR" property="resSource" />
     <result column="RES_DATE" jdbcType="TIMESTAMP" property="resDate" />
-    <result column="RES_COMMENTCOUNT" javaType="INT" property="resCommentCount"/>
+    <result column="RES_COMMENTCOUNT" jdbcType="BIGINT" property="resCommentCount"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
     <result column="RES_CONTEXT" jdbcType="LONGVARCHAR" property="resContext" />
@@ -37,7 +37,7 @@
       RES_CONTEXT,RES_COMMENTCOUNT)
     values (#{resId,jdbcType=BIGINT}, #{typeKey,jdbcType=BIGINT}, #{resTitle,jdbcType=VARCHAR}, 
       #{resAuthor,jdbcType=VARCHAR}, #{resSource,jdbcType=VARCHAR}, #{resDate,jdbcType=TIMESTAMP}, 
-      #{resContext,jdbcType=LONGVARCHAR},#{resCommentCount,jdbcType=INT})
+      #{resContext,jdbcType=LONGVARCHAR}, #{resCommentCount,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
     insert into tbl_resource
@@ -90,7 +90,7 @@
         #{resContext,jdbcType=LONGVARCHAR},
       </if>
       <if test="resCommentCount !=null">
-        #{resCommentCount,jdbcType=INT},
+        #{resCommentCount,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -116,7 +116,7 @@
         RES_CONTEXT = #{resContext,jdbcType=LONGVARCHAR},
       </if>
       <if test="resCommentCount !=null">
-        RES_COMMENTCOUNT = #{resCommentCount,jdbcType=INT},
+        RES_COMMENTCOUNT = #{resCommentCount,jdbcType=BIGINT},
       </if>
     </set>
     where RES_ID = #{resId,jdbcType=BIGINT}
@@ -129,7 +129,7 @@
       RES_SOURCE = #{resSource,jdbcType=VARCHAR},
       RES_DATE = #{resDate,jdbcType=TIMESTAMP},
       RES_CONTEXT = #{resContext,jdbcType=LONGVARCHAR},
-      RES_COMMENTCOUNT = #{resCommentCount,jdbcType=INT}
+      RES_COMMENTCOUNT = #{resCommentCount,jdbcType=BIGINT},
     where RES_ID = #{resId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
@@ -139,7 +139,7 @@
       RES_AUTHOR = #{resAuthor,jdbcType=VARCHAR},
       RES_SOURCE = #{resSource,jdbcType=VARCHAR},
       RES_DATE = #{resDate,jdbcType=TIMESTAMP},
-      RES_COMMENTCOUNT = #{resCommentCount,jdbcType=INT}
+      RES_COMMENTCOUNT = #{resCommentCount,jdbcType=BIGINT},
     where RES_ID = #{resId,jdbcType=BIGINT}
   </update>
 </mapper>
