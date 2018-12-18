@@ -1,8 +1,11 @@
 package com.hnu.softwarecollege.infocenter.service.impl;
 
+import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
+import com.hnu.softwarecollege.infocenter.entity.vo.CommentForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
+import com.hnu.softwarecollege.infocenter.mapper.CommentPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.ResTypePoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.ResourcePoMapper;
 import com.hnu.softwarecollege.infocenter.service.ResourceService;
@@ -26,7 +29,8 @@ public class ResourceServiceImpl implements ResourceService {
     ResTypePoMapper resTypePoMapper;
     @Resource
     ResourcePoMapper resourcePoMapper;
-
+    @Resource
+    CommentPoMapper commentPoMapper;
     /*
      * @Author 刘亚双
      * @Description //TODO 通过帖子类型的名字进行查询，进行两个表连接查询，
@@ -64,6 +68,35 @@ public class ResourceServiceImpl implements ResourceService {
         Long resId = Long.parseLong(id);
         ResourcePo resourcePo = resourcePoMapper.selectByPrimaryKey(resId);
         return resourcePo;
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 添加评论
+     * @Date 2018/12/18 16:15
+     * @Param [userkey, commentForm, id]
+     * @return void
+     **/
+    @Override
+    public int addComment(Long userKey, CommentForm commentForm, String id) {
+        CommentPo commentPo = new CommentPo();
+        commentPo.setUserKey(userKey);
+        commentPo.setResKey(Long.parseLong(id));
+        commentPo.setCommentContext(commentForm.getCommentContext());
+        int flag = commentPoMapper.insertSelective(commentPo);
+        return flag;
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 获取所有评论
+     * @Date 2018/12/18 16:40
+     * @Param [id]
+     * @return java.util.List<com.hnu.softwarecollege.infocenter.entity.po.CommentPo>
+     **/
+    @Override
+    public List<CommentPo> getAllComment(String id) {
+        //Page<CommentPo> commentPoPage = PageHelper.startPage(pageNum,pageSize);
+        List<CommentPo> poList = commentPoMapper.selectByEssayKey(Long.parseLong(id));
+        return poList;
     }
 
     /*

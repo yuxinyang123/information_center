@@ -1,5 +1,9 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
@@ -106,7 +110,13 @@ public class ResourceController {
      **/
     @PostMapping("/{id}/comment")
     public BaseResponseVo addComment(@RequestBody CommentForm comment,@PathVariable String id){
-        return null;
+        Long userkey = ThreadContext.getUserContext().getUserId();
+        int flag = resourceService.addComment(userkey,comment,id);
+        if(flag==0){
+            return  BaseResponseVo.error("添加失败");
+        }else{
+            return BaseResponseVo.success("添加成功");
+        }
     }
 
     /**
@@ -135,13 +145,16 @@ public class ResourceController {
 
     /**
      * @Author yuxinyang
-     * @Description //TODO
+     * @Description //TODO 获取所有评论
      * @Date 17:46 2018/11/21
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/{id}/comment")
-    public BaseResponseVo getAllComments(@PathVariable String id){
-        return null;
+    public BaseResponseVo getAllComments(@RequestParam int pageNum,@RequestParam int pageSize, @PathVariable String id){
+        PageHelper.startPage(pageNum,pageSize);
+        List<CommentPo> poList = resourceService.getAllComment(id);
+        PageInfo<CommentPo> poPageInfo = new PageInfo<CommentPo>(poList);
+        return BaseResponseVo.success(poPageInfo);
     }
 }

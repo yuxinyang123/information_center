@@ -3,6 +3,8 @@ package com.hnu.softwarecollege.infocenter.mapper;
 import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface CommentPoMapper {
     int deleteByPrimaryKey(Long commentId);
@@ -18,4 +20,6 @@ public interface CommentPoMapper {
     int updateByPrimaryKeyWithBLOBs(CommentPo record);
 
     int updateByPrimaryKey(CommentPo record);
+
+    List<CommentPo> selectByEssayKey(Long id);
 }
