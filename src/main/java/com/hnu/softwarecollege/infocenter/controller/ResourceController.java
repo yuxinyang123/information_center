@@ -125,7 +125,7 @@ public class ResourceController {
      * @Author yuxinyang
      * @Description //TODO 更新评论
      * @Date 17:45 2018/11/21
-     * @Param [commentForm, id]
+     * @Param [commentForm, id]获取所有评论
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/{id}/comment")
@@ -135,7 +135,7 @@ public class ResourceController {
 
     /**
      * @Author yuxinyang
-     * @Description //TODO 获取所有评论
+     * @Description //TODO
      * @Date 17:46 2018/11/21
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo

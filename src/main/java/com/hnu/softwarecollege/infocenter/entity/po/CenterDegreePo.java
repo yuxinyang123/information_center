@@ -21,17 +21,14 @@ public class CenterDegreePo {
     private Double degreeGrade;
     @JsonProperty("PerformancePoint")
     private Double degreePerformancepoint;
-
-    public CenterDegreePo() {
-    }
-
     @JsonProperty("testNature")
     private String degreeTestnature;
     @JsonProperty("studentId")
     private Integer degreeStudentid;
     @JsonProperty("stuName")
     private String degreeStudentname;
-
+    public CenterDegreePo() {
+    }
     public CenterDegreePo(Long degreeUserkey, String degreeTerm, String degreeClassname, String degreeClassnature,
                           Double degreeCredit, Double degreeGrade, Double degreePerformancepoint,
                           String degreeTestnature, Integer degreeStudentid, String degreeStudentname) {
