@@ -19,3 +19,26 @@ export const verifyCode = (res) => {
   })
 }
 
+export const putregist = (resemail, respass, resname, resphone, resedunum, resedupass) => {
+  let data = {
+    userEmail: resemail,
+    userPass: respass,
+    userName: resname,
+    userPhone: resphone,
+    educationalNum: resedunum,
+    educationalPass: resedupass
+
+  }
+  return axios.request({
+    url: '/api/user/regist',
+    data,
+    method: 'post'
+  })
+}
+
+export const runSpider = () => {
+  return axios.request({
+    url: '/api/center/spider',
+    method: 'get'
+  })
+}

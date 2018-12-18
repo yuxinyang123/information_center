@@ -10,7 +10,7 @@
         style="height: 120px;padding-bottom: 10px;"
       >
         <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
-          <count-to :end="infor.count" count-class="count-style"/>
+          <count-to :end="infor.count" :decimals="2" count-class="count-style"/>
           <p>{{ infor.title }}</p>
         </infor-card>
       </i-col>
@@ -18,34 +18,53 @@
     <Row :gutter="20" style="margin-top: 10px;">
       <i-col :md="24" :lg="8" style="margin-bottom: 20px;">
         <Card shadow>
-          <chart-pie style="height: 300px;" :cityname='cityname'  :type="type" :aqi="aqi" :high="high" :date="date" :low="low" :wendu="wendu" :city="city" :forecast="forecast" :ganmao="ganmao"  text="天气"></chart-pie>
+          <chart-pie
+            style="height: 300px;"
+            :cityname="cityname"
+            :type="type"
+            :aqi="aqi"
+            :high="high"
+            :date="date"
+            :low="low"
+            :wendu="wendu"
+            :city="city"
+            :forecast="forecast"
+            :ganmao="ganmao"
+            @updateLocal="handleUpdateWeather"
+            text="天气"
+          ></chart-pie>
         </Card>
       </i-col>
       <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
-
-        <Card shadow>        
-          <chart-bar style="height: 300px;"  :hottitle="hottitle" @change="ChangePageNum" text="热点新闻"/>
-
-    
-
+        <Card shadow>
+          <chart-bar
+            style="height: 300px;"
+            :hottitle="hottitle"
+            @change="ChangePageNum"
+            text="热点新闻"
+          />
         </Card>
       </i-col>
     </Row>
     <Row>
-        <student-course :course='course' style="height: 300px;"/>  
+      <student-course :course="course" style="height: 300px;"/>
     </Row>
   </div>
 </template>
 
 <script>
-import {getWhetherData} from '@/api/data'
-import {getNews} from '@/api/data'
-import {updateWeatherInfo} from '@/api/data'
-import InforCard from '_c/info-card'
-import CountTo from '_c/count-to'
-import {getStudentCourse} from '@/api/data'
-import { ChartPie, ChartBar } from '_c/charts'
-import StudentCourse from './StudentCourse.vue'
+import {
+  getWhetherData,
+  updateWeatherInfo,
+  getStudentCourse,
+  get4Tag,
+  getNews
+} from "@/api/data";
+import InforCard from "_c/info-card";
+import CountTo from "_c/count-to";
+import { ChartPie, ChartBar } from "_c/charts";
+import StudentCourse from "./StudentCourse.vue";
+
 export default {
   name: "home",
   components: {
@@ -75,67 +94,132 @@ export default {
         {
           title: "加权平均分",
           icon: "md-person-add",
-          count: 803,
+          count: 0,
           color: "#2d8cf0"
         },
         {
-          title: "平均学分绩点",
+          title: "已获得学分",
           icon: "md-locate",
-          count: 232,
+          count: 0,
           color: "#19be6b"
         },
         {
-          title: "第二课堂",
+          title: "绩点",
           icon: "md-help-circle",
-          count: 142,
+          count: 0,
           color: "#ff9900"
         },
-        { title: "选修", icon: "md-share", count: 657, color: "#ed3f14" }
+        {
+          title: "选修学分",
+          icon: "md-share",
+          count: 0,
+          color: "#ed3f14"
+        }
       ]
-     }
-   },
-  methods:{
-    ChangePageNum:function(){
-      if(this.pageNum*this.pageSize<=50){
+    };
+  },
+  methods: {
+    ChangePageNum: function() {
+      if (this.pageNum * this.pageSize <= 50) {
         this.pageNum++;
-      }else{
-        this.pageNum=0;
+      } else {
+        this.pageNum = 0;
       }
+    },
+
+    handleGetWeather() {
+      getWhetherData()
+        .then(res => {
+          console.log(res)
+          res = res.data.data;
+          this.city = res.cityname;
+          this.ganmao = res.notice;
+          this.wendu = res.wendu;
+          this.date = res.nowdate;
+          this.low = res.low;
+          this.high = res.high;
+          this.aqi = String(res.AQI);
+          this.type = res.type;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleGetCourse() {
+      console.log(this.$store.state.user.userId)
+      getStudentCourse(this.$store.state.user.userId)
+        .then(res => {
+          res = res.data.data;
+          this.course = res;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleGet4Tag() {
+      get4Tag()
+        .then(res => {
+          res = res.data;
+          let a = res.data.avggrade;
+          // console.log(a);
+          if (res.code == 200) {
+            this.inforCardData[0].count = res.data.avggrade;
+            this.inforCardData[1].count = res.data.havacredit;
+            this.inforCardData[2].count = res.data.performancepoint;
+            this.inforCardData[3].count = res.data.choosecredit;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleUpdateWeather(cityname) {
+      console.log("handleUpdateWeather:" + cityname);
+      updateWeatherInfo(cityname)
+        .then(res => {
+          res = res.data;
+          console.log(res);
+          if (res.code == 200) {
+            this.$Message.success("修改成功！");
+          } else {
+            this.$Message.error("修改失败！");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
-  mounted(){
-    getWhetherData().then(res => {           
-      res=res.data.data
-      this.city=res.cityname
-      this.ganmao=res.notice
-      this.wendu=res.wendu
-      this.date=res.nowdate
-      this.low=res.low
-      this.high=res.high
-      this.aqi=String(res.AQI)
-      this.type=res.type
-      }).catch(err => {
-        console.log(err)
-    })
-
-    getNews(this.pageNum,this.pageSize).then(res => {
-     console.log(res.data.data)
-     res=res.data.data
-     this.hottitle=res.list
-    }).catch(err => {
-      console.log(err)
-    })
-  
-    getStudentCourse('1').then(res=>{
-     
-      res=res.data.data      
-      this.course=res
-    }).catch(err =>{
-      console.log(err)
-    })
-  
-}};
-
+  mounted() {
+    this.handleGetWeather();
+    this.handleGetCourse();
+    this.handleGet4Tag();
+    getWhetherData()
+      .then(res => {
+        res = res.data.data;
+        this.city = res.city;
+        this.ganmao = res.notice;
+        this.wendu = res.wendu;
+        this.date = res.date;
+        this.low = res.low;
+        this.high = res.high;
+        this.aqi = String(res.aqi);
+        this.type = res.type;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    getNews(this.pageNum, this.pageSize)
+      .then(res => {
+        console.log(res.data.data);
+        res = res.data.data;
+        this.hottitle = res;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
 </script>
 
 <style lang="less">

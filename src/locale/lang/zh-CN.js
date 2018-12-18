@@ -1,7 +1,7 @@
 export default {
   home: '首页',
   components: '成绩预测',
-  count_to_page: '数字渐变',
+  count_to_page: '成绩预测',
   tables_page: '多功能表格',
   split_pane_page: '分割窗口',
   markdown_page: 'Markdown编辑器',

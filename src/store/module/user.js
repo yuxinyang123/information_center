@@ -74,7 +74,7 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, {userName, password,code}) {
+    handleLogin ({ commit }, { userName, password, code }) {
       userName = userName.trim()
       return new Promise((resolve, reject) => {
         login({
@@ -82,8 +82,9 @@ export default {
           password,
           code
         }).then(res => {
-          const data = res.data
-          commit('setToken', data.token)
+          const data = res.data.data
+          console.log(data)
+          commit('setToken', data)
           resolve()
         }).catch(err => {
           reject(err)
@@ -110,9 +111,11 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {
+          console.log(state.token)
           getUserInfo(state.token).then(res => {
-            const data = res.data
-            commit('setAvator', "https://avatars0.githubusercontent.com/u/20942571?s=460&v=4")
+            const data = res.data.data
+            console.log('module:' + data.userId)
+            commit('setAvator', 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4')
             commit('setUserName', data.userName)
             commit('setUserId', data.userId)
             commit('setAccess', ['admin'])
