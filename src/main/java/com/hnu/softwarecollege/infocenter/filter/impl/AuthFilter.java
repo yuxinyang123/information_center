@@ -39,11 +39,14 @@ public class AuthFilter implements Filter {
 
         if (cookies == null) {
             log.info("doesn't have cookies,request url:{}", request.getRequestURI());
+            if ("OPTIONS".equals(((HttpServletRequest) servletRequest).getMethod())) {
+                filterChain.doFilter(servletRequest, servletResponse);
+            }
             return;
         }
 
         for (Cookie cookie : cookies) {
-            log.info("all token:{}",cookie.getName());
+            log.info("all token:{}", cookie.getName());
             if (cookie.getName().equals("token"))
                 token = cookie;
 
@@ -59,10 +62,12 @@ public class AuthFilter implements Filter {
             // set userKey
             UserPo user = ThreadContext.getUserContext();
             user.setUserId(Long.valueOf(id.getValue()));
-            log.info("filter set userId:{}",id.getValue());
+            log.info("filter set userId:{}", id.getValue());
             ThreadContext.setUserContext(user);
 
             filterChain.doFilter(servletRequest, servletResponse);
+
+
         } else {
             log.info("the token doesn't in cookies,request url:{} ", request.getRequestURI());
         }

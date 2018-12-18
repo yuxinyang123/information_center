@@ -7,7 +7,7 @@ import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
 
 public interface UserService {
 
-    public boolean createUser(RegistForm registForm);
+    Long createUser(RegistForm registForm);
 
     public boolean verifyUser(LoginForm loginForm);
 

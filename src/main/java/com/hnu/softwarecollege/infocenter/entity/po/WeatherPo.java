@@ -9,7 +9,7 @@ public class WeatherPo {
     private Integer weatherCode;
     @JsonProperty("city")
     private String weatherCityName;
-    @JsonProperty("date")
+    @JsonProperty("time")
     private String weatherDate;
     @JsonProperty("sunrise")
     private String weatherSunrise;

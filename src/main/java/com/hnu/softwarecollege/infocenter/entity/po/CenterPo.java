@@ -5,16 +5,13 @@ public class CenterPo {
 
     private Long userKey;
 
-    private Long degreeKey;
-
     private Integer weatherCode;
 
     public CenterPo() {
     }
 
-    public CenterPo(Long userKey, Long degreeKey, Integer weatherCode) {
+    public CenterPo(Long userKey, Integer weatherCode) {
         this.userKey = userKey;
-        this.degreeKey = degreeKey;
         this.weatherCode = weatherCode;
     }
 
@@ -32,14 +29,6 @@ public class CenterPo {
 
     public void setUserKey(Long userKey) {
         this.userKey = userKey;
-    }
-
-    public Long getDegreeKey() {
-        return degreeKey;
-    }
-
-    public void setDegreeKey(Long degreeKey) {
-        this.degreeKey = degreeKey;
     }
 
     public Integer getWeatherCode() {

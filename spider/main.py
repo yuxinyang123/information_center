@@ -1,13 +1,11 @@
 # -*- coding:utf-8 -*-  
 
-import edu_getdata
-from edu_getdata import login
-from edu_getdata import getgrade
-from edu_getdata import webclose
-from edu_getdata import getSchedule
 import sys
-import getopt
 
+from edu_getdata import getSchedule
+from edu_getdata import getgrade
+from edu_getdata import login
+from edu_getdata import webclose
 
 if __name__ == "__main__":
     try:
@@ -15,15 +13,14 @@ if __name__ == "__main__":
     except Exception as e:
         webclose()
         sys.exit(0)
-    
+
     try:
         pw = sys.argv[2]
     except Exception as e:
         webclose()
         sys.exit(0)
 
-    login(user,pw)
-    getgrade(user,pw)
+    login(user, pw)
+    getgrade(user, pw)
     getSchedule(user)
     webclose()
-    

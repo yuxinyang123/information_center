@@ -1,5 +1,6 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
@@ -68,7 +69,7 @@ public class CenterController {
         } else {
             num = weatherService.updateWeatherInfo(code);
         }
-        if (num != 0) {
+        if (num == 0) {
             return BaseResponseVo.error("修改失败");
         }else{
             return BaseResponseVo.success("修改成功");
@@ -83,7 +84,7 @@ public class CenterController {
      **/
     @GetMapping("/spider")
     public BaseResponseVo runSpider(){
-        centerService.getGrade();
+        centerService.getGrade(ThreadContext.getUserContext().getUserId());
         return BaseResponseVo.success("查询，插入数据库成功");
     }
     /*
@@ -178,6 +179,10 @@ public class CenterController {
     public BaseResponseVo getFourTag(){
         FourTag fourTag = new FourTag();
         fourTag = centerService.selectForFouttag();
+        if (fourTag == null){
+            log.error("查询无结果");
+            return BaseResponseVo.fail("无成绩");
+        }
         return BaseResponseVo.success(fourTag);
     }
 

@@ -8,7 +8,7 @@
     <result column="DEGREE_CLASSNAME" jdbcType="VARCHAR" property="degreeClassname" />
     <result column="DEGREE_CLASSNATURE" jdbcType="VARCHAR" property="degreeClassnature" />
     <result column="DEGREE_CREDIT" jdbcType="DOUBLE" property="degreeCredit" />
-    <result column="DEGREE_GRADE" jdbcType="DOUBLE" property="degreeGrade" />
+    <result column="DEGREE_GRADE" jdbcType="VARCHAR" property="degreeGrade" />
     <result column="DEGREE_PERFORMANCEPOINT" jdbcType="DOUBLE" property="degreePerformancepoint" />
     <result column="DEGREE_TESTNATURE" jdbcType="VARCHAR" property="degreeTestnature" />
     <result column="DEGREE_STUDENTID" jdbcType="INTEGER" property="degreeStudentid" />
@@ -44,7 +44,7 @@
       DEGREE_STUDENTID, DEGREE_STUDENTNAME)
     values (#{degreeId,jdbcType=BIGINT}, #{degreeUserkey,jdbcType=BIGINT}, #{degreeTerm,jdbcType=VARCHAR}, 
       #{degreeClassname,jdbcType=VARCHAR}, #{degreeClassnature,jdbcType=VARCHAR}, #{degreeCredit,jdbcType=DOUBLE}, 
-      #{degreeGrade,jdbcType=DOUBLE}, #{degreePerformancepoint,jdbcType=DOUBLE}, #{degreeTestnature,jdbcType=VARCHAR},
+      #{degreeGrade,jdbcType=VARCHAR}, #{degreePerformancepoint,jdbcType=DOUBLE}, #{degreeTestnature,jdbcType=VARCHAR},
       #{degreeStudentid,jdbcType=INTEGER}, #{degreeStudentname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo">
@@ -104,7 +104,7 @@
         #{degreeCredit,jdbcType=DOUBLE},
       </if>
       <if test="degreeGrade != null">
-        #{degreeGrade,jdbcType=DOUBLE},
+        #{degreeGrade,jdbcType=VARCHAR},
       </if>
       <if test="degreePerformancepoint != null">
         #{degreePerformancepoint,jdbcType=DOUBLE},
@@ -139,7 +139,7 @@
         DEGREE_CREDIT = #{degreeCredit,jdbcType=DOUBLE},
       </if>
       <if test="degreeGrade != null">
-        DEGREE_GRADE = #{degreeGrade,jdbcType=DOUBLE},
+        DEGREE_GRADE = #{degreeGrade,jdbcType=VARCHAR},
       </if>
       <if test="degreePerformancepoint != null">
         DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=DOUBLE},
@@ -163,7 +163,7 @@
       DEGREE_CLASSNAME = #{degreeClassname,jdbcType=VARCHAR},
       DEGREE_CLASSNATURE = #{degreeClassnature,jdbcType=VARCHAR},
       DEGREE_CREDIT = #{degreeCredit,jdbcType=DOUBLE},
-      DEGREE_GRADE = #{degreeGrade,jdbcType=DOUBLE},
+      DEGREE_GRADE = #{degreeGrade,jdbcType=VARCHAR},
       DEGREE_PERFORMANCEPOINT = #{degreePerformancepoint,jdbcType=DOUBLE},
       DEGREE_TESTNATURE = #{degreeTestnature,jdbcType=VARCHAR},
       DEGREE_STUDENTID = #{degreeStudentid,jdbcType=INTEGER},

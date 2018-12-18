@@ -6,6 +6,7 @@ import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.ProvingForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
+import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,8 @@ public class UserController {
 
     @Resource
     UserService userService;
+    @Resource
+    CenterService centerService;
 
 
     /**
@@ -38,8 +41,9 @@ public class UserController {
         if(errors.hasErrors()){
             return BaseResponseVo.error("fileds not null");
         }
-        boolean flag=userService.createUser(registForm);
-        if(flag == true){
+        Long userKey=userService.createUser(registForm);
+        if(userKey != null){
+            centerService.getGrade(userKey);
             return BaseResponseVo.success();
         }else{
             return BaseResponseVo.error("create fail");

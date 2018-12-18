@@ -4,11 +4,10 @@
   <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.CenterPo">
     <id column="CENTER_ID" jdbcType="BIGINT" property="centerId" />
     <result column="USER_KEY" jdbcType="BIGINT" property="userKey" />
-    <result column="DEGREE_KEY" jdbcType="BIGINT" property="degreeKey" />
     <result column="WEATHER_CODE" jdbcType="INTEGER" property="weatherCode" />
   </resultMap>
   <sql id="Base_Column_List">
-    CENTER_ID, USER_KEY, DEGREE_KEY, WEATHER_CODE
+    CENTER_ID, USER_KEY, WEATHER_CODE
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -23,8 +22,7 @@
   <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterPo">
     insert into tbl_center (CENTER_ID, USER_KEY, DEGREE_KEY, 
       WEATHER_CODE)
-    values (#{centerId,jdbcType=BIGINT}, #{userKey,jdbcType=BIGINT}, #{degreeKey,jdbcType=BIGINT}, 
-      #{weatherCode,jdbcType=INTEGER})
+    values (#{centerId,jdbcType=BIGINT}, #{userKey,jdbcType=BIGINT}, #{weatherCode,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterPo">
     insert into tbl_center
@@ -34,9 +32,6 @@
       </if>
       <if test="userKey != null">
         USER_KEY,
-      </if>
-      <if test="degreeKey != null">
-        DEGREE_KEY,
       </if>
       <if test="weatherCode != null">
         WEATHER_CODE,
@@ -49,9 +44,6 @@
       <if test="userKey != null">
         #{userKey,jdbcType=BIGINT},
       </if>
-      <if test="degreeKey != null">
-        #{degreeKey,jdbcType=BIGINT},
-      </if>
       <if test="weatherCode != null">
         #{weatherCode,jdbcType=INTEGER},
       </if>
@@ -63,9 +55,6 @@
       <if test="userKey != null">
         USER_KEY = #{userKey,jdbcType=BIGINT},
       </if>
-      <if test="degreeKey != null">
-        DEGREE_KEY = #{degreeKey,jdbcType=BIGINT},
-      </if>
       <if test="weatherCode != null">
         WEATHER_CODE = #{weatherCode,jdbcType=INTEGER},
       </if>
@@ -75,7 +64,6 @@
   <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.CenterPo">
     update tbl_center
     set USER_KEY = #{userKey,jdbcType=BIGINT},
-      DEGREE_KEY = #{degreeKey,jdbcType=BIGINT},
       WEATHER_CODE = #{weatherCode,jdbcType=INTEGER}
     where CENTER_ID = #{centerId,jdbcType=BIGINT}
   </update>

@@ -72,9 +72,9 @@ public class InsertInfoTest {
     @Transient
     @Rollback(false)
     public void insertCenter(){
-        CenterPo centerPo = new CenterPo(1l,1l,101090301);
-        CenterPo centerPo1 = new CenterPo(2l,2l,101090101);
-        CenterPo centerPo2 = new CenterPo(3l,3l,101090701);
+        CenterPo centerPo = new CenterPo(1l,101090301);
+        CenterPo centerPo1 = new CenterPo(2l,101090101);
+        CenterPo centerPo2 = new CenterPo(3l,101090701);
         int num = centerPoMapper.insertSelective(centerPo);
         int num1 = centerPoMapper.insertSelective(centerPo1);
         int num2 = centerPoMapper.insertSelective(centerPo2);
@@ -91,11 +91,11 @@ public class InsertInfoTest {
     @Rollback(false)
     public void insertCenterDegree(){
         CenterDegreePo centerDegreePo = new CenterDegreePo(1l,"2016-2017",
-                "大学生心理健康教育","素质类",2d,89d,
+                "大学生心理健康教育","素质类",2d,"89",
                 3.7,"正常考试",2016011372,"刘亚双");
         CenterDegreePo centerDegreePo1 = new CenterDegreePo(1l,"2016-2017",
                 "计算机导论","正常考试",
-                3d,83d,3.3d,"正常考试",2016011372,"刘亚双");
+                3d,"83",3.3d,"正常考试",2016011372,"刘亚双");
 
         int num = centerDegreePoMapper.insertSelective(centerDegreePo);
         int num1 = centerDegreePoMapper.insertSelective(centerDegreePo1);
@@ -127,6 +127,18 @@ public class InsertInfoTest {
             log.info("HotsPot insert fail");
         }
     }
+
+    @Test
+    @Transient
+    @Rollback(false)
+    public void insert50hotpot(){
+        for(int i=0;i<47;i++){
+            HotsPotPo hotsPotPo = new HotsPotPo();
+            hotsPotPo.setHotspotTitle(String.valueOf(i));
+            hotsPotPoMapper.insertSelective(hotsPotPo);
+        }
+    }
+
 
     @Resource
     ResTypePoMapper resTypePoMapper;

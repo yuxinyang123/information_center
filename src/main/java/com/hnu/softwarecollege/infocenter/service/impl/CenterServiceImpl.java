@@ -59,12 +59,17 @@ public class CenterServiceImpl implements CenterService {
     @Resource
     UserInformationPoMapper userInformationPoMapper;
     @Override
-    public void getGrade() {
-        Long userkey = ThreadContext.getUserContext().getUserId();
+    public void getGrade(Long userKey) {
+        Long userkey = userKey;
+        // set context
+        UserPo userPo = new UserPo();
+        userPo.setUserId(userkey);
+        ThreadContext.setUserContext(userPo);
         UserInformationPo userInformationPo = userInformationPoMapper.selectByUserKey(userkey);
         String Id = userInformationPo.getInfNum().toString();
         String password =userInformationPo.getInfPass();
         String[] arg = new String[]{"python",spiderPath, Id, password};
+        log.info("{}",arg[1]);
         Process process = null;
         String result = "";
         try {
@@ -73,9 +78,11 @@ public class CenterServiceImpl implements CenterService {
             BufferedReader bufferedReader = new BufferedReader(ir);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                log.info("{}",line);
+//                log.info("{}",line);
                 result += line;
             }
+            resultjson = result;
+            log.info("{}",resultjson);
             bufferedReader.close();
 //            process.waitFor();
             process.destroyForcibly();
@@ -86,7 +93,7 @@ public class CenterServiceImpl implements CenterService {
 //        catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        resultjson = result;
+
         //System.out.println("resultjson:" + resultjson);
     }
 
@@ -112,7 +119,7 @@ public class CenterServiceImpl implements CenterService {
 
     protected void method(List<String> list) {
         for (int i = 0; i < list.size(); i++) {
-            Long key = 2L;
+            Long key = ThreadContext.getUserContext().getUserId();
             String[] s = list.get(i).split("\\|");
 
             SyllabusPo syllabusPo = new SyllabusPo(null,s[3],Integer.parseInt(s[4]),Integer.parseInt(s[5]),
@@ -309,7 +316,7 @@ public class CenterServiceImpl implements CenterService {
         page.size();
 
         List<HotsPotPo> hotsPotPoList = new ArrayList<HotsPotPo>();
-        for (int i = 0; i < pageSize; i++) {
+        for (int i = 0; i < page.size(); i++) {
             hotsPotPoList.add(page.get(i));
         }
 
@@ -366,6 +373,10 @@ public class CenterServiceImpl implements CenterService {
         Double zero = 0d;
 
         centerDegreePos = centerDegreePoMapper.findAllByUserKey(userKey);
+        if(centerDegreePos == null){
+            log.error("成绩为空");
+            return null;
+        }
         Map<String,Double> grademap = new HashMap<String, Double>();
         Map<String,Double> pointmap = new HashMap<String, Double>();
         if(centerDegreePos != null){
@@ -385,21 +396,27 @@ public class CenterServiceImpl implements CenterService {
                     }
                 }
 
-                //判断成绩
-                if(po.getDegreeTestnature().equals("正常考试")){
-                    grademap.put(po.getDegreeClassname(),po.getDegreeGrade());
+                //判断成绩和计算绩点
+                if(po.getDegreeTestnature().equals("正常考试") && !po.getDegreeGrade().equals("合格")){
+                    Double sgrade = 0d;
+
+                    sgrade = Double.parseDouble(po.getDegreeGrade());
+                    grademap.put(po.getDegreeClassname(),sgrade);
                     pointmap.put(po.getDegreeClassname(),po.getDegreePerformancepoint());
                 }else {
                     List<CenterDegreePo> centerDegreePos1 = centerDegreePoMapper.selectByClassname(po.getDegreeClassname());
-                    Double g = 0d;Double p = 0d;
-                    for (CenterDegreePo po1 : centerDegreePos1){
-                        if (g < po1.getDegreeGrade()){
-                            g = po1.getDegreeGrade();
-                            p = po1.getDegreePerformancepoint();
+                    if (!po.getDegreeGrade().equals("合格")){
+                        Double g = 0d;Double p = 0d;Double temp = 0d;
+                        for (CenterDegreePo po1 : centerDegreePos1){
+                            temp = Double.parseDouble(po.getDegreeGrade());
+                            if (g < temp){
+                                g = temp;
+                                p = po1.getDegreePerformancepoint();
+                            }
                         }
+                        grademap.put(po.getDegreeClassname(),g);
+                        pointmap.put(po.getDegreeClassname(),p);
                     }
-                    grademap.put(po.getDegreeClassname(),g);
-                    pointmap.put(po.getDegreeClassname(),p);
                 }
             }
         }else {
