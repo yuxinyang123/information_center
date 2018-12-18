@@ -128,7 +128,12 @@ public class ResourceController {
      **/
     @DeleteMapping("/{id}/comment")
     public BaseResponseVo delComment(@PathVariable String id){
-        return null;
+        int flag = resourceService.deleteByPrimaryKey(id);
+        if(flag==0){
+            return BaseResponseVo.error("删除失败");
+        }else{
+            return BaseResponseVo.success("删除成功");
+        }
     }
 
     /**
@@ -151,10 +156,10 @@ public class ResourceController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/{id}/comment")
-    public BaseResponseVo getAllComments(@RequestParam int pageNum,@RequestParam int pageSize, @PathVariable String id){
+    public BaseResponseVo getAllComments(@RequestParam int pageNum,@RequestParam int pageSize, @PathVariable String essayId){
         PageHelper.startPage(pageNum,pageSize);
-        List<CommentPo> poList = resourceService.getAllComment(id);
-        PageInfo<CommentPo> poPageInfo = new PageInfo<CommentPo>(poList);
+        List<CommentPo> poList = resourceService.getAllComment(essayId);
+        PageInfo<CommentPo> poPageInfo = new PageInfo<>(poList);
         return BaseResponseVo.success(poPageInfo);
     }
 }

@@ -17,6 +17,8 @@ public interface ResourceService {
 
     public int addComment(Long userKey, CommentForm commentForm,String id);
 
+    public int deleteByPrimaryKey(String id);
+
     public List<CommentPo> getAllComment(String id);
 
     /*

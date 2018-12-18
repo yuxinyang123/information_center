@@ -85,6 +85,19 @@ public class ResourceServiceImpl implements ResourceService {
         int flag = commentPoMapper.insertSelective(commentPo);
         return flag;
     }
+
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 删除评论
+     * @Date 2018/12/18 17:36
+     * @Param [id]
+     * @return int
+     **/
+    public int deleteByPrimaryKey(String id){
+        int flsg = commentPoMapper.deleteByPrimaryKey(Long.parseLong(id));
+        return flsg;
+    }
+
     /*
      * @Author 刘亚双
      * @Description //TODO 获取所有评论

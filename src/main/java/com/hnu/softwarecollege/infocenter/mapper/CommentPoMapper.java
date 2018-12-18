@@ -22,4 +22,5 @@ public interface CommentPoMapper {
     int updateByPrimaryKey(CommentPo record);
 
     List<CommentPo> selectByEssayKey(Long id);
+
 }
