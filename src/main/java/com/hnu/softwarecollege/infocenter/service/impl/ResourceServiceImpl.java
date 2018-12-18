@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -81,6 +82,7 @@ public class ResourceServiceImpl implements ResourceService {
         CommentPo commentPo = new CommentPo();
         commentPo.setUserKey(userKey);
         commentPo.setResKey(Long.parseLong(id));
+        commentPo.setCommentDate(new Date());
         commentPo.setCommentContext(commentForm.getCommentContext());
         int flag = commentPoMapper.insertSelective(commentPo);
         return flag;
