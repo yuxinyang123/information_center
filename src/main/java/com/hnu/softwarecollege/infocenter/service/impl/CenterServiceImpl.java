@@ -116,6 +116,7 @@ public class CenterServiceImpl implements CenterService {
         return poList;
     }
 
+
     protected void method(List<String> list) {
         for (int i = 0; i < list.size(); i++) {
             Long key = ThreadContext.getUserContext().getUserId();

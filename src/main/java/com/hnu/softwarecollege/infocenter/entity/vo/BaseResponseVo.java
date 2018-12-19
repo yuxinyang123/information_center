@@ -72,4 +72,5 @@ public class BaseResponseVo<T> {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }

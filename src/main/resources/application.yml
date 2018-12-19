@@ -5,6 +5,17 @@ spring:
     username: root
     password:
     driver-class-name: com.mysql.jdbc.Driver
+  mail:
+    host: smtp.163.com
+    password: 996964net
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    username: gujiarena@163.com
 
 server:
   port: 8088
@@ -32,4 +43,6 @@ logging:
   level:
     root: info
     com.hnu.softwarecollege.infocenter: debug
+
+
 

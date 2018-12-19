@@ -166,10 +166,10 @@ public class InsertInfoTest {
     @Transient
     @Rollback(false)
     public void insertResource(){
-        ResourcePo resourcePo = new ResourcePo(1l,"招聘启示","admin","招聘平台",new Date(2018-12-10),"招聘管理人员");
-        ResourcePo resourcePo1 = new ResourcePo(2l,"兼职信息启示","admin","个人",new Date(2018-12-10),"发传单兼职");
-        ResourcePo resourcePo2 = new ResourcePo(3l,"陈羽凡吸毒被抓","admin","网络",new Date(2018-12-05),"吸毒被抓");
-        ResourcePo resourcePo3 = new ResourcePo(3l,"蒋劲夫","admin","网络",new Date(2018-12-11),"蒋劲夫被抓");
+        ResourcePo resourcePo = new ResourcePo(1l,"招聘启示","admin","招聘平台",new Date(2018-12-10),"招聘管理人员",10l);
+        ResourcePo resourcePo1 = new ResourcePo(2l,"兼职信息启示","admin","个人",new Date(2018-12-10),"发传单兼职",15l);
+        ResourcePo resourcePo2 = new ResourcePo(3l,"陈羽凡吸毒被抓","admin","网络",new Date(2018-12-05),"吸毒被抓",21l);
+        ResourcePo resourcePo3 = new ResourcePo(3l,"蒋劲夫","admin","网络",new Date(2018-12-11),"蒋劲夫被抓",30l);
         int num = resourcePoMapper.insertSelective(resourcePo);
         int num1 = resourcePoMapper.insertSelective(resourcePo1);
         int num2 = resourcePoMapper.insertSelective(resourcePo2);
