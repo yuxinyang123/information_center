@@ -20,4 +20,6 @@ public interface UserService {
     public boolean changePassword(String newpass);
 
     public boolean recoverPassword(String email);
+
+    public boolean updatePwd(String descode,String newpwd);
 }

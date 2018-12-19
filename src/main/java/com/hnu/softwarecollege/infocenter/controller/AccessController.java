@@ -136,6 +136,13 @@ public class AccessController {
         return null;
     }
 
+    /*
+     * @Autor wang
+     * @Description //TODO 发送邮件找回密码
+     * @Date 23:42 2018/12/18
+     * @Param [userEmail]
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+    **/
     @PostMapping("/pass")
     public BaseResponseVo recoverPass(@Email @RequestParam String userEmail){
         Boolean b = userService.recoverPassword(userEmail);
@@ -143,6 +150,23 @@ public class AccessController {
             return BaseResponseVo.success("邮件已发送");
         }else {
             return BaseResponseVo.fail("邮箱不存在");
+        }
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 通过密文修改密码
+     * @Date 23:43 2018/12/18
+     * @Param
+     * @return
+    **/
+    @PostMapping("/newpass")
+    public BaseResponseVo updateNewPwd(@RequestParam String descode,@RequestParam String newCode){
+        Boolean b = userService.updatePwd(descode,newCode);
+        if (b){
+            return BaseResponseVo.success("密码修改成功");
+        }else {
+            return BaseResponseVo.fail("密码修改失败");
         }
     }
 }

@@ -24,7 +24,7 @@ public class MailUtil {
      * @return
     **/
 
-    public String createLink(UserPo userPo){
+    public String createLink(UserPo userPo)  {
 
         //生成密钥
         String secretKey= UUID.randomUUID().toString();
@@ -34,12 +34,21 @@ public class MailUtil {
         long date = outDate.getTime() / 1000 * 1000;// 忽略毫秒数  mySql 取出时间是忽略毫秒数的
 
         //将用户名、过期时间、密钥生成链接密钥
-        String key =userPo.getUserId() + "$" + date + "$" + secretKey;
+        String text =date + "-" + userPo.getUserEmail() + "-" + secretKey;
 
-        String basePath = "http://localhost:8080/reset";
 
-        String resetPassHref = basePath + "/pwd"+key;
-        String emailContent = "请勿回复本邮件.点击下面的链接,重设密码,本邮件超过30分钟,链接将会失效，需要重新申请找回密码." + resetPassHref;
+        String digitalcode = null;
+        try {
+            digitalcode = DESUtil.encrypt(text);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+//        String basePath = "http://localhost:8080/reset";
+
+//        String resetPassHref = digitalcode;
+        String emailContent = "请勿回复本邮件.复制下面的验证码,重设密码,本邮件超过30分钟,链接将会失效，需要重新申请找回密码\n" + digitalcode;
 
         return emailContent;
     }
