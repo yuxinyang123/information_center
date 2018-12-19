@@ -95,7 +95,7 @@ export default [
     name: 'components',
     meta: {
       icon: 'logo-buffer',
-      title: '组件'
+      title: '成绩'
     },
     component: Main,
     children: [
@@ -104,9 +104,18 @@ export default [
         name: 'count_to_page',
         meta: {
           icon: 'md-trending-up',
-          title: '成绩预测'
+          title: '成绩分布'
         },
         component: () => import('@/view/components/count-to/count-to.vue')
+      },
+      {
+        path: 'ables_page',
+        name: '成绩分析',
+        meta: {
+          icon: 'ios-ionitron-outline',
+          title: '成绩分析'
+        },
+        component: () => import('@/view/components/count-to/ables_page.vue')
       }
 
     ]

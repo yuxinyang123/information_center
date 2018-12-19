@@ -1,44 +1,10 @@
 <template>
   <div>
     <Row>
-      <Col span="14">
-        <div id="chart" style="width: 100%;height: 350px; "></div>
+      <Col span="24">
+        <div id="chart" style="width: 100%;height: 500px; "></div>
       </Col>
-      <Col span="10">
-        <div style="width: 90%;height: 350px; align:right ">
-          <Form :label-width="100" :model="formModel"  ref="gradeForm" >
-           <h2 align="center">成绩预测</h2>
-           <br>
-           <FormItem label="学号：">
-           <Input v-model='studentid' disabled	 placeholder="学号" size='default'/>
-           </FormItem>
-            <FormItem label="学科类型：">
-              <Select placeholder="选择你的科目类型" v-model="formModel.accounttype">
-                <Option value="必修">必修</Option>
-                <Option value="选修">选修</Option>
-              </Select>
-            </FormItem>
-            <FormItem label="考试类型：">
-              <Select placeholder="正常考试" v-model="formModel.examtype">
-                <Option value="正常考试">正常考试</Option>
-              </Select>
-            </FormItem>
-            <FormItem label="学分：">
-              <Select placeholder="选择学分" v-model="formModel.credit">
-                <Option value="1">1</Option>
-                <Option value="2">2</Option>
-                <Option value="3">3</Option>
-                <Option value="4">4</Option>
-                <Option value="5">5</Option>
-                <Option value="6">6</Option>
-              </Select>
-            </FormItem>
-            <FormItem>
-              <Button type="primary" @click="handleForecast()">预测</Button>
-            </FormItem>
-          </Form>
-        </div>
-      </Col>
+      
     </Row>
 
     <Table border :columns="gradelist" :data="grade"></Table>
@@ -60,12 +26,6 @@ export default {
 
   data() {
     return {
-      formModel:{
-        accounttype:'',
-        examtype:'',
-        credit:''
-      },
-      studentid:'',
       pageNum: 1,
       pageSize: 10,
       grade: [],
@@ -168,34 +128,6 @@ export default {
     };
   },
   methods: {
-    handleForecast(){
-      this.$refs.gradeForm.validate(valid => {
-        if (valid) {
-          putregist(
-            this.formModel.mail,
-            this.formModel.passwd,
-            this.formModel.username,
-            this.formModel.phone,
-          )
-            .then(res => {
-              console.log(res);
-              if (res.data.code == 200) {
-                this.$Message.success(
-                
-                );
-                setTimeout(function() {
-                  window.open("login.vue", "_self");
-                }, 5000);
-              } else if (res.data.code == 500) {
-                this.$Message.error("注册失败");
-              }
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        }
-      });
-    },
     handleselectGrade(num) {
       this.pageNum = num;
       selectGrade(this.pageNum, this.pageSize)
@@ -212,12 +144,12 @@ export default {
     },
     handleCharts() {
       var myChart = charts.init($("#chart")[0], "light");
-      // 指定图表的配置项和数据
+      // 指定图表的配置项和数据 
       var option = {
         title: {
           text: "南丁格尔玫瑰图",
           subtext: '成绩分布',
-          x: "37%"
+          x: "40%"
         },
         tooltip: {
           //   grid: tooltip,
@@ -267,12 +199,12 @@ export default {
           {
             name: "成绩分布",
             type: "pie",
-            radius: [20, 110],
-            center: ["50%", "55%"],
-            roseType: "radius",
+            radius: [20, 150],
+            center: ["45%", "54%"],
+            roseType: "area",
             label: {
               normal: {
-                show: false
+                show: true
               },
               emphasis: {
                 show: true
@@ -280,7 +212,7 @@ export default {
             },
             lableLine: {
               normal: {
-                show: false
+                show: true
               },
               emphasis: {
                 show: true
@@ -341,5 +273,3 @@ export default {
 };
 </script>
 
-<style>
-</style>
