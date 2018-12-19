@@ -5,7 +5,7 @@
         <div id="chart" style="width: 100%;height: 500px; "></div>
       </Col>
       <Col span="12">
-        <div id="chart1" style="width: 100%;height: 500px; "></div>
+        <div id="gradepointchart" style="width: 100%;height: 500px; "></div>
       </Col>
     </Row>
 
@@ -181,20 +181,13 @@ export default {
             mark: {
               show: true
             },
-            dataView: {
-              show: true,
-              readOnly: false
-            },
+            
             magicType: {
               show: true,
               type: ["pie", "funnel"]
             },
-            restore: {
-              show: true
-            },
-            saveAsImage: {
-              show: true
-            }
+           
+            
           }
         },
         calculable: true,
@@ -266,11 +259,11 @@ export default {
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
     },
-     handleCharts1() {
-      var myChart = charts.init($("#chart1")[0], "dark");
+     handleGradePointCharts() {
+      var myChart = charts.init($("#gradepointchart")[0], "dark");
       // 指定图表的配置项和数据 
       var option = {
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(245,247,249)',
         title: {
           text: "各科绩点分布图",
           subtext: '绩点分布',
@@ -330,7 +323,7 @@ export default {
           {
             name: "成绩分布",
             type: "pie",
-            radius: [20, 110],
+            radius: [0, 110],
             center: ["50%", "54%"],
             roseType: "area",
             label: {
@@ -401,7 +394,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.handleCharts();
-      this.handleCharts1();
+      this.handleGradePointCharts();
     });
     this.handleselectGrade();
   }
