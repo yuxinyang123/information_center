@@ -1,43 +1,56 @@
 <template>
-<Row>
-   <Col span="8">
-  <div style="width: 90%;height: 350px; align:right ">
-    <Form :label-width="100" :model="formModel" ref="gradeForm">
-      <h2 align="center">成绩预测</h2>
-      <br>
-      <FormItem label="学号：">
-        <Input v-model='studentid' disabled placeholder="学号" size='default' />
-      </FormItem>
-      <FormItem label="学科类型：">
-        <Select placeholder="选择你的科目类型" v-model="formModel.accounttype">
-          <Option value="必修">必修</Option>
-          <Option value="选修">选修</Option>
-        </Select>
-      </FormItem>
-      <FormItem label="考试类型：">
-        <Select placeholder="正常考试" v-model="formModel.examtype">
-          <Option value="正常考试">正常考试</Option>
-        </Select>
-      </FormItem>
-      <FormItem label="学分：">
-        <Select placeholder="选择学分" v-model="formModel.credit">
-          <Option value="1">1</Option>
-          <Option value="2">2</Option>
-          <Option value="3">3</Option>
-          <Option value="4">4</Option>
-          <Option value="5">5</Option>
-          <Option value="6">6</Option>
-        </Select>
-      </FormItem>
-      <FormItem>
-        <Button type="primary" @click="handleForecast()" size="large"  > 开始预测</Button>
-      </FormItem>
-    </Form>
+  <div>
+    <Row>
+      <Col span="8">
+      <div style="width: 90%;height: 350px; align:right ">
+        <Form :label-width="100" :model="formModel" ref="gradeForm">
+          <h2 align="center">成绩预测</h2>
+          <br>
+          <FormItem label="学号：">
+            <Input v-model='studentid' disabled placeholder="学号" size='default' />
+          </FormItem>
+          <FormItem label="学科类型：">
+            <Select placeholder="选择你的科目类型" v-model="formModel.accounttype">
+              <Option value="必修">必修</Option>
+              <Option value="选修">选修</Option>
+            </Select>
+          </FormItem>
+          <FormItem label="考试类型：">
+            <Select placeholder="正常考试" v-model="formModel.examtype">
+              <Option value="正常考试">正常考试</Option>
+            </Select>
+          </FormItem>
+          <FormItem label="学分：">
+            <Select placeholder="选择学分" v-model="formModel.credit">
+              <Option value="1">1</Option>
+              <Option value="2">2</Option>
+              <Option value="3">3</Option>
+              <Option value="4">4</Option>
+              <Option value="5">5</Option>
+              <Option value="6">6</Option>
+            </Select>
+          </FormItem>
+          <FormItem>
+            <Button type="primary" @click="handleForecast()" size="large"> 开始预测</Button>
+          </FormItem>
+        </Form>
+      </div>
+      </Col>
+    </Row>
+    <div>
+      <Row>
+        <Col span="12">
+        <div id="chartgrade" style="width: 100%;height: 500px; "></div>
+        </Col>
+        <Col span="12">
+        <div id="chartclassgrade" style="width: 100%;height: 500px; "></div>
+        </Col>
+      </Row>
+    </div>
   </div>
-  </Col>
-  </Row>
 </template>
 <script>
+  import charts from "echarts";
   export default {
     name: "ables_page",
 
@@ -48,43 +61,376 @@
           examtype: '',
           credit: ''
         },
-        studentid:'',
+        studentid: '',
 
 
       };
 
     },
     methods: {
-    handleForecast(){
-      this.$refs.gradeForm.validate(valid => {
-        if (valid) {
-          putregist(
-            this.formModel.accounttype,
-            this.formModel.examtype,
-            this.formModel.credit,
-          )
-            .then(res => {
-              console.log(res);
-              if (res.data.code == 200) {
-                this.$Message.success(
-                
-                );
-                setTimeout(function() {
-                  window.open("login.vue", "_self");
-                }, 5000);
-              } else if (res.data.code == 500) {
-                this.$Message.error("注册失败");
+      handleForecast() {
+        this.$refs.gradeForm.validate(valid => {
+          if (valid) {
+            putregist(
+                this.formModel.accounttype,
+                this.formModel.examtype,
+                this.formModel.credit,
+              )
+              .then(res => {
+
+
+
+              })
+              .catch(err => {
+
+
+                console.log(err);
+              });
+          }
+        });
+      },
+      handleChartsgrade() {
+        var myChart = charts.init($("#chartgrade")[0], "light");
+        var option = {
+          title: {
+            text: '堆叠区域图'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#6a7985'
               }
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        }
-      });
-    },
+            }
+          },
+          legend: {
+            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+          },
+          toolbox: {
+            feature: {
+              saveAsImage: {}
+            }
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: [{
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          }],
+          yAxis: [{
+            type: 'value'
+          }],
+          series: [{
+              name: '邮件营销',
+              type: 'line',
+              stack: '总量',
+              areaStyle: {},
+              data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+              name: '联盟广告',
+              type: 'line',
+              stack: '总量',
+              areaStyle: {},
+              data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+              name: '视频广告',
+              type: 'line',
+              stack: '总量',
+              areaStyle: {},
+              data: [150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+              name: '直接访问',
+              type: 'line',
+              stack: '总量',
+              areaStyle: {
+                normal: {}
+              },
+              data: [320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+              name: '搜索引擎',
+              type: 'line',
+              stack: '总量',
+              label: {
+                normal: {
+                  show: true,
+                  position: 'top'
+                }
+              },
+              areaStyle: {
+                normal: {}
+              },
+              data: [820, 932, 901, 934, 1290, 1330, 1320]
+            }
+          ]
+        };
+        myChart.setOption(option);
+
+      },
+      handleChartsclassgrade() {
+        var myChart = charts.init($("#chartclassgrade")[0], "light");
+        var hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
+          '7a', '8a', '9a', '10a', '11a',
+          '12p', '1p', '2p', '3p', '4p', '5p',
+          '6p', '7p', '8p', '9p', '10p', '11p'
+        ];
+        var days = ['Saturday', 'Friday', 'Thursday',
+          'Wednesday', 'Tuesday', 'Monday', 'Sunday'
+        ];
+
+        var data = [
+          [0, 0, 5],
+          [0, 1, 1],
+          [0, 2, 0],
+          [0, 3, 0],
+          [0, 4, 0],
+          [0, 5, 0],
+          [0, 6, 0],
+          [0, 7, 0],
+          [0, 8, 0],
+          [0, 9, 0],
+          [0, 10, 0],
+          [0, 11, 2],
+          [0, 12, 4],
+          [0, 13, 1],
+          [0, 14, 1],
+          [0, 15, 3],
+          [0, 16, 4],
+          [0, 17, 6],
+          [0, 18, 4],
+          [0, 19, 4],
+          [0, 20, 3],
+          [0, 21, 3],
+          [0, 22, 2],
+          [0, 23, 5],
+          [1, 0, 7],
+          [1, 1, 0],
+          [1, 2, 0],
+          [1, 3, 0],
+          [1, 4, 0],
+          [1, 5, 0],
+          [1, 6, 0],
+          [1, 7, 0],
+          [1, 8, 0],
+          [1, 9, 0],
+          [1, 10, 5],
+          [1, 11, 2],
+          [1, 12, 2],
+          [1, 13, 6],
+          [1, 14, 9],
+          [1, 15, 11],
+          [1, 16, 6],
+          [1, 17, 7],
+          [1, 18, 8],
+          [1, 19, 12],
+          [1, 20, 5],
+          [1, 21, 5],
+          [1, 22, 7],
+          [1, 23, 2],
+          [2, 0, 1],
+          [2, 1, 1],
+          [2, 2, 0],
+          [2, 3, 0],
+          [2, 4, 0],
+          [2, 5, 0],
+          [2, 6, 0],
+          [2, 7, 0],
+          [2, 8, 0],
+          [2, 9, 0],
+          [2, 10, 3],
+          [2, 11, 2],
+          [2, 12, 1],
+          [2, 13, 9],
+          [2, 14, 8],
+          [2, 15, 10],
+          [2, 16, 6],
+          [2, 17, 5],
+          [2, 18, 5],
+          [2, 19, 5],
+          [2, 20, 7],
+          [2, 21, 4],
+          [2, 22, 2],
+          [2, 23, 4],
+          [3, 0, 7],
+          [3, 1, 3],
+          [3, 2, 0],
+          [3, 3, 0],
+          [3, 4, 0],
+          [3, 5, 0],
+          [3, 6, 0],
+          [3, 7, 0],
+          [3, 8, 1],
+          [3, 9, 0],
+          [3, 10, 5],
+          [3, 11, 4],
+          [3, 12, 7],
+          [3, 13, 14],
+          [3, 14, 13],
+          [3, 15, 12],
+          [3, 16, 9],
+          [3, 17, 5],
+          [3, 18, 5],
+          [3, 19, 10],
+          [3, 20, 6],
+          [3, 21, 4],
+          [3, 22, 4],
+          [3, 23, 1],
+          [4, 0, 1],
+          [4, 1, 3],
+          [4, 2, 0],
+          [4, 3, 0],
+          [4, 4, 0],
+          [4, 5, 1],
+          [4, 6, 0],
+          [4, 7, 0],
+          [4, 8, 0],
+          [4, 9, 2],
+          [4, 10, 4],
+          [4, 11, 4],
+          [4, 12, 2],
+          [4, 13, 4],
+          [4, 14, 4],
+          [4, 15, 14],
+          [4, 16, 12],
+          [4, 17, 1],
+          [4, 18, 8],
+          [4, 19, 5],
+          [4, 20, 3],
+          [4, 21, 7],
+          [4, 22, 3],
+          [4, 23, 0],
+          [5, 0, 2],
+          [5, 1, 1],
+          [5, 2, 0],
+          [5, 3, 3],
+          [5, 4, 0],
+          [5, 5, 0],
+          [5, 6, 0],
+          [5, 7, 0],
+          [5, 8, 2],
+          [5, 9, 0],
+          [5, 10, 4],
+          [5, 11, 1],
+          [5, 12, 5],
+          [5, 13, 10],
+          [5, 14, 5],
+          [5, 15, 7],
+          [5, 16, 11],
+          [5, 17, 6],
+          [5, 18, 0],
+          [5, 19, 5],
+          [5, 20, 3],
+          [5, 21, 4],
+          [5, 22, 2],
+          [5, 23, 0],
+          [6, 0, 1],
+          [6, 1, 0],
+          [6, 2, 0],
+          [6, 3, 0],
+          [6, 4, 0],
+          [6, 5, 0],
+          [6, 6, 0],
+          [6, 7, 0],
+          [6, 8, 0],
+          [6, 9, 0],
+          [6, 10, 1],
+          [6, 11, 0],
+          [6, 12, 2],
+          [6, 13, 1],
+          [6, 14, 3],
+          [6, 15, 4],
+          [6, 16, 0],
+          [6, 17, 0],
+          [6, 18, 0],
+          [6, 19, 0],
+          [6, 20, 1],
+          [6, 21, 2],
+          [6, 22, 2],
+          [6, 23, 6]
+        ];
+       var option = {
+          tooltip: {},
+          visualMap: {
+            max: 20,
+            inRange: {
+              color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61',
+                '#f46d43', '#d73027', '#a50026'
+              ]
+            }
+          },
+          xAxis3D: {
+            type: 'category',
+            data: hours
+          },
+          yAxis3D: {
+            type: 'category',
+            data: days
+          },
+          zAxis3D: {
+            type: 'value'
+          },
+          grid3D: {
+            boxWidth: 200,
+            boxDepth: 80,
+            viewControl: {
+              // projection: 'orthographic'
+            },
+            light: {
+              main: {
+                intensity: 1.2,
+                shadow: true
+              },
+              ambient: {
+                intensity: 0.3
+              }
+            }
+          },
+          series: [{
+            type: 'bar3D',
+            data: data.map(function (item) {
+              return {
+                value: [item[1], item[0], item[2]],
+              }
+            }),
+            shading: 'lambert',
+
+            label: {
+              textStyle: {
+                fontSize: 16,
+                borderWidth: 1
+              }
+            },
+
+            emphasis: {
+              label: {
+                textStyle: {
+                  fontSize: 20,
+                  color: '#900'
+                }
+              },
+              itemStyle: {
+                color: '#900'
+              }
+            }
+          }]
+        };
+        myChart.setOption(option);
+      }
     },
     mounted() {
-
+      this.$nextTick(() => {
+        this.handleChartsgrade();
+        this.handleChartsclassgrade()
+      });
     },
   }
 
