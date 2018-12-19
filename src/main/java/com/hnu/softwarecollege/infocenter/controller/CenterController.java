@@ -1,5 +1,7 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
@@ -89,18 +91,20 @@ public class CenterController {
     }
     /*
      * @Author 刘亚双
-     * @Description //TODO 通过UserKey 从数据库中查询数据
+     * @Description //TODO 通过UserKey 从数据库中查询成绩信息
      * @Date 2018/12/11 15:53
      * @Param []
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/grade")
-    public BaseResponseVo grade(){
+    public BaseResponseVo grade(@RequestParam int pageNum,@RequestParam int pageSize){
+        PageHelper.startPage(pageNum,pageSize);
         List<CenterDegreePo> poList = centerService.gradeDB();
+        PageInfo<CenterDegreePo> centerDegreePoPageInfo = new PageInfo<>(poList);
         if(poList.size()==0){
             return BaseResponseVo.error("没有查询的数据");
         }else {
-            return BaseResponseVo.success(poList);
+            return BaseResponseVo.success(centerDegreePoPageInfo);
         }
     }
     /**

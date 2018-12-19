@@ -7,5 +7,13 @@ package com.hnu.softwarecollege.infocenter.entity.vo;
  * @create: 2018-11-21 17:40
  **/
 public class CommentForm {
+    private String commentContext;
 
+    public String getCommentContext() {
+        return commentContext;
+    }
+
+    public void setCommentContext(String commentContext) {
+        this.commentContext = commentContext;
+    }
 }

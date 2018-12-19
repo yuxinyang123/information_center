@@ -22,6 +22,15 @@ public class UserPo {
         this.userIsban = userIsban;
     }
 
+    public UserPo(Long userId, String userName, String userEmail, String userPhone, String userPass, String userIsban) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
+        this.userPass = userPass;
+        this.userIsban = userIsban;
+    }
+
     public Long getUserId() {
         return userId;
     }

@@ -1,5 +1,9 @@
 package com.hnu.softwarecollege.infocenter.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
@@ -106,7 +110,13 @@ public class ResourceController {
      **/
     @PostMapping("/{id}/comment")
     public BaseResponseVo addComment(@RequestBody CommentForm comment,@PathVariable String id){
-        return null;
+        Long userkey = ThreadContext.getUserContext().getUserId();
+        int flag = resourceService.addComment(userkey,comment,id);
+        if(flag==0){
+            return  BaseResponseVo.error("添加失败");
+        }else{
+            return BaseResponseVo.success("添加成功");
+        }
     }
 
     /**
@@ -118,14 +128,19 @@ public class ResourceController {
      **/
     @DeleteMapping("/{id}/comment")
     public BaseResponseVo delComment(@PathVariable String id){
-        return null;
+        int flag = resourceService.deleteByPrimaryKey(id);
+        if(flag==0){
+            return BaseResponseVo.error("删除失败");
+        }else{
+            return BaseResponseVo.success("删除成功");
+        }
     }
 
     /**
      * @Author yuxinyang
      * @Description //TODO 更新评论
      * @Date 17:45 2018/11/21
-     * @Param [commentForm, id]
+     * @Param [commentForm, id]获取所有评论
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/{id}/comment")
@@ -140,8 +155,11 @@ public class ResourceController {
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
-    @GetMapping("/{id}/comment")
-    public BaseResponseVo getAllComments(@PathVariable String id){
-        return null;
+    @GetMapping("/{essayId}/comment")
+    public BaseResponseVo getAllComments(@RequestParam int pageNum,@RequestParam int pageSize, @PathVariable String essayId){
+        PageHelper.startPage(pageNum,pageSize);
+        List<CommentPo> poList = resourceService.getAllComment(essayId);
+        PageInfo<CommentPo> poPageInfo = new PageInfo<>(poList);
+        return BaseResponseVo.success(poPageInfo);
     }
 }

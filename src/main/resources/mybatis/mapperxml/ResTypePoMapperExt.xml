@@ -5,13 +5,14 @@
         <id column="TYPE_ID" jdbcType="BIGINT" property="typeId" />
         <result column="TYPE_NAME" jdbcType="VARCHAR" property="typeName" />
         <collection property="resourcePos" javaType="list" ofType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
-        <id column="RES_ID" jdbcType="BIGINT" property="resId" />
-        <result column="TYPE_KEY" jdbcType="BIGINT" property="typeKey" />
-        <result column="RES_TITLE" jdbcType="VARCHAR" property="resTitle" />
-        <result column="RES_AUTHOR" jdbcType="VARCHAR" property="resAuthor" />
-        <result column="RES_SOURCE" jdbcType="VARCHAR" property="resSource" />
-        <result column="RES_DATE" jdbcType="TIMESTAMP" property="resDate" />
-    </collection>
+            <id column="RES_ID" jdbcType="BIGINT" property="resId" />
+            <result column="TYPE_KEY" jdbcType="BIGINT" property="typeKey" />
+            <result column="RES_TITLE" jdbcType="VARCHAR" property="resTitle" />
+            <result column="RES_AUTHOR" jdbcType="VARCHAR" property="resAuthor" />
+            <result column="RES_SOURCE" jdbcType="VARCHAR" property="resSource" />
+            <result column="RES_DATE" jdbcType="TIMESTAMP" property="resDate" />
+            <result column="RES_COMMENTCOUNT" jdbcType="BIGINT" property="resCommentCount"/>
+         </collection>
     </resultMap>
     <select id="queryTypeResource" resultMap="typeResourceResultMap" parameterType="java.lang.String">
         SELECT
@@ -22,7 +23,8 @@
         r.RES_TITLE,
         r.RES_AUTHOR,
         r.RES_SOURCE,
-        r.RES_DATE
+        r.RES_DATE,
+        r.RES_COMMENTCOUNT
         from `tbl_res_type` t
         LEFT JOIN `tbl_resource` r on t.TYPE_ID = r.TYPE_KEY
         where t.TYPE_NAME = #{typename,jdbcType=VARCHAR}
