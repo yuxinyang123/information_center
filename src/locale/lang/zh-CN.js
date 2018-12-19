@@ -1,11 +1,11 @@
 export default {
   home: '首页',
   components: '成绩预测',
-  count_to_page: '数字渐变',
+  count_to_page: '成绩分析',
   tables_page: '多功能表格',
   split_pane_page: '分割窗口',
   markdown_page: 'Markdown编辑器',
-  editor_page: '富文本编辑器',
+  editor_page: '富文本编辑器',  
   icons_page: '自定义图标',
   img_cropper_page: '图片编辑器',
   update: '上传数据',

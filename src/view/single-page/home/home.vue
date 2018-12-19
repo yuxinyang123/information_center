@@ -198,7 +198,7 @@ export default {
     handleGetNews(pageNum,pageSize) {
       getNews(pageNum, pageSize)
         .then(res => {
-          console.log(res.data.data);
+         
           res = res.data.data;
           this.hottitle = res;
         })
