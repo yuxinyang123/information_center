@@ -59,10 +59,9 @@
       this.$refs.gradeForm.validate(valid => {
         if (valid) {
           putregist(
-            this.formModel.mail,
-            this.formModel.passwd,
-            this.formModel.username,
-            this.formModel.phone,
+            this.formModel.accounttype,
+            this.formModel.examtype,
+            this.formModel.credit,
           )
             .then(res => {
               console.log(res);

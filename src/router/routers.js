@@ -117,7 +117,6 @@ export default [
         },
         component: () => import('@/view/components/count-to/ables_page.vue')
       }
-
     ]
   },
   {
@@ -125,9 +124,20 @@ export default [
     name: 'update',
     meta: {
       icon: 'md-cloud-upload',
-      title: '上传数据'
+      title: '修改个人信息'
     },
-    component: Main
+    component: Main,
+    children: [
+      {
+        path: 'update_table_page',
+        name: 'update_table_page',
+        meta: {
+          icon: 'ios-document',
+          title: '上传Csv'
+        },
+        component: () => import('@/view/update/update-table.vue')
+       }
+    ]
   },
   {
     path: '/multilevel',
