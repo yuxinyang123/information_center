@@ -130,7 +130,8 @@ export default {
           });
           this.$Message.success("正在登录");
         } else {
-          this.$Message.error("登录失败");
+          this.$Message.error("登录失败登录名不存在或密码错误");
+          this.getCode();
         }
       });
     },
@@ -151,8 +152,6 @@ export default {
           .catch(err => {
             console.log(err);
           });
-      } else {
-        this.flag = false;
       }
     }
   }

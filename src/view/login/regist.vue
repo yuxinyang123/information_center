@@ -205,15 +205,7 @@ export default {
         }
       });
     },
-    // handleSubmit (name) {
-    //     this.$refs[name].validate((valid) => {
-    //         if (valid) {
-    //             this.$Message.success('Success!');
-    //         } else {
-    //             this.$Message.error('Fail!');
-    //         }
-    //     })
-    // },
+
     handleReset(name) {
       this.$refs[name].resetFields();
     }
