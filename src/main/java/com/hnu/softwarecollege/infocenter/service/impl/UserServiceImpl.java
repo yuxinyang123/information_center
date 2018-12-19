@@ -1,5 +1,6 @@
 package com.hnu.softwarecollege.infocenter.service.impl;
 
+import com.hnu.softwarecollege.infocenter.client.FaceRecognition;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
@@ -7,15 +8,18 @@ import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
+import com.hnu.softwarecollege.infocenter.exception.UserFaceException;
 import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.persistence.Transient;
+import java.util.Objects;
 
 /**
  * @program: infocenter
@@ -104,14 +108,9 @@ public class UserServiceImpl implements UserService {
      * @Param
      * @return
      **/
-    public UserAndUserinfoPo findUserAndUserinfo() {
-        UserPo userPo = ThreadContext.getUserContext();
-        Long userkey = userPo.getUserId();
-//        Long userkey = 1l;
+    public UserAndUserinfoPo findUserAndUserinfo(Long id) {
         UserAndUserinfoPo userAndUserinfoPo;
-        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
-//        System.out.println(userAndUserinfoPo);
-//        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
+        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(id);
         return userAndUserinfoPo;
     }
 
@@ -123,9 +122,7 @@ public class UserServiceImpl implements UserService {
      * @return
      **/
     public int updateUserInfo(UserInfoForm userInfoForm) {
-
-        int i = userInformationPoMapper.updateByuserKeySelective(userInfoForm);
-        return i;
+        return userInformationPoMapper.updateByuserKeySelective(userInfoForm);
     }
 
     /**
@@ -163,5 +160,47 @@ public class UserServiceImpl implements UserService {
             return true;
         }
 
+    }
+
+
+    /**
+     * @param base64, email]
+     * @return boolean
+     * @author ying
+     * @description //TODO
+     * @date 16:58 2018/12/18
+     **/
+    @Override
+    public int verifyUserFace(String base64, String email) throws UserFaceException {
+
+        UserPo po = userPoMapper.selectByUserEmail(email);
+
+        int code = 0;
+
+        if (Objects.isNull(po)) {
+
+            throw new UserFaceException("email doesn't exist");
+
+        } else {
+
+            JSONObject json = FaceRecognition.authFace(base64, String.valueOf(po.getUserId()));
+            log.info("{}", json);
+
+            Double score = 0.0;
+            try {
+                score = json.getJSONObject("result").getJSONArray("user_list").getJSONObject(0).getDouble("score");
+                log.info("the user email:{},score:{}", email, score);
+            } catch (Exception e) {
+                code = json.getInt("error_code");
+            }
+
+            if (score < 80) {
+                code = 1;
+            }else{
+                code = 0;
+                ThreadContext.setUserContext(po);
+            }
+        }
+        return code;
     }
 }

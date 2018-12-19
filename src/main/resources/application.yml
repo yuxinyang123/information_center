@@ -14,8 +14,8 @@ server:
 
 token:
   salt: this
-  expired-time: "#{1000*60*60*1}" #millisSeconde
-  rememberme-time: "#{1000*60*60*7}"
+  expired-time: "#{1000*60*60*24}" #millisSeconde
+  rememberme-time: "#{1000*60*60*24*7}"
 
 mybatis:
   mapper-locations: classpath:mybatis/mapperxml/*.xml

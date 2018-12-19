@@ -86,7 +86,7 @@ public class UserController {
         for(Cookie cookie:cookies){
             if(cookie.getName().equals("token")){
                 if(cookie.getValue().equals(token))
-                    return BaseResponseVo.success(userService.findUserAndUserinfo());
+                    return BaseResponseVo.success(userService.findUserAndUserinfo(ThreadContext.getUserContext().getUserId()));
                 else
                     return BaseResponseVo.fail("token error");
             }

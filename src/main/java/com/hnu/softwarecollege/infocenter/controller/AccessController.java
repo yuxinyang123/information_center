@@ -3,11 +3,15 @@ package com.hnu.softwarecollege.infocenter.controller;
 
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
+import com.hnu.softwarecollege.infocenter.entity.vo.LoginFaceForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
+import com.hnu.softwarecollege.infocenter.exception.UserFaceException;
 import com.hnu.softwarecollege.infocenter.service.UserService;
+import com.hnu.softwarecollege.infocenter.util.Base64PicUtil;
 import com.hnu.softwarecollege.infocenter.util.TokenUtil;
 import com.hnu.softwarecollege.infocenter.util.VerifyCodeUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -67,7 +71,7 @@ public class AccessController {
     @PostMapping("user")
     @ResponseBody
     public BaseResponseVo login(
-            @RequestBody @Valid LoginForm loginForm,HttpSession session,
+            @RequestBody @Valid LoginForm loginForm, HttpSession session,
             HttpServletResponse response) {
         //will set userContext
         boolean isTrue = userService.verifyUser(loginForm);
@@ -133,5 +137,30 @@ public class AccessController {
     @PostMapping("/admin")
     public BaseResponseVo adminLogin() {
         return null;
+    }
+
+    @PostMapping("/face")
+    public BaseResponseVo faceLogin(@RequestBody @Valid LoginFaceForm form, Errors errors, HttpServletResponse response) {
+        if (errors.hasErrors()) {
+            return BaseResponseVo.error("fields error");
+        } else {
+            String pic = Base64PicUtil.handlePic(form.pic);
+            String userEmail = form.userEmail;
+            try {
+                // set context
+                int flag = userService.verifyUserFace(pic, userEmail);
+                if (flag == 0) {
+                    String token = TokenUtil.createToken();
+                    response.addCookie(getCookie("token", token));
+                    response.addCookie(getCookie("id", String.valueOf(ThreadContext.getUserContext().getUserId())));
+                    return BaseResponseVo.success(token);
+                } else {
+                    return BaseResponseVo.fail("verify fail");
+                }
+            } catch (UserFaceException e) {
+                e.printStackTrace();
+                return BaseResponseVo.fail("unknown email");
+            }
+        }
     }
 }
