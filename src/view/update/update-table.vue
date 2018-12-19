@@ -132,7 +132,6 @@ data() {
     getUserInfo(){
        getUser().then(res => {
         res=res.data.data;
-        this.m=res;
         console.log(res);
       }).catch(err => {
         console.log(err)
@@ -160,7 +159,6 @@ data() {
         this.sex
         ).then(res => {
         res=res.data.data;
-        this.m=res;
         console.log(res);
       }).catch(err => {
         console.log(err)
