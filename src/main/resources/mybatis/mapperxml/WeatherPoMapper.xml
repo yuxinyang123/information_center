@@ -176,7 +176,7 @@
       WEATHER_SUNRISE = #{weatherSunrise,jdbcType=VARCHAR},
       WEATHER_HIGH = #{weatherHigh,jdbcType=VARCHAR},
       WEATHER_LOW = #{weatherLow,jdbcType=VARCHAR},
-      WEATHER_TEMPERATURE = #{weatherTemperature,jdbcType=VARCHAR}
+      WEATHER_TEMPERATURE = #{weatherTemperature,jdbcType=VARCHAR},
       WEATHER_SUNSET = #{weatherSunset,jdbcType=VARCHAR},
       WEATHER_AQI = #{weatherAqi,jdbcType=REAL},
       WEATHER_NOTICE = #{weatherNotice,jdbcType=VARCHAR},
