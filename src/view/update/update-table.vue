@@ -1,7 +1,5 @@
-
 <template>
   <div class="login">
-
     <div class="regist">
       <h1>编辑资料</h1>
       <Form :rules="ruleRegist" :model="formModel" ref="registForm" :label-width="90" >
@@ -35,8 +33,8 @@
         <FormItem label="用户名：" prop="username">
           <Input v-model="formModel.username" placeholder="Enter your username"></Input>
         </FormItem>
-        <FormItem label="电话：" prop="academy">
-          <Input v-model="formModel.academy" placeholder="Enter your tel"></Input>
+        <FormItem label="电话：" prop="phone">
+          <Input v-model="formModel.phone" placeholder="Enter your tel"></Input>
         </FormItem>
         <Row type="flex" justify="center">
           <div>
@@ -52,14 +50,13 @@
 <script>
 import { mapActions } from "vuex";
 import { getUser } from "@/api/data";
+import { putUser } from "@/api/data";
 export default {
   name: "registForm",
   components: {
   },
 data() {
     return {
- 
-      flag: false,
       formModel: {
         academy:"",
         Class: "",
@@ -140,10 +137,39 @@ data() {
       }).catch(err => {
         console.log(err)
       })
-    }   
+    },
+    putUserInfo(num, password,signature,major,Class,academy,sex,age,location){
+      this.academy=academy;
+      this.Class=Class;
+      this.num=num;
+      this.major=major;
+      this.age=age;
+      this.location=location;
+      this.password=password;
+      this.signature=signature;
+      this.sex=sex;
+      putUser(
+          this.academy,
+        this.Class,
+        this.num,
+        this.major,
+        this.age,
+        this.location,
+        this.password,
+        this.signature,
+        this.sex
+        ).then(res => {
+        res=res.data.data;
+        this.m=res;
+        console.log(res);
+      }).catch(err => {
+        console.log(err)
+      })
+    }  
   },
   mounted(){
     this.getUserInfo();
+    this.putUserInfo()
   }
 };
 </script>

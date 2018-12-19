@@ -118,16 +118,7 @@ export default [
           title: '上传Csv'
         },
         component: () => import('@/view/update/update-table.vue')
-       },
-      // {
-      //   path: 'update_paste_page',
-      //   name: 'update_paste_page',
-      //   meta: {
-      //     icon: 'md-clipboard',
-      //     title: '粘贴表格数据'
-      //   },
-      //   component: () => import('@/view/update/update-paste.vue')
-      // }
+       }
     ]
   },
   {

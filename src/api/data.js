@@ -100,3 +100,13 @@ export const getUser = () => {
     method: 'get'
   })
 }
+export const selectGrade = (pageNum, pageSize) => {
+  return axios.request({
+    url: '/api/center/grade',
+    params: {
+      pageNum: pageNum,
+      pageSize: pageSize
+    },
+    method: 'get'
+  })
+}
