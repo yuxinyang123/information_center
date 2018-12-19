@@ -161,8 +161,8 @@ public class AccessController {
      * @return
     **/
     @PostMapping("/newpass")
-    public BaseResponseVo updateNewPwd(@RequestParam String descode,@RequestParam String newCode){
-        Boolean b = userService.updatePwd(descode,newCode);
+    public BaseResponseVo updateNewPwd(@RequestParam String desCode,@RequestParam String newPwd){
+        Boolean b = userService.updatePwd(desCode,newPwd);
         if (b){
             return BaseResponseVo.success("密码修改成功");
         }else {
