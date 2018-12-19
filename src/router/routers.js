@@ -37,6 +37,15 @@ export default [
     component: () => import('@/view/login/regist.vue')
   },
   {
+    path: '/face',
+    name: 'face',
+    meta: {
+      title: 'Face - 人脸认证',
+      hideInMenu: true
+    },
+    component: () => import('@/view/login/face.vue')
+  },
+  {
     path: '/',
     name: '_home',
     redirect: '/home',
