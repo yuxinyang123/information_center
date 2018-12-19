@@ -1,8 +1,8 @@
 export default {
   home: '首頁',
-  components: '组件',
-  count_to_page: '成绩预测',
-  tables_page: '多功能表格',
+  components: '成绩',
+  count_to_page: '成绩分布',
+  tables_page: '成绩分析',
   split_pane_page: '分割窗口',
   markdown_page: 'Markdown編輯器',
   editor_page: '富文本編輯器',
