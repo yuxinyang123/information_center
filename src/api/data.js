@@ -77,3 +77,26 @@ export const get4Tag = () => {
     method: 'get'
   })
 }
+export const putUser = (num, password,signature,major,Class,academy,sex,age,location) => {
+  return axios.request({
+    url: '/api/user/info',
+    params: {
+      num:num,
+      password:password,
+      signature:signature,
+      major:major,
+      class:Class,
+      academy:academy,
+      sex:sex,
+      age:age,
+      location:location
+    },
+    method: 'put'
+  })
+}
+export const getUser = () => {
+  return axios.request({
+    url: '/api/user/info',
+    method: 'get'
+  })
+}

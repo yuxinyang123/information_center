@@ -95,7 +95,7 @@ export default [
         name: 'count_to_page',
         meta: {
           icon: 'md-trending-up',
-          title: '数字渐变'
+          title: '成绩预测'
         },
         component: () => import('@/view/components/count-to/count-to.vue')
       }
@@ -106,29 +106,29 @@ export default [
     name: 'update',
     meta: {
       icon: 'md-cloud-upload',
-      title: '上传数据'
+      title: '修改个人信息'
     },
     component: Main,
-    // children: [
-    //   {
-    //     path: 'update_table_page',
-    //     name: 'update_table_page',
-    //     meta: {
-    //       icon: 'ios-document',
-    //       title: '上传Csv'
-    //     },
-    //     component: () => import('@/view/update/update-table.vue')
-    //   },
-    //   {
-    //     path: 'update_paste_page',
-    //     name: 'update_paste_page',
-    //     meta: {
-    //       icon: 'md-clipboard',
-    //       title: '粘贴表格数据'
-    //     },
-    //     component: () => import('@/view/update/update-paste.vue')
-    //   }
-    // ]
+    children: [
+      {
+        path: 'update_table_page',
+        name: 'update_table_page',
+        meta: {
+          icon: 'ios-document',
+          title: '上传Csv'
+        },
+        component: () => import('@/view/update/update-table.vue')
+       },
+      // {
+      //   path: 'update_paste_page',
+      //   name: 'update_paste_page',
+      //   meta: {
+      //     icon: 'md-clipboard',
+      //     title: '粘贴表格数据'
+      //   },
+      //   component: () => import('@/view/update/update-paste.vue')
+      // }
+    ]
   },
   {
     path: '/multilevel',

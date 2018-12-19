@@ -78,7 +78,9 @@ export default {
       if (this.cityname != "") this.$emit("updateLocal", this.cityname);
     }
   },
-  mounted() {},
+  mounted() {
+
+  },
   beforeUpdate() {
     this.aggimage(this.type);
   }
