@@ -11,6 +11,8 @@ import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
+import com.hnu.softwarecollege.infocenter.util.DESUtil;
+import com.hnu.softwarecollege.infocenter.util.MailUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -163,5 +165,61 @@ public class UserServiceImpl implements UserService {
             return true;
         }
 
+    }
+
+
+    /*
+     * @Autor wang
+     * @Description //TODO 验证邮箱，发送邮件
+     * @Date 21:38 2018/12/18
+     * @Param
+     * @return
+    **/
+    @Resource
+    private MailService mailService;
+    @Resource
+    private MailUtil mailUtil;
+    @Override
+    public boolean recoverPassword(String email) {
+//        log.info(email);
+        UserPo userPo = userPoMapper.selectByUserEmail(email);
+        if (userPo != null){
+            String text = mailUtil.createLink(userPo);
+            mailService.sendTextMail(email,"找回密码",text);
+            return true;
+        }else {
+            log.error("邮箱错误");
+            return false;
+        }
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 得到密文，解密验证，更新密码
+     * @Date 21:38 2018/12/18
+     * @Param
+     * @return
+    **/
+
+    @Override
+    public boolean updatePwd(String descode,String newpwd) {
+        String recode = "";
+        try {
+            recode = DESUtil.decrypt(descode);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String delimeter = "-";
+        String [] temp = recode.split(delimeter);
+        long date = Long.parseLong(temp[0]);
+        if (date <= System.currentTimeMillis()){
+            log.error("已过期");
+            return false;
+        }else {
+            UserPo userPo = userPoMapper.selectByUserEmail(temp[1]);
+            userPo.setUserPass(newpwd);
+            userPoMapper.updateByPrimaryKeySelective(userPo);
+            return true;
+        }
     }
 }

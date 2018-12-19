@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 import java.util.Map;
@@ -133,5 +134,39 @@ public class AccessController {
     @PostMapping("/admin")
     public BaseResponseVo adminLogin() {
         return null;
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 发送邮件找回密码
+     * @Date 23:42 2018/12/18
+     * @Param [userEmail]
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+    **/
+    @PostMapping("/pass")
+    public BaseResponseVo recoverPass(@Email @RequestParam String userEmail){
+        Boolean b = userService.recoverPassword(userEmail);
+        if (b){
+            return BaseResponseVo.success("邮件已发送");
+        }else {
+            return BaseResponseVo.fail("邮箱不存在");
+        }
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 通过密文修改密码
+     * @Date 23:43 2018/12/18
+     * @Param
+     * @return
+    **/
+    @PostMapping("/newpass")
+    public BaseResponseVo updateNewPwd(@RequestParam String desCode,@RequestParam String newPwd){
+        Boolean b = userService.updatePwd(desCode,newPwd);
+        if (b){
+            return BaseResponseVo.success("密码修改成功");
+        }else {
+            return BaseResponseVo.fail("密码修改失败");
+        }
     }
 }
