@@ -1,5 +1,7 @@
 package com.hnu.softwarecollege.infocenter.excelTest;
 
+import com.hnu.softwarecollege.infocenter.entity.po.AvgPo;
+import com.hnu.softwarecollege.infocenter.mapper.AvgPoMapper;
 import com.hnu.softwarecollege.infocenter.poi.Score;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.CellType;
@@ -12,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -85,10 +88,27 @@ public class ExcelTest {
         System.out.println("sum:"+sum);
     }
 
+    @Resource
+    AvgPoMapper avgPoMapper;
     @Test
     public void test1() throws Exception{
         Score score = new Score();
         score.averageScore();
-        System.out.println(score);
+        AvgPo avgPo_one = new AvgPo("1班",score.getClassoneavg());
+        AvgPo avgPo_two = new AvgPo("2班",score.getClasstwoavg());
+        AvgPo avgPo_three = new AvgPo("3班",score.getClassthravg());
+        AvgPo avgPo_four = new AvgPo("4班",score.getClassfouavg());
+        AvgPo avgPo_five = new AvgPo("5班",score.getClassfivavg());
+        AvgPo avgPo_six = new AvgPo("6班",score.getClasssixavg());
+        AvgPo avgPo_seven = new AvgPo("7班",score.getClasssevavg());
+        AvgPo avgPo_eight = new AvgPo("8班",score.getClasseigavg());
+        avgPoMapper.insertSelective(avgPo_one);
+        avgPoMapper.insertSelective(avgPo_two);
+        avgPoMapper.insertSelective(avgPo_three);
+        avgPoMapper.insertSelective(avgPo_four);
+        avgPoMapper.insertSelective(avgPo_five);
+        avgPoMapper.insertSelective(avgPo_six);
+        avgPoMapper.insertSelective(avgPo_seven);
+        avgPoMapper.insertSelective(avgPo_eight);
     }
 }

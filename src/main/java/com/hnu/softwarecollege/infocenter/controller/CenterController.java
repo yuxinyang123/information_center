@@ -3,6 +3,7 @@ package com.hnu.softwarecollege.infocenter.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.AvgPo;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
@@ -33,7 +34,6 @@ public class CenterController {
     CenterPoMapper centerPoMapper;
     @Resource
     CenterService centerService;
-
     /**
      * @Author yuxinyang
      * @Description //TODO 获取天气信息
@@ -190,4 +190,13 @@ public class CenterController {
         return BaseResponseVo.success(fourTag);
     }
 
+    @GetMapping("/avg")
+    public BaseResponseVo getAvg(){
+        List<AvgPo> list = centerService.getAvg();
+        if(list.size()==0){
+            return BaseResponseVo.error("查询失败");
+        }else{
+            return BaseResponseVo.success(list);
+        }
+    }
 }

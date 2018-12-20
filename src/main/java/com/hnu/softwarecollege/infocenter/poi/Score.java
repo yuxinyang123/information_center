@@ -197,4 +197,6 @@ public class Score {
         setClasssevavg(sumsev/count7);
         setClasseigavg(sumeig/count8);
     }
+
+
 }

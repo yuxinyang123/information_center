@@ -9,10 +9,7 @@ import com.hnu.softwarecollege.infocenter.entity.po.*;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.FourTag;
 import com.hnu.softwarecollege.infocenter.entity.vo.SyllabusVo;
-import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
-import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
-import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
-import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
+import com.hnu.softwarecollege.infocenter.mapper.*;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -463,4 +460,11 @@ public class CenterServiceImpl implements CenterService {
         return fourTag;
     }
 
+    @Resource
+    AvgPoMapper avgPoMapper;
+    @Override
+    public List<AvgPo> getAvg() {
+        List<AvgPo> list = avgPoMapper.findAll();
+        return list;
+    }
 }

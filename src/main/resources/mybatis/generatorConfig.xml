@@ -296,9 +296,18 @@
                 enableSelectByExample="false"
                 selectByExampleQueryId="false"
         />-->
-        <table
+        <!--<table
                 tableName="tbl_hotspot"
                 domainObjectName="HotsPotPo"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+        />-->
+        <table
+                tableName="tbl_avg"
+                domainObjectName="AvgPo"
                 enableCountByExample="false"
                 enableUpdateByExample="false"
                 enableDeleteByExample="false"
