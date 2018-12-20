@@ -89,7 +89,7 @@ public class ResourceController {
 
     /**
      * @Author yuxinyang
-     * @Description //TODO 获取资源
+     * @Description //TODO 获取文章，
      * @Date 17:04 2018/11/21
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
