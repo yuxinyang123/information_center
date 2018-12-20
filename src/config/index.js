@@ -2,7 +2,7 @@ export default {
   /**
    * @description 配置显示在浏览器标签的title
    */
-  title: 'iView-admin',
+  title: '一校通',
   /**
    * @description token在Cookie中存储的天数，默认1天
    */
@@ -17,8 +17,8 @@ export default {
    * @description api请求基础路径
    */
   baseUrl: {
-    dev: 'http://rap2api.taobao.org/app/mock/117773/',
-    // dev: 'http://localhost:8088/',
+    // dev: 'http://rap2api.taobao.org/app/mock/117773/',
+    dev: 'http://localhost:8088/',
     pro: 'https://produce.com'
   },
   /**
