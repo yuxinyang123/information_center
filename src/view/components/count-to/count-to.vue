@@ -28,6 +28,7 @@ export default {
 
   data() {
     return {
+      
       pageNum: 1,
       pageSize: 10,
       grade: [],
@@ -134,7 +135,7 @@ export default {
       this.pageNum = num;
       selectGrade(this.pageNum, this.pageSize)
         .then(res => {
-          res = res.data.data;
+          res = res.data.data.list;
           this.studentid=res[0].studentId
           this.grade = res;
           console.log(res);
@@ -285,15 +286,16 @@ export default {
                         color: 'rgba(0, 0, 0, 0.9)'
                     },
           data: [
-            "0-50",
-            "51-60",
-            "61-65",
-            "66-70",
-            "71-75",
-            "76-80",
-            "81-85",
-            "86-90",
-            "91-100"
+            "0-1.0",
+            "1.1-1.3",
+            "1.4-1.7",
+            "1.8-2.0",
+            "2.1-2.3",
+            "2.4-2.7",
+            "2.8-3.0",
+            "3.1-3.3",
+            "3.4-3.7",
+            "3.8-4.0"
           ]
         },
         toolbox: {
@@ -348,39 +350,43 @@ export default {
             data: [
               {
                 value: 10,
-                name: "0-50"
+                name: "0-1.0"
               },
               {
                 value: 10,
-                name: "51-60"
+                name: "1.1-1.3"
               },
               {
                 value: 5,
-                name: "61-65"
+                name: "1.4-1.7"
               },
               {
                 value: 15,
-                name: "66-70"
+                name: "1.8-2.0"
               },
               {
                 value: 25,
-                name: "71--75"
+                name: "2.1-2.3"
               },
               {
                 value: 20,
-                name: "76-80"
+                name: "2.3-2.7"
               },
               {
                 value: 35,
-                name: "81-85"
+                name: "2.8-3.0"
               },
               {
                 value: 20,
-                name: "86-90"
+                name: "3.1-3.3"
               },
               {
                 value: 35,
-                name: "91-100"
+                name: "3.4-3.7"
+              },
+              {
+                value: 35,
+                name: "3.8-4.0"
               }
             ]
           },
