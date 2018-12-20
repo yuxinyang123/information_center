@@ -77,19 +77,19 @@ export const get4Tag = () => {
     method: 'get'
   })
 }
-export const putUser = (num, password,signature,major,Class,academy,sex,age,location) => {
+export const putUser = (num, password, signature, major, Class, academy, sex, age, location) => {
   return axios.request({
     url: '/api/user/info',
     params: {
-      num:num,
-      password:password,
-      signature:signature,
-      major:major,
-      class:Class,
-      academy:academy,
-      sex:sex,
-      age:age,
-      location:location
+      num: num,
+      password: password,
+      signature: signature,
+      major: major,
+      class: Class,
+      academy: academy,
+      sex: sex,
+      age: age,
+      location: location
     },
     method: 'put'
   })
@@ -108,5 +108,18 @@ export const selectGrade = (pageNum, pageSize) => {
       pageSize: pageSize
     },
     method: 'get'
+  })
+}
+export const forcastGrade = (studentID, courseType, testType, gainCredit) => {
+  return axios.request({
+    url: '/api/center/grade',
+    data: {
+      studentID,
+      courseType,
+      testType,
+      gainCredit
+
+    },
+    method: 'post'
   })
 }

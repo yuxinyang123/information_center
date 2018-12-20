@@ -1,5 +1,19 @@
 <template>
   <div>
+    <div>
+      <Row type="flex" justify="center">
+        <Col span="5">
+        <h1>各班成绩详细分布</h1>
+        </Col>
+
+      </Row>
+      <Row>
+
+        <Col span="24">
+        <div id="chartclassgrade" style="width: 100%;height: 500px; "></div>
+        </Col>
+      </Row>
+    </div>
     <Row>
       <Col span="8">
       <div style="width: 90%;height: 350px; align:right ">
@@ -36,21 +50,20 @@
         </Form>
       </div>
       </Col>
+      <Col span="8">
+      </Col>
+      <Col span="8">
+      </Col>
     </Row>
-    <div>
-      <Row>
-        <Col span="12">
-        <div id="chartgrade" style="width: 100%;height: 500px; "></div>
-        </Col>
-        <Col span="12">
-        <div id="chartclassgrade" style="width: 100%;height: 500px; "></div>
-        </Col>
-      </Row>
-    </div>
+
   </div>
 </template>
 <script>
+  import {
+    selectGrade
+  } from "@/api/data";
   import charts from "echarts";
+  import "echarts-gl"
   export default {
     name: "ables_page",
 
@@ -68,114 +81,6 @@
 
     },
     methods: {
-      handleForecast() {
-        this.$refs.gradeForm.validate(valid => {
-          if (valid) {
-            putregist(
-                this.formModel.accounttype,
-                this.formModel.examtype,
-                this.formModel.credit,
-              )
-              .then(res => {
-
-
-
-              })
-              .catch(err => {
-
-
-                console.log(err);
-              });
-          }
-        });
-      },
-      handleChartsgrade() {
-        var myChart = charts.init($("#chartgrade")[0], "light");
-        var option = {
-          title: {
-            text: '堆叠区域图'
-          },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'cross',
-              label: {
-                backgroundColor: '#6a7985'
-              }
-            }
-          },
-          legend: {
-            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
-          },
-          toolbox: {
-            feature: {
-              saveAsImage: {}
-            }
-          },
-          grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: [{
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-          }],
-          yAxis: [{
-            type: 'value'
-          }],
-          series: [{
-              name: '邮件营销',
-              type: 'line',
-              stack: '总量',
-              areaStyle: {},
-              data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-              name: '联盟广告',
-              type: 'line',
-              stack: '总量',
-              areaStyle: {},
-              data: [220, 182, 191, 234, 290, 330, 310]
-            },
-            {
-              name: '视频广告',
-              type: 'line',
-              stack: '总量',
-              areaStyle: {},
-              data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-              name: '直接访问',
-              type: 'line',
-              stack: '总量',
-              areaStyle: {
-                normal: {}
-              },
-              data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-              name: '搜索引擎',
-              type: 'line',
-              stack: '总量',
-              label: {
-                normal: {
-                  show: true,
-                  position: 'top'
-                }
-              },
-              areaStyle: {
-                normal: {}
-              },
-              data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-          ]
-        };
-        myChart.setOption(option);
-
-      },
       handleChartsclassgrade() {
         var myChart = charts.init($("#chartclassgrade")[0], "light");
         var hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
@@ -357,7 +262,7 @@
           [6, 22, 2],
           [6, 23, 6]
         ];
-       var option = {
+        var option = {
           tooltip: {},
           visualMap: {
             max: 20,
@@ -424,13 +329,39 @@
           }]
         };
         myChart.setOption(option);
+      },
+      handlestudentid() {
+        selectGrade(this.pageNum, this.pageSize)
+          .then(res => {
+            res = res.data.data.list;
+            this.studentid = res[0].studentId
+            this.grade = res;
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      },
+      handleForecast() {
+        this.$refs.gradeForm.validate(valid => {
+          if (valid) {
+            forcastGrade(this.studentid, this.formModel.accounttype, this.formModel.examtype, this.formModel.credit)
+              .then(res => {
+                console.log(res)
+              })
+              .catch(err => {
+                console.log(err)
+              })
+          }
+        })
       }
     },
     mounted() {
       this.$nextTick(() => {
-        this.handleChartsgrade();
+
         this.handleChartsclassgrade()
       });
+      this.handlestudentid()
+
     },
   }
 

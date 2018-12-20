@@ -11,9 +11,9 @@
 
     <Table border :columns="gradelist" :data="singleGrade"></Table>
     <br>
-    <Row type="flex" align="center">
+    <Row type="flex" justify="center" :gutter="8">
       <Col>
-        <Button primary @click="handleAllPage">全部</Button>
+        <Button @click="handleAllPage" primary>全部</Button>
       </Col>
       <Col>
         <Page
@@ -177,43 +177,47 @@ export default {
         }
       ],
       pointData: [
-        {
-          value: 0,
-          name: "0-50"
-        },
-        {
-          value: 0,
-          name: "51-60"
-        },
-        {
-          value: 0,
-          name: "61-65"
-        },
-        {
-          value: 0,
-          name: "66-70"
-        },
-        {
-          value: 0,
-          name: "71-75"
-        },
-        {
-          value: 0,
-          name: "76-80"
-        },
-        {
-          value: 0,
-          name: "81-85"
-        },
-        {
-          value: 0,
-          name: "86-90"
-        },
-        {
-          value: 0,
-          name: "91-100"
-        }
-      ]
+              {
+                value: 0,
+                name: "0-1.0"
+              },
+              {
+                value: 0,
+                name: "1.1-1.3"
+              },
+              {
+                value: 0,
+                name: "1.4-1.7"
+              },
+              {
+                value: 0,
+                name: "1.8-2.0"
+              },
+              {
+                value: 0,
+                name: "2.1-2.3"
+              },
+              {
+                value: 0,
+                name: "2.3-2.7"
+              },
+              {
+                value: 0,
+                name: "2.8-3.0"
+              },
+              {
+                value: 0,
+                name: "3.1-3.3"
+              },
+              {
+                value: 0,
+                name: "3.4-3.7"
+              },
+              {
+                value: 0,
+                name: "3.8-4.0"
+              }
+              ]
     };
   },
   methods: {
@@ -234,8 +238,7 @@ export default {
       });
     },
     handleCharts() {
-      console.log(this.scoreData);
-      var myChart = charts.init($("#chart")[0], "light");
+      var myChart1 = charts.init($("#chart")[0], "light");
       // 指定图表的配置项和数据
       var option = {
         title: {
@@ -307,10 +310,10 @@ export default {
       };
 
       // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option);
+      myChart1.setOption(option);
     },
     handleGradePointCharts() {
-      var myChart = charts.init($("#gradepointchart")[0], "dark");
+      var myChart2 = charts.init($("#gradepointchart")[0], "dark");
       // 指定图表的配置项和数据
       var option = {
         backgroundColor: "rgba(245,247,249)",
@@ -335,15 +338,16 @@ export default {
             color: "rgba(0, 0, 0, 0.9)"
           },
           data: [
-            "0-50",
-            "51-60",
-            "61-65",
-            "66-70",
-            "71-75",
-            "76-80",
-            "81-85",
-            "86-90",
-            "91-100"
+            "0-1.0",
+            "1.1-1.3",
+            "1.4-1.7",
+            "1.8-2.0",
+            "2.1-2.3",
+            "2.3-2.7",
+            "2.8-3.0",
+            "3.1-3.3",
+            "3.4-3.7",
+            "3.8-4.0"
           ]
         },
         toolbox: {
@@ -395,50 +399,13 @@ export default {
                 show: true
               }
             },
-            data: [
-              {
-                value: 10,
-                name: "0-50"
-              },
-              {
-                value: 10,
-                name: "51-60"
-              },
-              {
-                value: 5,
-                name: "61-65"
-              },
-              {
-                value: 15,
-                name: "66-70"
-              },
-              {
-                value: 25,
-                name: "71-75"
-              },
-              {
-                value: 20,
-                name: "76-80"
-              },
-              {
-                value: 35,
-                name: "81-85"
-              },
-              {
-                value: 20,
-                name: "86-90"
-              },
-              {
-                value: 35,
-                name: "91-100"
-              }
-            ]
+            data: this.pointData
           }
         ]
       };
 
       // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option);
+      myChart2.setOption(option);
     },
     handleNextPage(num) {
       this.pageNum = num;
@@ -451,7 +418,6 @@ export default {
       this.singleGrade = this.grade;
     },
     getScoreChartsDatas(data) {
-      console.log("computedScore");
       for (let i in this.grade) {
         let score = this.grade[i].grade;
         if (score >= 0 && score <= 50) {
@@ -474,25 +440,57 @@ export default {
           data[8].value += 1;
         }
       }
-      console.log(data);
+      for(let i in data){
+        if(data[i].value == 0){
+          data[i].value = null
+        }
+      }
+    },
+    getPointChartsDatas(data){
+      for (let i in this.grade) {
+        let score = this.grade[i].credit;
+        if (score >= 0 && score <= 1.0) {
+          data[0].value += 1;
+        } else if (score <= 1.3) {
+          data[1].value += 1;
+        } else if (score <= 1.7) {
+          data[2].value += 1;
+        } else if (score <= 2.0) {
+          data[3].value += 1;
+        } else if (score <= 2.3) {
+          data[4].value += 1;
+        } else if (score <= 3.0) {
+          data[5].value += 1;
+        } else if (score <= 3.3) {
+          data[6].value += 1;
+        } else if (score <= 3.7) {
+          data[7].value += 1;
+        } else if (score <= 4.0) {
+          data[8].value += 1;
+        }
+      }
+      for(let i in data){
+        if(data[i].value == 0){
+          data[i].value = null
+        }
+      }
     }
   },
   mounted() {
     this.handleselectGrade(1, 100).then(() => {
       this.handleNextPage(1);
       this.getScoreChartsDatas(this.scoreData);
-      this.handleCharts();
-      this.handleGradePointCharts();
+      this.getPointChartsDatas(this.pointData);
+        this.handleCharts();
+        this.handleGradePointCharts();
     }).catch(()=>{
-          this.handleNextPage(1);
-      this.getScoreChartsDatas(this.scoreData);
       this.handleCharts();
       this.handleGradePointCharts();
     });
   },
   updated() {
-    this.handleCharts();
-    this.handleGradePointCharts();
+    // this.handleCharts();
+    // this.handleGradePointCharts();
   }
 };
 </script>
