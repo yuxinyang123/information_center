@@ -46,6 +46,15 @@ export default [
     component: () => import('@/view/login/face.vue')
   },
   {
+    path: '/forget',
+    name: 'forget',
+    meta: {
+      title: '密码找回',
+      hideInMenu: true
+    },
+    component: () => import('@/view/login/forget.vue')
+  },
+  {
     path: '/',
     name: '_home',
     redirect: '/home',
