@@ -398,7 +398,7 @@
         myChart.setOption(option);
       },
       handlestudentid() {
-        selectGrade(this.pageNum, this.pageSize)
+        selectGrade(1, 1)
           .then(res => {
             res = res.data.data.list;
             this.studentid = res[0].studentId;
