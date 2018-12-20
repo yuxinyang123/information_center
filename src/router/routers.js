@@ -124,7 +124,7 @@ export default [
     name: 'update',
     meta: {
       icon: 'md-cloud-upload',
-      title: '修改个人信息'
+      title: '个人信息'
     },
     component: Main,
     children: [
