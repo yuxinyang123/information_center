@@ -19,6 +19,7 @@
     <div v-show="isOk">
       <video id="video" width="480" height="320"></video>
       <i-button @click="authFace" ghost>匹配</i-button>
+      <Button @click="back" ghost>返回</Button>
       <canvas id="canvas" width="480" height="320"></canvas>
     </div>
   </div>
@@ -107,6 +108,10 @@ export default {
     },
     cancle() {
       this.$router.push('login')
+    },
+    back(){
+      this.stopVideo()
+      this.$router.push("login")
     }
   },
   watch: {

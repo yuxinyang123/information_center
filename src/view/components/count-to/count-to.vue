@@ -9,12 +9,20 @@
       </Col>
     </Row>
 
-    <Table border :columns="gradelist" :data="grade"></Table>
+    <Table border :columns="gradelist" :data="singleGrade"></Table>
     <br>
-    <Row>
-      <Col span="8">&nbsp</Col>
+    <Row type="flex" align="center">
       <Col>
-        <Page :total="40" size="small" show-elevator @on-change="handleselectGrade"/>
+        <Button primary @click="handleAllPage">全部</Button>
+      </Col>
+      <Col>
+        <Page
+          :current="pageNum"
+          :total="pageSize"
+          size="small"
+          show-elevator
+          @on-change="handleNextPage"
+        />
       </Col>
     </Row>
   </div>
@@ -25,11 +33,14 @@ import { selectGrade } from "@/api/data";
 import charts from "echarts";
 export default {
   name: "count_to",
-
   data() {
     return {
+      scoreFlag: false,
+      studentid: 0,
       pageNum: 1,
-      pageSize: 10,
+      pageSize: 0,
+      singlePageSize: 10,
+      singleGrade: [],
       grade: [],
       gradelist: [
         {
@@ -126,33 +137,111 @@ export default {
           title: "考试类型",
           key: "testNature"
         }
+      ],
+      scoreData: [
+        {
+          value: 0,
+          name: "0-50"
+        },
+        {
+          value: 0,
+          name: "51-60"
+        },
+        {
+          value: 0,
+          name: "61-65"
+        },
+        {
+          value: 0,
+          name: "66-70"
+        },
+        {
+          value: 0,
+          name: "71-75"
+        },
+        {
+          value: 0,
+          name: "76-80"
+        },
+        {
+          value: 0,
+          name: "81-85"
+        },
+        {
+          value: 0,
+          name: "86-90"
+        },
+        {
+          value: 0,
+          name: "91-100"
+        }
+      ],
+      pointData: [
+        {
+          value: 0,
+          name: "0-50"
+        },
+        {
+          value: 0,
+          name: "51-60"
+        },
+        {
+          value: 0,
+          name: "61-65"
+        },
+        {
+          value: 0,
+          name: "66-70"
+        },
+        {
+          value: 0,
+          name: "71-75"
+        },
+        {
+          value: 0,
+          name: "76-80"
+        },
+        {
+          value: 0,
+          name: "81-85"
+        },
+        {
+          value: 0,
+          name: "86-90"
+        },
+        {
+          value: 0,
+          name: "91-100"
+        }
       ]
     };
   },
   methods: {
-    handleselectGrade(num) {
-      this.pageNum = num;
-      selectGrade(this.pageNum, this.pageSize)
-        .then(res => {
-          res = res.data.data;
-          this.studentid=res[0].studentId
-          this.grade = res;
-          console.log(res);
-          console.log(this.studentid)
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    handleselectGrade(num, pageSize) {
+      return new Promise((resolve, reject) => {
+        selectGrade(num, pageSize)
+          .then(res => {
+            res = res.data.data;
+            this.studentid = res.list[0].studentId;
+            this.grade = res.list;
+            this.pageSize = res.total;
+            resolve();
+          })
+          .catch(err => {
+            console.log(err);
+            reject(err);
+          });
+      });
     },
     handleCharts() {
+      console.log(this.scoreData);
       var myChart = charts.init($("#chart")[0], "light");
-      // 指定图表的配置项和数据 
+      // 指定图表的配置项和数据
       var option = {
         title: {
           text: "各科成绩分布图",
-          subtext: '成绩分布',
-          x: "40%",
-          
+          subtext: "成绩分布",
+          x: "40%"
         },
         tooltip: {
           //   grid: tooltip,
@@ -181,13 +270,11 @@ export default {
             mark: {
               show: true
             },
-            
+
             magicType: {
               show: true,
               type: ["pie", "funnel"]
-            },
-           
-            
+            }
           }
         },
         calculable: true,
@@ -214,63 +301,26 @@ export default {
                 show: true
               }
             },
-            data: [
-              {
-                value: 10,
-                name: "0-50"
-              },
-              {
-                value: 10,
-                name: "51-60"
-              },
-              {
-                value: 5,
-                name: "61-65"
-              },
-              {
-                value: 15,
-                name: "66-70"
-              },
-              {
-                value: 25,
-                name: "71--75"
-              },
-              {
-                value: 20,
-                name: "76-80"
-              },
-              {
-                value: 35,
-                name: "81-85"
-              },
-              {
-                value: 20,
-                name: "86-90"
-              },
-              {
-                value: 35,
-                name: "91-100"
-              }
-            ]
-          },
+            data: this.scoreData
+          }
         ]
       };
 
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
     },
-     handleGradePointCharts() {
+    handleGradePointCharts() {
       var myChart = charts.init($("#gradepointchart")[0], "dark");
-      // 指定图表的配置项和数据 
+      // 指定图表的配置项和数据
       var option = {
-        backgroundColor: 'rgba(245,247,249)',
+        backgroundColor: "rgba(245,247,249)",
         title: {
           text: "各科绩点分布图",
-          subtext: '绩点分布',
+          subtext: "绩点分布",
           x: "40%",
-            textStyle: {
-            color: '#000'
-        }
+          textStyle: {
+            color: "#000"
+          }
         },
         tooltip: {
           //   grid: tooltip,
@@ -282,8 +332,8 @@ export default {
           x: "85%",
           y: "center",
           textStyle: {
-                        color: 'rgba(0, 0, 0, 0.9)'
-                    },
+            color: "rgba(0, 0, 0, 0.9)"
+          },
           data: [
             "0-50",
             "51-60",
@@ -330,8 +380,8 @@ export default {
               normal: {
                 show: true,
                 textStyle: {
-                        color: 'rgba(0, 0, 0, 0.8)'
-                    }
+                  color: "rgba(0, 0, 0, 0.8)"
+                }
               },
               emphasis: {
                 show: true
@@ -364,7 +414,7 @@ export default {
               },
               {
                 value: 25,
-                name: "71--75"
+                name: "71-75"
               },
               {
                 value: 20,
@@ -383,20 +433,66 @@ export default {
                 name: "91-100"
               }
             ]
-          },
+          }
         ]
       };
 
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
+    },
+    handleNextPage(num) {
+      this.pageNum = num;
+      let startNum = (num - 1) * this.singlePageSize;
+      let endNum = num * this.singlePageSize;
+      this.singleGrade = this.grade.slice(startNum, endNum);
+    },
+    handleAllPage() {
+      this.pageNum = 0;
+      this.singleGrade = this.grade;
+    },
+    getScoreChartsDatas(data) {
+      console.log("computedScore");
+      for (let i in this.grade) {
+        let score = this.grade[i].grade;
+        if (score >= 0 && score <= 50) {
+          data[0].value += 1;
+        } else if (score <= 60) {
+          data[1].value += 1;
+        } else if (score <= 65) {
+          data[2].value += 1;
+        } else if (score <= 70) {
+          data[3].value += 1;
+        } else if (score <= 75) {
+          data[4].value += 1;
+        } else if (score <= 80) {
+          data[5].value += 1;
+        } else if (score <= 85) {
+          data[6].value += 1;
+        } else if (score <= 90) {
+          data[7].value += 1;
+        } else if (score <= 100) {
+          data[8].value += 1;
+        }
+      }
+      console.log(data);
     }
   },
   mounted() {
-    this.$nextTick(() => {
+    this.handleselectGrade(1, 100).then(() => {
+      this.handleNextPage(1);
+      this.getScoreChartsDatas(this.scoreData);
+      this.handleCharts();
+      this.handleGradePointCharts();
+    }).catch(()=>{
+          this.handleNextPage(1);
+      this.getScoreChartsDatas(this.scoreData);
       this.handleCharts();
       this.handleGradePointCharts();
     });
-    this.handleselectGrade();
+  },
+  updated() {
+    this.handleCharts();
+    this.handleGradePointCharts();
   }
 };
 </script>

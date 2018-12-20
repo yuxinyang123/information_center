@@ -91,8 +91,8 @@ export default [
     ]
   },
   {
-    path: '/components',
-    name: 'components',
+    path: '/grade',
+    name: 'grade',
     meta: {
       icon: 'logo-buffer',
       title: '成绩'
@@ -100,8 +100,8 @@ export default [
     component: Main,
     children: [
       {
-        path: 'count_to_page',
-        name: 'count_to_page',
+        path: 'distribution',
+        name: 'distribution',
         meta: {
           icon: 'md-trending-up',
           title: '成绩分布'
@@ -109,8 +109,8 @@ export default [
         component: () => import('@/view/components/count-to/count-to.vue')
       },
       {
-        path: 'ables_page',
-        name: '成绩分析',
+        path: 'analyze',
+        name: 'analyze',
         meta: {
           icon: 'ios-ionitron-outline',
           title: '成绩分析'
@@ -136,7 +136,7 @@ export default [
           title: '上传Csv'
         },
         component: () => import('@/view/update/update-table.vue')
-       }
+      }
     ]
   },
   {
