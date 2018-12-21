@@ -1,6 +1,6 @@
 <template>
-  <div class="login">
-    <div class="regist">
+  <div class="login" >
+    <Card>
       <h1>编辑资料</h1>
       <Form :rules="ruleRegist" :model="formModel" ref="registForm" :label-width="90">
         <FormItem label="学院：" prop="academy">
@@ -12,9 +12,6 @@
         <FormItem label="主修：" prop="major">
           <Input type="text" v-model="formModel.major" placeholder="Enter your major"></Input>
         </FormItem>
-        <FormItem label="学号：" prop="num">
-          <Input type="text" v-model="formModel.num" placeholder="Enter your num"></Input>
-        </FormItem>
         <FormItem label="个人签名：" prop="signature">
           <Input type="text" v-model="formModel.signature" placeholder="Enter your signature"></Input>
         </FormItem>
@@ -24,6 +21,12 @@
         <FormItem label="电话：" prop="phone">
           <Input v-model="formModel.phone" placeholder="Enter your tel"></Input>
         </FormItem>
+        <FormItem label="教务学号：" prop="num">
+          <Input type="text" v-model="formModel.num" placeholder="Enter your num"></Input>
+        </FormItem>
+        <FormItem label="教务密码：" prop="password">
+          <Input type="text" v-model="formModel.password" placeholder="Enter your password"></Input>
+        </FormItem>
         <Row type="flex" justify="center">
           <div>
             <Button type="primary" @click="handleSubmit()">提交</Button>
@@ -31,7 +34,7 @@
           </div>
         </Row>
       </Form>
-    </div>
+    </Card>
   </div>
 </template>
 
@@ -51,26 +54,26 @@ export default {
         num: "",
         phone: "",
         signature: "",
-        userId: "",
-        username: ""
+        username: "",
+        password: ""
       },
 
       ruleRegist: {
         academy: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
         Class: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
         major: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
@@ -82,23 +85,23 @@ export default {
         ],
         signature: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
         phone: [
           {
-            required: true,
-            trigger: "blur"
-          }
-        ],
-        userId: [
-          {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
         username: [
+          {
+            required: false,
+            trigger: "blur"
+          }
+        ],
+        password: [
           {
             required: true,
             trigger: "blur"
@@ -158,10 +161,7 @@ export default {
           console.log(err);
         });
     },
-    handleSubmit(){
-
-    }
-
+    handleSubmit() {}
   },
   mounted() {
     this.getUserInfo();
@@ -171,12 +171,7 @@ export default {
 </script>
 <style>
 .regist {
-  background-color: rgba(245, 245, 245, 0.904);
-  position: absolute;
-
-  left: 33%;
-  right: 33%;
-  top: 15%;
+  background-color: rgb(255, 255, 255);
   margin: auto;
   width: 500px;
   padding: 10px;
