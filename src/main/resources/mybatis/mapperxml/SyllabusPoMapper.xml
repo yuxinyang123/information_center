@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper">
+  <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo">
+    <id column="SYLLABUS_ID" jdbcType="BIGINT" property="syllabusId" />
+    <result column="SYLLABUS_CLASSNAME" jdbcType="VARCHAR" property="syllabusClassname" />
+    <result column="SYLLABUS_STARTWEEK" jdbcType="INTEGER" property="syllabusStartweek" />
+    <result column="SYLLABUS_ENDWEEK" jdbcType="INTEGER" property="syllabusEndweek" />
+    <result column="SYLLABUS_STARTPART" jdbcType="INTEGER" property="syllabusStartpart" />
+    <result column="SYLLABUS_ENDPART" jdbcType="INTEGER" property="syllabusEndpart" />
+    <result column="SYLLABUS_WEEK" jdbcType="VARCHAR" property="syllabusWeek" />
+    <result column="SYLLABUS_CLASSROOM" jdbcType="VARCHAR" property="syllabusClassroom" />
+    <result column="SYLLABUS_TEACHER" jdbcType="VARCHAR" property="syllabusTeacher" />
+    <result column="USERKEY" jdbcType="BIGINT" property="userkey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SYLLABUS_ID, SYLLABUS_CLASSNAME, SYLLABUS_STARTWEEK, SYLLABUS_ENDWEEK, SYLLABUS_STARTPART, 
+    SYLLABUS_ENDPART, SYLLABUS_WEEK, SYLLABUS_CLASSROOM, SYLLABUS_TEACHER, USERKEY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_syllabus
+    where SYLLABUS_ID = #{syllabusId,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tbl_syllabus
+    where SYLLABUS_ID = #{syllabusId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo">
+    insert into tbl_syllabus (SYLLABUS_ID, SYLLABUS_CLASSNAME, SYLLABUS_STARTWEEK, 
+      SYLLABUS_ENDWEEK, SYLLABUS_STARTPART, SYLLABUS_ENDPART, 
+      SYLLABUS_WEEK, SYLLABUS_CLASSROOM, SYLLABUS_TEACHER, 
+      USERKEY)
+    values (#{syllabusId,jdbcType=BIGINT}, #{syllabusClassname,jdbcType=VARCHAR}, #{syllabusStartweek,jdbcType=INTEGER}, 
+      #{syllabusEndweek,jdbcType=INTEGER}, #{syllabusStartpart,jdbcType=INTEGER}, #{syllabusEndpart,jdbcType=INTEGER}, 
+      #{syllabusWeek,jdbcType=VARCHAR}, #{syllabusClassroom,jdbcType=VARCHAR}, #{syllabusTeacher,jdbcType=VARCHAR}, 
+      #{userkey,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo">
+    insert into tbl_syllabus
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="syllabusId != null">
+        SYLLABUS_ID,
+      </if>
+      <if test="syllabusClassname != null">
+        SYLLABUS_CLASSNAME,
+      </if>
+      <if test="syllabusStartweek != null">
+        SYLLABUS_STARTWEEK,
+      </if>
+      <if test="syllabusEndweek != null">
+        SYLLABUS_ENDWEEK,
+      </if>
+      <if test="syllabusStartpart != null">
+        SYLLABUS_STARTPART,
+      </if>
+      <if test="syllabusEndpart != null">
+        SYLLABUS_ENDPART,
+      </if>
+      <if test="syllabusWeek != null">
+        SYLLABUS_WEEK,
+      </if>
+      <if test="syllabusClassroom != null">
+        SYLLABUS_CLASSROOM,
+      </if>
+      <if test="syllabusTeacher != null">
+        SYLLABUS_TEACHER,
+      </if>
+      <if test="userkey != null">
+        USERKEY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="syllabusId != null">
+        #{syllabusId,jdbcType=BIGINT},
+      </if>
+      <if test="syllabusClassname != null">
+        #{syllabusClassname,jdbcType=VARCHAR},
+      </if>
+      <if test="syllabusStartweek != null">
+        #{syllabusStartweek,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusEndweek != null">
+        #{syllabusEndweek,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusStartpart != null">
+        #{syllabusStartpart,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusEndpart != null">
+        #{syllabusEndpart,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusWeek != null">
+        #{syllabusWeek,jdbcType=VARCHAR},
+      </if>
+      <if test="syllabusClassroom != null">
+        #{syllabusClassroom,jdbcType=VARCHAR},
+      </if>
+      <if test="syllabusTeacher != null">
+        #{syllabusTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="userkey != null">
+        #{userkey,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo">
+    update tbl_syllabus
+    <set>
+      <if test="syllabusClassname != null">
+        SYLLABUS_CLASSNAME = #{syllabusClassname,jdbcType=VARCHAR},
+      </if>
+      <if test="syllabusStartweek != null">
+        SYLLABUS_STARTWEEK = #{syllabusStartweek,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusEndweek != null">
+        SYLLABUS_ENDWEEK = #{syllabusEndweek,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusStartpart != null">
+        SYLLABUS_STARTPART = #{syllabusStartpart,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusEndpart != null">
+        SYLLABUS_ENDPART = #{syllabusEndpart,jdbcType=INTEGER},
+      </if>
+      <if test="syllabusWeek != null">
+        SYLLABUS_WEEK = #{syllabusWeek,jdbcType=VARCHAR},
+      </if>
+      <if test="syllabusClassroom != null">
+        SYLLABUS_CLASSROOM = #{syllabusClassroom,jdbcType=VARCHAR},
+      </if>
+      <if test="syllabusTeacher != null">
+        SYLLABUS_TEACHER = #{syllabusTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="userkey != null">
+        USERKEY = #{userkey,jdbcType=BIGINT},
+      </if>
+    </set>
+    where SYLLABUS_ID = #{syllabusId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo">
+    update tbl_syllabus
+    set SYLLABUS_CLASSNAME = #{syllabusClassname,jdbcType=VARCHAR},
+      SYLLABUS_STARTWEEK = #{syllabusStartweek,jdbcType=INTEGER},
+      SYLLABUS_ENDWEEK = #{syllabusEndweek,jdbcType=INTEGER},
+      SYLLABUS_STARTPART = #{syllabusStartpart,jdbcType=INTEGER},
+      SYLLABUS_ENDPART = #{syllabusEndpart,jdbcType=INTEGER},
+      SYLLABUS_WEEK = #{syllabusWeek,jdbcType=VARCHAR},
+      SYLLABUS_CLASSROOM = #{syllabusClassroom,jdbcType=VARCHAR},
+      SYLLABUS_TEACHER = #{syllabusTeacher,jdbcType=VARCHAR},
+      USERKEY = #{userkey,jdbcType=BIGINT}
+    where SYLLABUS_ID = #{syllabusId,jdbcType=BIGINT}
+  </update>
+</mapper>

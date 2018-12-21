@@ -1,6 +1,7 @@
 package com.hnu.softwarecollege.infocenter.context;
 
 import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @program: infocenter
@@ -9,14 +10,17 @@ import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
  * @author: yu
  * @create: 2018-11-08 10:46
  **/
+@Slf4j
 public class ThreadContext {
     private static ThreadLocal<UserPo> userContext=new ThreadLocal();
 
     public static UserPo getUserContext() {
+        log.info("get userId:{}",userContext.get().getUserId());
         return userContext.get();
     }
 
     public static void setUserContext(UserPo userPo) {
+        log.info("set userId:{}",userPo.getUserId());
         userContext.set(userPo);
     }
 }

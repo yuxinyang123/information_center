@@ -8,12 +8,13 @@
     <result column="RES_AUTHOR" jdbcType="VARCHAR" property="resAuthor" />
     <result column="RES_SOURCE" jdbcType="VARCHAR" property="resSource" />
     <result column="RES_DATE" jdbcType="TIMESTAMP" property="resDate" />
+    <result column="RES_COMMENTCOUNT" jdbcType="BIGINT" property="resCommentCount"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
     <result column="RES_CONTEXT" jdbcType="LONGVARCHAR" property="resContext" />
   </resultMap>
   <sql id="Base_Column_List">
-    RES_ID, TYPE_KEY, RES_TITLE, RES_AUTHOR, RES_SOURCE, RES_DATE
+    RES_ID, TYPE_KEY, RES_TITLE, RES_AUTHOR, RES_SOURCE, RES_DATE, RES_COMMENTCOUNT
   </sql>
   <sql id="Blob_Column_List">
     RES_CONTEXT
@@ -33,10 +34,10 @@
   <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
     insert into tbl_resource (RES_ID, TYPE_KEY, RES_TITLE, 
       RES_AUTHOR, RES_SOURCE, RES_DATE, 
-      RES_CONTEXT)
+      RES_CONTEXT,RES_COMMENTCOUNT)
     values (#{resId,jdbcType=BIGINT}, #{typeKey,jdbcType=BIGINT}, #{resTitle,jdbcType=VARCHAR}, 
       #{resAuthor,jdbcType=VARCHAR}, #{resSource,jdbcType=VARCHAR}, #{resDate,jdbcType=TIMESTAMP}, 
-      #{resContext,jdbcType=LONGVARCHAR})
+      #{resContext,jdbcType=LONGVARCHAR}, #{resCommentCount,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
     insert into tbl_resource
@@ -62,6 +63,9 @@
       <if test="resContext != null">
         RES_CONTEXT,
       </if>
+      <if test="resCommentCount !=null">
+        RES_COMMENTCOUNT,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="resId != null">
@@ -84,6 +88,9 @@
       </if>
       <if test="resContext != null">
         #{resContext,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="resCommentCount !=null">
+        #{resCommentCount,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -108,6 +115,9 @@
       <if test="resContext != null">
         RES_CONTEXT = #{resContext,jdbcType=LONGVARCHAR},
       </if>
+      <if test="resCommentCount !=null">
+        RES_COMMENTCOUNT = #{resCommentCount,jdbcType=BIGINT},
+      </if>
     </set>
     where RES_ID = #{resId,jdbcType=BIGINT}
   </update>
@@ -118,7 +128,8 @@
       RES_AUTHOR = #{resAuthor,jdbcType=VARCHAR},
       RES_SOURCE = #{resSource,jdbcType=VARCHAR},
       RES_DATE = #{resDate,jdbcType=TIMESTAMP},
-      RES_CONTEXT = #{resContext,jdbcType=LONGVARCHAR}
+      RES_CONTEXT = #{resContext,jdbcType=LONGVARCHAR},
+      RES_COMMENTCOUNT = #{resCommentCount,jdbcType=BIGINT},
     where RES_ID = #{resId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.ResourcePo">
@@ -127,7 +138,8 @@
       RES_TITLE = #{resTitle,jdbcType=VARCHAR},
       RES_AUTHOR = #{resAuthor,jdbcType=VARCHAR},
       RES_SOURCE = #{resSource,jdbcType=VARCHAR},
-      RES_DATE = #{resDate,jdbcType=TIMESTAMP}
+      RES_DATE = #{resDate,jdbcType=TIMESTAMP},
+      RES_COMMENTCOUNT = #{resCommentCount,jdbcType=BIGINT},
     where RES_ID = #{resId,jdbcType=BIGINT}
   </update>
 </mapper>

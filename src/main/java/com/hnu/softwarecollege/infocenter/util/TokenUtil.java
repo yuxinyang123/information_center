@@ -110,15 +110,26 @@ public class TokenUtil {
     public static boolean VerifyToken(String token){
         try {
             Algorithm algorithm = Algorithm.HMAC256(salt);
+
             JWTVerifier jwtVerifier = JWT.require(algorithm).build();
+
             DecodedJWT decodedJWT = jwtVerifier.verify(token);
+
             String email=decodedJWT.getClaim("email").asString();
+
+
             UserPo userPo = new UserPo();
+
             userPo.setUserEmail(email);
+
             ThreadContext.setUserContext(userPo);
+
             log.info("token verify success,email:{}",email);
+
         } catch (UnsupportedEncodingException e) {
+
             log.error("verify token fail,unsupported encoding:{}",salt);
+
             return false;
         }
         return true;

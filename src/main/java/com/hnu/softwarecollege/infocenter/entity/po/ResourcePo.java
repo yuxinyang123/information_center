@@ -11,11 +11,26 @@ public class ResourcePo {
 
     private String resAuthor;
 
+    private Long resCommentCount;
+
+    public ResourcePo() {
+    }
+
     private String resSource;
 
     private Date resDate;
 
     private String resContext;
+
+    public ResourcePo(Long typeKey, String resTitle, String resAuthor, String resSource, Date resDate, String resContext,Long resCommentCount) {
+        this.typeKey = typeKey;
+        this.resTitle = resTitle;
+        this.resAuthor = resAuthor;
+        this.resSource = resSource;
+        this.resDate = resDate;
+        this.resContext = resContext;
+        this.resCommentCount = resCommentCount;
+    }
 
     public Long getResId() {
         return resId;
@@ -71,5 +86,13 @@ public class ResourcePo {
 
     public void setResContext(String resContext) {
         this.resContext = resContext == null ? null : resContext.trim();
+    }
+
+    public Long getResCommentCount() {
+        return resCommentCount;
+    }
+
+    public void setResCommentCount(Long resCommentCount) {
+        this.resCommentCount = resCommentCount;
     }
 }

@@ -3,6 +3,8 @@ package com.hnu.softwarecollege.infocenter.mapper;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface WeatherPoMapper {
     int deleteByPrimaryKey(Integer weatherCode);
@@ -16,4 +18,7 @@ public interface WeatherPoMapper {
     int updateByPrimaryKeySelective(WeatherPo record);
 
     int updateByPrimaryKey(WeatherPo record);
+
+    List<WeatherPo> findAll();
+
 }

@@ -23,6 +23,22 @@ public class UserInformationPo {
 
     private String infAge;
 
+    public UserInformationPo(){}
+
+    public UserInformationPo(Long userKey, Integer infNum, String infPass, String infSignature, String infAcademy,
+                             String infMajor, String infClass, String infSex, String infLocaltion, String infAge) {
+        this.userKey = userKey;
+        this.infNum = infNum;
+        this.infPass = infPass;
+        this.infSignature = infSignature;
+        this.infAcademy = infAcademy;
+        this.infMajor = infMajor;
+        this.infClass = infClass;
+        this.infSex = infSex;
+        this.infLocaltion = infLocaltion;
+        this.infAge = infAge;
+    }
+
     public Long getInfId() {
         return infId;
     }

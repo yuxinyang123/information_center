@@ -179,7 +179,7 @@
 
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table
+        <!--<table
                 tableName="tbl_center"
                 domainObjectName="CenterPo"
                 enableCountByExample="false"
@@ -187,8 +187,8 @@
                 enableDeleteByExample="false"
                 enableSelectByExample="false"
                 selectByExampleQueryId="false"
-        />
-        <table
+        />-->
+        <!--<table
                 tableName="tbl_center_degree"
                 domainObjectName="CenterDegreePo"
                 enableCountByExample="false"
@@ -196,8 +196,8 @@
                 enableDeleteByExample="false"
                 enableSelectByExample="false"
                 selectByExampleQueryId="false"
-        />
-        <table
+        />-->
+       <!-- <table
                 tableName="tbl_comment"
                 domainObjectName="CommentPo"
                 enableCountByExample="false"
@@ -250,8 +250,17 @@
                 enableDeleteByExample="false"
                 enableSelectByExample="false"
                 selectByExampleQueryId="false"
-        />
-        <table
+        />-->
+        <!--<table
+                tableName="tbl_syllabus"
+                domainObjectName="SyllabusPo"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+        />-->
+        <!--<table
                 tableName="tbl_user"
                 domainObjectName="UserPo"
                 enableCountByExample="false"
@@ -281,6 +290,15 @@
         <table
                 tableName="tbl_weather"
                 domainObjectName="WeatherPo"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+        />-->
+        <table
+                tableName="tbl_hotspot"
+                domainObjectName="HotsPotPo"
                 enableCountByExample="false"
                 enableUpdateByExample="false"
                 enableDeleteByExample="false"

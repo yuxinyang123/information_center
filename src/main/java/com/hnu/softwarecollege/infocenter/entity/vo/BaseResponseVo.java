@@ -9,14 +9,15 @@ import java.util.Date;
  * @create: 2018-11-06 23:13
  **/
 public class BaseResponseVo<T> {
-    private static final int SUCCESS_CODE=200;
-    private static final int FAIL_CODE=404;
-    private static final int ERROR_CODE=500;
+    private static final int SUCCESS_CODE = 200;
+    private static final int FAIL_CODE = 404;
+    private static final int ERROR_CODE = 500;
     private T data;
     private String msg;
     private int code;
     private Date date;
-    BaseResponseVo(T data,String msg,int code,Date date){
+
+    BaseResponseVo(T data, String msg, int code, Date date) {
         this.setData(data);
         this.setMsg(msg);
         this.setCode(code);
@@ -24,17 +25,20 @@ public class BaseResponseVo<T> {
     }
 
 
-    public static <T> BaseResponseVo<T> success(T data){
-        return new BaseResponseVo<T>(data,"success",BaseResponseVo.SUCCESS_CODE,new Date());
+    public static <T> BaseResponseVo<T> success(T data) {
+        return new BaseResponseVo<T>(data, "success", BaseResponseVo.SUCCESS_CODE, new Date());
     }
-    public static <T> BaseResponseVo<T> success(){
-        return new BaseResponseVo<T>(null,"success",BaseResponseVo.SUCCESS_CODE,new Date());
+
+    public static <T> BaseResponseVo<T> success() {
+        return new BaseResponseVo<T>(null, "success", BaseResponseVo.SUCCESS_CODE, new Date());
     }
-    public static <T> BaseResponseVo<T> fail(String msg){
-        return new BaseResponseVo<T>(null,msg,BaseResponseVo.FAIL_CODE,new Date());
+
+    public static <T> BaseResponseVo<T> fail(String msg) {
+        return new BaseResponseVo<T>(null, msg, BaseResponseVo.FAIL_CODE, new Date());
     }
-    public static <T> BaseResponseVo<T> error(String msg){
-        return new BaseResponseVo<T>(null,msg,BaseResponseVo.ERROR_CODE,new Date());
+
+    public static <T> BaseResponseVo<T> error(String msg) {
+        return new BaseResponseVo<T>(null, msg, BaseResponseVo.ERROR_CODE, new Date());
     }
 
     public T getData() {
@@ -68,4 +72,5 @@ public class BaseResponseVo<T> {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }

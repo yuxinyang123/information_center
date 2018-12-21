@@ -3,10 +3,12 @@
 <mapper namespace="com.hnu.softwarecollege.infocenter.mapper.WeatherPoMapper">
   <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.WeatherPo">
     <id column="WEATHER_CODE" jdbcType="INTEGER" property="weatherCode" />
+    <result column="WEATHER_CITY_NAME" jdbcType="VARCHAR" property="weatherCityName" />
     <result column="WEATHER_DATE" jdbcType="VARCHAR" property="weatherDate" />
     <result column="WEATHER_SUNRISE" jdbcType="VARCHAR" property="weatherSunrise" />
     <result column="WEATHER_HIGH" jdbcType="VARCHAR" property="weatherHigh" />
     <result column="WEATHER_LOW" jdbcType="VARCHAR" property="weatherLow" />
+    <result column="WEATHER_TEMPERATURE" jdbcType="VARCHAR" property="weatherTemperature"/>
     <result column="WEATHER_SUNSET" jdbcType="VARCHAR" property="weatherSunset" />
     <result column="WEATHER_AQI" jdbcType="REAL" property="weatherAqi" />
     <result column="WEATHER_NOTICE" jdbcType="VARCHAR" property="weatherNotice" />
@@ -15,8 +17,8 @@
     <result column="WEATHER_FX" jdbcType="VARCHAR" property="weatherFx" />
   </resultMap>
   <sql id="Base_Column_List">
-    WEATHER_CODE, WEATHER_DATE, WEATHER_SUNRISE, WEATHER_HIGH, WEATHER_LOW, WEATHER_SUNSET, 
-    WEATHER_AQI, WEATHER_NOTICE, WEATHER_TYPE, WEATHER_FL, WEATHER_FX
+    WEATHER_CODE, WEATHER_CITY_NAME, WEATHER_DATE, WEATHER_SUNRISE, WEATHER_HIGH, WEATHER_LOW,
+    WEATHER_TEMPERATURE,WEATHER_SUNSET, WEATHER_AQI, WEATHER_NOTICE, WEATHER_TYPE, WEATHER_FL, WEATHER_FX
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -29,20 +31,25 @@
     where WEATHER_CODE = #{weatherCode,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.WeatherPo">
-    insert into tbl_weather (WEATHER_CODE, WEATHER_DATE, WEATHER_SUNRISE, 
-      WEATHER_HIGH, WEATHER_LOW, WEATHER_SUNSET, 
-      WEATHER_AQI, WEATHER_NOTICE, WEATHER_TYPE, 
-      WEATHER_FL, WEATHER_FX)
-    values (#{weatherCode,jdbcType=INTEGER}, #{weatherDate,jdbcType=VARCHAR}, #{weatherSunrise,jdbcType=VARCHAR}, 
-      #{weatherHigh,jdbcType=VARCHAR}, #{weatherLow,jdbcType=VARCHAR}, #{weatherSunset,jdbcType=VARCHAR}, 
-      #{weatherAqi,jdbcType=REAL}, #{weatherNotice,jdbcType=VARCHAR}, #{weatherType,jdbcType=VARCHAR}, 
-      #{weatherFl,jdbcType=VARCHAR}, #{weatherFx,jdbcType=VARCHAR})
+    insert into tbl_weather (WEATHER_CODE, WEATHER_CITY_NAME, WEATHER_DATE, 
+      WEATHER_SUNRISE, WEATHER_HIGH, WEATHER_LOW,WEATHER_TEMPERATURE,
+      WEATHER_SUNSET, WEATHER_AQI, WEATHER_NOTICE, 
+      WEATHER_TYPE, WEATHER_FL, WEATHER_FX
+      )
+    values (#{weatherCode,jdbcType=INTEGER}, #{weatherCityName,jdbcType=VARCHAR}, #{weatherDate,jdbcType=VARCHAR}, 
+      #{weatherSunrise,jdbcType=VARCHAR}, #{weatherHigh,jdbcType=VARCHAR}, #{weatherLow,jdbcType=VARCHAR}, #{weatherTemperature,jdbcType=VARCHAR},
+      #{weatherSunset,jdbcType=VARCHAR}, #{weatherAqi,jdbcType=REAL}, #{weatherNotice,jdbcType=VARCHAR}, 
+      #{weatherType,jdbcType=VARCHAR}, #{weatherFl,jdbcType=VARCHAR}, #{weatherFx,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.WeatherPo">
     insert into tbl_weather
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="weatherCode != null">
         WEATHER_CODE,
+      </if>
+      <if test="weatherCityName != null">
+        WEATHER_CITY_NAME,
       </if>
       <if test="weatherDate != null">
         WEATHER_DATE,
@@ -55,6 +62,9 @@
       </if>
       <if test="weatherLow != null">
         WEATHER_LOW,
+      </if>
+      <if test="weatherTemperature !=null">
+        WEATHER_TEMPERATURE,
       </if>
       <if test="weatherSunset != null">
         WEATHER_SUNSET,
@@ -79,6 +89,9 @@
       <if test="weatherCode != null">
         #{weatherCode,jdbcType=INTEGER},
       </if>
+      <if test="weatherCityName != null">
+        #{weatherCityName,jdbcType=VARCHAR},
+      </if>
       <if test="weatherDate != null">
         #{weatherDate,jdbcType=VARCHAR},
       </if>
@@ -90,6 +103,9 @@
       </if>
       <if test="weatherLow != null">
         #{weatherLow,jdbcType=VARCHAR},
+      </if>
+      <if test="weatherTemperature !=null">
+        WEATHER_TEMPERATURE,
       </if>
       <if test="weatherSunset != null">
         #{weatherSunset,jdbcType=VARCHAR},
@@ -114,6 +130,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.WeatherPo">
     update tbl_weather
     <set>
+      <if test="weatherCityName != null">
+        WEATHER_CITY_NAME = #{weatherCityName,jdbcType=VARCHAR},
+      </if>
       <if test="weatherDate != null">
         WEATHER_DATE = #{weatherDate,jdbcType=VARCHAR},
       </if>
@@ -125,6 +144,9 @@
       </if>
       <if test="weatherLow != null">
         WEATHER_LOW = #{weatherLow,jdbcType=VARCHAR},
+      </if>
+      <if test="weatherTemperature !=null">
+        WEATHER_TEMPERATURE = #{weatherTemperature,jdbcType=VARCHAR},
       </if>
       <if test="weatherSunset != null">
         WEATHER_SUNSET = #{weatherSunset,jdbcType=VARCHAR},
@@ -149,10 +171,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.WeatherPo">
     update tbl_weather
-    set WEATHER_DATE = #{weatherDate,jdbcType=VARCHAR},
+    set WEATHER_CITY_NAME = #{weatherCityName,jdbcType=VARCHAR},
+      WEATHER_DATE = #{weatherDate,jdbcType=VARCHAR},
       WEATHER_SUNRISE = #{weatherSunrise,jdbcType=VARCHAR},
       WEATHER_HIGH = #{weatherHigh,jdbcType=VARCHAR},
       WEATHER_LOW = #{weatherLow,jdbcType=VARCHAR},
+      WEATHER_TEMPERATURE = #{weatherTemperature,jdbcType=VARCHAR},
       WEATHER_SUNSET = #{weatherSunset,jdbcType=VARCHAR},
       WEATHER_AQI = #{weatherAqi,jdbcType=REAL},
       WEATHER_NOTICE = #{weatherNotice,jdbcType=VARCHAR},
