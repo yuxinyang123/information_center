@@ -24,7 +24,7 @@
         </FormItem>
         <FormItem label="邮箱：" prop="userEmail">
           <Input
-            type="password"
+            type="text"
             v-model="formModel.edupasswd"
             placeholder="Enter your educational emil"
           ></Input>
