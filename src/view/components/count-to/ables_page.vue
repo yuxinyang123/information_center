@@ -420,15 +420,15 @@
               .then(res => {
                 this.grade = res.data.data
                 if (this.grade < 60 && this.grade > 40) {
-                  this.advice = "你现在是危险的哦~ 需要抓紧时间学习了"
+                  this.advice = "你现在是危险的哦，需要调整学习状态了，不然就狗带了"
                 } else if (this.grade >= 60 && this.grade <= 70) {
-                  this.advice = "你现在有点危险哦~ 需要改变一下自己的学习态度了"
+                  this.advice = "然后第二个是，你已经在危险的边缘试探了，若再不调整状态就可能GG了"
                 } else if (this.grade < 40) {
                   this.advice = "小伙子退学吧"
                 } else if (this.grade > 70 && this.grade < 85) {
-                  this.advice = "你现在的状态一般，需要更加的刻苦学习"
+                  this.advice = "你现在的状态一般，需要更加的刻苦学习，再迈一大步就可以到达更高的地方哟"
                 } else if (this.grade >= 85) {
-                  this.advice = "你现在的状态很好，继续保持~"
+                  this.advice = "你现在的状态很好，而学如逆水行舟不进则退，一定要更加努力哟！继续保持~"
                 }
 
                 this.$Message.success(

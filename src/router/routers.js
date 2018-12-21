@@ -133,8 +133,8 @@ export default [
     path: '/update',
     name: 'update',
     meta: {
-      icon: 'md-cloud-upload',
-      title: '个人信息'
+      icon: 'md-person',
+      title: '个人中心'
     },
     component: Main,
     children: [
@@ -143,38 +143,56 @@ export default [
         name: 'update_table_page',
         meta: {
           icon: 'ios-document',
-          title: '上传Csv'
+          title: '个人信息'
         },
         component: () => import('@/view/update/update-table.vue')
+      },
+      {
+        path: 'update_password',
+        name: 'update_password',
+        meta: {
+          icon: 'ios-lock-outline',
+          title: '修改密码'
+        },
+        component: () => import('@/view/update/update-password.vue')
+      },
+      {
+        path: 'add_face',
+        name: 'add_face',
+        meta: {
+          icon: 'ios-happy-outline',
+          title: '修改人脸'
+        },
+        component: () => import('@/view/update/update-face.vue')
       }
     ]
   },
   {
-    path: '/multilevel',
-    name: 'multilevel',
+    path: '/forum',
+    name: 'forum',
     meta: {
       icon: 'md-menu',
-      title: '多级菜单'
+      title: '论坛'
     },
     component: Main,
     children: [
       {
-        path: 'level_2_1',
-        name: 'level_2_1',
+        path: 'forumhome_page',
+        name: 'forumhome_page',
         meta: {
           icon: 'md-funnel',
-          title: '二级-1'
+          title: '论坛首页'
         },
-        component: () => import('@/view/multilevel/level-2-1.vue')
+        component: () => import('@/view/multilevel/forumhome.vue')
       },
       {
-        path: 'level_2_2',
-        name: 'level_2_2',
+        path: 'home_page',
+        name: 'home_page',
         meta: {
           access: ['super_admin'],
           icon: 'md-funnel',
           showAlways: true,
-          title: '二级-2'
+          title: '论坛首页'
         },
         component: parentView,
         children: [
