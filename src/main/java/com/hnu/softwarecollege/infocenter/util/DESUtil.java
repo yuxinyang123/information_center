@@ -131,8 +131,7 @@ public class DESUtil {
      * Description 根据键值进行加密
      *
      * @param data
-     * @param key
-     *            加密键byte数组
+     * @param key  加密键byte数组
      * @return
      * @throws Exception
      */
@@ -146,8 +145,7 @@ public class DESUtil {
      * Description 根据键值进行解密
      *
      * @param data
-     * @param key
-     *            加密键byte数组
+     * @param key  加密键byte数组
      * @return
      * @throws IOException
      * @throws Exception
@@ -166,8 +164,7 @@ public class DESUtil {
      * Description 根据键值进行加密
      *
      * @param data
-     * @param key
-     *            加密键byte数组
+     * @param key  加密键byte数组
      * @return
      * @throws Exception
      */
@@ -195,8 +192,7 @@ public class DESUtil {
      * Description 根据键值进行解密
      *
      * @param data
-     * @param key
-     *            加密键byte数组
+     * @param key  加密键byte数组
      * @return
      * @throws Exception
      */

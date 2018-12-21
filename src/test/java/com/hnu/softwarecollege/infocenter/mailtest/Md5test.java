@@ -42,4 +42,10 @@ public class Md5test {
         System.out.println(code2);
     }
 
+    @Test
+    public void url() throws Exception {
+        String code2 = DESUtil.decrypt("iQEbzkVbc95TM3PKt6kTwNaCVlKQkqTknTEaKARqYG4XH25ZVLA7t8CTb98SHS76DDm+hw0Z8jx03nOVzYpg3Bc+JRLeVmkW");
+        log.info("{}",code2);
+    }
+
 }

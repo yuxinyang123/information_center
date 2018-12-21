@@ -215,7 +215,7 @@ public class UserServiceImpl implements UserService {
         UserPo userPo = userPoMapper.selectByUserEmail(email);
         if (userPo != null) {
             String text = mailUtil.createLink(userPo);
-            mailService.sendTextMail(email, "找回密码", text);
+            mailService.sendTextMail(email, "这是来自一校通的找回密码邮件！！！！！", text);
             return true;
         } else {
             log.error("邮箱错误");
@@ -238,6 +238,7 @@ public class UserServiceImpl implements UserService {
             recode = DESUtil.decrypt(descode);
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
         String delimeter = "-";
         String[] temp = recode.split(delimeter);
