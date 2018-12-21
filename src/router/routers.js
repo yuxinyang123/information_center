@@ -48,6 +48,7 @@ export default [
   {
     path: '/forget',
     name: 'forget',
+    props: (route) => ({ pass: route.query.pass }),
     meta: {
       title: '密码找回',
       hideInMenu: true
