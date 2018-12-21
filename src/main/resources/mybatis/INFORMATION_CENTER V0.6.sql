@@ -224,3 +224,14 @@ CREATE TABLE `tbl_hotspot`(
   `HOTSPOT_HOTURL` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT 'url',
   PRIMARY KEY (`HOTSPOT_ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '热点信息' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for `tbl_avg`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_avg`;
+CREATE TABLE `tbl_avg` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `CLASSNAME` varchar(128) NOT NULL COMMENT '班级名称',
+  `FENGSHU` double(8,2) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET=utf8;

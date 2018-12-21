@@ -190,6 +190,13 @@ public class CenterController {
         return BaseResponseVo.success(fourTag);
     }
 
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 查询各班两年的加权平均分
+     * @Date 2018/12/21 9:30
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
     @GetMapping("/avg")
     public BaseResponseVo getAvg(){
         List<AvgPo> list = centerService.getAvg();

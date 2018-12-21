@@ -20,4 +20,6 @@ public interface AvgPoMapper {
     int updateByPrimaryKey(AvgPo record);
 
     List<AvgPo> findAll();
+
+    void deleteAll();
 }

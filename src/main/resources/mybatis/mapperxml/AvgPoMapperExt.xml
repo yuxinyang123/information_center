@@ -6,4 +6,8 @@
         <include refid="Base_Column_List" />
         from tbl_avg
     </select>
+    <delete id="deleteAll">
+        delete
+        from tbl_avg
+    </delete>
 </mapper>
