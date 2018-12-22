@@ -1,5 +1,5 @@
 <template>
-  <div class="login" >
+  <div >
     <Card>
       <h1>编辑资料</h1>
       <Form :rules="ruleRegist" :model="formModel" ref="registForm" :label-width="90">
