@@ -12,9 +12,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.naming.event.ObjectChangeListener;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("user")
@@ -120,7 +122,8 @@ public class UserController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/pass")
-    public BaseResponseVo changePassword(@PathVariable("newpass") String newpass){
+    public BaseResponseVo changePassword(@RequestBody Map<String, Object> map){
+        String newpass = (String) map.get("newpass");
         boolean bool = userService.changePassword(newpass);
         if(bool == true){
             return BaseResponseVo.success("修改成功");
