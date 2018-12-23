@@ -231,6 +231,7 @@ CREATE TABLE `tbl_hotspot`(
 DROP TABLE IF EXISTS `tbl_avg`;
 CREATE TABLE `tbl_avg` (
   `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `SEMESTER` varchar(128) NOT NULL DEFAULT '' COMMENT '学期',
   `CLASSNAME` varchar(128) NOT NULL COMMENT '班级名称',
   `FENGSHU` double(8,2) NOT NULL,
   PRIMARY KEY (`ID`)

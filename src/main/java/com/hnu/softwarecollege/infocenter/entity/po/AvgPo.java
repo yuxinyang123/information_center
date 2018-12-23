@@ -3,6 +3,8 @@ package com.hnu.softwarecollege.infocenter.entity.po;
 public class AvgPo {
     private Long id;
 
+    private String semester;
+
     private String classname;
 
     private Double fengshu;
@@ -20,6 +22,14 @@ public class AvgPo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
 
     public String getClassname() {
