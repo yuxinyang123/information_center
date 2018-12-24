@@ -17,7 +17,9 @@ export default {
   add_face: 'addface',
   forum: 'forum',
   directive_page: 'Directive',
-  forumhome_page: 'forumhome_page',
+  recruithome_page: 'recruithome_page',
+  jobhome_page: 'jobhome_page',
+  matchhome_page: 'matchhome_page',
   level_2: 'Level-2',
 
   level_2_3: 'Level-2-3',

@@ -1,86 +1,65 @@
 <template>
   <div>
-    <i-table :columns="columns1" :data="data1"></i-table>
+    <i-table :columns="typelist" :data="singleType"></i-table>
   </div>
 </template>
 <script>
   import {
-    getlists
+    getLists
   } from "@/api/data";
   export default {
-    name: 'forumhome_page',
+    props: {
+      typeName: String
+    },
+    watch: {
+      typeName:function (val, oldVal) {
+            console.log(this.typeName)
+      this.handlegetLists(this.typeName);
+    },
+    },
     data() {
       return {
-        columns1: [{
-            title: '编号',
-            key: 'num'
+        singleType: [],
+        typelist: [{
+            title: '评论',
+            key: 'resCommentCount'
           },
           {
             title: '标题',
-            key: 'tittle'
+            key: 'resTitle'
           },
           {
             title: '发布者',
-            key: 'author'
+            key: 'resAuthor'
           },
           {
             title: '时间',
-            key: 'data'
+            key: 'resDate'
           }
         ],
-        data1: [{
-            num: '1',
-            tittle: '行走在川西',
-            author: '摄太郎',
-            data: '2018.11.27'
-          },
-          {
-            num: '1',
-            tittle: '行走在川西',
-            author: '摄太郎',
-            data: '2018.11.27'
-          }, {
-            num: '1',
-            tittle: '行走在川西',
-            author: '摄太郎',
-            data: '2018.11.27'
-          }, {
-            num: '1',
-            tittle: '行走在川西',
-            author: '摄太郎',
-            data: '2018.11.27'
-          }, {
-            num: '1',
-            tittle: '行走在川西',
-            author: '摄太郎',
-            data: '2018.11.27'
-          }, {
-            num: '1',
-            tittle: '行走在川西',
-            author: '摄太郎',
-            data: '2018.11.27'
-          }, {
-            num: '1',
-            tittle: '行走在川西',
-            author: '摄太郎',
-            data: '2018.11.27'
-          },
-        ]
+
       }
     },
     methods: {
-      handlegetLists(type) {
+      handlegetLists(typeName) {
         return new Promise((resolve, reject) => {
-          getlists(type).then(res => {
-            res = res.data.data;
+          getLists(typeName).then(res => {
+            res = res.data.data[0];
+            this.singleType = res.resourcePos
             resolve();
+            console.log(res)
           }).catch(err => {
             console.log(err);
             reject(err);
           });
         });
       },
-    }
+    },
+    mounted() {
+      console.log(this.typeName)
+      this.handlegetLists(this.typeName);
+    },
+ 
   }
 
 </script>
