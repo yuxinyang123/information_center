@@ -14,6 +14,7 @@ import com.hnu.softwarecollege.infocenter.service.WeatherService;
 import com.hnu.softwarecollege.infocenter.util.ScoreUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -65,7 +66,10 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/weather")
-    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm) {
+    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm, Errors errors) {
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("file error");
+        }
         int num = 0;
         String code = weatherService.findcitycode(weatherForm.getCityname());
         if (code.equals(null)) {
@@ -117,7 +121,10 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/grade")
-    public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
+    public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm,Errors errors){
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("file not null");
+        }
         String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),
                 gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
         if(result.equals("")){
@@ -153,7 +160,10 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/curriculum")
-    public BaseResponseVo putCurriculum(@RequestBody CurriculumForm curriculumForm){
+    public BaseResponseVo putCurriculum(@RequestBody CurriculumForm curriculumForm,Errors errors){
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("files not null");
+        }
         int sum = centerService.putCurriculum(curriculumForm);
         if(sum==0){
             return BaseResponseVo.error("添加课程失败");

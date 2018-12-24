@@ -12,6 +12,7 @@ import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
 import com.hnu.softwarecollege.infocenter.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -115,7 +116,10 @@ public class ResourceController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/{id}/comment")
-    public BaseResponseVo addComment(@RequestBody CommentForm comment,@PathVariable String id){
+    public BaseResponseVo addComment(@RequestBody CommentForm comment, @PathVariable String id, Errors errors){
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("file not null");
+        }
         Long userkey = ThreadContext.getUserContext().getUserId();
         int flag = resourceService.addComment(userkey,comment,id);
         if(flag==0){
