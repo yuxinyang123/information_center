@@ -32,7 +32,7 @@ export default {
   drag_list_page: '拖拽列表',
   i18n_page: '多語言',
   modalTitle: '模態框題目',
-  content: '這是模態框內容',
+
   buttonText: '顯示模態框',
   'i18n-tip': '注：僅此頁做了多語言，其他頁面沒有在多語言包中添加語言內容',
   error_store_page: '錯誤收集',
