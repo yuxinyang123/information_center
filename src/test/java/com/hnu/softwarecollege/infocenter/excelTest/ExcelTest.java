@@ -17,6 +17,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName ExcelTest
@@ -110,5 +112,24 @@ public class ExcelTest {
         avgPoMapper.insertSelective(avgPo_six);
         avgPoMapper.insertSelective(avgPo_seven);
         avgPoMapper.insertSelective(avgPo_eight);
+    }
+
+    @Test
+    public void test2() throws Exception{
+        List<AvgPo> list = avgPoMapper.findFourSemester();
+        List<double[]> lists = new ArrayList<>();
+        for(int i =0;i<list.size();i++){
+            if(i<8){
+                lists.add(new double[]{1,i,list.get(i).getFengshu()});
+            }else if(i<16&&i>7){
+                lists.add(new double[]{2,i%8,list.get(i).getFengshu()});
+            }else if(i<24&&i>16){
+                lists.add(new double[]{3,i%8,list.get(i).getFengshu()});
+            }else{
+                lists.add(new double[]{4,i%8,list.get(i).getFengshu()});
+            }
+        }
+
+        System.out.println(lists);
     }
 }

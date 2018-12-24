@@ -17,8 +17,9 @@ public interface CenterService {
     public List<HotsPotPo> getHotPot(int pageNum,int pageSize);
     public void updateHotspot(List<HotsPotPo> hotsPotPos);
     public SyllabusVo getCourseTable(Long userkey);
-    public void putCurriculum(CurriculumForm curriculumForm);
+    public int putCurriculum(CurriculumForm curriculumForm);
     public FourTag selectForFouttag();
     public SyllabusVo transform(List<SyllabusPo> list);
     public List<AvgPo> getAvg();
+    public List<AvgPo> getFourSemester();
 }

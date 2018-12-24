@@ -16,6 +16,12 @@ public class AvgPo {
         this.fengshu = fengshu;
     }
 
+    public AvgPo(String semester, String classname, Double fengshu) {
+        this.semester = semester;
+        this.classname = classname;
+        this.fengshu = fengshu;
+    }
+
     public Long getId() {
         return id;
     }
@@ -29,7 +35,7 @@ public class AvgPo {
     }
 
     public void setSemester(String semester) {
-        this.semester = semester;
+        this.semester = semester == null ? null : semester.trim();
     }
 
     public String getClassname() {

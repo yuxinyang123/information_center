@@ -11,7 +11,9 @@ import com.hnu.softwarecollege.infocenter.entity.vo.*;
 import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.service.WeatherService;
+import com.hnu.softwarecollege.infocenter.util.ScoreUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -118,8 +120,11 @@ public class CenterController {
     public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
         String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),
                 gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
-        System.out.println(result);
-        return BaseResponseVo.success(result);
+        if(result.equals("")){
+            return BaseResponseVo.error("获取预测信息失败");
+        }else {
+            return BaseResponseVo.success(result);
+        }
     }
 
     /**
@@ -132,7 +137,12 @@ public class CenterController {
     @GetMapping("/curriculum")
     public BaseResponseVo getCurriculum(@RequestParam Long userkey){
         SyllabusVo syllabusVo = centerService.getCourseTable(userkey);
-        return BaseResponseVo.success(syllabusVo);
+        boolean bool = StringUtils.isEmpty(syllabusVo);
+        if(bool==true){
+            return BaseResponseVo.error("没有查询到课表信息");
+        }else {
+            return BaseResponseVo.success(syllabusVo);
+        }
     }
 
     /**
@@ -144,9 +154,12 @@ public class CenterController {
      **/
     @PutMapping("/curriculum")
     public BaseResponseVo putCurriculum(@RequestBody CurriculumForm curriculumForm){
-        centerService.putCurriculum(curriculumForm);
-
-        return null;
+        int sum = centerService.putCurriculum(curriculumForm);
+        if(sum==0){
+            return BaseResponseVo.error("添加课程失败");
+        }else {
+            return BaseResponseVo.success("添加成功");
+        }
     }
 
     /**
@@ -204,6 +217,23 @@ public class CenterController {
             return BaseResponseVo.error("查询失败");
         }else{
             return BaseResponseVo.success(list);
+        }
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 查询各班每个学期的加权平均分
+     * @Date 2018/12/23 16:34
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @GetMapping("/semester")
+    public BaseResponseVo getFourSemester(){
+        List<AvgPo> list = centerService.getFourSemester();
+        List<double[]> lists = ScoreUtil.transform(list);
+        if(lists.size()!=0) {
+            return BaseResponseVo.success(lists);
+        }else{
+            return BaseResponseVo.error("查询失败");
         }
     }
 }

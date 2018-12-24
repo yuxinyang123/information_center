@@ -22,4 +22,6 @@ public interface AvgPoMapper {
     List<AvgPo> findAll();
 
     void deleteAll();
+
+    List<AvgPo> findFourSemester();
 }

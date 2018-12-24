@@ -3,12 +3,12 @@
 <mapper namespace="com.hnu.softwarecollege.infocenter.mapper.AvgPoMapper">
   <resultMap id="BaseResultMap" type="com.hnu.softwarecollege.infocenter.entity.po.AvgPo">
     <id column="ID" jdbcType="BIGINT" property="id" />
-    <result column="SEMESTER" jdbcType="VARCHAR" property="semester"/>
+    <result column="SEMESTER" jdbcType="VARCHAR" property="semester" />
     <result column="CLASSNAME" jdbcType="VARCHAR" property="classname" />
     <result column="FENGSHU" jdbcType="DOUBLE" property="fengshu" />
   </resultMap>
   <sql id="Base_Column_List">
-    ID,SEMESTER, CLASSNAME, FENGSHU
+    ID, SEMESTER, CLASSNAME, FENGSHU
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -21,10 +21,10 @@
     where ID = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.hnu.softwarecollege.infocenter.entity.po.AvgPo">
-    insert into tbl_avg (ID,SEMESTER, CLASSNAME, FENGSHU
-      )
-    values (#{id,jdbcType=BIGINT},#{semester,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, #{fengshu,jdbcType=DOUBLE}
-      )
+    insert into tbl_avg (ID, SEMESTER, CLASSNAME, 
+      FENGSHU)
+    values (#{id,jdbcType=BIGINT}, #{semester,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, 
+      #{fengshu,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.AvgPo">
     insert into tbl_avg
@@ -32,7 +32,7 @@
       <if test="id != null">
         ID,
       </if>
-      <if test="semester !=null">
+      <if test="semester != null">
         SEMESTER,
       </if>
       <if test="classname != null">
@@ -46,8 +46,8 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="semester !=null">
-        #{semester,jdbcType=VARCHAR}
+      <if test="semester != null">
+        #{semester,jdbcType=VARCHAR},
       </if>
       <if test="classname != null">
         #{classname,jdbcType=VARCHAR},
@@ -60,8 +60,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hnu.softwarecollege.infocenter.entity.po.AvgPo">
     update tbl_avg
     <set>
-      <if test="semester !=null">
-        #{semester,jdbcType=VARCHAR}
+      <if test="semester != null">
+        SEMESTER = #{semester,jdbcType=VARCHAR},
       </if>
       <if test="classname != null">
         CLASSNAME = #{classname,jdbcType=VARCHAR},
@@ -74,7 +74,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hnu.softwarecollege.infocenter.entity.po.AvgPo">
     update tbl_avg
-    set CLASSNAME = #{classname,jdbcType=VARCHAR},SEMESTER=#{semester.jdbcType=VARCHAR},
+    set SEMESTER = #{semester,jdbcType=VARCHAR},
+      CLASSNAME = #{classname,jdbcType=VARCHAR},
       FENGSHU = #{fengshu,jdbcType=DOUBLE}
     where ID = #{id,jdbcType=BIGINT}
   </update>

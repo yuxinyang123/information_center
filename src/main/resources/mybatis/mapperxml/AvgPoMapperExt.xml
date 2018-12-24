@@ -5,6 +5,13 @@
         select
         <include refid="Base_Column_List" />
         from tbl_avg
+        where SEMESTER=""
+    </select>
+    <select id="findFourSemester" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_avg
+        where SEMESTER!=""
     </select>
     <delete id="deleteAll">
         delete

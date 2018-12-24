@@ -11,6 +11,7 @@ import com.hnu.softwarecollege.infocenter.entity.vo.CommentForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
 import com.hnu.softwarecollege.infocenter.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -97,7 +98,12 @@ public class ResourceController {
     @GetMapping("/{id}")
     public BaseResponseVo getResource(@PathVariable("id") String id){
         ResourcePo resourcePo = resourceService.getResourcePoById(id);
-        return BaseResponseVo.success(resourcePo);
+        boolean bool = StringUtils.isEmpty(resourcePo);
+        if(bool==true){
+            return BaseResponseVo.error("获取信息失败");
+        }else {
+            return BaseResponseVo.success(resourcePo);
+        }
     }
 
 
@@ -160,6 +166,10 @@ public class ResourceController {
         PageHelper.startPage(pageNum,pageSize);
         List<CommentPo> poList = resourceService.getAllComment(essayId);
         PageInfo<CommentPo> poPageInfo = new PageInfo<>(poList);
-        return BaseResponseVo.success(poPageInfo);
+        if(poList.size()==0){
+            return BaseResponseVo.error("没有获取到评论数据");
+        }else {
+            return BaseResponseVo.success(poPageInfo);
+        }
     }
 }
