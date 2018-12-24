@@ -42,3 +42,14 @@ export const runSpider = () => {
     method: 'get'
   })
 }
+
+export const authFace = ({ pic, userEmail }) => {
+  let data = {
+    pic, userEmail
+  }
+  return axios.request({
+    url: '/api/access/face',
+    method: 'post',
+    data
+  })
+}

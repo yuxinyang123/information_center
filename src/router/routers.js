@@ -37,6 +37,24 @@ export default [
     component: () => import('@/view/login/regist.vue')
   },
   {
+    path: '/face',
+    name: 'face',
+    meta: {
+      title: 'Face - 人脸认证',
+      hideInMenu: true
+    },
+    component: () => import('@/view/login/face.vue')
+  },
+  {
+    path: '/forget',
+    name: 'forget',
+    meta: {
+      title: '密码找回',
+      hideInMenu: true
+    },
+    component: () => import('@/view/login/forget.vue')
+  },
+  {
     path: '/',
     name: '_home',
     redirect: '/home',
@@ -82,8 +100,8 @@ export default [
     ]
   },
   {
-    path: '/components',
-    name: 'components',
+    path: '/grade',
+    name: 'grade',
     meta: {
       icon: 'logo-buffer',
       title: '成绩'
@@ -91,8 +109,8 @@ export default [
     component: Main,
     children: [
       {
-        path: 'count_to_page',
-        name: 'count_to_page',
+        path: 'distribution',
+        name: 'distribution',
         meta: {
           icon: 'md-trending-up',
           title: '成绩分布'
@@ -100,8 +118,8 @@ export default [
         component: () => import('@/view/components/count-to/count-to.vue')
       },
       {
-        path: 'ables_page',
-        name: '成绩分析',
+        path: 'analyze',
+        name: 'analyze',
         meta: {
           icon: 'ios-ionitron-outline',
           title: '成绩分析'
@@ -115,7 +133,7 @@ export default [
     name: 'update',
     meta: {
       icon: 'md-cloud-upload',
-      title: '修改个人信息'
+      title: '个人信息'
     },
     component: Main,
     children: [
@@ -127,7 +145,7 @@ export default [
           title: '上传Csv'
         },
         component: () => import('@/view/update/update-table.vue')
-       }
+      }
     ]
   },
   {

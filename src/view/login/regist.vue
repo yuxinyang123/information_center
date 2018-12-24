@@ -1,7 +1,7 @@
 <style lang="less">
 @import "./login.less";
 </style>
-<style>
+<style lang="less">
 .regist {
   background-color: rgba(245, 245, 245, 0.904);
   position: absolute;
@@ -13,12 +13,12 @@
   width: 500px;
   padding: 10px;
   border-radius: 10px;
-}
-.regist h1 {
-  text-align: center;
-}
-.regist form FormItem {
-  width: 450px;
+  h1{
+    text-align: center;
+  }
+  form FormItem{
+    width: 450px;
+  }
 }
 </style>
 <template>

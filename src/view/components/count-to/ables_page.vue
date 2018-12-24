@@ -5,36 +5,34 @@
         <Col span="5">
         <h1>各班成绩详细分布</h1>
         </Col>
-
       </Row>
       <Row>
-
         <Col span="24">
         <div id="chartclassgrade" style="width: 100%;height: 500px; "></div>
         </Col>
       </Row>
     </div>
-    <Row>
+    <Row type="flex" align="middle" justify="center">
       <Col span="8">
-      <div style="width: 90%;height: 350px; align:right ">
-        <Form :label-width="100" :model="formModel" ref="gradeForm">
+      <Card>
+        <Form :label-width="100" :model="formModel" ref="gradeForm" :rules="ruleforcast">
           <h2 align="center">成绩预测</h2>
           <br>
           <FormItem label="学号：">
-            <Input v-model='studentid' disabled placeholder="学号" size='default' />
+            <Input v-model="studentid" disabled placeholder="学号" size="default" />
           </FormItem>
-          <FormItem label="学科类型：">
+          <FormItem label="学科类型：" prop="accounttype">
             <Select placeholder="选择你的科目类型" v-model="formModel.accounttype">
               <Option value="必修">必修</Option>
               <Option value="选修">选修</Option>
             </Select>
           </FormItem>
-          <FormItem label="考试类型：">
+          <FormItem label="考试类型：" prop="examtype">
             <Select placeholder="正常考试" v-model="formModel.examtype">
               <Option value="正常考试">正常考试</Option>
             </Select>
           </FormItem>
-          <FormItem label="学分：">
+          <FormItem label="学分：" prop="credit">
             <Select placeholder="选择学分" v-model="formModel.credit">
               <Option value="1">1</Option>
               <Option value="2">2</Option>
@@ -45,51 +43,110 @@
             </Select>
           </FormItem>
           <FormItem>
-            <Button type="primary" @click="handleForecast()" size="large"> 开始预测</Button>
+            <Button type="primary" @click="handleForecast()" size="large">开始预测</Button>
           </FormItem>
         </Form>
+      </Card>
+      </Col>
+      <Col span="16" v-show="forcastFlag">
+      <Card style="height:375px"> 
+
+        <h1>此预测成绩算法使用向量knn法，手动pca，求取最小夹角匹配项，对预测极值进行回归。</h1>
+
+      </Card>
+      </Col>
+      <Col span="8" v-show="forcastedFlag">
+      <div style="text-align:center">
+        <h1>你的预测分数为{{grade}}</h1>
       </div>
       </Col>
-      <Col span="8">
-      </Col>
-      <Col span="8">
+      <Col span="8" v-show="forcastedFlag">
+      <div>
+        <h1>{{advice}}</h1>
+      </div>
       </Col>
     </Row>
-
   </div>
 </template>
 <script>
   import {
+    forcastGrade,
     selectGrade
   } from "@/api/data";
   import charts from "echarts";
-  import "echarts-gl"
+  import "echarts-gl";
   export default {
     name: "ables_page",
 
     data() {
       return {
         formModel: {
-          accounttype: '',
-          examtype: '',
-          credit: ''
+          accounttype: "",
+          examtype: "",
+          credit: ""
         },
-        studentid: '',
+        grade: '',
+        advice: '',
+        forcastFlag: true,
+        forcastedFlag: false,
+        studentid: "",
+        ruleforcast: {
+          accounttype: [{
+            required: true,
+            message: "学科类型不能为空",
+            trigger: "blur"
+          }],
+          examtype: [{
+            required: true,
+            message: "考试类型不能为空",
+            trigger: "blur"
+          }],
+          credit: [{
+            required: true,
+            message: "学分不能为空",
+            trigger: "blur"
+          }],
 
-
+        }
       };
-
     },
     methods: {
       handleChartsclassgrade() {
         var myChart = charts.init($("#chartclassgrade")[0], "light");
-        var hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
-          '7a', '8a', '9a', '10a', '11a',
-          '12p', '1p', '2p', '3p', '4p', '5p',
-          '6p', '7p', '8p', '9p', '10p', '11p'
+        var hours = [
+          "12a",
+          "1a",
+          "2a",
+          "3a",
+          "4a",
+          "5a",
+          "6a",
+          "7a",
+          "8a",
+          "9a",
+          "10a",
+          "11a",
+          "12p",
+          "1p",
+          "2p",
+          "3p",
+          "4p",
+          "5p",
+          "6p",
+          "7p",
+          "8p",
+          "9p",
+          "10p",
+          "11p"
         ];
-        var days = ['Saturday', 'Friday', 'Thursday',
-          'Wednesday', 'Tuesday', 'Monday', 'Sunday'
+        var days = [
+          "Saturday",
+          "Friday",
+          "Thursday",
+          "Wednesday",
+          "Tuesday",
+          "Monday",
+          "Sunday"
         ];
 
         var data = [
@@ -267,21 +324,31 @@
           visualMap: {
             max: 20,
             inRange: {
-              color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61',
-                '#f46d43', '#d73027', '#a50026'
+              color: [
+                "#313695",
+                "#4575b4",
+                "#74add1",
+                "#abd9e9",
+                "#e0f3f8",
+                "#ffffbf",
+                "#fee090",
+                "#fdae61",
+                "#f46d43",
+                "#d73027",
+                "#a50026"
               ]
             }
           },
           xAxis3D: {
-            type: 'category',
+            type: "category",
             data: hours
           },
           yAxis3D: {
-            type: 'category',
+            type: "category",
             data: days
           },
           zAxis3D: {
-            type: 'value'
+            type: "value"
           },
           grid3D: {
             boxWidth: 200,
@@ -300,13 +367,13 @@
             }
           },
           series: [{
-            type: 'bar3D',
+            type: "bar3D",
             data: data.map(function (item) {
               return {
-                value: [item[1], item[0], item[2]],
-              }
+                value: [item[1], item[0], item[2]]
+              };
             }),
-            shading: 'lambert',
+            shading: "lambert",
 
             label: {
               textStyle: {
@@ -319,11 +386,11 @@
               label: {
                 textStyle: {
                   fontSize: 20,
-                  color: '#900'
+                  color: "#900"
                 }
               },
               itemStyle: {
-                color: '#900'
+                color: "#900"
               }
             }
           }]
@@ -331,38 +398,61 @@
         myChart.setOption(option);
       },
       handlestudentid() {
-        selectGrade(this.pageNum, this.pageSize)
+        selectGrade(1, 1)
           .then(res => {
             res = res.data.data.list;
-            this.studentid = res[0].studentId
-            this.grade = res;
+            this.studentid = res[0].studentId;
           })
           .catch(err => {
             console.log(err);
           });
       },
       handleForecast() {
+
         this.$refs.gradeForm.validate(valid => {
           if (valid) {
-            forcastGrade(this.studentid, this.formModel.accounttype, this.formModel.examtype, this.formModel.credit)
+            forcastGrade(
+                this.studentid,
+                this.formModel.accounttype,
+                this.formModel.examtype,
+                this.formModel.credit
+              )
               .then(res => {
-                console.log(res)
+                this.grade = res.data.data
+                if (this.grade < 60 && this.grade > 40) {
+                  this.advice = "你现在是危险的哦~ 需要抓紧时间学习了"
+                } else if (this.grade >= 60 && this.grade <= 70) {
+                  this.advice = "你现在有点危险哦~ 需要改变一下自己的学习态度了"
+                } else if (this.grade < 40) {
+                  this.advice = "小伙子退学吧"
+                } else if (this.grade > 70 && this.grade < 85) {
+                  this.advice = "你现在的状态一般，需要更加的刻苦学习"
+                } else if (this.grade >= 85) {
+                  this.advice = "你现在的状态很好，继续保持~"
+                }
+
+                this.$Message.success(
+                  "正在计算")
+                console.log(this.grade);
+                this.forcastFlag = false
+                this.forcastedFlag = true
+
               })
               .catch(err => {
-                console.log(err)
-              })
+                console.log(err);
+              });
+          } else {
+            this.$Message.error("计算失败.");
           }
         })
       }
     },
     mounted() {
       this.$nextTick(() => {
-
-        this.handleChartsclassgrade()
+        this.handleChartsclassgrade();
       });
-      this.handlestudentid()
-
-    },
-  }
+      this.handlestudentid();
+    }
+  };
 
 </script>

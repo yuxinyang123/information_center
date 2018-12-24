@@ -9,6 +9,7 @@ import {
   restoreTrash,
   getUnreadCount
 } from '@/api/user'
+import { authFace } from '@/api/login'
 import { setToken, getToken } from '@/libs/util'
 
 export default {
@@ -26,41 +27,41 @@ export default {
     messageContentStore: {}
   },
   mutations: {
-    setAvator (state, avatorPath) {
+    setAvator(state, avatorPath) {
       state.avatorImgPath = avatorPath
     },
-    setUserId (state, id) {
+    setUserId(state, id) {
       state.userId = id
     },
-    setUserName (state, name) {
+    setUserName(state, name) {
       state.userName = name
     },
-    setAccess (state, access) {
+    setAccess(state, access) {
       state.access = access
     },
-    setToken (state, token) {
+    setToken(state, token) {
       state.token = token
       setToken(token)
     },
-    setHasGetInfo (state, status) {
+    setHasGetInfo(state, status) {
       state.hasGetInfo = status
     },
-    setMessageCount (state, count) {
+    setMessageCount(state, count) {
       state.unreadCount = count
     },
-    setMessageUnreadList (state, list) {
+    setMessageUnreadList(state, list) {
       state.messageUnreadList = list
     },
-    setMessageReadedList (state, list) {
+    setMessageReadedList(state, list) {
       state.messageReadedList = list
     },
-    setMessageTrashList (state, list) {
+    setMessageTrashList(state, list) {
       state.messageTrashList = list
     },
-    updateMessageContentStore (state, { msg_id, content }) {
+    updateMessageContentStore(state, { msg_id, content }) {
       state.messageContentStore[msg_id] = content
     },
-    moveMsg (state, { from, to, msg_id }) {
+    moveMsg(state, { from, to, msg_id }) {
       const index = state[from].findIndex(_ => _.msg_id === msg_id)
       const msgItem = state[from].splice(index, 1)[0]
       msgItem.loading = false
@@ -74,7 +75,7 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, { userName, password, code }) {
+    handleLogin({ commit }, { userName, password, code }) {
       userName = userName.trim()
       return new Promise((resolve, reject) => {
         login({
@@ -92,7 +93,7 @@ export default {
       })
     },
     // 退出登录
-    handleLogOut ({ state, commit }) {
+    handleLogOut({ state, commit }) {
       return new Promise((resolve, reject) => {
         // logout(state.token).then(() => {
         //   commit('setToken', '')
@@ -108,7 +109,7 @@ export default {
       })
     },
     // 获取用户相关信息
-    getUserInfo ({ state, commit }) {
+    getUserInfo({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {
           console.log(state.token)
@@ -130,14 +131,14 @@ export default {
       })
     },
     // 此方法用来获取未读消息条数，接口只返回数值，不返回消息列表
-    getUnreadMessageCount ({ state, commit }) {
+    getUnreadMessageCount({ state, commit }) {
       getUnreadCount().then(res => {
         const { data } = res
         commit('setMessageCount', data)
       })
     },
     // 获取消息列表，其中包含未读、已读、回收站三个列表
-    getMessageList ({ state, commit }) {
+    getMessageList({ state, commit }) {
       return new Promise((resolve, reject) => {
         getMessage().then(res => {
           const { unread, readed, trash } = res.data
@@ -157,7 +158,7 @@ export default {
       })
     },
     // 根据当前点击的消息的id获取内容
-    getContentByMsgId ({ state, commit }, { msg_id }) {
+    getContentByMsgId({ state, commit }, { msg_id }) {
       return new Promise((resolve, reject) => {
         let contentItem = state.messageContentStore[msg_id]
         if (contentItem) {
@@ -172,7 +173,7 @@ export default {
       })
     },
     // 把一个未读消息标记为已读
-    hasRead ({ state, commit }, { msg_id }) {
+    hasRead({ state, commit }, { msg_id }) {
       return new Promise((resolve, reject) => {
         hasRead(msg_id).then(() => {
           commit('moveMsg', {
@@ -188,7 +189,7 @@ export default {
       })
     },
     // 删除一个已读消息到回收站
-    removeReaded ({ commit }, { msg_id }) {
+    removeReaded({ commit }, { msg_id }) {
       return new Promise((resolve, reject) => {
         removeReaded(msg_id).then(() => {
           commit('moveMsg', {
@@ -203,7 +204,7 @@ export default {
       })
     },
     // 还原一个已删除消息到已读消息
-    restoreTrash ({ commit }, { msg_id }) {
+    restoreTrash({ commit }, { msg_id }) {
       return new Promise((resolve, reject) => {
         restoreTrash(msg_id).then(() => {
           commit('moveMsg', {
@@ -215,6 +216,23 @@ export default {
         }).catch(error => {
           reject(error)
         })
+      })
+    },
+    // 人脸登录
+    handleFaceLogin({ commit }, form) {
+      return new Promise((resolve, reject) => {
+        authFace(form).then(res => {
+          res = res.data
+          if (res.code === 200) {
+            commit('setToken', res.data)
+            resolve()
+          } else {
+            reject(res.code)
+          }
+        })
+          .catch(e => {
+            reject(e)
+          })
       })
     }
   }

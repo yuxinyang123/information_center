@@ -1,8 +1,8 @@
 <template>
-  <div class="login">
-    <div class="regist">
+  <div class="login" >
+    <Card>
       <h1>编辑资料</h1>
-      <Form :rules="ruleRegist" :model="formModel" ref="registForm" :label-width="90" >
+      <Form :rules="ruleRegist" :model="formModel" ref="registForm" :label-width="90">
         <FormItem label="学院：" prop="academy">
           <Input v-model="formModel.academy" placeholder="Enter your academy"></Input>
         </FormItem>
@@ -12,10 +12,8 @@
         <FormItem label="主修：" prop="major">
           <Input type="text" v-model="formModel.major" placeholder="Enter your major"></Input>
         </FormItem>
-        <FormItem label="学号：" prop="num">
-          <Input type="text" v-model="formModel.num" placeholder="Enter your num"></Input>
-        </FormItem>
         <FormItem label="个人签名：" prop="signature">
+<<<<<<< HEAD
           <Input
             type="text"
             v-model="formModel.signature"
@@ -28,22 +26,30 @@
             v-model="formModel.edupasswd"
             placeholder="Enter your educational emil"
           ></Input>
+=======
+          <Input type="text" v-model="formModel.signature" placeholder="Enter your signature"></Input>
+>>>>>>> 94ddc883e16538b1a3ba264a701a9f67f76cce1d
         </FormItem>
-
         <FormItem label="用户名：" prop="username">
           <Input v-model="formModel.username" placeholder="Enter your username"></Input>
         </FormItem>
         <FormItem label="电话：" prop="phone">
           <Input v-model="formModel.phone" placeholder="Enter your tel"></Input>
         </FormItem>
+        <FormItem label="教务学号：" prop="num">
+          <Input type="text" v-model="formModel.num" placeholder="Enter your num"></Input>
+        </FormItem>
+        <FormItem label="教务密码：" prop="password">
+          <Input type="text" v-model="formModel.password" placeholder="Enter your password"></Input>
+        </FormItem>
         <Row type="flex" justify="center">
           <div>
             <Button type="primary" @click="handleSubmit()">提交</Button>
-            <Button type="primary" @click="handleReset('registForm')" style="margin-left: 8px">重置</Button>
+            <Button type="primary" @click="handleReset()" style="margin-left: 8px">重置</Button>
           </div>
         </Row>
       </Form>
-    </div>
+    </Card>
   </div>
 </template>
 
@@ -53,38 +59,36 @@ import { getUser } from "@/api/data";
 import { putUser } from "@/api/data";
 export default {
   name: "registForm",
-  components: {
-  },
-data() {
+  components: {},
+  data() {
     return {
       formModel: {
-        academy:"",
+        academy: "",
         Class: "",
         major: "",
         num: "",
         phone: "",
         signature: "",
-        userEmail: "",
-        userId:"",
-        username:""
+        username: "",
+        password: ""
       },
-      
+
       ruleRegist: {
         academy: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
         Class: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
         major: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
@@ -96,29 +100,23 @@ data() {
         ],
         signature: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
         phone: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
-         userId: [
-          {
-            required: true,
-            trigger: "blur"
-          }
-        ], 
         username: [
           {
-            required: true,
+            required: false,
             trigger: "blur"
           }
         ],
-        userEmail: [
+        password: [
           {
             required: true,
             trigger: "blur"
@@ -127,28 +125,40 @@ data() {
       }
     };
   },
- 
+
   methods: {
-    getUserInfo(){
-       getUser().then(res => {
-        res=res.data.data;
-        console.log(res);
-      }).catch(err => {
-        console.log(err)
-      })
+    getUserInfo() {
+      getUser()
+        .then(res => {
+          res = res.data.data;
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
-    putUserInfo(num, password,signature,major,Class,academy,sex,age,location){
-      this.academy=academy;
-      this.Class=Class;
-      this.num=num;
-      this.major=major;
-      this.age=age;
-      this.location=location;
-      this.password=password;
-      this.signature=signature;
-      this.sex=sex;
+    putUserInfo(
+      num,
+      password,
+      signature,
+      major,
+      Class,
+      academy,
+      sex,
+      age,
+      location
+    ) {
+      this.academy = academy;
+      this.Class = Class;
+      this.num = num;
+      this.major = major;
+      this.age = age;
+      this.location = location;
+      this.password = password;
+      this.signature = signature;
+      this.sex = sex;
       putUser(
-          this.academy,
+        this.academy,
         this.Class,
         this.num,
         this.major,
@@ -157,28 +167,26 @@ data() {
         this.password,
         this.signature,
         this.sex
-        ).then(res => {
-        res=res.data.data;
-        console.log(res);
-      }).catch(err => {
-        console.log(err)
-      })
-    }  
+      )
+        .then(res => {
+          res = res.data.data;
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleSubmit() {}
   },
-  mounted(){
+  mounted() {
     this.getUserInfo();
-    this.putUserInfo()
+    // this.putUserInfo();
   }
 };
 </script>
 <style>
 .regist {
-  background-color: rgba(245, 245, 245, 0.904);
-  position: absolute;
-
-  left: 33%;
-  right: 33%;
-  top: 15%;
+  background-color: rgb(255, 255, 255);
   margin: auto;
   width: 500px;
   padding: 10px;

@@ -186,6 +186,7 @@ export default {
           console.log(res);
           if (res.code == 200) {
             this.$Message.success("修改成功！");
+            this.handleGetWeather();
           } else {
             this.$Message.error("修改失败！");
           }
@@ -193,7 +194,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
-      this.handleGetWeather();
+      
     },
     handleGetNews(pageNum,pageSize) {
       getNews(pageNum, pageSize)
