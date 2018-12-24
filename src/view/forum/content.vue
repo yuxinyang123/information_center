@@ -1,8 +1,15 @@
 <template>
-  <div>123</div>
+  <forum-content></forum-content>
+  <forum-comment></forum-comment>
 </template>
 <script>
+import ForumContent from "_c/forum-content";
+import ForumComment from "_c/forum-comment";
 export default {
+  components: {
+    ForumContent,
+    ForumComment
+  },
   props: {
     id: String,
     type: String
