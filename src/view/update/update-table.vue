@@ -1,8 +1,8 @@
 <template>
-  <div >
+  <div>
     <Card>
       <h1>编辑资料</h1>
-      <Form :rules="ruleRegist" :model="formModel" ref="registForm" :label-width="90">
+      <Form :rules="ruleRegist" :model="formModel" ref="updateForm" :label-width="90">
         <FormItem label="学院：" prop="academy">
           <Input v-model="formModel.academy" placeholder="Enter your academy"></Input>
         </FormItem>
@@ -39,23 +39,22 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import { getUser } from "@/api/data";
-import { putUser } from "@/api/data";
+import { getUserInfo, updateUserInfo } from "@/api/user";
 export default {
   name: "registForm",
   components: {},
   data() {
     return {
       formModel: {
-        academy: "",
-        Class: "",
-        major: "",
-        num: "",
-        phone: "",
-        signature: "",
-        username: "",
-        password: ""
+        num,
+        password,
+        signature,
+        major,
+        Class,
+        academy,
+        sex,
+        age,
+        location
       },
 
       ruleRegist: {
@@ -113,16 +112,24 @@ export default {
 
   methods: {
     getUserInfo() {
-      getUser()
+      let token = this.$store.state.user.token;
+      getUserInfo(token)
         .then(res => {
           res = res.data.data;
           console.log(res);
+          this.formModel.academy = res.academy;
+          this.formModel.Class = res.class;
+          this.formModel.major = res.major;
+          this.formModel.num = res.num;
+          this.formModel.phone = res.phone;
+          this.formModel.signature = res.signature;
+          this.formModel.username = res.username;
         })
         .catch(err => {
           console.log(err);
         });
     },
-    putUserInfo(
+    putUserInfo({
       num,
       password,
       signature,
@@ -132,26 +139,17 @@ export default {
       sex,
       age,
       location
-    ) {
-      this.academy = academy;
-      this.Class = Class;
-      this.num = num;
-      this.major = major;
-      this.age = age;
-      this.location = location;
-      this.password = password;
-      this.signature = signature;
-      this.sex = sex;
+    }) {
       putUser(
-        this.academy,
-        this.Class,
-        this.num,
-        this.major,
-        this.age,
-        this.location,
-        this.password,
-        this.signature,
-        this.sex
+        this.formModel.academy,
+        this.formModel.Class,
+        this.formModel.num,
+        this.formModel.major,
+        this.formModel.age,
+        this.formModel.location,
+        this.formModel.password,
+        this.formModel.signature,
+        this.formModel.sex
       )
         .then(res => {
           res = res.data.data;
@@ -161,11 +159,16 @@ export default {
           console.log(err);
         });
     },
-    handleSubmit() {}
+    handleSubmit() {
+      this.$refs.updateForm.validate(valid => {
+        if (valid) {
+          putUserInfo(this.formModel).then(() => {});
+        }
+      });
+    }
   },
   mounted() {
     this.getUserInfo();
-    // this.putUserInfo();
   }
 };
 </script>
