@@ -108,7 +108,7 @@ CREATE TABLE `tbl_resource`  (
   `RES_SOURCE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `RES_DATE` datetime NOT NULL,
   `RES_CONTEXT` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `RES_COMMENTCOUNT` bigint(12) DEFAULT '0' COMMENT '文章评论数',
+  `RES_COMMENTCOUNT` bigint(12) DEFAULT 0 COMMENT '文章评论数',
   PRIMARY KEY (`RES_ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '资源表 所有信息' ROW_FORMAT = Compact;
 
