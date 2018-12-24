@@ -16,7 +16,9 @@ export default {
   add_face: '添加人脸',
   forum: '论坛',
   directive_page: '指令',
-  forumhome_page: '论坛首页',
+  recruithome_page: '招聘首页',
+  jobhome_page: '兼职首页',
+  matchhome_page: '比赛首页',
   level_2: 'Level-2',
 
   level_2_3: 'Level-2-3',

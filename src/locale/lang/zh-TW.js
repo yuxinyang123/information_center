@@ -18,7 +18,9 @@ export default {
   directive_page: '指令',
 
   level_2: 'Level-2',
-  forumhome_page: '論壇首頁',
+  recruithome_page: '招聘首頁',
+  jobhome_page: '兼職首頁',
+  matchhome_page: '比賽首頁',
   level_2_3: 'Level-2-3',
   level_2_2: 'Level-2-2',
   level_2_2_1: 'Level-2-2-1',

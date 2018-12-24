@@ -117,7 +117,7 @@ export const updatepassword = (newpass) => {
 
   })
 }
-export const getlists = (type) => {
+export const getLists = (type) => {
   return axios.request({
     url: '/api/res/lists',
     params: {

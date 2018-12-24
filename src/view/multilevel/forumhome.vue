@@ -1,72 +1,65 @@
 <template>
-<div>
-  <i-table :columns="columns1" :data="data1"></i-table>
-</div>
+  <div>
+    <i-table :columns="typelist" :data="singleType"></i-table>
+  </div>
 </template>
 <script>
-export default {
-  name: 'forumhome_page',
-  data () {
-            return {
-                columns1: [
-                    {
-                        title: '编号',
-                        key: 'num'
-                    },
-                    {
-                        title: '标题',
-                        key: 'tittle'
-                    },
-                    {
-                    	title:'发布者',
-                    	key:'author'
-                    },
-                    {
-                        title: '时间',
-                        key: 'data'
-                    }
-                ],
-                data1: [
-                    {
-                        num: '1',
-                        tittle: '行走在川西',
-                        author:'摄太郎',
-                        data: '2018.11.27'
-                    },
-                    {
-                        num: '1',
-                        tittle: '行走在川西',
-                        author:'摄太郎',
-                        data: '2018.11.27'
-                    },{
-                        num: '1',
-                        tittle: '行走在川西',
-                        author:'摄太郎',
-                        data: '2018.11.27'
-                    },{
-                        num: '1',
-                        tittle: '行走在川西',
-                        author:'摄太郎',
-                        data: '2018.11.27'
-                    },{
-                        num: '1',
-                        tittle: '行走在川西',
-                        author:'摄太郎',
-                        data: '2018.11.27'
-                    },{
-                        num: '1',
-                        tittle: '行走在川西',
-                        author:'摄太郎',
-                        data: '2018.11.27'
-                    },{
-                        num: '1',
-                        tittle: '行走在川西',
-                        author:'摄太郎',
-                        data: '2018.11.27'
-                    },
-                ]
-            }
-        }
-    }
+  import {
+    getLists
+  } from "@/api/data";
+  export default {
+    props: {
+      typeName: String
+    },
+    watch: {
+      typeName:function (val, oldVal) {
+            console.log(this.typeName)
+      this.handlegetLists(this.typeName);
+    },
+    },
+    data() {
+      return {
+        singleType: [],
+        typelist: [{
+            title: '评论',
+            key: 'resCommentCount'
+          },
+          {
+            title: '标题',
+            key: 'resTitle'
+          },
+          {
+            title: '发布者',
+            key: 'resAuthor'
+          },
+          {
+            title: '时间',
+            key: 'resDate'
+          }
+        ],
+
+      }
+    },
+    methods: {
+      handlegetLists(typeName) {
+        return new Promise((resolve, reject) => {
+          getLists(typeName).then(res => {
+            res = res.data.data[0];
+            this.singleType = res.resourcePos
+            resolve();
+            console.log(res)
+          }).catch(err => {
+            console.log(err);
+            reject(err);
+          });
+        });
+      },
+    },
+    mounted() {
+      console.log(this.typeName)
+      this.handlegetLists(this.typeName);
+    },
+ 
+  }
 
 </script>
