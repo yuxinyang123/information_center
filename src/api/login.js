@@ -53,3 +53,24 @@ export const authFace = ({ pic, userEmail }) => {
     data
   })
 }
+
+export const sendForgetEmail = (email) => {
+  return axios.request({
+    url: '/api/access/pass',
+    method: 'post',
+    data: {
+      userEmail: email
+    }
+  })
+}
+
+export const chargePass = (desCode, newPwd) => {
+  return axios.request({
+    url: '/api/access/newpass',
+    method: 'post',
+    data: {
+      desCode,
+      newPwd
+    }
+  })
+}

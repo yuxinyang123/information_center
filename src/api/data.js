@@ -123,3 +123,22 @@ export const forcastGrade = (studentID, courseType, testType, gainCredit) => {
     method: 'post'
   })
 }
+export const updatepassword = (newpass) => {
+  return axios.request({
+    url: '/api/user/pass',
+    data: {
+      newpass
+    },
+    method: 'put'
+
+  })
+}
+export const getlists = (type) => {
+  return axios.request({
+    url: '/api/res/lists',
+    params: {
+      type: type
+    },
+    method: 'get'
+  })
+}

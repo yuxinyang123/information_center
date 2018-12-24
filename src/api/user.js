@@ -83,3 +83,13 @@ export const restoreTrash = msg_id => {
     }
   })
 }
+
+export const addUserFace = base64 => {
+  return axios.request({
+    url: '/api/user/face',
+    method: 'put',
+    data: {
+      base64
+    }
+  })
+}

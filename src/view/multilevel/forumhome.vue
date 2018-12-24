@@ -1,9 +1,11 @@
 <template>
+<div>
   <i-table :columns="columns1" :data="data1"></i-table>
+</div>
 </template>
 <script>
 export default {
-  name: 'level_2_1',
+  name: 'forumhome_page',
   data () {
             return {
                 columns1: [
