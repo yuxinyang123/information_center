@@ -174,7 +174,10 @@ public class AccessController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/pass")
-    public BaseResponseVo recoverPass(@Email @RequestBody Map<String, String> data) {
+    public BaseResponseVo recoverPass(@Email @RequestBody Map<String, String> data,Errors errors) {
+        if (errors.hasErrors()){
+            return BaseResponseVo.error("email format is error");
+        }
         Boolean b = userService.recoverPassword(data.get("userEmail"));
         if (b) {
             return BaseResponseVo.success("邮件已发送");
@@ -191,7 +194,10 @@ public class AccessController {
      * @return
      **/
     @PostMapping("/newpass")
-    public BaseResponseVo updateNewPwd(@RequestBody Map<String,String> data) {
+    public BaseResponseVo updateNewPwd(@RequestBody Map<String,String> data,Errors errors) {
+        if (errors.hasErrors()){
+            return BaseResponseVo.error("code is error");
+        }
         String desCode = data.get("desCode");
         String newPwd = data.get("newPwd");
         if (desCode==null){
