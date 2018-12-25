@@ -109,9 +109,13 @@ public class UserController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/pass")
-    public BaseResponseVo provingPassword(@RequestBody ProvingForm provingForm) {
-        boolean flag = userService.provingPass(provingForm.getPass(), provingForm.getEmail());
-        if (flag == true) {
+
+    public BaseResponseVo provingPassword(@RequestBody ProvingForm provingForm,Errors errors){
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("file not null");
+        }
+        boolean flag = userService.provingPass(provingForm.getPass(),provingForm.getEmail());
+        if(flag == true){
             return BaseResponseVo.success("身份验证成功");
         } else {
             return BaseResponseVo.error("验证身份错误");

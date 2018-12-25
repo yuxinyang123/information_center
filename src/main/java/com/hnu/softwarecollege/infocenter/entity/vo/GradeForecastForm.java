@@ -1,5 +1,7 @@
 package com.hnu.softwarecollege.infocenter.entity.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 /**
  * @program: infocenter
  * @description:
@@ -7,9 +9,13 @@ package com.hnu.softwarecollege.infocenter.entity.vo;
  * @create: 2018-11-21 11:07
  **/
 public class GradeForecastForm {
+    @NotEmpty
     private String studentID;//学号
+    @NotEmpty
     private String courseType; //学科类型  必修：1  选修：2
+    @NotEmpty
     private String testType; //考试类型  正常考试 只能是1
+    @NotEmpty
     private String gainCredit;//已经获得学分
 
     public String getStudentID() {
