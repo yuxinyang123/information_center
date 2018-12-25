@@ -61,7 +61,10 @@ public class UserController {
      * @Param [userInfoForm]
      **/
     @PutMapping("/info")
-    public BaseResponseVo updateUserInfo(@RequestBody UserInfoForm userInfoForm) {
+    public BaseResponseVo updateUserInfo(@RequestBody UserInfoForm userInfoForm,Errors errors) {
+        if (errors.hasErrors()){
+            return BaseResponseVo.error("have an error");
+        }
         UserPo userPo = ThreadContext.getUserContext();
         Long userkey = userPo.getUserId();
 //        Long userkey = 1l;
@@ -158,7 +161,7 @@ public class UserController {
     }
 
     /**
-     * @param []
+     * @param
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      * @author ying
      * @description //TODO 添加用户人脸至人脸库
