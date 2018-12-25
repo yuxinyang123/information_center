@@ -117,8 +117,8 @@ public class ResourceController {
      **/
     @PostMapping("/{id}/comment")
     public BaseResponseVo addComment(@RequestBody CommentForm comment, @PathVariable String id, Errors errors){
-        if(errors.hasErrors()){
-            return BaseResponseVo.error("file not null");
+        if (errors.hasErrors()){
+            return BaseResponseVo.error("comment is null");
         }
         Long userkey = ThreadContext.getUserContext().getUserId();
         int flag = resourceService.addComment(userkey,comment,id);

@@ -21,10 +21,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.*;
 
@@ -43,7 +40,7 @@ public class CenterServiceImpl implements CenterService {
 
     private File educational = new File("spider/main.py");
     private String spiderPath = educational.getAbsolutePath();
-    private File predict = new File("spider/Predict_Application_local.py");
+    private File predict = new File("arithmetic/test1/Predict_Application_local.py");
     private String predictPath = predict.getAbsolutePath();
 
     /*
@@ -81,17 +78,11 @@ public class CenterServiceImpl implements CenterService {
             resultjson = result;
             log.info("{}",resultjson);
             bufferedReader.close();
-//            process.waitFor();
             process.destroyForcibly();
             threadMethod();
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-        //System.out.println("resultjson:" + resultjson);
     }
 
     @Resource
@@ -209,7 +200,7 @@ public class CenterServiceImpl implements CenterService {
     @Override
     public String getGradeForeast(String studentId, String courseType, String testType, String gainCerdit) {
         String[] arg = new String[]{ "python",predictPath, studentId, courseType, testType, gainCerdit};
-        System.out.println("arg:"+arg);
+        Arrays.stream(arg).forEach((s)->{log.info(s);});
         Process process = null;
         String result = "";
         try {
@@ -226,6 +217,7 @@ public class CenterServiceImpl implements CenterService {
             log.error("参数输入错误！");
             e.printStackTrace();
         }
+        log.info(result);
         return result;
     }
 

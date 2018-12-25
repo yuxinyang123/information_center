@@ -13,11 +13,13 @@ import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.service.WeatherService;
 import com.hnu.softwarecollege.infocenter.util.ScoreUtil;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
@@ -180,7 +182,10 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/hotpot")
-    public BaseResponseVo getHotpot(@RequestParam int pageNum,@RequestParam int pageSize){
+    public BaseResponseVo getHotpot(@NotEmpty @RequestParam int pageNum, @NotEmpty @RequestParam int pageSize, Errors errors){
+        if (errors.hasErrors()){
+            return BaseResponseVo.error("page code is null");
+        }
         List<HotsPotPo> hotsPotPoList;
 
         hotsPotPoList = centerService.getHotPot(pageNum,pageSize);

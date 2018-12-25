@@ -1,5 +1,6 @@
 package com.hnu.softwarecollege.infocenter.service.impl;
 
+import com.hnu.softwarecollege.infocenter.client.FaceRecognition;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterPo;
 import com.hnu.softwarecollege.infocenter.entity.po.UserAndUserinfoPo;
@@ -7,15 +8,20 @@ import com.hnu.softwarecollege.infocenter.entity.po.UserPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.RegistForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.UserInfoForm;
+import com.hnu.softwarecollege.infocenter.exception.UserFaceException;
 import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.UserPoMapper;
 import com.hnu.softwarecollege.infocenter.service.UserService;
+import com.hnu.softwarecollege.infocenter.util.DESUtil;
+import com.hnu.softwarecollege.infocenter.util.MailUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.persistence.Transient;
+import java.util.Objects;
 
 /**
  * @program: infocenter
@@ -104,14 +110,9 @@ public class UserServiceImpl implements UserService {
      * @Param
      * @return
      **/
-    public UserAndUserinfoPo findUserAndUserinfo() {
-        UserPo userPo = ThreadContext.getUserContext();
-        Long userkey = userPo.getUserId();
-//        Long userkey = 1l;
+    public UserAndUserinfoPo findUserAndUserinfo(Long id) {
         UserAndUserinfoPo userAndUserinfoPo;
-        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
-//        System.out.println(userAndUserinfoPo);
-//        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(userkey);
+        userAndUserinfoPo = userInformationPoMapper.infoselectByUserkey(id);
         return userAndUserinfoPo;
     }
 
@@ -123,9 +124,7 @@ public class UserServiceImpl implements UserService {
      * @return
      **/
     public int updateUserInfo(UserInfoForm userInfoForm) {
-
-        int i = userInformationPoMapper.updateByuserKeySelective(userInfoForm);
-        return i;
+        return userInformationPoMapper.updateByuserKeySelective(userInfoForm);
     }
 
     /**
@@ -160,6 +159,97 @@ public class UserServiceImpl implements UserService {
         if (flag == 0) {
             return false;
         } else {
+            return true;
+        }
+
+    }
+
+    /**
+     * @param base64, email]
+     * @return boolean
+     * @author ying
+     * @description //TODO
+     * @date 16:58 2018/12/18
+     **/
+    @Override
+    public int verifyUserFace(String base64, String email) throws UserFaceException {
+        UserPo po = userPoMapper.selectByUserEmail(email);
+        int code = 0;
+        if (Objects.isNull(po)) {
+            throw new UserFaceException("email doesn't exist");
+        } else {
+            JSONObject json = FaceRecognition.authFace(base64, String.valueOf(po.getUserId()));
+            log.info("{}", json);
+            Double score = 0.0;
+            try {
+                score = json.getJSONObject("result").getJSONArray("user_list").getJSONObject(0).getDouble("score");
+                log.info("the user email:{},score:{}", email, score);
+            } catch (Exception e) {
+                code = json.getInt("error_code");
+            }
+            if (score < 80) {
+                code = 1;
+            } else {
+                code = 0;
+                ThreadContext.setUserContext(po);
+            }
+        }
+        return code;
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 验证邮箱，发送邮件
+     * @Date 21:38 2018/12/18
+     * @Param
+     * @return
+     **/
+    @Resource
+    private MailService mailService;
+    @Resource
+    private MailUtil mailUtil;
+
+    @Override
+    public boolean recoverPassword(String email) {
+//        log.info(email);
+        UserPo userPo = userPoMapper.selectByUserEmail(email);
+        if (userPo != null) {
+            String text = mailUtil.createLink(userPo);
+            mailService.sendTextMail(email, "这是来自一校通的找回密码邮件！！！！！", text);
+            return true;
+        } else {
+            log.error("邮箱错误");
+            return false;
+        }
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 得到密文，解密验证，更新密码
+     * @Date 21:38 2018/12/18
+     * @Param
+     * @return
+     **/
+
+    @Override
+    public boolean updatePwd(String descode, String newpwd) {
+        String recode = "";
+        try {
+            recode = DESUtil.decrypt(descode);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        String delimeter = "-";
+        String[] temp = recode.split(delimeter);
+        long date = Long.parseLong(temp[0]);
+        if (date <= System.currentTimeMillis()) {
+            log.error("已过期");
+            return false;
+        } else {
+            UserPo userPo = userPoMapper.selectByUserEmail(temp[1]);
+            userPo.setUserPass(newpwd);
+            userPoMapper.updateByPrimaryKeySelective(userPo);
             return true;
         }
 

@@ -3,11 +3,15 @@ package com.hnu.softwarecollege.infocenter.controller;
 
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
+import com.hnu.softwarecollege.infocenter.entity.vo.LoginFaceForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.LoginForm;
+import com.hnu.softwarecollege.infocenter.exception.UserFaceException;
 import com.hnu.softwarecollege.infocenter.service.UserService;
+import com.hnu.softwarecollege.infocenter.util.Base64PicUtil;
 import com.hnu.softwarecollege.infocenter.util.TokenUtil;
 import com.hnu.softwarecollege.infocenter.util.VerifyCodeUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 import java.util.Map;
@@ -67,7 +72,7 @@ public class AccessController {
     @PostMapping("user")
     @ResponseBody
     public BaseResponseVo login(
-            @RequestBody @Valid LoginForm loginForm,HttpSession session,
+            @RequestBody @Valid LoginForm loginForm, HttpSession session,
             HttpServletResponse response) {
         //will set userContext
         boolean isTrue = userService.verifyUser(loginForm);
@@ -133,5 +138,79 @@ public class AccessController {
     @PostMapping("/admin")
     public BaseResponseVo adminLogin() {
         return null;
+    }
+
+
+    @PostMapping("/face")
+    public BaseResponseVo faceLogin(@RequestBody @Valid LoginFaceForm form, Errors errors, HttpServletResponse response) {
+        if (errors.hasErrors()) {
+            return BaseResponseVo.error("fields error");
+        } else {
+            String pic = Base64PicUtil.handlePic(form.pic);
+            String userEmail = form.userEmail;
+            try {
+                // set context
+                int flag = userService.verifyUserFace(pic, userEmail);
+                if (flag == 0) {
+                    String token = TokenUtil.createToken();
+                    response.addCookie(getCookie("token", token));
+                    response.addCookie(getCookie("id", String.valueOf(ThreadContext.getUserContext().getUserId())));
+                    return BaseResponseVo.success(token);
+                } else {
+                    return BaseResponseVo.fail("verify fail");
+                }
+            } catch (UserFaceException e) {
+                e.printStackTrace();
+                return BaseResponseVo.fail("unknown email");
+            }
+        }
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 发送邮件找回密码
+     * @Date 23:42 2018/12/18
+     * @Param [userEmail]
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @PostMapping("/pass")
+    public BaseResponseVo recoverPass(@Email @RequestBody Map<String, String> data,Errors errors) {
+        if (errors.hasErrors()){
+            return BaseResponseVo.error("email format is error");
+        }
+        Boolean b = userService.recoverPassword(data.get("userEmail"));
+        if (b) {
+            return BaseResponseVo.success("邮件已发送");
+        } else {
+            return BaseResponseVo.fail("邮箱不存在");
+        }
+    }
+
+    /*
+     * @Autor wang
+     * @Description //TODO 通过密文修改密码
+     * @Date 23:43 2018/12/18
+     * @Param
+     * @return
+     **/
+    @PostMapping("/newpass")
+    public BaseResponseVo updateNewPwd(@RequestBody Map<String,String> data,Errors errors) {
+        if (errors.hasErrors()){
+            return BaseResponseVo.error("code is error");
+        }
+        String desCode = data.get("desCode");
+        String newPwd = data.get("newPwd");
+        if (desCode==null){
+            return BaseResponseVo.fail("fields error");
+        }
+        desCode = desCode.replaceAll(" ","+");
+        log.info("decode:{}",desCode);
+        boolean b = userService.updatePwd(desCode, newPwd);
+        if (b) {
+            return BaseResponseVo.success("密码修改成功");
+        } else {
+            return BaseResponseVo.fail("密码修改失败");
+
+        }
     }
 }
