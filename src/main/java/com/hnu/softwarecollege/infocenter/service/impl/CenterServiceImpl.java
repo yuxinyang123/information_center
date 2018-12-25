@@ -9,10 +9,7 @@ import com.hnu.softwarecollege.infocenter.entity.po.*;
 import com.hnu.softwarecollege.infocenter.entity.vo.CurriculumForm;
 import com.hnu.softwarecollege.infocenter.entity.vo.FourTag;
 import com.hnu.softwarecollege.infocenter.entity.vo.SyllabusVo;
-import com.hnu.softwarecollege.infocenter.mapper.CenterDegreePoMapper;
-import com.hnu.softwarecollege.infocenter.mapper.HotsPotPoMapper;
-import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
-import com.hnu.softwarecollege.infocenter.mapper.UserInformationPoMapper;
+import com.hnu.softwarecollege.infocenter.mapper.*;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -281,14 +278,15 @@ public class CenterServiceImpl implements CenterService {
      * @return void
      **/
     @Override
-    public void putCurriculum(CurriculumForm curriculumForm) {
+    public int putCurriculum(CurriculumForm curriculumForm) {
         UserPo userPo = ThreadContext.getUserContext();
         Long userkey  = userPo.getUserId();
         SyllabusPo syllabusPo = new SyllabusPo(null,curriculumForm.getClassName(),
                 curriculumForm.getStartWeek(),curriculumForm.getEndWeek(),curriculumForm.getStartPart(),
                 curriculumForm.getEndPart(),curriculumForm.getWeek(),curriculumForm.getClassroom(),
                 curriculumForm.getTeacher(),userkey);
-        syllabusPoMapper.insertSelective(syllabusPo);
+        int sum = syllabusPoMapper.insertSelective(syllabusPo);
+        return sum;
     }
 
     /*
@@ -455,4 +453,30 @@ public class CenterServiceImpl implements CenterService {
         return fourTag;
     }
 
+    @Resource
+    AvgPoMapper avgPoMapper;
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 获取两个学年各班的平均成绩
+     * @Date 2018/12/23 16:33
+     * @Param []
+     * @return java.util.List<com.hnu.softwarecollege.infocenter.entity.po.AvgPo>
+     **/
+    @Override
+    public List<AvgPo> getAvg() {
+        List<AvgPo> list = avgPoMapper.findAll();
+        return list;
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 获取每个学期各班的平均成绩
+     * @Date 2018/12/23 16:34
+     * @Param []
+     * @return java.util.List<com.hnu.softwarecollege.infocenter.entity.po.AvgPo>
+     **/
+    @Override
+    public List<AvgPo> getFourSemester() {
+        List<AvgPo> list = avgPoMapper.findFourSemester();
+        return list;
+    }
 }
