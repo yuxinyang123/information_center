@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.io.File;
 
 /**
  * @ClassName ExcelContext
@@ -21,6 +22,14 @@ import java.util.List;
 @Component
 @Slf4j
 public class ExcelContext implements InitializingBean {
+    private File firstFile = new File("excel/大一上.xlsx");
+    private String firstPath = firstFile.getAbsolutePath();
+    private File secondFile = new File("excel/大一.xlsx");
+    private String secondPath = secondFile.getAbsolutePath();
+    private File thirdFile = new File("excel/大二上.xlsx");
+    private String thridPath = thirdFile.getAbsolutePath();
+    private File fourthFile = new File("excel/大二.xlsx");
+    private String fourthPath = fourthFile.getAbsolutePath();
     @Resource
     AvgPoMapper avgPoMapper;
     @Override
@@ -96,9 +105,8 @@ public class ExcelContext implements InitializingBean {
      * @return int
      **/
     public int insertDBFirst() throws Exception{
-        String path = "C:\\Users\\14832\\Desktop\\score\\大一上.xlsx";
         String semester = "第一学期";
-        int count = method(path,semester);
+        int count = method(firstPath,semester);
         return count;
     }
     /*
@@ -109,9 +117,8 @@ public class ExcelContext implements InitializingBean {
      * @return int
      **/
     public int insertDBSecond() throws Exception{
-        String path = "C:\\Users\\14832\\Desktop\\score\\大一.xlsx";
         String semester = "第二学期";
-        int count = method(path,semester);
+        int count = method(secondPath,semester);
         return count;
     }
     /*
@@ -122,9 +129,8 @@ public class ExcelContext implements InitializingBean {
      * @return int
      **/
     public int insertDBThird() throws Exception{
-        String path = "C:\\Users\\14832\\Desktop\\score\\大二上.xlsx";
         String semester = "第三学期";
-        int count = method(path,semester);
+        int count = method(thridPath,semester);
         return count;
     }
     /*
@@ -135,9 +141,8 @@ public class ExcelContext implements InitializingBean {
      * @return int
      **/
     public int insertDBFourth() throws Exception{
-        String path = "C:\\Users\\14832\\Desktop\\score\\大二.xlsx";
         String semester = "第四学期";
-        int count = method(path,semester);
+        int count = method(fourthPath,semester);
         return count;
     }
     /*
