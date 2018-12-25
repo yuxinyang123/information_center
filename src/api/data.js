@@ -142,3 +142,9 @@ export const getLists = (type) => {
     method: 'get'
   })
 }
+export const getAverage = () => {
+  return axios.request({
+    url: '/api/center/semester',
+    method: 'get'
+  })
+}

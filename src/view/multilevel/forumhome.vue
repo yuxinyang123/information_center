@@ -13,7 +13,7 @@
     },
     watch: {
       typeName:function (val, oldVal) {
-            console.log(this.typeName)
+            
       this.handlegetLists(this.typeName);
     },
     },
@@ -56,7 +56,6 @@
       },
     },
     mounted() {
-      console.log(this.typeName)
       this.handlegetLists(this.typeName);
     },
  
