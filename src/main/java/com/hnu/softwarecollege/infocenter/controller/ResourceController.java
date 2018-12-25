@@ -96,8 +96,8 @@ public class ResourceController {
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
-    @GetMapping("/{id}")
-    public BaseResponseVo getResource(@PathVariable("id") String id){
+    @GetMapping("/{essayId}")
+    public BaseResponseVo getResource(@PathVariable("essayId") String id){
         ResourcePo resourcePo = resourceService.getResourcePoById(id);
         boolean bool = StringUtils.isEmpty(resourcePo);
         if(bool==true){
