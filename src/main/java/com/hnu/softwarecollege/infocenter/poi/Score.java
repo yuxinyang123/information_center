@@ -106,13 +106,13 @@ public class Score {
     }
 
     /**
+     * @return void
      * @Author 刘亚双
      * @Description //TODO 求各个班的加权平均分
      * @Date 2018/12/20 8:48
      * @Param []
-     * @return void
      **/
-    public void averageScore() throws Exception{
+    public void averageScore() throws Exception {
         File file = new File("C:\\Users\\14832\\Desktop\\score\\alltrem.xlsx");
         XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
         XSSFSheet sheet = wb.getSheetAt(0);
@@ -133,69 +133,69 @@ public class Score {
         int count6 = 0;
         int count7 = 0;
         int count8 = 0;
-        for(int i =2;i<rowCount;i++){
+        for (int i = 2; i < rowCount; i++) {
             XSSFRow xssfRow = sheet.getRow(i);
             XSSFCell classCell = xssfRow.getCell(19);
             classCell.setCellType(CellType.STRING);
             String flag = classCell.getStringCellValue();
 
-            if(flag.equals("16软件工程1班")){
+            if (flag.equals("16软件工程1班")) {
                 count1++;
                 XSSFCell scorecell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scorecell.getStringCellValue());
                 sumone = sumone + d;
             }
-            if(flag.equals("16软件工程2班")){
+            if (flag.equals("16软件工程2班")) {
                 count2++;
                 XSSFCell scorecell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scorecell.getStringCellValue());
-                sumtwo = sumtwo + d ;
+                sumtwo = sumtwo + d;
             }
-            if(flag.equals("16软件工程3班")){
+            if (flag.equals("16软件工程3班")) {
                 count3++;
                 XSSFCell scorecell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scorecell.getStringCellValue());
                 sumthr = sumthr + d;
             }
-            if(flag.equals("16软件工程4班")){
+            if (flag.equals("16软件工程4班")) {
                 count4++;
                 XSSFCell scorecell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scorecell.getStringCellValue());
                 sumfou = sumfou + d;
             }
-            if(flag.equals("16软件工程5班")){
+            if (flag.equals("16软件工程5班")) {
                 count5++;
                 XSSFCell scoreCell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scoreCell.getStringCellValue());
                 sumfiv = sumfiv + d;
             }
-            if(flag.equals("16软件工程6班")){
+            if (flag.equals("16软件工程6班")) {
                 count6++;
                 XSSFCell scoreCell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scoreCell.getStringCellValue());
                 sumsix = sumsix + d;
             }
-            if(flag.equals("16软件工程7班")){
+            if (flag.equals("16软件工程7班")) {
                 count7++;
                 XSSFCell scoreCell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scoreCell.getStringCellValue());
                 sumsev = sumsev + d;
             }
-            if(flag.equals("16软件工程8班")){
+            if (flag.equals("16软件工程8班")) {
                 count8++;
                 XSSFCell scoreCell = xssfRow.getCell(10);
                 double d = Double.parseDouble(scoreCell.getStringCellValue());
                 sumeig = sumeig + d;
             }
         }
-        setClassoneavg(sumone/count1);
-        setClasstwoavg(sumtwo/count2);
-        setClassthravg(sumthr/count3);
-        setClassfouavg(sumfou/count4);
-        setClassfivavg(sumfiv/count5);
-        setClasssixavg(sumsix/count6);
-        setClasssevavg(sumsev/count7);
-        setClasseigavg(sumeig/count8);
+        setClassoneavg(sumone / count1);
+        setClasstwoavg(sumtwo / count2);
+        setClassthravg(sumthr / count3);
+        setClassfouavg(sumfou / count4);
+        setClassfivavg(sumfiv / count5);
+        setClasssixavg(sumsix / count6);
+        setClasssevavg(sumsev / count7);
+        setClasseigavg(sumeig / count8);
     }
 
 
