@@ -68,4 +68,12 @@ public class RuntimeTest {
         SyllabusVo syllabusVo = new SyllabusVo();
         syllabusVo.set星期一(monlist);
     }
+
+    /*@Resource
+    CommentPoMapper commentPoMapper;
+    @Test
+    public void commentTest(){
+        List<CommentVo> list = commentPoMapper.selectbyessayKet(1l);
+        System.out.println(list);
+    }*/
 }

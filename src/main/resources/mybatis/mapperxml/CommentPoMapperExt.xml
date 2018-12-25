@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hnu.softwarecollege.infocenter.mapper.CommentPoMapper">
-    <select id="selectByEssayKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    <resultMap id="ResultMap" type="com.hnu.softwarecollege.infocenter.entity.vo.CommentVo">
+        <id column="COMMENT_ID" jdbcType="BIGINT" property="commentId" />
+        <result column="RES_KEY" jdbcType="BIGINT" property="resKey" />
+        <result column="USER_KEY" jdbcType="BIGINT" property="userKey" />
+        <result column="COMMENT_CHILD_ID" jdbcType="BIGINT" property="commentChildId" />
+        <result column="COMMENT_PARENT_ID" jdbcType="BIGINT" property="commentParentId" />
+        <result column="COMMENT_DATE" jdbcType="TIMESTAMP" property="commentDate" />
+        <result column="COMMENT_ISANONYMITY" jdbcType="VARCHAR" property="commentIsanonymity" />
+        <result column="COMMENT_CONTEXT" jdbcType="LONGVARCHAR" property="commentContext" />
+        <result column="USER_NAME" jdbcType="VARCHAR" property="username"/>
+    </resultMap>
+    <sql id="Column_List">
+    COMMENT_ID, RES_KEY, USER_KEY, COMMENT_CHILD_ID, COMMENT_PARENT_ID, COMMENT_DATE,
+    COMMENT_ISANONYMITY,COMMENT_CONTEXT,USER_NAME
+  </sql>
+    <select id="selectByEssayKey" parameterType="java.lang.Long" resultMap="ResultMap">
         select
-        <include refid="Base_Column_List" />
-        ,
-        <include refid="Blob_Column_List" />
-        from tbl_comment
-        where RES_KEY = #{id,jdbcType=BIGINT}
+        <include refid="Column_List" />
+        from tbl_comment,tbl_user
+        where RES_KEY = #{id,jdbcType=BIGINT} and USER_KEY = USER_ID
     </select>
+
+    <!--<select id="selectbyessayKet" parameterType="java.lang.Long" resultMap="ResultMap">
+        select
+        <include refid="Column_List" />
+        from tbl_comment,tbl_user
+        where RES_KEY = #{id,jdbcType=BIGINT} and USER_KEY = USER_ID
+    </select>-->
 </mapper>

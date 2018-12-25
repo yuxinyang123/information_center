@@ -1,9 +1,9 @@
 package com.hnu.softwarecollege.infocenter.service;
 
-import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CommentForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.CommentVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface ResourceService {
 
     public int deleteByPrimaryKey(String id);
 
-    public List<CommentPo> getAllComment(String id);
+    public List<CommentVo> getAllComment(String id);
 
     /*
      * @Autor wangzixuan

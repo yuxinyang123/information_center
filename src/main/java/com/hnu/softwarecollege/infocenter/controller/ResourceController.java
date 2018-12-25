@@ -3,11 +3,11 @@ package com.hnu.softwarecollege.infocenter.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
-import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CommentForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.CommentVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
 import com.hnu.softwarecollege.infocenter.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
@@ -168,8 +168,8 @@ public class ResourceController {
     @GetMapping("/{essayId}/comment")
     public BaseResponseVo getAllComments(@RequestParam int pageNum,@RequestParam int pageSize, @PathVariable String essayId){
         PageHelper.startPage(pageNum,pageSize);
-        List<CommentPo> poList = resourceService.getAllComment(essayId);
-        PageInfo<CommentPo> poPageInfo = new PageInfo<>(poList);
+        List<CommentVo> poList = resourceService.getAllComment(essayId);
+        PageInfo<CommentVo> poPageInfo = new PageInfo<>(poList);
         if(poList.size()==0){
             return BaseResponseVo.error("没有获取到评论数据");
         }else {
