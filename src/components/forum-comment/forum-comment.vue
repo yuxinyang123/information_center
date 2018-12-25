@@ -1,9 +1,25 @@
 <template>
-    
+  <div>
+
+  </div>
 </template>
 <script>
-export default {
-    
-}
-</script>
+  export default {
+    props: {
 
+    },
+    data() {
+      return {
+
+
+      }
+    },
+    methods: {
+
+    },
+    mounted() {
+
+    }
+  }
+
+</script>

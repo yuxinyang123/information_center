@@ -126,3 +126,29 @@ export const getLists = (type) => {
     method: 'get'
   })
 }
+export const getAverage = () => {
+  return axios.request({
+    url: '/api/center/semester',
+    method: 'get'
+  })
+}
+export const getEssay = (id) => {
+  return axios.request({
+    url: '/api/res/{id}',
+    params: {
+      id: id
+    },
+    method: 'get'
+  })
+}
+export const getComment = (pageNum, pageSize, essayId) => {
+  return axios.request({
+    url: '/api/res/{essayId}/comment',
+    params: {
+      pageNum: pageNum,
+      pageSize: pageSize,
+      essayId: essayId
+    },
+    method: 'get'
+  })
+}

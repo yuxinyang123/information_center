@@ -177,8 +177,8 @@ export default [
     component: Main,
     children: [
       {
-        path: 'recruithome_page',
-        name: 'recruithome_page',
+        path: 'recruithome',
+        name: 'recruithome',
         props: { typeName: '招聘信息' },
         meta: {
           icon: 'md-funnel',
@@ -187,8 +187,8 @@ export default [
         component: () => import('@/view/forum/forumhome.vue')
       },
       {
-        path: 'jobhome_page',
-        name: 'jobhome_page',
+        path: 'jobhome',
+        name: 'jobhome',
         props: { typeName: '兼职信息' },
         meta: {
           icon: 'md-funnel',
@@ -197,8 +197,8 @@ export default [
         component: () => import('@/view/forum/forumhome.vue')
       },
       {
-        path: 'matchhome_page',
-        name: 'matchhome_page',
+        path: 'matchhome',
+        name: 'matchhome',
         props: { typeName: '比赛信息' },
         meta: {
           icon: 'md-funnel',
