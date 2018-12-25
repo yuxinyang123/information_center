@@ -33,7 +33,7 @@ export default {
   drag_list_page: 'Drag-list',
   i18n_page: 'Internationalization',
   modalTitle: 'Modal Title',
-  content: 'This is the modal box content.',
+
   buttonText: 'Show Modal',
   'i18n-tip': 'Note: Only this page is multi-language, other pages do not add language content to the multi-language package.',
   error_store_page: 'Error Collection',

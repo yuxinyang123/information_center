@@ -23,6 +23,24 @@ export const getUserInfo = (token) => {
   })
 }
 
+export const updateUserInfo = (num, password, signature, major, Class, academy, sex, age, location) => {
+  return axios.request({
+    url: '/api/user/info',
+    data: {
+      num,
+      password,
+      signature,
+      major,
+      class: Class,
+      academy,
+      sex,
+      age,
+      location
+    },
+    method: 'put'
+  })
+}
+
 export const logout = (token) => {
   return axios.request({
     url: 'logout',

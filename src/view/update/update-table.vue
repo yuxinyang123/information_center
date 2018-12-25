@@ -1,8 +1,8 @@
 <template>
-  <div >
+  <div>
     <Card>
-      <h1>编辑资料</h1>
-      <Form :rules="ruleRegist" :model="formModel" ref="registForm" :label-width="90">
+      <h1 style="text-align:center">编辑资料</h1>
+      <Form :rules="ruleRegist" :model="formModel" ref="updateForm" :label-width="90">
         <FormItem label="学院：" prop="academy">
           <Input v-model="formModel.academy" placeholder="Enter your academy"></Input>
         </FormItem>
@@ -11,6 +11,12 @@
         </FormItem>
         <FormItem label="主修：" prop="major">
           <Input type="text" v-model="formModel.major" placeholder="Enter your major"></Input>
+        </FormItem>
+        <FormItem label="性别：" prop="sex">
+          <RadioGroup v-model="formModel.sex">
+            <Radio label="male">男</Radio>
+            <Radio label="female">女</Radio>
+          </RadioGroup>
         </FormItem>
         <FormItem label="个人签名：" prop="signature">
           <Input type="text" v-model="formModel.signature" placeholder="Enter your signature"></Input>
@@ -27,10 +33,11 @@
         <FormItem label="教务密码：" prop="password">
           <Input type="text" v-model="formModel.password" placeholder="Enter your password"></Input>
         </FormItem>
+
         <Row type="flex" justify="center">
           <div>
-            <Button type="primary" @click="handleSubmit()">提交</Button>
-            <Button type="primary" @click="handleReset()" style="margin-left: 8px">重置</Button>
+            <Button type="primary" @click="handleSubmit()">保存</Button>
+            <Button type="primary" @click="handleReset('updateForm')" style="margin-left: 8px">重置</Button>
           </div>
         </Row>
       </Form>
@@ -39,148 +46,139 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import { getUser } from "@/api/data";
-import { putUser } from "@/api/data";
-export default {
-  name: "registForm",
-  components: {},
-  data() {
-    return {
-      formModel: {
-        academy: "",
-        Class: "",
-        major: "",
-        num: "",
-        phone: "",
-        signature: "",
-        username: "",
-        password: ""
+  import {
+    getUserInfo,
+    updateUserInfo
+  } from "@/api/user";
+  export default {
+    name: "registForm",
+    components: {},
+    data() {
+      return {
+        formModel: {
+          num: '',
+          password: '',
+          signature: "",
+          major: '',
+          Class: '',
+          academy: '',
+          sex: '',
+          age: 0,
+          location: "",
+          username:'',
+          phone:''
+        },
+
+        ruleRegist: {
+          academy: [{
+            required: false,
+            trigger: "blur"
+          }],
+          Class: [{
+            required: false,
+            trigger: "blur"
+          }],
+          major: [{
+            required: false,
+            trigger: "blur"
+          }],
+          num: [{
+            required: true,
+            trigger: "blur"
+          }],
+          signature: [{
+            required: false,
+            trigger: "blur"
+          }],
+          phone: [{
+            required: false,
+            trigger: "blur"
+          }],
+          username: [{
+            required: false,
+            trigger: "blur"
+          }],
+          password: [{
+            required: true,
+            trigger: "blur"
+          }]
+        }
+      };
+    },
+
+    methods: {
+      getUserInfo() {
+        let token = this.$store.state.user.token;
+        getUserInfo(token)
+          .then(res => {
+            res = res.data.data;
+            console.log(res);
+            this.formModel.academy = res.academy;
+            this.formModel.Class = res.class;
+            this.formModel.major = res.major;
+            this.formModel.num = res.num;
+            this.formModel.phone = res.phone;
+            this.formModel.signature = res.signature;
+            this.formModel.username = res.username;
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      },
+      handleSubmit() {
+        this.$refs.updateForm.validate(valid => {
+          if (valid) {
+            updateUserInfo(
+                this.formModel.academy,
+                this.formModel.Class,
+                this.formModel.num,
+                this.formModel.major,
+                this.formModel.age,
+                this.formModel.location,
+                this.formModel.password,
+                this.formModel.signature,
+                this.formModel.sex
+              )
+              .then(res => {
+                res = res.data;
+                console.log(res);
+                this.$Message.success('修改成功!');
+              })
+              .catch(err => {
+                console.log(err);
+                this.$Message.error('修改失败');
+              });
+          }
+        })
       },
 
-      ruleRegist: {
-        academy: [
-          {
-            required: false,
-            trigger: "blur"
-          }
-        ],
-        Class: [
-          {
-            required: false,
-            trigger: "blur"
-          }
-        ],
-        major: [
-          {
-            required: false,
-            trigger: "blur"
-          }
-        ],
-        num: [
-          {
-            required: true,
-            trigger: "blur"
-          }
-        ],
-        signature: [
-          {
-            required: false,
-            trigger: "blur"
-          }
-        ],
-        phone: [
-          {
-            required: false,
-            trigger: "blur"
-          }
-        ],
-        username: [
-          {
-            required: false,
-            trigger: "blur"
-          }
-        ],
-        password: [
-          {
-            required: true,
-            trigger: "blur"
-          }
-        ]
-      }
-    };
-  },
 
-  methods: {
-    getUserInfo() {
-      getUser()
-        .then(res => {
-          res = res.data.data;
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      handleReset(name) {
+        this.$refs[name].resetFields();
+        this.getUserInfo()
+      }
     },
-    putUserInfo(
-      num,
-      password,
-      signature,
-      major,
-      Class,
-      academy,
-      sex,
-      age,
-      location
-    ) {
-      this.academy = academy;
-      this.Class = Class;
-      this.num = num;
-      this.major = major;
-      this.age = age;
-      this.location = location;
-      this.password = password;
-      this.signature = signature;
-      this.sex = sex;
-      putUser(
-        this.academy,
-        this.Class,
-        this.num,
-        this.major,
-        this.age,
-        this.location,
-        this.password,
-        this.signature,
-        this.sex
-      )
-        .then(res => {
-          res = res.data.data;
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-    handleSubmit() {}
-  },
-  mounted() {
-    this.getUserInfo();
-    // this.putUserInfo();
-  }
-};
+    mounted() {
+      this.getUserInfo();
+    }
+  };
+
 </script>
 <style>
-.regist {
-  background-color: rgb(255, 255, 255);
-  margin: auto;
-  width: 500px;
-  padding: 10px;
-  border-radius: 10px;
-}
-.regist h1 {
-  text-align: center;
-}
-.regist form FormItem {
-  width: 450px;
-}
+  .regist {
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .regist h1 {
+    text-align: center;
+  }
+
+  .regist form FormItem {
+    width: 450px;
+  }
+
 </style>

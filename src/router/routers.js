@@ -184,7 +184,7 @@ export default [
           icon: 'md-funnel',
           title: '招聘首页'
         },
-        component: () => import('@/view/multilevel/forumhome.vue')
+        component: () => import('@/view/forum/forumhome.vue')
       },
       {
         path: 'jobhome',
@@ -194,7 +194,7 @@ export default [
           icon: 'md-funnel',
           title: '兼职首页'
         },
-        component: () => import('@/view/multilevel/forumhome.vue')
+        component: () => import('@/view/forum/forumhome.vue')
       },
       {
         path: 'matchhome',
@@ -204,10 +204,22 @@ export default [
           icon: 'md-funnel',
           title: '比赛首页'
         },
-        component: () => import('@/view/multilevel/forumhome.vue')
+        component: () => import('@/view/forum/forumhome.vue')
+      },
+      {
+        path: 'content/:type/:id',
+        name: '内容页',
+        props: true,
+        meta: {
+          hideInMenu: true,
+          notCache: true,
+          title: (route) => `${route.params.type}-${route.params.id}`
+        },
+        component: () => import('@/view/forum/content.vue')
       }
     ]
   },
+
   {
     path: '/argu',
     name: 'argu',
