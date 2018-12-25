@@ -18,7 +18,7 @@ Student_id = Student_id.translate(table)
 BK = 0
 #检测是否只有数字组成
 if Student_id.isdigit() == True:
-	with open('C:\\Users\\del\\Desktop\\id1.csv',encoding='UTF-8') as Original_File:
+	with open('id.csv',encoding='UTF-8') as Original_File:
 		Original_String = Original_File.read().split('\n')
 		for ele in Original_String:
 			Second_Processing = ele.split(',')
@@ -50,7 +50,7 @@ if Student_id.isdigit() == True:
 	crs = sys.argv[4]
 
 	# 读取对照组
-	with open('C:\\Users\\del\\Desktop\\grade1.csv',encoding='UTF-8' ) as Original_File:
+	with open('grade.csv',encoding='UTF-8' ) as Original_File:
 		Original_String = Original_File.read()
 
 	# 第一次处理

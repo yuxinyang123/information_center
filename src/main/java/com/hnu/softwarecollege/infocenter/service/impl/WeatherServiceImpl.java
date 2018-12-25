@@ -28,6 +28,7 @@ public class WeatherServiceImpl implements WeatherService {
     private WeatherPoMapper weatherPoMapper;
     @Resource
     CenterPoMapper centerPoMapper;
+
     /*
      * @Author 刘亚双
      * @Description //TODO 通过用户ID 逐步查询出 citycode
@@ -53,12 +54,13 @@ public class WeatherServiceImpl implements WeatherService {
      * @return java.lang.String
      **/
     @Override
-    public String findcitycode(String cityname){
+    public String findcitycode(String cityname) {
 
         Map<String, CityPo> map = this.cityMapContext.getMap();
-        CityPo cp =map.get(cityname);
+        CityPo cp = map.get(cityname);
         return cp.getCity_code();
     }
+
     /*
      * @Author 刘亚双
      * @Description //TODO 根据城市名称查询对应的城市ID,将用户对应的CenterPo 中的城市ID 改变，再进行天气查询
@@ -72,7 +74,7 @@ public class WeatherServiceImpl implements WeatherService {
         UserPo userPo = ThreadContext.getUserContext();
         Long userid = userPo.getUserId();
         Long centerId = centerPoMapper.selectByUserKey(userid);
-        int num = centerPoMapper.updateWeatherCodeByPrimaryKey(citycode,centerId);
+        int num = centerPoMapper.updateWeatherCodeByPrimaryKey(citycode, centerId);
         return num;
     }
 
@@ -84,19 +86,19 @@ public class WeatherServiceImpl implements WeatherService {
      * @return com.hnu.softwarecollege.infocenter.entity.po.WeatherPo
      **/
     @Override
-    public WeatherPo Weather(String citycode){
+    public WeatherPo Weather(String citycode) {
         int code = Integer.parseInt(citycode);
         WeatherPo wp = weatherPoMapper.selectByPrimaryKey(code);
         boolean b = false;
-        if(wp==null){
-            b=true;
+        if (wp == null) {
+            b = true;
         }
-        if(b==true){
+        if (b == true) {
             String str = HttpRequestUtil.getJsonContent(citycode);
             //log.info(str);
             try {
                 ObjectMapper mapper = new ObjectMapper();
-                WeatherPo weatherPo = mapper.readValue(str,WeatherPo.class);
+                WeatherPo weatherPo = mapper.readValue(str, WeatherPo.class);
                 insertWeather(weatherPo);
                 wp = weatherPo;
             } catch (IOException e) {
@@ -106,10 +108,12 @@ public class WeatherServiceImpl implements WeatherService {
         }
         return wp;
     }
+
     @Override
     public void insertWeather(WeatherPo weatherPo) {
         weatherPoMapper.insert(weatherPo);
     }
+
     /*
      * @Author 刘亚双
      * @Description //TODO 修改数据库中已有城市的天气信息
@@ -120,15 +124,15 @@ public class WeatherServiceImpl implements WeatherService {
     @Override
     public void updateAllWeatherInfo() {
         List<WeatherPo> list = weatherPoMapper.findAll();
-        for(WeatherPo weatherPo:list){
+        for (WeatherPo weatherPo : list) {
             int code = weatherPo.getWeatherCode();
-            String city_code=code+"";
+            String city_code = code + "";
             String weatherinfo = HttpRequestUtil.getJsonContent(city_code);
             ObjectMapper mapper = new ObjectMapper();
             try {
                 WeatherPo weather = mapper.readValue(weatherinfo, WeatherPo.class);
-                weatherPoMapper.updateByPrimaryKey(weather);
-            }catch (IOException e){
+                weatherPoMapper.updateByPrimaryKeySelective(weather);
+            } catch (IOException e) {
                 e.printStackTrace();
                 log.error("实体类转换错误");
             }

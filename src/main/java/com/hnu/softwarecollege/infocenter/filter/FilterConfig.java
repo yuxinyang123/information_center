@@ -22,7 +22,7 @@ import javax.servlet.Filter;
 public class FilterConfig {
 
     public static final String[] AUTHPATH = {
-            "/center/*","/user/info","/user/pass","/user/private","/res/*"
+            "/center/*","/user/info","/user/face","/user/pass","/user/private","/res/*"
     };
 
     @Bean

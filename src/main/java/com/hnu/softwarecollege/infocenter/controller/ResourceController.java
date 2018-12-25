@@ -117,6 +117,7 @@ public class ResourceController {
      **/
     @PostMapping("/{id}/comment")
     public BaseResponseVo addComment(@RequestBody CommentForm comment, @PathVariable String id, Errors errors){
+
         if(errors.hasErrors()){
             return BaseResponseVo.error("file not null");
         }

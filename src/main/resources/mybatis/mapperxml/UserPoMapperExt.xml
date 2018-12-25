@@ -32,7 +32,7 @@
     <update id="updatePasswordByPrimaryKeySelective">
         update tbl_user
         <set>
-            <if test="userPass != null">
+            <if test="newpass != null">
                 USER_PASS = #{newpass,jdbcType=VARCHAR},
             </if>
         </set>
