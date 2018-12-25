@@ -17,7 +17,8 @@ import java.io.FileInputStream;
  * @Version 1.0
  **/
 public class Score {
-
+    private File file = new File("excel/alltrem.xlsx");
+    private String alltermpath = file.getAbsolutePath();
     private double classoneavg;
     private double classtwoavg;
     private double classthravg;
@@ -112,8 +113,9 @@ public class Score {
      * @Date 2018/12/20 8:48
      * @Param []
      **/
-    public void averageScore() throws Exception {
-        File file = new File("C:\\Users\\14832\\Desktop\\score\\alltrem.xlsx");
+
+    public void averageScore() throws Exception{
+        File file = new File(alltermpath);
         XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
         XSSFSheet sheet = wb.getSheetAt(0);
         int rowCount = sheet.getLastRowNum();

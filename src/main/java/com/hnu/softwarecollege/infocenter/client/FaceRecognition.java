@@ -1,13 +1,11 @@
 package com.hnu.softwarecollege.infocenter.client;
 
 import com.baidu.aip.face.AipFace;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @program: camerademo

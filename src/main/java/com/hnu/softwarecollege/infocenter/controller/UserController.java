@@ -109,7 +109,6 @@ public class UserController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/pass")
-
     public BaseResponseVo provingPassword(@RequestBody ProvingForm provingForm,Errors errors){
         if(errors.hasErrors()){
             return BaseResponseVo.error("file not null");

@@ -1,6 +1,7 @@
 package com.hnu.softwarecollege.infocenter.mapper;
 
 import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
+import com.hnu.softwarecollege.infocenter.entity.vo.CommentVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -21,6 +22,5 @@ public interface CommentPoMapper {
 
     int updateByPrimaryKey(CommentPo record);
 
-    List<CommentPo> selectByEssayKey(Long id);
-
+    List<CommentVo> selectByEssayKey(Long id);
 }
