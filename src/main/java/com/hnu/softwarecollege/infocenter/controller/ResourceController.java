@@ -3,14 +3,16 @@ package com.hnu.softwarecollege.infocenter.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
-import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
 import com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CommentForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.CommentVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
 import com.hnu.softwarecollege.infocenter.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -89,17 +91,21 @@ public class ResourceController {
 
     /**
      * @Author yuxinyang
-     * @Description //TODO 获取资源
+     * @Description //TODO 获取文章，
      * @Date 17:04 2018/11/21
      * @Param [id]
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
-    @GetMapping("/{id}")
-    public BaseResponseVo getResource(@PathVariable("id") String id){
+    @GetMapping("/{essayId}")
+    public BaseResponseVo getResource(@PathVariable("essayId") String id){
         ResourcePo resourcePo = resourceService.getResourcePoById(id);
-        return BaseResponseVo.success(resourcePo);
+        boolean bool = StringUtils.isEmpty(resourcePo);
+        if(bool==true){
+            return BaseResponseVo.error("获取信息失败");
+        }else {
+            return BaseResponseVo.success(resourcePo);
+        }
     }
-
 
     /**
      * @Author wangzixuan
@@ -109,7 +115,10 @@ public class ResourceController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/{id}/comment")
-    public BaseResponseVo addComment(@RequestBody CommentForm comment,@PathVariable String id){
+    public BaseResponseVo addComment(@RequestBody CommentForm comment, @PathVariable String id, Errors errors){
+        if(errors.hasErrors()) {
+            return BaseResponseVo.error("file not null");
+        }
         Long userkey = ThreadContext.getUserContext().getUserId();
         int flag = resourceService.addComment(userkey,comment,id);
         if(flag==0){
@@ -158,8 +167,12 @@ public class ResourceController {
     @GetMapping("/{essayId}/comment")
     public BaseResponseVo getAllComments(@RequestParam int pageNum,@RequestParam int pageSize, @PathVariable String essayId){
         PageHelper.startPage(pageNum,pageSize);
-        List<CommentPo> poList = resourceService.getAllComment(essayId);
-        PageInfo<CommentPo> poPageInfo = new PageInfo<>(poList);
-        return BaseResponseVo.success(poPageInfo);
+        List<CommentVo> poList = resourceService.getAllComment(essayId);
+        PageInfo<CommentVo> poPageInfo = new PageInfo<>(poList);
+        if(poList.size()==0){
+            return BaseResponseVo.error("没有获取到评论数据");
+        }else {
+            return BaseResponseVo.success(poPageInfo);
+        }
     }
 }

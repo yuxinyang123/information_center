@@ -45,8 +45,6 @@ public class forumTest {
     public void addCommentTest(){
         CommentForm commentForm = new CommentForm();
         commentForm.setCommentContext("感觉楼主！！！");
-        BaseResponseVo baseResponseVo =resourceController.addComment(commentForm,"1");
-        System.out.println(baseResponseVo);
 
     }
 

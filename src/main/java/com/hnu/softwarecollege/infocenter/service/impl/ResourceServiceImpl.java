@@ -4,6 +4,7 @@ import com.hnu.softwarecollege.infocenter.entity.po.CommentPo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResTypePo;
 import com.hnu.softwarecollege.infocenter.entity.po.ResourcePo;
 import com.hnu.softwarecollege.infocenter.entity.vo.CommentForm;
+import com.hnu.softwarecollege.infocenter.entity.vo.CommentVo;
 import com.hnu.softwarecollege.infocenter.entity.vo.ResForm;
 import com.hnu.softwarecollege.infocenter.mapper.CommentPoMapper;
 import com.hnu.softwarecollege.infocenter.mapper.ResTypePoMapper;
@@ -108,9 +109,9 @@ public class ResourceServiceImpl implements ResourceService {
      * @return java.util.List<com.hnu.softwarecollege.infocenter.entity.po.CommentPo>
      **/
     @Override
-    public List<CommentPo> getAllComment(String id) {
+    public List<CommentVo> getAllComment(String id) {
         //Page<CommentPo> commentPoPage = PageHelper.startPage(pageNum,pageSize);
-        List<CommentPo> poList = commentPoMapper.selectByEssayKey(Long.parseLong(id));
+        List<CommentVo> poList = commentPoMapper.selectByEssayKey(Long.parseLong(id));
         return poList;
     }
 

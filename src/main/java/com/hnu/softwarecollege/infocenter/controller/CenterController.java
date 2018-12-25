@@ -3,6 +3,7 @@ package com.hnu.softwarecollege.infocenter.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hnu.softwarecollege.infocenter.context.ThreadContext;
+import com.hnu.softwarecollege.infocenter.entity.po.AvgPo;
 import com.hnu.softwarecollege.infocenter.entity.po.CenterDegreePo;
 import com.hnu.softwarecollege.infocenter.entity.po.HotsPotPo;
 import com.hnu.softwarecollege.infocenter.entity.po.WeatherPo;
@@ -10,7 +11,10 @@ import com.hnu.softwarecollege.infocenter.entity.vo.*;
 import com.hnu.softwarecollege.infocenter.mapper.CenterPoMapper;
 import com.hnu.softwarecollege.infocenter.service.CenterService;
 import com.hnu.softwarecollege.infocenter.service.WeatherService;
+import com.hnu.softwarecollege.infocenter.util.ScoreUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,7 +37,6 @@ public class CenterController {
     CenterPoMapper centerPoMapper;
     @Resource
     CenterService centerService;
-
     /**
      * @Author yuxinyang
      * @Description //TODO 获取天气信息
@@ -63,7 +66,10 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/weather")
-    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm) {
+    public BaseResponseVo updateWeatherInfo(@RequestBody WeatherForm weatherForm, Errors errors) {
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("file error");
+        }
         int num = 0;
         String code = weatherService.findcitycode(weatherForm.getCityname());
         if (code.equals(null)) {
@@ -115,11 +121,17 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/grade")
-    public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm){
+    public BaseResponseVo gradeForecast(@RequestBody GradeForecastForm gradeForecastForm,Errors errors){
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("file not null");
+        }
         String result = centerService.getGradeForeast(gradeForecastForm.getStudentID(),gradeForecastForm.getCourseType(),
                 gradeForecastForm.getTestType(),gradeForecastForm.getGainCredit());
-        System.out.println(result);
-        return BaseResponseVo.success(result);
+        if(result.equals("")){
+            return BaseResponseVo.error("获取预测信息失败");
+        }else {
+            return BaseResponseVo.success(result);
+        }
     }
 
     /**
@@ -132,7 +144,12 @@ public class CenterController {
     @GetMapping("/curriculum")
     public BaseResponseVo getCurriculum(@RequestParam Long userkey){
         SyllabusVo syllabusVo = centerService.getCourseTable(userkey);
-        return BaseResponseVo.success(syllabusVo);
+        boolean bool = StringUtils.isEmpty(syllabusVo);
+        if(bool==true){
+            return BaseResponseVo.error("没有查询到课表信息");
+        }else {
+            return BaseResponseVo.success(syllabusVo);
+        }
     }
 
     /**
@@ -143,10 +160,16 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PutMapping("/curriculum")
-    public BaseResponseVo putCurriculum(@RequestBody CurriculumForm curriculumForm){
-        centerService.putCurriculum(curriculumForm);
-
-        return null;
+    public BaseResponseVo putCurriculum(@RequestBody CurriculumForm curriculumForm,Errors errors){
+        if(errors.hasErrors()){
+            return BaseResponseVo.error("files not null");
+        }
+        int sum = centerService.putCurriculum(curriculumForm);
+        if(sum==0){
+            return BaseResponseVo.error("添加课程失败");
+        }else {
+            return BaseResponseVo.success("添加成功");
+        }
     }
 
     /**
@@ -157,18 +180,15 @@ public class CenterController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @GetMapping("/hotpot")
-    public BaseResponseVo getHotpot(@RequestParam int pageNum,@RequestParam int pageSize){
+    public BaseResponseVo getHotpot(@RequestParam int pageNum, @RequestParam int pageSize){
         List<HotsPotPo> hotsPotPoList;
 
         hotsPotPoList = centerService.getHotPot(pageNum,pageSize);
-
-//        if(hotsPotPoList != null){
-//            log.info("ok");
-//        }
-//        for(HotsPotPo po : hotsPotPoList){
-//            System.out.print(po.getHotspotTitle());
-//        }
-        return BaseResponseVo.success(hotsPotPoList);
+        if (hotsPotPoList.size() == 0){
+            return BaseResponseVo.error("hotpot not null");
+        }else {
+            return BaseResponseVo.success(hotsPotPoList);
+        }
     }
 
     /*
@@ -190,4 +210,37 @@ public class CenterController {
         return BaseResponseVo.success(fourTag);
     }
 
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 查询各班两年的加权平均分
+     * @Date 2018/12/21 9:30
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @GetMapping("/avg")
+    public BaseResponseVo getAvg(){
+        List<AvgPo> list = centerService.getAvg();
+        if(list.size()==0){
+            return BaseResponseVo.error("查询失败");
+        }else{
+            return BaseResponseVo.success(list);
+        }
+    }
+    /*
+     * @Author 刘亚双
+     * @Description //TODO 查询各班每个学期的加权平均分
+     * @Date 2018/12/23 16:34
+     * @Param []
+     * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
+     **/
+    @GetMapping("/semester")
+    public BaseResponseVo getFourSemester(){
+        List<AvgPo> list = centerService.getFourSemester();
+        List<double[]> lists = ScoreUtil.transform(list);
+        if(lists.size()!=0) {
+            return BaseResponseVo.success(lists);
+        }else{
+            return BaseResponseVo.error("查询失败");
+        }
+    }
 }

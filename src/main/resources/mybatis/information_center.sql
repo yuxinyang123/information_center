@@ -108,7 +108,7 @@ CREATE TABLE `tbl_resource`  (
   `RES_SOURCE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `RES_DATE` datetime NOT NULL,
   `RES_CONTEXT` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `RES_COMMENTCOUNT` bigint(12) DEFAULT '0' COMMENT '文章评论数',
+  `RES_COMMENTCOUNT` bigint(12) DEFAULT 0 COMMENT '文章评论数',
   PRIMARY KEY (`RES_ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '资源表 所有信息' ROW_FORMAT = Compact;
 
@@ -224,3 +224,15 @@ CREATE TABLE `tbl_hotspot`(
   `HOTSPOT_HOTURL` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT 'url',
   PRIMARY KEY (`HOTSPOT_ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '热点信息' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for `tbl_avg`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_avg`;
+CREATE TABLE `tbl_avg` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `SEMESTER` varchar(128) NOT NULL DEFAULT '' COMMENT '学期',
+  `CLASSNAME` varchar(128) NOT NULL COMMENT '班级名称',
+  `FENGSHU` double(8,2) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET=utf8;
