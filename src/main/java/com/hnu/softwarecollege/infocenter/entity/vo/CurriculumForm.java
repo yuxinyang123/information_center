@@ -1,5 +1,7 @@
 package com.hnu.softwarecollege.infocenter.entity.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 /**
  * @program: infocenter
  * @description:
@@ -7,13 +9,21 @@ package com.hnu.softwarecollege.infocenter.entity.vo;
  * @create: 2018-11-21 11:15
  **/
 public class CurriculumForm {
+    @NotEmpty
     private String className;//课程名
+    @NotEmpty
     private int startWeek;//起始周
+    @NotEmpty
     private int endWeek;//终止周
+    @NotEmpty
     private int startPart;//起始节
+    @NotEmpty
     private int endPart;//终止节
+    @NotEmpty
     private String week;//星期几
+    @NotEmpty
     private String classroom;//教室地点
+    @NotEmpty
     private String teacher;//教师
 
     public String getClassName() {
