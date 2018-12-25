@@ -1,6 +1,6 @@
 <template>
-  <forum-content></forum-content>
-  <forum-comment></forum-comment>
+  <!-- <forum-content></forum-content>
+  <forum-comment></forum-comment> -->
 </template>
 <script>
 import ForumContent from "_c/forum-content";

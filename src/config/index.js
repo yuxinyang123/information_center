@@ -19,7 +19,7 @@ export default {
   baseUrl: {
     // dev: 'http://rap2api.taobao.org/app/mock/117773/',
     dev: 'http://localhost:8088/',
-    pro: 'https://produce.com'
+    pro: 'http://localhost:8088/'
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home
@@ -37,5 +37,5 @@ export default {
 
   localTestUrl: 'http://localhost:8088/',
   // localTestUrl: 'http://10.7.84.194:8088/',
-  auth: false
+  auth: true
 }
