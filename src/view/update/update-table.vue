@@ -14,24 +14,18 @@
         </FormItem>
         <FormItem label="性别：" prop="sex">
           <RadioGroup v-model="formModel.sex">
-            <Radio label="male">男</Radio>
-            <Radio label="female">女</Radio>
+            <Radio label="男">男</Radio>
+            <Radio label="女">女</Radio>
           </RadioGroup>
         </FormItem>
         <FormItem label="个人签名：" prop="signature">
           <Input type="text" v-model="formModel.signature" placeholder="Enter your signature"></Input>
         </FormItem>
-        <FormItem label="用户名：" prop="username">
-          <Input v-model="formModel.username" placeholder="Enter your username"></Input>
-        </FormItem>
-        <FormItem label="电话：" prop="phone">
-          <Input v-model="formModel.phone" placeholder="Enter your tel"></Input>
-        </FormItem>
         <FormItem label="教务学号：" prop="num">
-          <Input type="text" v-model="formModel.num" placeholder="Enter your num"></Input>
+          <Input v-model="formModel.num" placeholder="Enter your num"></Input>
         </FormItem>
         <FormItem label="教务密码：" prop="password">
-          <Input type="text" v-model="formModel.password" placeholder="Enter your password"></Input>
+          <Input type="password" v-model="formModel.password" placeholder="Enter your password"></Input>
         </FormItem>
 
         <Row type="flex" justify="center">
@@ -56,17 +50,15 @@
     data() {
       return {
         formModel: {
-          num: '',
+          num: 0,
           password: '',
           signature: "",
           major: '',
           Class: '',
           academy: '',
           sex: '',
-          age: 0,
+          age: '',
           location: "",
-          username:'',
-          phone:''
         },
 
         ruleRegist: {
@@ -84,17 +76,10 @@
           }],
           num: [{
             required: true,
+            type: "number",
             trigger: "blur"
           }],
           signature: [{
-            required: false,
-            trigger: "blur"
-          }],
-          phone: [{
-            required: false,
-            trigger: "blur"
-          }],
-          username: [{
             required: false,
             trigger: "blur"
           }],
@@ -128,17 +113,7 @@
       handleSubmit() {
         this.$refs.updateForm.validate(valid => {
           if (valid) {
-            updateUserInfo(
-                this.formModel.academy,
-                this.formModel.Class,
-                this.formModel.num,
-                this.formModel.major,
-                this.formModel.age,
-                this.formModel.location,
-                this.formModel.password,
-                this.formModel.signature,
-                this.formModel.sex
-              )
+            updateUserInfo(this.formModel)
               .then(res => {
                 res = res.data;
                 console.log(res);

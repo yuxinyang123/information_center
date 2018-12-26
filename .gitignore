@@ -11,6 +11,9 @@ node_modules
 /.mvn/
 /logs/
 
+/logs
+.mvn
+pom.xml
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
