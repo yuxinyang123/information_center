@@ -134,16 +134,13 @@ export const getAverage = () => {
 }
 export const getEssay = (id) => {
   return axios.request({
-    url: '/api/res/{id}',
-    params: {
-      id: id
-    },
+    url: `/api/res/${id}`,
     method: 'get'
   })
 }
 export const getComment = (pageNum, pageSize, essayId) => {
   return axios.request({
-    url: '/api/res/{essayId}/comment',
+    url: `/api/res/${essayId}/comment`,
     params: {
       pageNum: pageNum,
       pageSize: pageSize,

@@ -29,7 +29,7 @@
   } from "@/api/data";
   export default {
     props: {
-
+      id:String,
     },
     data() {
       return {
@@ -50,8 +50,6 @@
             this.resDate = res.resDate
             this.resCommentCount = res.resCommentCount
             this.resSource=res.resSource
-            
-           
           })
           .catch(err => {
             console.log(err);
@@ -60,7 +58,7 @@
       }
     },
     mounted() {
-      this.handleGetEssay()
+      this.handleGetEssay(this.id)
     }
   }
 

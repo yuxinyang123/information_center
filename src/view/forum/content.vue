@@ -1,7 +1,7 @@
 <template>
   <div>
-    <forum-content></forum-content>
-    <forum-comment></forum-comment>
+    <forum-content :id="id"></forum-content>
+    <forum-comment :id="id"></forum-comment>
   </div>
 </template>
 <script>

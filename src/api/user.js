@@ -23,7 +23,7 @@ export const getUserInfo = (token) => {
   })
 }
 
-export const updateUserInfo = (num, password, signature, major, Class, academy, sex, age, location) => {
+export const updateUserInfo = ({ num, password, signature, major, Class, academy, sex, age, location }) => {
   return axios.request({
     url: '/api/user/info',
     data: {
