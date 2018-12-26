@@ -71,7 +71,8 @@
 <script>
   import {
     forcastGrade,
-    selectGrade
+    selectGrade,
+    getAverage
   } from "@/api/data";
   import charts from "echarts";
   import "echarts-gl";
@@ -85,6 +86,7 @@
           examtype: "",
           credit: ""
         },
+        data:[],
         grade: '',
         advice: '',
         forcastFlag: true,
@@ -114,6 +116,7 @@
       handleChartsclassgrade() {
         var myChart = charts.init($("#chartclassgrade")[0], "light");
         var hours = [
+          "0",
           "1班",
           "2班",
           "3班",
@@ -122,70 +125,29 @@
           "6班",
           "7班",
           "8班",
+          "9"
         ];
         var days = [
+          "0",
           "大一上学期",
           "大一下学期",
           "大二上学期",
           "大二下学期",
+          "5"
 
         ];
 
-        var data = [
-          [0, 0, 5],
-          [0, 1, 1],
-          [0, 2, 0],
-          [0, 3, 0],
-          [0, 4, 0],
-          [0, 5, 0],
-          [0, 6, 0],
-          [0, 7, 0],
-
-          [1, 0, 7],
-          [1, 1, 0],
-          [1, 2, 0],
-          [1, 3, 0],
-          [1, 4, 0],
-          [1, 5, 0],
-          [1, 6, 0],
-          [1, 7, 0],
-
-          [2, 0, 1],
-          [2, 1, 1],
-          [2, 2, 0],
-          [2, 3, 0],
-          [2, 4, 0],
-          [2, 5, 0],
-          [2, 6, 0],
-          [2, 7, 0],
-
-          [3, 0, 7],
-          [3, 1, 3],
-          [3, 2, 0],
-          [3, 3, 0],
-          [3, 4, 0],
-          [3, 5, 0],
-          [3, 6, 0],
-          [3, 7, 0],
-
-        ];
+        var data = this.data;
         var option = {
           tooltip: {},
+
           visualMap: {
-            min:50,
-            max: 80,
+            min: 70,
+            max: 85,
             inRange: {
               color: [
-                // "#FF0000",
-                // "#FF7F00",
-                // " #FFFF00 ",
-                // "#00FF00",
-                // "#00FFFF ",
-                // "#0000FF",
-                // "#8B00FF",
-                '#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'
-
-
+                '#36A3DB', '#32C5E9', '#66E1E3', '#9FE7B9', '#FFDB3E', '#FF9F7E', '#FB7293', '#E162AF', '#E791D1',
+                '#E7BDF3', '#9D97F5', '#8378EB', '#97BFFF'
               ]
             }
           },
@@ -198,7 +160,9 @@
             data: days
           },
           zAxis3D: {
-            type: "value"
+            type: "value",
+            min: 60,
+            max: 85,
           },
           grid3D: {
             boxWidth: 200,
@@ -208,12 +172,14 @@
             },
             light: {
               main: {
-                intensity: 1.2,
+                intensity: 0.55,
                 shadow: true
               },
               ambient: {
-                intensity: 0.3
-              }
+                intensity: 0.7,
+
+              },
+
             }
           },
           series: [{
@@ -235,7 +201,7 @@
             emphasis: {
               label: {
                 textStyle: {
-                  fontSize: 20,
+                  fontSize: 30,
                   color: "#900"
                 }
               },
@@ -297,13 +263,26 @@
             this.$Message.error("计算失败.");
           }
         })
+      },
+      handlegetAverage() {
+        getAverage().then(res => {
+            res = res.data.data;
+            this.data = res;
+            console.log(this.data)
+            this.handleChartsclassgrade()
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
+
     },
     mounted() {
       this.$nextTick(() => {
         this.handleChartsclassgrade();
       });
       this.handlestudentid();
+      this.handlegetAverage()
     }
   };
 

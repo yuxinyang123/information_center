@@ -16,12 +16,47 @@
         </FormItem>
       </Form>
     </Modal>
-    <div v-show="isOk">
-      <video id="video" width="480" height="320"></video>
-      <i-button @click="authFace" ghost>匹配</i-button>
-      <Button @click="back" ghost>返回</Button>
-      <canvas id="canvas" width="480" height="320"></canvas>
-    </div>
+
+    <Row :gutter="10">
+      <Row >
+        <i-col span="4"><p style="height: 200px">col-4</p></i-col>
+
+        <i-col span="12">&nbsp</i-col>
+    </Row>
+
+      <i-col span="3">&nbsp</i-col>
+      <i-col span="7">
+         <Card shadow style=" background-color: rgba(245, 245, 245, 0.5)">
+        <h1 ><font color="white">拍摄人脸</font></h1><br>
+        <Row type="flex" justify="center">
+          <Col >            
+            <video id="video" width="480" height="320"></video>                       
+          </Col>
+        </Row>
+        <Row type="flex">
+          <i-col span="9">
+            &nbsp
+          </i-col>
+           <i-col span="12">
+           <i-button type="info" @click="authFace" >匹配</i-button>&nbsp
+           <Button type="primary" @click="back" >返回</Button>
+          </i-col>        
+        </Row>
+      </Card>
+      </i-col>
+      <i-col span="3">col-12</i-col>
+
+      <i-col span="7">
+        <Card shadow style=" background-color: rgba(245, 245, 245, 0.5)">
+        <h1><font color="white">识别</font></h1><br>
+        <Row type="flex" justify="center">
+          <Col>
+              <canvas id="canvas" width="480" height="350"></canvas>
+          </Col>
+        </Row>     
+      </Card>
+      </i-col>  
+  </Row>         
   </div>
 </template>
 <script>
@@ -125,4 +160,7 @@ export default {
   mounted() {}
 };
 </script>
+<style>
+
+</style>
 

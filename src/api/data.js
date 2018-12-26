@@ -77,29 +77,13 @@ export const get4Tag = () => {
     method: 'get'
   })
 }
-export const putUser = (num, password, signature, major, Class, academy, sex, age, location) => {
-  return axios.request({
-    url: '/api/user/info',
-    params: {
-      num: num,
-      password: password,
-      signature: signature,
-      major: major,
-      class: Class,
-      academy: academy,
-      sex: sex,
-      age: age,
-      location: location
-    },
-    method: 'put'
-  })
-}
-export const getUser = () => {
-  return axios.request({
-    url: '/api/user/info',
-    method: 'get'
-  })
-}
+
+// export const getUser = () => {
+//   return axios.request({
+//     url: '/api/user/info',
+//     method: 'get'
+//   })
+// }
 export const selectGrade = (pageNum, pageSize) => {
   return axios.request({
     url: '/api/center/grade',
@@ -138,6 +122,29 @@ export const getLists = (type) => {
     url: '/api/res/lists',
     params: {
       type: type
+    },
+    method: 'get'
+  })
+}
+export const getAverage = () => {
+  return axios.request({
+    url: '/api/center/semester',
+    method: 'get'
+  })
+}
+export const getEssay = (id) => {
+  return axios.request({
+    url: `/api/res/${id}`,
+    method: 'get'
+  })
+}
+export const getComment = (pageNum, pageSize, essayId) => {
+  return axios.request({
+    url: `/api/res/${essayId}/comment`,
+    params: {
+      pageNum: pageNum,
+      pageSize: pageSize,
+      essayId: essayId
     },
     method: 'get'
   })

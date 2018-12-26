@@ -18,9 +18,9 @@ export default {
   directive_page: '指令',
 
   level_2: 'Level-2',
-  recruithome_page: '招聘首頁',
-  jobhome_page: '兼職首頁',
-  matchhome_page: '比賽首頁',
+  recruithome: '招聘首頁',
+  jobhome: '兼職首頁',
+  matchhome: '比賽首頁',
   level_2_3: 'Level-2-3',
   level_2_2: 'Level-2-2',
   level_2_2_1: 'Level-2-2-1',
@@ -32,7 +32,7 @@ export default {
   drag_list_page: '拖拽列表',
   i18n_page: '多語言',
   modalTitle: '模態框題目',
-  content: '這是模態框內容',
+
   buttonText: '顯示模態框',
   'i18n-tip': '注：僅此頁做了多語言，其他頁面沒有在多語言包中添加語言內容',
   error_store_page: '錯誤收集',

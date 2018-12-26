@@ -93,25 +93,25 @@ export default {
       inforCardData: [
         {
           title: "加权平均分",
-          icon: "md-person-add",
+          icon:"logo-snapchat",
           count: 0,
           color: "#2d8cf0"
         },
         {
           title: "已获得学分",
-          icon: "md-locate",
+          icon: "ios-planet",
           count: 0,
           color: "#19be6b"
         },
         {
           title: "绩点",
-          icon: "md-help-circle",
+          icon: "logo-freebsd-devil",
           count: 0,
-          color: "#ff9900"
+          color: "#515a6e"
         },
         {
           title: "选修学分",
-          icon: "md-share",
+          icon: "ios-paw",
           count: 0,
           color: "#ed3f14"
         }

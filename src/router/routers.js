@@ -177,37 +177,49 @@ export default [
     component: Main,
     children: [
       {
-        path: 'recruithome_page',
-        name: 'recruithome_page',
+        path: 'recruithome',
+        name: 'recruithome',
         props: { typeName: '招聘信息' },
         meta: {
           icon: 'md-funnel',
           title: '招聘首页'
         },
-        component: () => import('@/view/multilevel/forumhome.vue')
+        component: () => import('@/view/forum/forumhome.vue')
       },
       {
-        path: 'jobhome_page',
-        name: 'jobhome_page',
+        path: 'jobhome',
+        name: 'jobhome',
         props: { typeName: '兼职信息' },
         meta: {
           icon: 'md-funnel',
           title: '兼职首页'
         },
-        component: () => import('@/view/multilevel/forumhome.vue')
+        component: () => import('@/view/forum/forumhome.vue')
       },
       {
-        path: 'matchhome_page',
-        name: 'matchhome_page',
+        path: 'matchhome',
+        name: 'matchhome',
         props: { typeName: '比赛信息' },
         meta: {
           icon: 'md-funnel',
           title: '比赛首页'
         },
-        component: () => import('@/view/multilevel/forumhome.vue')
+        component: () => import('@/view/forum/forumhome.vue')
+      },
+      {
+        path: 'content/:type/:id',
+        name: '内容页',
+        props: true,
+        meta: {
+          hideInMenu: true,
+          notCache: true,
+          title: (route) => `${route.params.type}-${route.params.id}`
+        },
+        component: () => import('@/view/forum/content.vue')
       }
     ]
   },
+
   {
     path: '/argu',
     name: 'argu',

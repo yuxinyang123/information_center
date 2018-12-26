@@ -17,9 +17,9 @@ export default {
   add_face: 'addface',
   forum: 'forum',
   directive_page: 'Directive',
-  recruithome_page: 'recruithome_page',
-  jobhome_page: 'jobhome_page',
-  matchhome_page: 'matchhome_page',
+  recruithome: 'recruithome',
+  jobhome: 'jobhome',
+  matchhome_page: 'matchhome',
   level_2: 'Level-2',
 
   level_2_3: 'Level-2-3',
@@ -33,7 +33,7 @@ export default {
   drag_list_page: 'Drag-list',
   i18n_page: 'Internationalization',
   modalTitle: 'Modal Title',
-  content: 'This is the modal box content.',
+
   buttonText: 'Show Modal',
   'i18n-tip': 'Note: Only this page is multi-language, other pages do not add language content to the multi-language package.',
   error_store_page: 'Error Collection',
