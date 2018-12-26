@@ -17,18 +17,10 @@ export default {
    * @description api请求基础路径
    */
   baseUrl: {
-<<<<<<< HEAD
-
-    dev: 'http://rap2api.taobao.org/app/mock/117773/',
-    // dev: 'http://localhost:8088/',
-    pro: 'https://produce.com'
-
-=======
     // dev: 'http://rap2api.taobao.org/app/mock/117773/',
     // dev: 'http://localhost:8088/',
     dev: 'http://10.7.84.194:8088/',
     pro: 'http://localhost:8088/'
->>>>>>> af856b21819e1dae555374a4f7d92883ef8abdeb
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home
@@ -41,13 +33,7 @@ export default {
 
   },
 
-<<<<<<< HEAD
-  localTestUrl: 'http://localhost:8088/',
-  // localTestUrl: 'http://10.7.84.194:8088/',
-  auth: false
-=======
   // localTestUrl: 'http://localhost:8088/',
   localTestUrl: 'http://10.7.84.194:8088/',
   auth: true
->>>>>>> af856b21819e1dae555374a4f7d92883ef8abdeb
 }

@@ -1,12 +1,5 @@
 <template>
   <div>
-    <Card style="height:80px">
-      <Row type='flex' align='middle' justify='center' style="height:55px">
-        <Col span='10'>
-            <Page :total="100" show-elevator />
-        </Col>
-      </Row>
-    </Card>
     <editor ref="editor" :value="content" @on-change="handleChange" />
     <Card>
       <Row type='flex' align='middle' justify='start'>
