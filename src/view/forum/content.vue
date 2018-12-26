@@ -1,7 +1,7 @@
 <template>
   <div>
     <forum-content></forum-content>
-    <forum-comment></forum-comment>
+    <forum-comment v-for="i in lists" :data="i" ></forum-comment>
   </div>
 </template>
 <script>
