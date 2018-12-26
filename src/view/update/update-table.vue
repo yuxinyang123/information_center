@@ -96,7 +96,6 @@
         getUserInfo(token)
           .then(res => {
             res = res.data.data;
-            console.log(res);
             this.formModel.academy = res.academy;
             this.formModel.Class = res.class;
             this.formModel.major = res.major;
@@ -115,7 +114,6 @@
             updateUserInfo(this.formModel)
               .then(res => {
                 res = res.data;
-                console.log(res);
                 this.$Message.success('修改成功!');
               })
               .catch(err => {

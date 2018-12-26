@@ -38,10 +38,8 @@ export default {
           this.flag = false;
           if (error == 404) {
             this.$Message.error("邮箱不正确或人脸未匹配");
-            console.log("邮箱不正确或人脸未匹配");
           } else {
-            this.$Message.error("网络问题");
-            console.log("网络问题");
+            this.$Message.error("网络问题");  
           }
         });
     }

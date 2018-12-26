@@ -131,7 +131,6 @@ export default {
       let date = new Date();
       getWhetherData()
         .then(res => {
-          console.log(res);
           res = res.data.data;
           this.city = res.city;
           this.ganmao = res.notice;
@@ -166,7 +165,6 @@ export default {
         .then(res => {
           res = res.data;
           let a = res.data.avggrade;
-          // console.log(a);
           if (res.code == 200) {
             this.inforCardData[0].count = res.data.avggrade;
             this.inforCardData[1].count = res.data.havacredit;
@@ -179,11 +177,9 @@ export default {
         });
     },
     handleUpdateWeather(cityname) {
-      console.log("handleUpdateWeather:" + cityname);
       updateWeatherInfo(cityname)
         .then(res => {
           res = res.data;
-          console.log(res);
           if (res.code == 200) {
             this.$Message.success("修改成功！");
             this.handleGetWeather();

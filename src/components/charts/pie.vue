@@ -67,14 +67,12 @@ export default {
   },
   methods: {
     getChildData(data) {
-      // console.log("parent:" + data);
       this.cityname = data;
     },
     aggimage: function(type) {
       this.img = require("../../assets/images/" + type + ".png");
     },
     sendChildData() {
-      // console.log(this.cityname);
       if (this.cityname != "") this.$emit("updateLocal", this.cityname);
     }
   },

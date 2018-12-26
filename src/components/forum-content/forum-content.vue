@@ -46,7 +46,6 @@
         getEssay(id)
           .then(res => {
             res = res.data.data;
-            // console.log(res)
             this.resDate = res.resDate
             var dt = new Date(this.resDate);
             var date = [

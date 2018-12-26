@@ -47,7 +47,6 @@
             res = res.data.data[0];
             this.singleType = res.resourcePos
             resolve();
-            console.log(res)
           }).catch(err => {
             console.log(err);
             reject(err);

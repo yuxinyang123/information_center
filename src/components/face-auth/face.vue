@@ -12,7 +12,7 @@
       <Col span="24" style=" margin-top:10%">&nbsp
       </Col>
     </Row>
-    <Row :gutter="10" >
+    <Row :gutter="10" v-show="isOk">
 
       <i-col span="2">&nbsp</i-col>
       <i-col span="9">
@@ -21,7 +21,7 @@
             <font color="white">拍摄人脸</font>
           </h1><br>
           <Row type="flex" justify="center">
-            <Col>
+            <Col style="height:350px">
             <video id="video" width="100%" height="100%"></video>
             </Col>
           </Row>
@@ -44,7 +44,7 @@
             <font color="white">识别</font>
           </h1><br>
           <Row type="flex" justify="center">
-            <Col>
+            <Col style="height:380px">
             <canvas id="canvas" width="480" height="350"></canvas>
             </Col>
           </Row>
@@ -119,7 +119,7 @@
       },
       ok() {
         this.$refs.f.validate(valid => {
-          console.log(valid);
+         
           if (valid) {
             this.$Message.success("开始人脸识别");
             this.openVideo();
@@ -147,7 +147,7 @@
     watch: {
       flag(val) {
         if (val == true) {
-          console.log("closed")
+       
           this.stopVideo();
         }
       }

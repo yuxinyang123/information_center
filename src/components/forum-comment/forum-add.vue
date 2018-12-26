@@ -1,6 +1,6 @@
 <template>
   <div>
-    <editor ref="editor" :value="content" @on-change="handleChange" />
+    <editor ref="editor" :value="commentContext" @on-change="handleChange" />
     <Card>
       <Row type='flex' align='middle' justify='start'>
         <Col span='3'>
@@ -18,29 +18,37 @@
   export default {
     name: 'ForumAdd',
     props: {
-        id:String
+      id: String
     },
     components: {
       Editor
     },
     data() {
       return {
-        content: ''
+        commentContext: '',
       }
     },
     methods: {
-      handleSubmit(comment, context, id) {
-        addComment(comment, context, id)
-          .then(res => {
-            res = res.data
-            console.log(res)
-          })
-          .catch(err => {
-            console.log(err);
-          });
+      handleSubmit(commentContext, id) {
+        if (this.commentContext == '') {
+          this.$Message.error('评论不能为空');
+        } else {
+          addComment(this.commentContext, this.id)
+            .then(res => {
+              res = res.data
+            
+              this.$Message.success('添加成功');
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
       },
       handleChange(html, text) {
-        console.log(html, text)
+
+        this.commentContext = text
+        
+
       },
     },
     mounted() {

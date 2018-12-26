@@ -5,7 +5,7 @@
     <Card style="height:80px">
       <Row type='flex' align='middle' justify='center' style="height:55px">
         <Col span='10'>
-        <Page :total="total" :page-size="pageSize" :current="pageNum" show-total @on-change="handleNextPage" />
+        <Page :total="total" :page-size="pageSize" :current="pageNum" show-total @on-change="handleNextPage"  />
         </Col>
       </Row>
     </Card>
@@ -49,7 +49,7 @@
             this.lists = res.list
             this.total = res.total
           })
-          .catch(err => {
+          .catch(err => { 
             console.log(err);
           });
       },

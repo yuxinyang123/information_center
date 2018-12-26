@@ -187,7 +187,6 @@ export default {
             this.formModel.edupasswd
           )
             .then(res => {
-              console.log(res);
               if (res.data.code == 200) {
                 this.$Message.success(
                   "注册成功,系统将在5秒后自动跳转到登录界面"

@@ -13353,7 +13353,6 @@ export default {
   },
   methods: {
     sendChildData(value, selectedData) {
-      // console.log("child:"+selectedData[selectedData.length-1].label)
       this.$emit("sendChildData", selectedData[selectedData.length-1].label);
     }
   }

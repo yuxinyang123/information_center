@@ -35,12 +35,13 @@
 
       handleTime() {
         var dt = new Date(this.lists.commentDate);
+        
         var date = [
           [dt.getFullYear(), dt.getMonth() + 1, dt.getDate()].join('-'),
           [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(':')
         ].join(' ').replace(/(?=\b\d\b)/g, '0'); // 正则补零
         this.date = date
-        console.log(date);
+       
       }
     },
     mounted() {
