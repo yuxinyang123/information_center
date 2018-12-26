@@ -131,8 +131,7 @@ export default {
             this.formModel.academy,
             this.formModel.sex,
             this.formModel.age,            
-            this.formModel.username,
-                 
+            this.formModel.username, 
           )
             .then(res => {
               console.log(res);
