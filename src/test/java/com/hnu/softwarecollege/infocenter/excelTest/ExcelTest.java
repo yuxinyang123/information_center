@@ -31,7 +31,7 @@ import java.util.List;
 @Slf4j
 @SpringBootTest
 public class ExcelTest {
-    @Test
+//    @Test
     public void readExcel() throws Exception{
         File file = new File("F:\\excel\\a.xlsx");
         XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
@@ -61,7 +61,7 @@ public class ExcelTest {
         System.out.println("avg:"+avg);
     }
 
-    @Test
+//    @Test
     public void sorceTest() throws Exception{
         File file = new File("C:\\Users\\14832\\Desktop\\score\\alltrem.xlsx");
         XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
