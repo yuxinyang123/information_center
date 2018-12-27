@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -37,12 +36,21 @@ import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.*;
 
 public class CenterServiceImpl implements CenterService {
     public static String resultjson;
-
-    private File educational = new File("spider/main.py");
-    private String spiderPath = educational.getAbsolutePath();
-    private File predict = new File("arithmetic/test1/Predict_Application_local.py");
-    private String predictPath = predict.getAbsolutePath();
-
+//    String citypath = this.getClass().getClassLoader().getResource("spider/city.json").getPath();
+    /*ClassPathResource resource1 = new ClassPathResource("spider/main.py");
+    String spiderPath = resource1.getPath();*/
+    String spiderPath = "/home/spiderresource/main.py";
+//    InputStream inputStream1 = resource1.getInputStream();
+//    URL educational= this.getClass().getResource("classpath*:spider/main.py");
+//    String spiderPath = educational.getPath();
+//    private File educational = new File("spider/main.py");
+//    private String spiderPath = educational.getAbsolutePath();
+//    private String spiderPath = educational.getPath();
+//    URL predict = this.getClass().getResource("classpath*:arithmetic/test1/Predict_Application_local.py");
+//    private File predict = new File("arithmetic/test1/Predict_Application_local.py");
+    /*ClassPathResource resource2 = new ClassPathResource("arithmetic/test1/Predict_Application_local.py");
+    String predictPath = resource2.getPath();*/
+    String predictPath = "/home/arithmeticresource/Predict_Application_local.py";
     /*
      * @Author 刘亚双
      * @Description //TODO 获取UserKey 找到对应教务系统的账号和密码，执行爬虫，
@@ -52,6 +60,10 @@ public class CenterServiceImpl implements CenterService {
      **/
     @Resource
     UserInformationPoMapper userInformationPoMapper;
+
+    public CenterServiceImpl() throws IOException {
+    }
+
     @Override
     public void getGrade(Long userKey) {
         Long userkey = userKey;

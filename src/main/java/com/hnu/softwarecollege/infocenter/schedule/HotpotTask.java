@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -28,8 +27,11 @@ import java.util.List;
 @Configuration
 public class HotpotTask {
 
-    private File weiboClawer = new File("spider/weibohot-clawer.py");
-    private String weiboClawerpath = weiboClawer.getAbsolutePath();
+//    private File weiboClawer = new File("spider/weibohot-clawer.py");
+//    private String weiboClawerpath = weiboClawer.getAbsolutePath();
+//    ClassPathResource resource = new ClassPathResource("spider/weibohot-clawer.py");
+//    String weiboClawerpath = resource.getPath();
+    String weiboClawerpath = "/home/spiderresource/weibohot-clawer.py";
 
 
     @Resource
