@@ -44,7 +44,7 @@ public class HotpotTask {
     public int runWeiBoClawer(){
         //python脚本路径
 
-        String[] arg = new String[]{"python",weiboClawerpath};
+        String[] arg = new String[]{"python3",weiboClawerpath};
         List<HotsPotPo> hotsPotPoList = null;
         Process process = null;
         try {

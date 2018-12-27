@@ -74,7 +74,7 @@ public class CenterServiceImpl implements CenterService {
         UserInformationPo userInformationPo = userInformationPoMapper.selectByUserKey(userkey);
         String Id = userInformationPo.getInfNum().toString();
         String password =userInformationPo.getInfPass();
-        String[] arg = new String[]{"python",spiderPath, Id, password};
+        String[] arg = new String[]{"python3",spiderPath, Id, password};
         log.info("{}",arg[1]);
         Process process = null;
         String result = "";
@@ -211,7 +211,7 @@ public class CenterServiceImpl implements CenterService {
      **/
     @Override
     public String getGradeForeast(String studentId, String courseType, String testType, String gainCerdit) {
-        String[] arg = new String[]{ "python",predictPath, studentId, courseType, testType, gainCerdit};
+        String[] arg = new String[]{ "python3",predictPath, studentId, courseType, testType, gainCerdit};
         Arrays.stream(arg).forEach((s)->{log.info(s);});
         Process process = null;
         String result = "";
