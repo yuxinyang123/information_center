@@ -29,6 +29,7 @@
 </style>
 
 <script>
+ import animate from "animate.css";
 export default {
   name: "game2048",
   data() {

@@ -1,13 +1,11 @@
 import {
   login,
-  logout,
   getUserInfo,
   getMessage,
   getContentByMsgId,
   hasRead,
   removeReaded,
-  restoreTrash,
-  getUnreadCount
+  restoreTrash
 } from '@/api/user'
 import { authFace } from '@/api/login'
 import { setToken, getToken } from '@/libs/util'

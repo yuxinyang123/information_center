@@ -115,26 +115,6 @@
 
 </script>
 <style>
-  /* .ivu-table td.demo-table-info-mon {
-    background-color: #ff9900;
-    color: #fff;
-  }
-
-  .ivu-table td.demo-table-info-wen {
-    background-color: #19be6b;
-    color: #fff;
-  }
-
-  .ivu-table td.demo-table-info-thu {
-    background-color: #ed4014;
-    color: #fff;
-  }
-
-  .ivu-table td.demo-table-info-fri {
-    background-color: #2db7f5;
-    color: #fff;
-  } */
-
   .course {
     font-size: 15px;
     height: 52px;

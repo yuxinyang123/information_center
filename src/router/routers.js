@@ -17,262 +17,215 @@ import parentView from '@/components/parent-view'
  * }
  */
 
-export default [
-  {
-    path: '/login',
-    name: 'login',
-    meta: {
-      title: 'Login - 登录',
-      hideInMenu: true
-    },
-    component: () => import('@/view/login/login.vue')
+export default [{
+  path: '/login',
+  name: 'login',
+  meta: {
+    title: 'Login - 登录',
+    hideInMenu: true
   },
-  {
-    path: '/regist',
-    name: 'regist',
-    meta: {
-      title: 'Regist - 注册',
-      hideInMenu: true
-    },
-    component: () => import('@/view/login/regist.vue')
+  component: () => import('@/view/login/login.vue')
+},
+{
+  path: '/regist',
+  name: 'regist',
+  meta: {
+    title: 'Regist - 注册',
+    hideInMenu: true
   },
-  {
-    path: '/face',
-    name: 'face',
-    meta: {
-      title: 'Face - 人脸认证',
-      hideInMenu: true
-    },
-    component: () => import('@/view/login/face.vue')
+  component: () => import('@/view/login/regist.vue')
+},
+{
+  path: '/face',
+  name: 'face',
+  meta: {
+    title: 'Face - 人脸认证',
+    hideInMenu: true
   },
-  {
-    path: '/forget',
-    name: 'forget',
-    props: (route) => ({ pass: route.query.pass }),
-    meta: {
-      title: '密码找回',
-      hideInMenu: true
-    },
-    component: () => import('@/view/login/forget.vue')
+  component: () => import('@/view/login/face.vue')
+},
+{
+  path: '/forget',
+  name: 'forget',
+  props: (route) => ({
+    pass: route.query.pass
+  }),
+  meta: {
+    title: '密码找回',
+    hideInMenu: true
   },
-  {
-    path: '/',
-    name: '_home',
-    redirect: '/home',
-    component: Main,
+  component: () => import('@/view/login/forget.vue')
+},
+{
+  path: '/',
+  name: '_home',
+  redirect: '/home',
+  component: Main,
+  meta: {
+    hideInMenu: false,
+    title: '首页',
+    notCache: true
+  },
+  children: [{
+    path: '/home',
+    name: 'home',
     meta: {
       hideInMenu: false,
       title: '首页',
-      notCache: true
+      notCache: true,
+      icon: 'md-home'
     },
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        meta: {
-          hideInMenu: false,
-          title: '首页',
-          notCache: true,
-          icon: 'md-home'
-        },
-        component: () => import('@/view/single-page/home')
-      }
-    ]
+    component: () => import('@/view/single-page/home')
+  }]
+},
+{
+  path: '/message',
+  name: 'message',
+  component: Main,
+  meta: {
+    hideInBread: true,
+    hideInMenu: true,
+    title: '消息中心'
   },
-  {
-    path: '/message',
-    name: 'message',
-    component: Main,
+  children: [{
+    path: 'message_page',
+    name: 'message_page',
     meta: {
-      hideInBread: true,
-      hideInMenu: true,
+      icon: 'md-notifications',
       title: '消息中心'
     },
-    children: [
-      {
-        path: 'message_page',
-        name: 'message_page',
-        meta: {
-          icon: 'md-notifications',
-          title: '消息中心'
-        },
-        component: () => import('@/view/single-page/message/index.vue')
-      }
-    ]
+    component: () => import('@/view/single-page/message/index.vue')
+  }]
+},
+{
+  path: '/grade',
+  name: 'grade',
+  meta: {
+    icon: 'logo-buffer',
+    title: '成绩'
+  },
+  component: Main,
+  children: [{
+    path: 'distribution',
+    name: 'gradedistribution',
+    meta: {
+      icon: 'md-trending-up',
+      title: '成绩分布'
+    },
+    component: () => import('@/view/components/grade/distribution.vue')
   },
   {
-    path: '/grade',
-    name: 'grade',
+    path: 'analyze',
+    name: 'gradeanalyze',
     meta: {
-      icon: 'logo-buffer',
-      title: '成绩'
+      icon: 'ios-ionitron-outline',
+      title: '成绩分析'
     },
-    component: Main,
-    children: [
-      {
-        path: 'distribution',
-        name: 'distribution',
-        meta: {
-          icon: 'md-trending-up',
-          title: '成绩分布'
-        },
-        component: () => import('@/view/components/count-to/count-to.vue')
-      },
-      {
-        path: 'analyze',
-        name: 'analyze',
-        meta: {
-          icon: 'ios-ionitron-outline',
-          title: '成绩分析'
-        },
-        component: () => import('@/view/components/count-to/ables_page.vue')
-      }
-    ]
-  },
-  {
-    path: '/update',
-    name: 'update',
-    meta: {
-      icon: 'md-person',
-      title: '个人中心'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'update_table_page',
-        name: 'update_table_page',
-        meta: {
-          icon: 'ios-document',
-          title: '个人信息'
-        },
-        component: () => import('@/view/update/update-table.vue')
-      },
-      {
-        path: 'update_password',
-        name: 'update_password',
-        meta: {
-          icon: 'ios-lock-outline',
-          title: '修改密码'
-        },
-        component: () => import('@/view/update/update-password.vue')
-      },
-      {
-        path: 'add_face',
-        name: 'add_face',
-        meta: {
-          icon: 'ios-happy-outline',
-          title: '修改人脸'
-        },
-        component: () => import('@/view/update/update-face.vue')
-      }
-    ]
-  },
-  {
-    path: '/forum',
-    name: 'forum',
-    meta: {
-      icon: 'md-menu',
-      title: '论坛'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'recruithome',
-        name: 'recruithome',
-        props: { typeName: '招聘信息' },
-        meta: {
-          icon: 'md-funnel',
-          title: '招聘首页'
-        },
-        component: () => import('@/view/forum/forumhome.vue')
-      },
-      {
-        path: 'jobhome',
-        name: 'jobhome',
-        props: { typeName: '兼职信息' },
-        meta: {
-          icon: 'md-funnel',
-          title: '兼职首页'
-        },
-        component: () => import('@/view/forum/forumhome.vue')
-      },
-      {
-        path: 'matchhome',
-        name: 'matchhome',
-        props: { typeName: '比赛信息' },
-        meta: {
-          icon: 'md-funnel',
-          title: '比赛首页'
-        },
-        component: () => import('@/view/forum/forumhome.vue')
-      },
-      {
-        path: 'content/:type/:id',
-        name: '内容页',
-        props: true,
-        meta: {
-          hideInMenu: true,
-          notCache: true,
-          title: (route) => `${route.params.type}-${route.params.id}`
-        },
-        component: () => import('@/view/forum/content.vue')
-      }
-    ]
-  },
-
-  {
-    path: '/argu',
-    name: 'argu',
-    meta: {
-      hideInMenu: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'params/:id',
-        name: 'params',
-        meta: {
-          icon: 'md-flower',
-          title: route => `{{ params }}-${route.params.id}`,
-          notCache: true,
-          beforeCloseName: 'before_close_normal'
-        },
-        component: () => import('@/view/argu-page/params.vue')
-      },
-      {
-        path: 'query',
-        name: 'query',
-        meta: {
-          icon: 'md-flower',
-          title: route => `{{ query }}-${route.query.id}`,
-          notCache: true
-        },
-        component: () => import('@/view/argu-page/query.vue')
-      }
-    ]
-  },
-  {
-    path: '/401',
-    name: 'error_401',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/401.vue')
-  },
-  {
-    path: '/500',
-    name: 'error_500',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/500.vue')
-  },
-  {
-    path: '*',
-    name: 'error_404',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/404.vue')
+    component: () => import('@/view/components/grade/analyze.vue')
   }
+  ]
+},
+{
+  path: '/update',
+  name: 'update',
+  meta: {
+    icon: 'md-person',
+    title: '个人中心'
+  },
+  component: Main,
+  children: [{
+    path: 'update_information',
+    name: 'update_information',
+    meta: {
+      icon: 'ios-document',
+      title: '个人信息'
+    },
+    component: () => import('@/view/update/update-information.vue')
+  },
+  {
+    path: 'update_password',
+    name: 'update_password',
+    meta: {
+      icon: 'ios-lock-outline',
+      title: '修改密码'
+    },
+    component: () => import('@/view/update/update-password.vue')
+  },
+  {
+    path: 'add_face',
+    name: 'add_face',
+    meta: {
+      icon: 'ios-happy-outline',
+      title: '修改人脸'
+    },
+    component: () => import('@/view/update/update-face.vue')
+  }
+  ]
+},
+{
+  path: '/forum',
+  name: 'forum',
+  meta: {
+    icon: 'md-menu',
+    title: '论坛'
+  },
+  component: Main,
+  children: [{
+    path: 'recruithome',
+    name: 'recruithome',
+    props: {
+      typeName: '招聘信息'
+    },
+    meta: {
+      icon: 'md-funnel',
+      title: '招聘首页'
+    },
+    component: () => import('@/view/forum/forumhome.vue')
+  },
+  {
+    path: 'jobhome',
+    name: 'jobhome',
+    props: {
+      typeName: '兼职信息'
+    },
+    meta: {
+      icon: 'md-funnel',
+      title: '兼职首页'
+    },
+    component: () => import('@/view/forum/forumhome.vue')
+  },
+  {
+    path: 'matchhome',
+    name: 'matchhome',
+    props: {
+      typeName: '比赛信息'
+    },
+    meta: {
+      icon: 'md-funnel',
+      title: '比赛首页'
+    },
+    component: () => import('@/view/forum/forumhome.vue')
+  },
+  {
+    path: 'content/:type/:id',
+    name: '内容页',
+    props: true,
+    meta: {
+      hideInMenu: true,
+      notCache: true,
+      title: (route) => `${route.params.type}-${route.params.id}`
+    },
+    component: () => import('@/view/forum/content.vue')
+  }
+  ]
+},
+
+{
+  path: '*',
+  name: 'error_404',
+  meta: {
+    hideInMenu: true
+  },
+  component: () => import('@/view/error-page/404.vue')
+}
 ]
