@@ -4,16 +4,16 @@ import com.hnu.softwarecollege.infocenter.entity.po.SyllabusPo;
 import com.hnu.softwarecollege.infocenter.entity.vo.SyllabusVo;
 import com.hnu.softwarecollege.infocenter.mapper.SyllabusPoMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,4 +76,19 @@ public class RuntimeTest {
         List<CommentVo> list = commentPoMapper.selectbyessayKet(1l);
         System.out.println(list);
     }*/
+
+    @Test
+    public void weatherTest() throws Exception{
+        ClassPathResource resource = new ClassPathResource("city.json");
+        InputStream inputStream = resource.getInputStream();
+        StringWriter writer = new StringWriter();
+        IOUtils.copy(inputStream,writer, StandardCharsets.UTF_8.name());
+        /*//InputStream inputStream = getClass().getClassLoader().getResourceAsStream("city.json");
+        byte[] bytes = new byte[0];
+        bytes = new byte[inputStream.available()];
+        inputStream.read(bytes);
+        String str= new String(bytes);*/
+        String str = writer.toString();
+        System.out.println(str);
+    }
 }

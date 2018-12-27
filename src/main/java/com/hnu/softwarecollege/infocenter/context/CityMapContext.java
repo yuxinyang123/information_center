@@ -3,12 +3,11 @@ package com.hnu.softwarecollege.infocenter.context;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hnu.softwarecollege.infocenter.entity.po.CityPo;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 
-import java.nio.charset.Charset;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,25 +32,20 @@ public class CityMapContext implements InitializingBean {
         this.map = map;
     }
 
-    /*public Map<String, CityPo> savaInfo() throws IOException {
-        Map<String, CityPo> cityMap = new HashMap<String, CityPo>();
 
-        String jsonCity = FileUtils.readFileToString(ResourceUtils.getFile("classpath:city.json"), Charset.forName("UTF-8"));
-        ObjectMapper mapper = new ObjectMapper();
-        List<CityPo> listcity = mapper.readValue(jsonCity, new TypeReference<List<CityPo>>() {
-        });
-        for (int i = 0; i < listcity.size(); i++) {
-            cityMap.put(listcity.get(i).getCity_code(), listcity.get(i));
-            System.out.println(cityMap);
-        }
-        return cityMap;
-    }*/
 
     @Override
     public void afterPropertiesSet() throws Exception {
         Map<String, CityPo> cityMap = new HashMap<String, CityPo>();
+        //InputStream inputStream = getClass().getClassLoader().getResourceAsStream("city.json");
+        ClassPathResource resource = new ClassPathResource("city.json");
+        InputStream inputStream = resource.getInputStream();
 
-        String jsonCity = FileUtils.readFileToString(ResourceUtils.getFile("classpath:city.json"), Charset.forName("UTF-8"));
+        byte[] bytes = new byte[0];
+        bytes = new byte[inputStream.available()];
+        inputStream.read(bytes);
+        String jsonCity = new String(bytes);
+        //String jsonCity = FileUtils.readFileToString(ResourceUtils.getFile(citypath), Charset.forName("UTF-8"));
         ObjectMapper mapper = new ObjectMapper();
         List<CityPo> listcity = mapper.readValue(jsonCity, new TypeReference<List<CityPo>>() {});
         for (int i = 0; i < listcity.size(); i++) {
@@ -60,4 +54,5 @@ public class CityMapContext implements InitializingBean {
         }
         this.setMap(cityMap);
     }
+
 }
