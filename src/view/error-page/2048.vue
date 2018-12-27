@@ -5,7 +5,7 @@
     </Row>
     <Row justify="center" type="flex" v-for="i in 4" :key="i">
       <Col v-for="j in 4" :key="i+':'+j">
-        <div class="gamediv" :class="{active:true}">{{num[j-1+(i-1)*4]}}</div>
+        <div class="gamediv">{{num[j-1+(i-1)*4]}}</div>
       </Col>
     </Row>
   </div>
@@ -25,9 +25,6 @@
     text-align:center;
     line-height: 5em;
   }
-}
-.active{
-
 }
 </style>
 
