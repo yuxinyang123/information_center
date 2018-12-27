@@ -149,3 +149,12 @@ export const getComment = (pageNum, pageSize, essayId) => {
     method: 'get'
   })
 }
+export const addComment = (commentContext, id) => {
+  return axios.request({
+    url: `api/res/${id}/comment`,
+    data: {
+      commentContext
+    },
+    method: 'post'
+  })
+}

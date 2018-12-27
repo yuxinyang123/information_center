@@ -82,7 +82,6 @@ import {
             this.formModel.newpasswd,        
           )
             .then(res => {
-              console.log(res);
              
             })
             .catch(err => {

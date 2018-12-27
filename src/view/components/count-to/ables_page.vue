@@ -251,7 +251,7 @@
 
                 this.$Message.success(
                   "正在计算")
-                console.log(this.grade);
+               
                 this.forcastFlag = false
                 this.forcastedFlag = true
 
@@ -268,7 +268,7 @@
         getAverage().then(res => {
             res = res.data.data;
             this.data = res;
-            console.log(this.data)
+         
             this.handleChartsclassgrade()
           })
           .catch(err => {

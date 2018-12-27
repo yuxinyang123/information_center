@@ -18,7 +18,8 @@ export default {
    */
   baseUrl: {
     // dev: 'http://rap2api.taobao.org/app/mock/117773/',
-    dev: 'http://localhost:8088/',
+    // dev: 'http://localhost:8088/',
+    dev: 'http://10.7.84.194:8088/',
     pro: 'http://localhost:8088/'
   },
   /**
@@ -32,7 +33,7 @@ export default {
 
   },
 
-  localTestUrl: 'http://localhost:8088/',
-  // localTestUrl: 'http://10.7.84.194:8088/',
+  // localTestUrl: 'http://localhost:8088/',
+  localTestUrl: 'http://10.7.84.194:8088/',
   auth: true
 }

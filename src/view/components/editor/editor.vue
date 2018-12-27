@@ -14,12 +14,11 @@ export default {
   },
   data () {
     return {
-      content: '12312323'
+      content: ''
     }
   },
   methods: {
     handleChange (html, text) {
-      console.log(html, text)
     },
     changeContent () {
       this.$refs.editor.setHtml('<p>powered by wangeditor</p>')

@@ -37,7 +37,7 @@ export default {
      */
     cache: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
     this.editor.create()
     // 如果本地有存储加载本地存储内容
     let html = this.value || localStorage.editorCache
-    if (html) this.editor.txt.html(html)
+    // if (html) this.editor.txt.html(html)
   }
 }
 </script>

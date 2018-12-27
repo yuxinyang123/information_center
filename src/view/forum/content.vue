@@ -1,19 +1,31 @@
 <template>
   <div>
     <forum-content :id="id"></forum-content>
-    <forum-comment :id="id"></forum-comment>
+    <forum-comment :id="id" v-for="i in lists" :lists="i"></forum-comment>
+    <Card style="height:80px">
+      <Row type='flex' align='middle' justify='center' style="height:55px">
+        <Col span='10'>
+        <Page :total="total" :page-size="pageSize" :current="pageNum" show-total @on-change="handleNextPage"  />
+        </Col>
+      </Row>
+    </Card>
+    <forum-add :id="id"></forum-add>
+
+    </Row>
   </div>
 </template>
 <script>
   import ForumContent from "_c/forum-content";
   import ForumComment from "_c/forum-comment";
+  import ForumAdd from "_c/forum-comment/forum-add";
   import {
     getComment
   } from "@/api/data";
   export default {
     components: {
       ForumContent,
-      ForumComment
+      ForumComment,
+      ForumAdd
     },
     props: {
       id: String,
@@ -22,33 +34,41 @@
     data() {
       return {
         title: "this is title",
-        pageNum: 0,
-        pageSize: 0,
+        pageNum: 1,
+        pageSize: 5,
         essayId: 0,
         lists: [],
+        total: 0,
       };
     },
     methods: {
-       handleGetComment() {
-        getComment(this.pageNum, this.pageSize, this.essayId)
+      handleGetComment(id) {
+        getComment(this.pageNum, this.pageSize, id)
           .then(res => {
             res = res.data.data;
             this.lists = res.list
-            console.log(res)
-
+            this.total = res.total
+          })
+          .catch(err => { 
+            console.log(err);
+          });
+      },
+      handleNextPage(num) {
+        this.pageNum = num;
+        getComment(num, this.pageSize, this.id)
+          .then(res => {
+            res = res.data.data;
+            this.lists = res.list
           })
           .catch(err => {
             console.log(err);
-            reject(err);
           });
       }
     },
-    created() {
-      // console.log(this.$router.currentRoute.meta.title);
-    },
+    
     mounted() {
-       this.handleGetComment()
-      // console.log(this.id, this.type);
+      this.handleGetComment(this.id)
+     
     }
   };
 

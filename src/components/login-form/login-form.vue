@@ -56,7 +56,6 @@
 <script>
 import { getVerifyCode, verifyCode } from "@/api/login";
 import config from "@/config";
-// console.log(getVerifyCode);
 export default {
   name: "LoginForm",
   props: {

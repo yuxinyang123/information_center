@@ -36,7 +36,6 @@ export default {
       }
     };
     let validateRepeatPass = (rule, value, callback) => {
-      console.log(value, this.form.pass);
       if (value != this.form.pass) {
         callback(new Error("两次密码输入不同"));
       } else {

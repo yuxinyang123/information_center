@@ -29,7 +29,7 @@
   } from "@/api/data";
   export default {
     props: {
-      id:String,
+      id: String,
     },
     data() {
       return {
@@ -37,28 +37,37 @@
         resAuthor: '',
         resDate: '',
         resCommentCount: '',
-        resSource:''
+        resSource: ''
       }
     },
     methods: {
+
       handleGetEssay(id) {
         getEssay(id)
           .then(res => {
             res = res.data.data;
+            this.resDate = res.resDate
+            var dt = new Date(this.resDate);
+            var date = [
+              [dt.getFullYear(), dt.getMonth() + 1, dt.getDate()].join('-'),
+              [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(':')
+            ].join(' ').replace(/(?=\b\d\b)/g, '0'); // 正则补零
+            this.resDate = date
             this.resContext = res.resContext
             this.resAuthor = res.resAuthor
-            this.resDate = res.resDate
             this.resCommentCount = res.resCommentCount
-            this.resSource=res.resSource
+            this.resSource = res.resSource
+
+
           })
           .catch(err => {
             console.log(err);
-            reject(err);
           });
       }
     },
     mounted() {
       this.handleGetEssay(this.id)
+
     }
   }
 

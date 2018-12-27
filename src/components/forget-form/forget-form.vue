@@ -46,7 +46,7 @@ export default {
   methods: {
     handleReset() {
       this.$refs.formRef.resetFields();
-      console.log(this.pass);
+   
     },
     handleSend() {
       this.$refs.formRef.validate(valid => {
