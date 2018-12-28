@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.io.File;
 
 /**
  * @ClassName ExcelContext
@@ -22,14 +21,18 @@ import java.io.File;
 @Component
 @Slf4j
 public class ExcelContext implements InitializingBean {
-    private File firstFile = new File("excel/大一上.xlsx");
+    /*private File firstFile = new File("excel/大一上.xlsx");
     private String firstPath = firstFile.getAbsolutePath();
     private File secondFile = new File("excel/大一.xlsx");
     private String secondPath = secondFile.getAbsolutePath();
     private File thirdFile = new File("excel/大二上.xlsx");
     private String thridPath = thirdFile.getAbsolutePath();
     private File fourthFile = new File("excel/大二.xlsx");
-    private String fourthPath = fourthFile.getAbsolutePath();
+    private String fourthPath = fourthFile.getAbsolutePath();*/
+    private String firstPath = "/home/excelresource/大一上.xlsx";
+    private String secondPath ="/home/excelresource/大一.xlsx";
+    private String thridPath = "/home/excelresource/大二上.xlsx";
+    private String fourthPath="/home/excelresource/大二.xlsx";
     @Resource
     AvgPoMapper avgPoMapper;
     @Override
