@@ -17,8 +17,9 @@ import java.io.FileInputStream;
  * @Version 1.0
  **/
 public class Score {
-    private File file = new File("excel/alltrem.xlsx");
-    private String alltermpath = file.getAbsolutePath();
+  /*  ClassPathResource classPathResource = new ClassPathResource("/excel/alltrem.xlsx");
+    private String alltermpath = classPathResource.getPath();*/
+    String alltermpath ="/home/excelresource/alltrem.xlsx";
     private double classoneavg;
     private double classtwoavg;
     private double classthravg;
