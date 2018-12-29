@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -28,8 +27,11 @@ import java.util.List;
 @Configuration
 public class HotpotTask {
 
-    private File weiboClawer = new File("spider/weibohot-clawer.py");
-    private String weiboClawerpath = weiboClawer.getAbsolutePath();
+//    private File weiboClawer = new File("spider/weibohot-clawer.py");
+//    private String weiboClawerpath = weiboClawer.getAbsolutePath();
+//    ClassPathResource resource = new ClassPathResource("spider/weibohot-clawer.py");
+//    String weiboClawerpath = resource.getPath();
+    String weiboClawerpath = "/home/spiderresource/weibohot-clawer.py";
 
 
     @Resource
@@ -42,14 +44,14 @@ public class HotpotTask {
     public int runWeiBoClawer(){
         //python脚本路径
 
-        String[] arg = new String[]{"python",weiboClawerpath};
+        String[] arg = new String[]{"python3",weiboClawerpath};
         List<HotsPotPo> hotsPotPoList = null;
         Process process = null;
         try {
             //执行脚本文件
             process = Runtime.getRuntime().exec(arg);
             //IO流输出
-            InputStreamReader inputStreamReader = new InputStreamReader(process.getInputStream(),"GBK");
+            InputStreamReader inputStreamReader = new InputStreamReader(process.getInputStream(),"UTF8");
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             //将json字符串存入String类型中
             String arrjson = bufferedReader.readLine();

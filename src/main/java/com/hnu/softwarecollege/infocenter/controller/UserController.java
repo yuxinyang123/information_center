@@ -61,7 +61,7 @@ public class UserController {
      * @Param [userInfoForm]
      **/
     @PutMapping("/info")
-    public BaseResponseVo updateUserInfo(@RequestBody UserInfoForm userInfoForm,Errors errors) {
+    public BaseResponseVo updateUserInfo(@Valid @RequestBody UserInfoForm userInfoForm,Errors errors) {
         if (errors.hasErrors()){
             return BaseResponseVo.error("have an error");
         }

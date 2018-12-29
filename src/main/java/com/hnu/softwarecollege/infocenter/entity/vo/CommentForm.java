@@ -1,6 +1,6 @@
 package com.hnu.softwarecollege.infocenter.entity.vo;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 /**
  * @program: infocenter
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
  * @create: 2018-11-21 17:40
  **/
 public class CommentForm {
-    @NotEmpty
+    @NotBlank
     private String commentContext;
 
     public String getCommentContext() {

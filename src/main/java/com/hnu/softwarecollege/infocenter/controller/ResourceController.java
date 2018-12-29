@@ -16,6 +16,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -115,7 +116,7 @@ public class ResourceController {
      * @return com.hnu.softwarecollege.infocenter.entity.vo.BaseResponseVo
      **/
     @PostMapping("/{id}/comment")
-    public BaseResponseVo addComment(@RequestBody CommentForm comment, @PathVariable String id, Errors errors){
+    public BaseResponseVo addComment(@Valid @RequestBody CommentForm comment, @PathVariable String id, Errors errors){
         if(errors.hasErrors()) {
             return BaseResponseVo.error("file not null");
         }

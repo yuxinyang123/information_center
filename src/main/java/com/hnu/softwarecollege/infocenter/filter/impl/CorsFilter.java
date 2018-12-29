@@ -1,7 +1,6 @@
 package com.hnu.softwarecollege.infocenter.filter.impl;
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -45,7 +44,7 @@ public class CorsFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         //*表示允许所有域名跨域
-        httpResponse.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+        httpResponse.addHeader("Access-Control-Allow-Origin", "https://yixiaotong.club");
         httpResponse.addHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         //允许跨域的Http方法
         httpResponse.addHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");

@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -37,12 +36,21 @@ import static com.hnu.softwarecollege.infocenter.util.DoubleUtil.*;
 
 public class CenterServiceImpl implements CenterService {
     public static String resultjson;
-
-    private File educational = new File("spider/main.py");
-    private String spiderPath = educational.getAbsolutePath();
-    private File predict = new File("arithmetic/test1/Predict_Application_local.py");
-    private String predictPath = predict.getAbsolutePath();
-
+//    String citypath = this.getClass().getClassLoader().getResource("spider/city.json").getPath();
+    /*ClassPathResource resource1 = new ClassPathResource("spider/main.py");
+    String spiderPath = resource1.getPath();*/
+    String spiderPath = "/home/spiderresource/main.py";
+//    InputStream inputStream1 = resource1.getInputStream();
+//    URL educational= this.getClass().getResource("classpath*:spider/main.py");
+//    String spiderPath = educational.getPath();
+//    private File educational = new File("spider/main.py");
+//    private String spiderPath = educational.getAbsolutePath();
+//    private String spiderPath = educational.getPath();
+//    URL predict = this.getClass().getResource("classpath*:arithmetic/test1/Predict_Application_local.py");
+//    private File predict = new File("arithmetic/test1/Predict_Application_local.py");
+    /*ClassPathResource resource2 = new ClassPathResource("arithmetic/test1/Predict_Application_local.py");
+    String predictPath = resource2.getPath();*/
+    String predictPath = "/home/arithmeticresource/Predict_Application_local.py";
     /*
      * @Author 刘亚双
      * @Description //TODO 获取UserKey 找到对应教务系统的账号和密码，执行爬虫，
@@ -52,6 +60,10 @@ public class CenterServiceImpl implements CenterService {
      **/
     @Resource
     UserInformationPoMapper userInformationPoMapper;
+
+    public CenterServiceImpl() throws IOException {
+    }
+
     @Override
     public void getGrade(Long userKey) {
         Long userkey = userKey;
@@ -62,13 +74,13 @@ public class CenterServiceImpl implements CenterService {
         UserInformationPo userInformationPo = userInformationPoMapper.selectByUserKey(userkey);
         String Id = userInformationPo.getInfNum().toString();
         String password =userInformationPo.getInfPass();
-        String[] arg = new String[]{"python",spiderPath, Id, password};
+        String[] arg = new String[]{"python3",spiderPath, Id, password};
         log.info("{}",arg[1]);
         Process process = null;
         String result = "";
         try {
-            process = Runtime.getRuntime().exec( arg);
-            InputStreamReader ir = new InputStreamReader(process.getInputStream(), "GBK");
+            process = Runtime.getRuntime().exec(arg);
+            InputStreamReader ir = new InputStreamReader(process.getInputStream(), "UTF8");
             BufferedReader bufferedReader = new BufferedReader(ir);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -199,13 +211,13 @@ public class CenterServiceImpl implements CenterService {
      **/
     @Override
     public String getGradeForeast(String studentId, String courseType, String testType, String gainCerdit) {
-        String[] arg = new String[]{ "python",predictPath, studentId, courseType, testType, gainCerdit};
+        String[] arg = new String[]{ "python3",predictPath, studentId, courseType, testType, gainCerdit};
         Arrays.stream(arg).forEach((s)->{log.info(s);});
         Process process = null;
         String result = "";
         try {
             process = Runtime.getRuntime().exec(arg);
-            InputStreamReader ir = new InputStreamReader(process.getInputStream(), "GBK");
+            InputStreamReader ir = new InputStreamReader(process.getInputStream(), "UTF8");
             BufferedReader bufferedReader = new BufferedReader(ir);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
